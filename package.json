@@ -1,0 +1,45 @@
+{
+  "name": "allsafe-electric",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Allsafe Electric — residential electrician, Parker CO. Next.js rebuild per planning/ package.",
+  "engines": {
+    "node": ">=20.11"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "images:process": "tsx scripts/images-process.ts",
+    "images:generate": "tsx scripts/images-generate.ts",
+    "fetch:reviews": "tsx scripts/fetch-reviews.ts",
+    "audit:seo": "tsx scripts/audit-seo.ts",
+    "audit:schema": "tsx scripts/audit-schema.ts",
+    "test:preservation": "tsx scripts/test-preservation.ts",
+    "report:indexation": "tsx scripts/report-indexation.ts",
+    "verify": "npm run typecheck && npm run audit:seo && npm run audit:schema"
+  },
+  "dependencies": {
+    "next": "15.5.25",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.10.2",
+    "@types/react": "19.1.0",
+    "@types/react-dom": "19.1.0",
+    "autoprefixer": "10.4.20",
+    "csv-parse": "5.6.0",
+    "dotenv": "16.4.7",
+    "eslint": "9.17.0",
+    "eslint-config-next": "15.5.25",
+    "glob": "11.0.0",
+    "postcss": "8.4.49",
+    "sharp": "0.34.2",
+    "tailwindcss": "3.4.17",
+    "tsx": "4.19.2",
+    "typescript": "5.7.2"
+  }
+}

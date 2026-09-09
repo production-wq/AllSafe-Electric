@@ -1,0 +1,119 @@
+// @ts-check
+import { readFileSync, existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
+import { parse } from 'csv-parse/sync';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+/**
+ * Redirects are generated from data/url-map.csv at build time, never hand-maintained.
+ * See planning/docs/04 §4. Columns: old_url,bucket,new_url,status,reason,impressions_90d,inlinks
+ * Rows with status === '301' become permanent redirects. One hop only — the CSV must
+ * already be flattened (A→C directly, never A→B→C).
+ */
+function redirectsFromCsv() {
+  const csvPath = join(__dirname, 'data', 'url-map.csv');
+  if (!existsSync(csvPath)) return [];
+  try {
+    const rows = parse(readFileSync(csvPath, 'utf8'), {
+      columns: true,
+      skip_empty_lines: true,
+      trim: true,
+    });
+    return rows
+      .filter((r) => r.status === '301' && r.old_url && r.new_url && r.old_url !== r.new_url)
+      .map((r) => ({ source: r.old_url, destination: r.new_url, permanent: true }));
+  } catch (err) {
+    console.warn('[next.config] could not parse data/url-map.csv:', err.message);
+    return [];
+  }
+}
+
+const ContentSecurityPolicy = [
+  "default-src 'self'",
+  "base-uri 'self'",
+  "object-src 'none'",
+  "frame-ancestors 'self'",
+  "form-action 'self'",
+  // 'unsafe-inline' scoped to scripts is required for GA4/GTM + Next's hydration bootstrap.
+  // Hardening path: nonce-based CSP via middleware (disables full static opt on affected routes).
+  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.callrail.com https://*.callrail.com",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob: https://lh3.googleusercontent.com https://*.googleusercontent.com https://maps.gstatic.com https://maps.googleapis.com https://*.google-analytics.com https://www.googletagmanager.com",
+  "font-src 'self' data:",
+  "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.callrail.com https://places.googleapis.com",
+  'frame-src https://book.housecallpro.com https://www.google.com',
+  "media-src 'self'",
+  "manifest-src 'self'",
+  'upgrade-insecure-requests',
+].join('; ');
+
+const securityHeaders = [
+  { key: 'Content-Security-Policy', value: ContentSecurityPolicy },
+  { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
+  { key: 'X-Content-Type-Options', value: 'nosniff' },
+  { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+  { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+  { key: 'X-DNS-Prefetch-Control', value: 'on' },
+  {
+    key: 'Permissions-Policy',
+    value: 'camera=(), microphone=(), geolocation=(self), browsing-topics=(), interest-cohort=()',
+  },
+  { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
+];
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  poweredByHeader: false,
+  trailingSlash: true, // planning/docs/03 §1 — the current site uses them; do not change.
+  compress: true,
+
+  images: {
+    formats: ['image/avif', 'image/webp'],
+    remotePatterns: [
+      { protocol: 'https', hostname: 'lh3.googleusercontent.com' },
+      { protocol: 'https', hostname: '*.googleusercontent.com' },
+    ],
+    deviceSizes: [400, 640, 828, 1080, 1200, 1600, 1920, 2400],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+  },
+
+  async redirects() {
+    return [
+      // Enforce apex host (www → apex). http → https handled at the edge/host.
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.allsafehomeservice.com' }],
+        destination: 'https://allsafehomeservice.com/:path*',
+        permanent: true,
+      },
+      // Known live-site hub inconsistency — planning/CLAUDE.md §5, docs/03 §2.
+      // /electrical-services/ (homepage hero button target) → the indexed hub.
+      // Confirm against GSC before launch; documented in planning/docs/99.
+      {
+        source: '/electrical-services/',
+        destination: '/electrical-services-parker-co/',
+        permanent: true,
+      },
+      ...redirectsFromCsv(),
+    ];
+  },
+
+  async headers() {
+    return [
+      { source: '/:path*', headers: securityHeaders },
+      {
+        source: '/fonts/:path*',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+      },
+      {
+        source: '/img/:path*',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+      },
+    ];
+  },
+};
+
+export default nextConfig;
