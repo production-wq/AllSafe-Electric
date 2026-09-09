@@ -1,0 +1,23 @@
+page_url,page_type,primary_keyword,secondary_keywords,intent,priority
+/,home,parker electrician,"electrician parker co,electrician near me parker,residential electrician parker",commercial,1
+/electrical-panel-services/,service,electrical panel upgrade parker,"breaker box replacement parker,200 amp service upgrade parker,fuse box replacement parker,federal pacific panel replacement",commercial,1
+/emergency-electrical-repairs-parker-co/,service,emergency electrician parker,"24 hour electrician parker co,emergency electrical repair parker,power outage electrician parker",transactional,1
+/residential-ev-charging/,service,ev charger installation parker co,"level 2 charger installation parker,tesla wall connector installer parker,home ev charger cost colorado",commercial,1
+/electrical-outlet-services/,service,outlet repair parker co,"outlet not working parker,gfci outlet installation parker,add outlet parker co",transactional,2
+/electrical-switch-services/,service,light switch replacement parker,"dimmer switch installation parker,three way switch repair parker",transactional,3
+/electrical-wiring-repairs-services/,service,house rewiring parker co,"aluminum wiring replacement colorado,knob and tube replacement parker,wiring repair parker",commercial,2
+/lighting-services/,service,indoor lighting installation parker,"recessed lighting installation parker,under cabinet lighting parker,chandelier installation parker",commercial,3
+/outdoor-lighting/,service,outdoor lighting parker co,"landscape lighting parker,security light installation parker,holiday light installation parker",commercial,3
+/ceiling-fan-installation/,service,ceiling fan installation parker,"ceiling fan replacement parker co",transactional,3
+/home-automation/,service,smart home electrician parker,"smart switch installation parker,home automation wiring colorado",commercial,4
+/whole-home-surge-protection/,service,whole home surge protector parker,"surge protection installation colorado",commercial,3
+/smoke-detectors/,service,smoke detector installation parker,"hardwired smoke detector replacement parker,co detector installation colorado",transactional,4
+/home-electrical-safety-inspections/,service,electrical inspection parker co,"home electrical safety inspection colorado,pre purchase electrical inspection parker",informational,2
+/generator-installation/,service,standby generator installation parker co,"generac installer parker,whole house generator colorado cost",commercial,1
+/electrical-troubleshooting/,service,electrical troubleshooting parker,"breaker keeps tripping parker,why do my lights flicker,half my house has no power",transactional,1
+/hot-tub-electrical-hookup/,service,hot tub electrical hookup parker,"spa wiring parker co,hot tub 220v installation colorado",commercial,3
+/electricians/parker-co/,city,electrician parker co,"local electrician parker colorado",commercial,1
+/electricians/castle-rock-co/,city,electrician castle rock co,"castle rock electrician near me",commercial,1
+/electricians/highlands-ranch-co/,city,electrician highlands ranch co,"highlands ranch electrician near me",commercial,1
+/electricians/lone-tree-co/,city,electrician lone tree co,"lone tree electrician near me",commercial,2
+/electricians/centennial-co/,city,electrician centennial co,"centennial electrician near me",commercial,2
