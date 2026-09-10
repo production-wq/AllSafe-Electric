@@ -79,13 +79,13 @@ export function Reviews({ initial }: { initial: ReviewsPayload }) {
                       unoptimized
                     />
                   ) : (
-                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-600/10 font-semibold text-brand-600">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600/10 font-semibold text-blue-600">
                       {r.authorName.charAt(0)}
                     </span>
                   )}
                   <div>
                     <p className="font-semibold leading-tight">{r.authorName}</p>
-                    <p className="text-[0.85rem] text-muted">{r.relativeTime}</p>
+                    <p className="text-[0.85rem] text-grey">{r.relativeTime}</p>
                   </div>
                 </div>
                 <Stars rating={Math.round(r.rating)} className="mt-3" />
@@ -97,7 +97,7 @@ export function Reviews({ initial }: { initial: ReviewsPayload }) {
                   target="_blank"
                   rel="noopener"
                   onClick={() => track.clickGbp('reviews')}
-                  className="mt-4 inline-flex items-center gap-1.5 text-[0.85rem] text-muted hover:text-brand-700"
+                  className="mt-4 inline-flex items-center gap-1.5 text-[0.85rem] text-grey hover:text-blue-700"
                 >
                   <GoogleG /> Google review
                 </a>
@@ -110,7 +110,7 @@ export function Reviews({ initial }: { initial: ReviewsPayload }) {
               <p className="flex items-center gap-2 text-h3 font-semibold">
                 <GoogleG /> Read the reviews on Google
               </p>
-              <p className="mt-2 max-w-lg text-muted">
+              <p className="mt-2 max-w-lg text-grey">
                 Allsafe Electric&apos;s Google reviews name Jud and Justin by name. The live feed loads
                 here once connected. Until then, they are all on the Google Business Profile.
               </p>
@@ -120,7 +120,7 @@ export function Reviews({ initial }: { initial: ReviewsPayload }) {
               target="_blank"
               rel="noopener"
               onClick={() => track.clickGbp('reviews')}
-              className="btn btn-secondary shrink-0"
+              className="btn btn-outline shrink-0"
             >
               See Google reviews
             </a>
@@ -141,7 +141,7 @@ export function Reviews({ initial }: { initial: ReviewsPayload }) {
             Leave a review
           </a>
         </div>
-        <p className="mt-3 text-[0.8rem] text-muted">
+        <p className="mt-3 text-[0.8rem] text-grey">
           Reviews are shown as returned by Google, unedited and in order. Allsafe Electric does not
           select or filter them.
         </p>

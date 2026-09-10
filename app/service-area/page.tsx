@@ -50,7 +50,7 @@ export default function ServiceAreaPage() {
           <div className="space-y-10">
             <section>
               <h2 className="text-h2">Primary cities</h2>
-              <p className="mt-2 text-muted">
+              <p className="mt-2 text-grey">
                 These five get their own pages with local permit and utility detail.
               </p>
               <ul className="mt-5 divide-y divide-rule border-y border-rule">
@@ -59,21 +59,21 @@ export default function ServiceAreaPage() {
                     <div className="flex flex-wrap items-baseline justify-between gap-2">
                       <Link
                         href={`/electricians/${c.slug}/`}
-                        className="text-h3 font-semibold text-brand-700 hover:underline"
+                        className="text-h3 font-semibold text-blue-700 hover:underline"
                       >
                         {c.name}, CO
                       </Link>
-                      <span className="text-[0.9rem] text-muted">
+                      <span className="text-[0.9rem] text-grey">
                         {c.county} County ·{' '}
                         {c.driveTimeMin === 0 ? 'home base' : `~${c.driveTimeMin} min from the shop`}
                       </span>
                     </div>
-                    <p className="mt-1 text-[1rem] text-muted">{c.responseExpectation}</p>
+                    <p className="mt-1 text-[1rem] text-grey">{c.responseExpectation}</p>
                   </li>
                 ))}
               </ul>
               {!PUBLISH.TIER_1_CITIES && (
-                <p className="mt-3 text-[0.85rem] text-muted">
+                <p className="mt-3 text-[0.85rem] text-grey">
                   City pages are being rolled out in stages as each is indexed, see the launch plan.
                 </p>
               )}
@@ -81,7 +81,7 @@ export default function ServiceAreaPage() {
 
             <section>
               <h2 className="text-h2">Also serving</h2>
-              <p className="mt-2 text-muted">
+              <p className="mt-2 text-grey">
                 We cover these regularly. Call for the drive time to your address.
               </p>
               <ul className="mt-4 flex flex-wrap gap-2">
@@ -98,7 +98,7 @@ export default function ServiceAreaPage() {
 
             <section>
               <h2 className="text-h2">Parker neighbourhoods</h2>
-              <p className="mt-2 text-muted">
+              <p className="mt-2 text-grey">
                 Genuine local knowledge. Housing eras, panel brands, HOA design review. These five
                 are named on our homepage and are the areas we know best.
               </p>
@@ -121,7 +121,7 @@ export default function ServiceAreaPage() {
             </div>
             <div className="card p-5 text-[0.95rem]">
               <p className="font-semibold">{business.name}</p>
-              <p className="mt-1 text-muted">
+              <p className="mt-1 text-grey">
                 {business.address.streetAddress}
                 <br />
                 {business.address.addressLocality}, {business.address.addressRegion}{' '}
@@ -129,7 +129,7 @@ export default function ServiceAreaPage() {
               </p>
               <a
                 href={business.phone.href}
-                className="mt-2 inline-block font-semibold text-brand-700"
+                className="mt-2 inline-block font-semibold text-blue-700"
               >
                 {business.phone.display}
               </a>

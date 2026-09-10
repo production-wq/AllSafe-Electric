@@ -12,13 +12,13 @@ export default function ThankYouPage() {
   return (
     <section className="section">
       <div className="container-page max-w-2xl text-center">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-leaf-600 text-white">
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-orange-500 text-white">
           <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
             <path d="M20 6 9 17l-5-5" />
           </svg>
         </div>
         <h1 className="mt-6 text-h1">Thanks. That&apos;s in</h1>
-        <p className="mt-4 text-h3 text-muted">
+        <p className="mt-4 text-h3 text-grey">
           We&apos;ll get back to you the same business day. If it&apos;s urgent, don&apos;t wait for
           the email, call{' '}
           <a href={business.phone.href} className="link-cta">
@@ -27,7 +27,7 @@ export default function ThankYouPage() {
           and Jud will usually pick up.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <Link href="/" className="btn btn-secondary">
+          <Link href="/" className="btn btn-outline">
             Back to home
           </Link>
           <a

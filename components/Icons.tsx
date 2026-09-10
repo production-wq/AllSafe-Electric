@@ -70,10 +70,92 @@ export const ClockIcon = (p: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-export function Stars({ rating = 5, className }: { rating?: number; className?: string }) {
+export const BoltIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}>
+    <path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z" />
+  </svg>
+);
+
+export const WrenchIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}>
+    <path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.7 2.7-2.3-2.3 2.7-2.7z" />
+  </svg>
+);
+
+export const ArrowRightIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}>
+    <path d="M5 12h14M13 5l7 7-7 7" />
+  </svg>
+);
+
+export const ArrowLeftIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}>
+    <path d="M19 12H5M11 5l-7 7 7 7" />
+  </svg>
+);
+
+export const PlusIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}>
+    <path d="M12 5v14M5 12h14" />
+  </svg>
+);
+
+export const MailIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}>
+    <rect x="3" y="5" width="18" height="14" rx="2" />
+    <path d="m3 7 9 6 9-6" />
+  </svg>
+);
+
+export const HomeIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}>
+    <path d="M3 10.5 12 3l9 7.5" />
+    <path d="M5 9.5V21h14V9.5" />
+    <path d="M9.5 21v-6h5v6" />
+  </svg>
+);
+
+export const PriceTagIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}>
+    <path d="M20.6 13.4 12 22l-9-9V4a1 1 0 0 1 1-1h9l7.6 7.6a2 2 0 0 1 0 2.8z" />
+    <circle cx="7.5" cy="7.5" r="1.5" />
+  </svg>
+);
+
+export const FacebookIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg width={22} height={22} viewBox="0 0 24 24" fill="currentColor" aria-hidden {...p}>
+    <path d="M14 8.5V7c0-.9.6-1 1-1h2V3h-3c-2.8 0-4 1.8-4 4v1.5H8V12h2v9h3.5v-9H16l.5-3.5H14z" />
+  </svg>
+);
+
+export const InstagramIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}>
+    <rect x="3" y="3" width="18" height="18" rx="5" />
+    <circle cx="12" cy="12" r="4" />
+    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+  </svg>
+);
+
+export function Stars({
+  rating = 5,
+  className,
+  color = '#FF6600',
+  size = 18,
+}: {
+  rating?: number;
+  className?: string;
+  color?: string;
+  size?: number;
+}) {
   return (
     <span className={className} role="img" aria-label={`${rating} out of 5 stars`}>
-      <svg width={rating * 20} height="20" viewBox={`0 0 ${rating * 20} 20`} fill="#E8A317" aria-hidden>
+      <svg
+        width={rating * size}
+        height={size}
+        viewBox={`0 0 ${rating * 20} 20`}
+        fill={color}
+        aria-hidden
+      >
         {Array.from({ length: rating }).map((_, i) => (
           <path
             key={i}

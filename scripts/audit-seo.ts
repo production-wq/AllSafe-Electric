@@ -24,56 +24,38 @@ const HTML_DIR = join(ROOT, '.next', 'server', 'app');
 const REAL_TEL = '+13036481934';
 
 /**
- * Orange detection, CLAUDE.md §1.6, docs/14 "Brand". The previous agency used
- * orange throughout; the owner named it twice. We parse every colour token and
- * flag any whose hue sits in the orange band with real saturation/lightness, 
- * this does NOT flag white, the brand blue, the brand green, or --urgent red.
+ * Palette check (planning/docs/99, 2026-09-10). The client supplied their live
+ * brand palette and asked us to use it, which REVERSES the old "no orange" line.
+ * Orange #FF6600 is now the brand accent. This check no longer bans orange; it
+ * only flags *stray* colours: any saturated hex that is not part of the approved
+ * palette or a mandated third-party brand colour (Google logo, star gold).
  */
-function toHsl(r: number, g: number, b: number): [number, number, number] {
-  r /= 255;
-  g /= 255;
-  b /= 255;
-  const max = Math.max(r, g, b);
-  const min = Math.min(r, g, b);
-  const l = (max + min) / 2;
-  let h = 0;
-  let s = 0;
-  const d = max - min;
-  if (d !== 0) {
-    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-    if (max === r) h = ((g - b) / d + (g < b ? 6 : 0)) / 6;
-    else if (max === g) h = ((b - r) / d + 2) / 6;
-    else h = ((r - g) / d + 4) / 6;
-  }
-  return [h * 360, s, l];
-}
+const APPROVED_HEX = new Set(
+  [
+    // client palette
+    '#0068a8', '#54595f', '#ff6600', '#7a7a7a', '#000000',
+    // derived scale in use
+    '#00568b', '#01426b', '#08314f', '#0a2e4c', '#0e3a60', '#071f35',
+    '#e85600', '#c24700', '#111214', '#e3e7eb', '#f4f6f8', '#ffffff',
+    '#e8f2f9', '#fff1e6', '#ffdfc7', '#0f76b4', '#2e88c0',
+    // mandated third-party
+    '#4285f4', '#34a853', '#fbbc05', '#ea4335',
+  ].map((h) => h.toLowerCase())
+);
 
-// Hue band 16–34° = true orange. Excludes gold/amber (#E8A317 ≈ 40°) and the
-// Google logo yellow (#FBBC05 ≈ 45°), which are legitimate (star rating, mandated
-// Google attribution mark). Catches the agency clickbait orange (#F2711C ≈ 24°,
-// #FF6600 ≈ 24°, #E67E22 ≈ 28°).
-const SAFE_HEX = new Set(['#4285f4', '#34a853', '#fbbc05', '#ea4335', '#e8a317']);
-
-function isOrange(r: number, g: number, b: number): boolean {
-  const [h, s, l] = toHsl(r, g, b);
-  return h >= 16 && h <= 34 && s >= 0.5 && l >= 0.28 && l <= 0.66;
-}
-
-function findOrange(text: string): string | null {
-  const hexRe = /#([0-9a-f]{6}|[0-9a-f]{3})\b/gi;
+function findStrayColour(text: string): string | null {
+  const hexRe = /#([0-9a-f]{6})\b/gi;
   let m: RegExpExecArray | null;
   while ((m = hexRe.exec(text))) {
-    let hex = m[1];
-    if (hex.length === 3) hex = hex.replace(/./g, (c) => c + c);
-    if (SAFE_HEX.has(`#${hex.toLowerCase()}`)) continue;
-    const r = parseInt(hex.slice(0, 2), 16);
-    const g = parseInt(hex.slice(2, 4), 16);
-    const b = parseInt(hex.slice(4, 6), 16);
-    if (isOrange(r, g, b)) return m[0];
-  }
-  const rgbRe = /rgba?\(\s*(\d+)[,\s]+(\d+)[,\s]+(\d+)/gi;
-  while ((m = rgbRe.exec(text))) {
-    if (isOrange(+m[1], +m[2], +m[3])) return m[0];
+    const hex = `#${m[1].toLowerCase()}`;
+    if (APPROVED_HEX.has(hex)) continue;
+    const r = parseInt(m[1].slice(0, 2), 16);
+    const g = parseInt(m[1].slice(2, 4), 16);
+    const b = parseInt(m[1].slice(4, 6), 16);
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    // only care about vivid, non-grey colours we did not sanction
+    if (max - min > 90 && max > 120) return hex;
   }
   return null;
 }
@@ -112,9 +94,9 @@ async function auditFile(file: string) {
   const root = parse(html, { comment: false });
   const isNoindex = /<meta[^>]+name=["']robots["'][^>]+noindex/i.test(html);
 
-  // Orange. Parse actual colour tokens, not a blunt regex
-  const orange = findOrange(html);
-  if (orange) err(page, `orange colour found: ${orange}`);
+  // Palette: flag stray vivid colours outside the approved set
+  const stray = findStrayColour(html);
+  if (stray) warn(page, `colour outside the approved palette: ${stray}`);
 
   // Headings
   const headings = root.querySelectorAll('h1,h2,h3,h4,h5,h6') as HTMLElement[];

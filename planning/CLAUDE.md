@@ -36,8 +36,13 @@ These override anything else. If a request conflicts with one of these, stop and
    and an on-page form. Never fewer. See `docs/07-conversion-spec.md`.
 5. **NAP is byte-identical everywhere.** See §3 below. A single inconsistency is suspected to be
    part of why their Local Services Ads have produced one lead in six months.
-6. **No orange.** The previous agency used orange throughout. The owner explicitly does not want
-   it and it is not in his brand. Brand is blue and green. See `docs/02-design-system.md`.
+6. **Follow the client's supplied palette.** ~~No orange.~~ **SUPERSEDED 2026-09-10** by direct
+   client instruction (see `docs/99`). The client provided their live brand palette and a
+   designer homepage artifact to build against. Palette: `#0068A8` blue (primary/structural),
+   `#FF6600` orange (accent, CTAs, eyebrows), `#54595F` slate (body), `#7A7A7A` grey (muted),
+   `#000000` black (headings). Dark sections use a navy derived from the blue. The old
+   "no orange" line and much of `docs/02-design-system.md` no longer apply; the designer
+   artifact + this palette are the source of truth for visual design.
 7. **Do not publish page tiers out of order.** Indexation gates are defined in
    `docs/09-content-plan.md`. Publishing 500 pages at once is what broke the current site
    (86 of 588 pages indexed). Do not repeat it.

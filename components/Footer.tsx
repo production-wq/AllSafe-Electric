@@ -2,13 +2,20 @@ import Link from 'next/link';
 import { Logo } from './Logo';
 import { business } from '@/lib/business';
 import { footerColumns } from '@/lib/nav';
-import { MapPinIcon, PhoneIcon, ClockIcon, ShieldIcon } from './Icons';
+import {
+  MapPinIcon,
+  PhoneIcon,
+  MailIcon,
+  FacebookIcon,
+  InstagramIcon,
+} from './Icons';
 
 /**
- * Footer, planning/docs/03 §8. A deliberate crawl surface: full service and area
- * lists. The NAP block uses the REAL phone number and is byte-identical to schema
- * and the contact page (planning/docs/06 §2, docs/08 §2). No prior-agency credit
- * (docs/10 §10). Every link has a real target, no href="" (docs/10 §3).
+ * Footer, matching the designer's artifact: navy ground, brand blurb + social on
+ * the left, "Get in Touch" / "Services" / "Service Areas" columns, and a bottom
+ * bar with the license line + copyright. The NAP block uses the REAL phone number
+ * and is byte-identical to schema and the contact page (planning/docs/06 §2).
+ * Every link has a real target, no href="" (docs/10 §3).
  */
 export function Footer() {
   const cols = footerColumns();
@@ -16,186 +23,118 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="surface-dark relative overflow-hidden bg-brand-900">
-      <span
-        aria-hidden
-        className="pointer-events-none absolute -left-32 top-0 h-96 w-96 rounded-full bg-brand-600/20 blur-3xl"
-      />
-
-      {/* Contact strip */}
-      <div className="relative border-b border-white/10">
-        <div className="container-page grid gap-6 py-10 md:grid-cols-3">
-          <a
-            href={business.phone.href}
-            className="group flex items-start gap-4 rounded-card p-3 transition-colors hover:bg-white/5"
-          >
-            <span className="icon-tile bg-leaf-600 text-white">
-              <PhoneIcon width={21} height={21} />
-            </span>
-            <span>
-              <span className="block text-tiny uppercase tracking-wide text-white/55">Call</span>
-              <span className="block text-h3 font-bold text-white">{business.phone.display}</span>
-              <span className="block text-small text-white/65">
-                A real person, {business.hours.humanReadable}
-              </span>
-            </span>
-          </a>
-
-          <Link
-            href="/book/"
-            className="group flex items-start gap-4 rounded-card p-3 transition-colors hover:bg-white/5"
-          >
-            <span className="icon-tile bg-brand-600 text-white">
-              <ClockIcon width={21} height={21} />
-            </span>
-            <span>
-              <span className="block text-tiny uppercase tracking-wide text-white/55">Book</span>
-              <span className="block text-h3 font-bold text-white">Online any time</span>
-              <span className="block text-small text-white/65">
-                Pick a service and a window
-              </span>
-            </span>
-          </Link>
-
-          <Link
-            href="/contact/#estimate"
-            className="group flex items-start gap-4 rounded-card p-3 transition-colors hover:bg-white/5"
-          >
-            <span className="icon-tile bg-teal-600 text-white">
-              <ShieldIcon width={21} height={21} />
-            </span>
-            <span>
-              <span className="block text-tiny uppercase tracking-wide text-white/55">Estimate</span>
-              <span className="block text-h3 font-bold text-white">Same business day</span>
-              <span className="block text-small text-white/65">Free on quoted work</span>
-            </span>
-          </Link>
-        </div>
-      </div>
-
-      {/* Link columns */}
-      <div className="container-page relative grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
+    <footer className="surface-dark bg-navy-deep">
+      <div className="container-page grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        {/* Brand */}
         <div>
-          <h2 className="text-tiny font-bold uppercase tracking-wide text-white/55">Services</h2>
-          <ul className="mt-4 space-y-2 text-small">
-            {cols.services.map((s) => (
-              <li key={s.href}>
-                <Link href={s.href} className="text-white/80 transition-colors hover:text-white">
-                  {s.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <Logo onDark className="h-9 w-auto" />
+          <p className="mt-5 max-w-xs text-small text-white/70">
+            Your friendly, professional local electricians serving Parker, Colorado and its
+            surrounding neighborhoods.
+          </p>
+          <div className="mt-6 flex gap-3">
+            <a
+              href={business.social.facebook}
+              target="_blank"
+              rel="noopener"
+              aria-label="Allsafe Electric on Facebook"
+              className="flex h-10 w-10 items-center justify-center rounded-btn border border-white/20 text-white/80 transition-colors hover:border-orange-500 hover:text-orange-500"
+            >
+              <FacebookIcon />
+            </a>
+            <a
+              href={business.google.profileUrl}
+              target="_blank"
+              rel="noopener"
+              aria-label="Allsafe Electric on Google"
+              className="flex h-10 w-10 items-center justify-center rounded-btn border border-white/20 text-white/80 transition-colors hover:border-orange-500 hover:text-orange-500"
+            >
+              <InstagramIcon />
+            </a>
+          </div>
         </div>
 
+        {/* Get in touch */}
         <div>
-          <h2 className="text-tiny font-bold uppercase tracking-wide text-white/55">
-            Areas we serve
+          <h2 className="font-display text-tiny font-bold uppercase tracking-[0.12em] text-orange-500">
+            Get in Touch
           </h2>
-          <ul className="mt-4 space-y-2 text-small">
-            {cols.areas.map((s, i) => (
-              <li key={`${s.href}-${i}`}>
-                <Link href={s.href} className="text-white/80 transition-colors hover:text-white">
-                  {s.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h2 className="text-tiny font-bold uppercase tracking-wide text-white/55">Company</h2>
-          <ul className="mt-4 space-y-2 text-small">
-            {cols.company.map((s) => (
-              <li key={s.href}>
-                <Link href={s.href} className="text-white/80 transition-colors hover:text-white">
-                  {s.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* NAP block, real number, matches schema exactly */}
-        <div>
-          <h2 className="text-tiny font-bold uppercase tracking-wide text-white/55">Get in touch</h2>
           <address className="mt-4 space-y-3.5 text-small not-italic text-white/80">
             <p className="flex items-start gap-2.5">
-              <MapPinIcon width={17} height={17} className="mt-0.5 shrink-0 text-leaf-300" />
+              <MapPinIcon width={16} height={16} className="mt-0.5 shrink-0 text-white/45" />
               <span>
-                {business.name}
-                <br />
                 {a.streetAddress}
                 <br />
                 {a.addressLocality}, {a.addressRegion} {a.postalCode}
               </span>
             </p>
             <p className="flex items-center gap-2.5">
-              <PhoneIcon width={17} height={17} className="shrink-0 text-leaf-300" />
-              <a href={business.phone.href} className="font-semibold text-white hover:underline">
+              <PhoneIcon width={16} height={16} className="shrink-0 text-white/45" />
+              <a href={business.phone.href} className="font-semibold text-white hover:text-orange-500">
                 {business.phone.display}
               </a>
             </p>
-            <p className="flex items-start gap-2.5">
-              <ClockIcon width={17} height={17} className="mt-0.5 shrink-0 text-leaf-300" />
-              <span>{business.hours.humanReadable}, Mountain time</span>
+            <p className="flex items-center gap-2.5">
+              <MailIcon width={16} height={16} className="shrink-0 text-white/45" />
+              <a href={`mailto:${business.email.public}`} className="hover:text-orange-500">
+                {business.email.public}
+              </a>
             </p>
           </address>
+        </div>
 
-          <div className="mt-5 space-y-1.5 rounded-btn bg-white/5 p-3.5 text-tiny text-white/75">
-            <p>
-              <a
-                href={business.licenses.verifyUrl}
-                target="_blank"
-                rel="noopener"
-                className="hover:text-white hover:underline"
-              >
-                Master electrician {business.licenses.master.id}
-              </a>
-            </p>
-            <p>
-              <a
-                href={business.licenses.verifyUrl}
-                target="_blank"
-                rel="noopener"
-                className="hover:text-white hover:underline"
-              >
-                Electrical contractor {business.licenses.contractor.id}
-              </a>
-            </p>
-          </div>
+        {/* Services */}
+        <div>
+          <h2 className="font-display text-tiny font-bold uppercase tracking-[0.12em] text-orange-500">
+            Services
+          </h2>
+          <ul className="mt-4 space-y-2 text-small">
+            {cols.services.slice(0, 8).map((s) => (
+              <li key={s.href}>
+                <Link href={s.href} className="text-white/75 transition-colors hover:text-white">
+                  {s.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-          <div className="mt-4 flex flex-wrap gap-4 text-small">
-            <a
-              href={business.google.profileUrl}
-              target="_blank"
-              rel="noopener"
-              className="text-white/80 hover:text-white hover:underline"
-            >
-              Google profile
-            </a>
-            <a
-              href={business.social.facebook}
-              target="_blank"
-              rel="noopener"
-              className="text-white/80 hover:text-white hover:underline"
-            >
-              Facebook
-            </a>
-          </div>
+        {/* Service areas */}
+        <div>
+          <h2 className="font-display text-tiny font-bold uppercase tracking-[0.12em] text-orange-500">
+            Service Areas
+          </h2>
+          <ul className="mt-4 space-y-2 text-small">
+            {cols.areas.slice(0, 8).map((s, i) => (
+              <li key={`${s.href}-${i}`}>
+                <Link href={s.href} className="text-white/75 transition-colors hover:text-white">
+                  {s.label}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Link href="/blog/" className="text-white/75 transition-colors hover:text-white">
+                Blog &amp; resources
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
 
-      <div className="relative border-t border-white/10">
-        <div className="container-page flex flex-col items-start justify-between gap-5 py-7 text-tiny text-white/60 md:flex-row md:items-center">
-          <Logo variant="light" showTagline className="h-11 w-auto" />
-          <p className="max-w-xl">
-            © {year} {business.name}. Licensed and insured Colorado electrical contractor, serving
-            Parker and the south Denver metro since {business.founded.year}.
+      <div className="border-t border-white/10">
+        <div className="container-page flex flex-col items-start justify-between gap-3 py-6 text-tiny text-white/55 md:flex-row md:items-center">
+          <p>
+            Master License {business.licenses.master.id} &middot; Electrical Contractor License{' '}
+            {business.licenses.contractor.id} &middot; BBB A+ Accredited
           </p>
-          <Link href="/privacy-policy/" className="hover:text-white hover:underline">
-            Privacy policy
-          </Link>
+          <p className="flex flex-wrap items-center gap-x-4 gap-y-1">
+            <Link href="/privacy-policy/" className="hover:text-white">
+              Privacy Policy
+            </Link>
+            <span>
+              &copy; {year} {business.name}. All rights reserved.
+            </span>
+          </p>
         </div>
       </div>
     </footer>

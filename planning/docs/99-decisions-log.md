@@ -257,3 +257,70 @@ Book segment and white text on both.
 **Affects:** `app/globals.css`, `components/StickyBar.tsx`, `Footer.tsx`, `sections.tsx`,
 `AvailabilityStrip.tsx`
 **Decided by:** Client report, build team fix
+
+## 2026-09-10 — Client palette + designer homepage adopted; "no orange" reversed
+
+**Decision:** The client supplied a Claude-generated homepage design from their designer
+(artifact 3f589566-2420-48b6-8eda-34269e1979ba) and their live brand palette, and instructed
+us to build to both. This **reverses CLAUDE.md §1.6 ("no orange")**.
+
+Palette now in use (`tailwind.config.ts`, `app/globals.css`):
+| Token | Hex | Role |
+|---|---|---|
+| blue-600 | `#0068A8` | primary, structural, links, headers |
+| orange-500 | `#FF6600` | accent, primary CTAs, eyebrows, icons, badges |
+| slate | `#54595F` | body copy |
+| grey | `#7A7A7A` | secondary / muted text |
+| ink / black | `#000000` | headings |
+| navy | derived `#0A2E4C` family | hero / CTA / footer grounds |
+
+**Why:** Direct, specific, repeated client instruction (named the design, then named the exact
+hex list). The agency is the decision-maker for their client's brand direction. The original
+"no orange" line traced to the owner's words in `docs/01`; flagged this conflict to the client
+before proceeding and they confirmed the palette.
+
+**Fonts:** switched to Poppins (display/headings) + Inter (body), matching the Elementor-style
+geometric look of the artifact. Was Figtree + Newsreader.
+
+**Layout:** homepage rebuilt section-for-section to the artifact — black info top bar, sticky
+white header, navy hero with a curved bottom edge and an overlapping estimate form, stats band,
+about with stacked images + BBB tag, 4-card services row, "why choose us" 2×2, service areas
++ map, testimonials, FAQ with a blue contact card, navy CTA band. All-caps hero heading and
+eyebrows are now allowed (the artifact uses them), which diverges from `docs/02` §3.
+
+**Audit change:** `scripts/audit-seo.ts` no longer bans orange. It now only *warns* on stray
+vivid colours outside the approved palette + mandated third-party brand colours.
+
+**Affects:** CLAUDE.md §1.6, docs/02 (largely superseded), `tailwind.config.ts`,
+`app/globals.css`, `app/layout.tsx`, `app/page.tsx`, every component, `scripts/audit-seo.ts`
+**Decided by:** Client (production-wq), flagged and confirmed
+
+## 2026-09-10 — Blog rebuilt from the WordPress export; posts live under /blog/
+
+**Decision:** The client supplied the full WordPress XML export and the `wp-content/uploads`
+folder. The old site had **6 blog posts** (4 published, 2 scheduled) at root-level URLs. We:
+- Deleted the 4 interim posts written on 2026-09-08.
+- Rewrote all 6 WP posts in Jud's voice (plain, homeowner-facing, first person, answer-first),
+  keeping the useful technical facts and the local geo angle, dropping the corporate/AI tone.
+  Titles and slugs preserved.
+- Blog index stays at `/blog/`, posts at `/blog/{slug}/` (client instruction). Added six 301s
+  in `data/url-map.csv` from the old root URLs to the new `/blog/` paths.
+
+Posts: `residential-ev-charging-castle-rock`, `denver-whole-home-surge-protection`,
+`signs-electrical-panel-services-aurora`, `home-electrical-safety-inspection-parker`,
+`professional-outdoor-lighting-centennial`, `emergency-electrical-repairs-highlands-ranch`.
+
+**Images:** pulled a handful of genuinely useful photos from `uploads/` into the pipeline
+(Jud's headshot `judson-cushing-allsafe-electric.png`, a family + dog lifestyle shot, a
+suburban home exterior). Most WP marketing images are low-res (370×245, 520×265) so the 58
+original client photos remain the primary source. No new Gemini images were needed for this
+pass — the designer's homepage is text-and-form driven and uses fewer photos than the prior build.
+
+**Testimonials:** the 4 real reviews shown on the homepage (Todd, D.L., Mark, Nathan) are
+carried verbatim from the client's own previously published site (`/home-1` page in the export),
+stored in `data/testimonials.json`. Not invented. No `aggregateRating`/`Review` schema is
+emitted from them (docs/06 §3).
+
+**Affects:** `content/blog/*`, `data/url-map.csv`, `data/testimonials.json`,
+`components/Testimonials.tsx`, `data/image-manifest.json`
+**Decided by:** Client

@@ -1,0 +1,35 @@
+{
+  "_comment": "Real customer reviews carried over from the client's previous published site (WordPress export, /home-1 page). These are genuine, not invented. The live Google feed (app/api/reviews) supplements or replaces these when GOOGLE_PLACES_API_KEY + GOOGLE_PLACE_ID are configured.",
+  "source": "wordpress-export /home-1",
+  "aggregate": { "rating": 5, "label": "5.0 on Google", "cityLabel": "Parker, Colorado" },
+  "reviews": [
+    {
+      "author": "Todd",
+      "location": "Parker, Colorado",
+      "headline": "Best Electricians",
+      "rating": 5,
+      "text": "AllSafe is amazing. I called Jud because the work I did was not passing county inspection. He and Justin were out a day later and had everything compliant in under two hours. Absolutely the most reliable electricians in the area!"
+    },
+    {
+      "author": "D. L.",
+      "location": "Parker, Colorado",
+      "headline": "Always Professional",
+      "rating": 5,
+      "text": "We have used Jud with Allsafe Electric a couple of times now for various electric projects. Each time he has been very professional, on time and has walked us through the project timeline, costs, and expectations. He has consistently done a great job and we would highly recommend his services."
+    },
+    {
+      "author": "Mark",
+      "location": "Parker, Colorado",
+      "headline": "My Go-To Electricians",
+      "rating": 5,
+      "text": "Judson and Justin did a phenomenal job with a couple of my electrical projects. Communicated very well about their schedule and arrival time. Professionally accomplished electricians who are now my go-to electricians here in Parker. Highly recommend!"
+    },
+    {
+      "author": "Nathan",
+      "location": "Parker, Colorado",
+      "headline": "Honest Electrician",
+      "rating": 5,
+      "text": "Jud is the absolute man when it comes to electrical repairs and installs. He is fast, honest, and one of the nicest guys I have ever met. I have spent a lot of time looking for a good electrician in the Parker area and Jud is the one. He will be the only person I will call from here on out."
+    }
+  ]
+}

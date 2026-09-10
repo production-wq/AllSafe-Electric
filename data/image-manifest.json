@@ -423,6 +423,14 @@
     "lqip": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAACwAwCdASoNABQAPu1iqU2ppaOiMAgBMB2JYgCuHCGwxqS1eMsYgAD+rrDpxN95IwN7rnsMA1E+mEgJxCeh6AzAP31F3GoLHiYyClM4+x4/9W4b7bnFXHXd6vaT0uG/8qXbbTpBdpNcAW2F6gnL95hZchJ1mkAA",
     "bytes": 264108
   },
+  "family-and-golden-retriever-living-room": {
+    "src": "/img/photos/family-and-golden-retriever-living-room",
+    "width": 469,
+    "height": 423,
+    "aspectRatio": 1.1087,
+    "lqip": "data:image/webp;base64,UklGRrQAAABXRUJQVlA4IKgAAAAwBQCdASoUABIAPu1ur1IppiQiqAgBMB2JYwC7AdwLgnOEF7NrVYIgJPugHrgx9Bb1AAD+8dwy6GY8u1XQm+muorf6YuIa8vJp0h3tjgfWzTAgy1vdcJBB9Du1bYcdeVPt+2IJ3droEbJOZzXxY/M9AcFB7G/Fsm7eyCv5diklSMXm3MhbsitWMom29G3EdjHzXSa2CrZEMmxPhc2PslLUGQDmVrWgAAA=",
+    "bytes": 20907
+  },
   "illuminated-decorative-bowl-chandelier": {
     "src": "/img/photos/illuminated-decorative-bowl-chandelier",
     "width": 1067,
@@ -438,6 +446,14 @@
     "aspectRatio": 0.6669,
     "lqip": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwAwCdASoNABQAPu1iqU2ppaOiMAgBMB2JYwCdACPgM6UK/aDJfKQAAP7V5WfCBfAQmgsEJ1BHJ6Ja4bb0ifV7jtXsHWyVk2ZqJ/UUOxHEkWzs81YlPTbBoRJH8+HCeAAAAA==",
     "bytes": 106581
+  },
+  "jud-cushing-headshot": {
+    "src": "/img/photos/jud-cushing-headshot",
+    "width": 300,
+    "height": 400,
+    "aspectRatio": 0.75,
+    "lqip": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAACQAwCdASoPABQAPu1iqU2ppaOiMAgBMB2JQAALfUEK5XK1WpggAP70G/+imT/WXXEYuaoTnGuSmIBVIz3+FBszn+DWPiusyXKoaMK9tNzPkzmvZL1xCW/5Bgt+cNtv9EidH/+XpzmtMNjI25agezTUPZZ1dQ4h8kAAAA==",
+    "bytes": 7634
   },
   "large-windmill-ceiling-fan-in-living-room": {
     "src": "/img/photos/large-windmill-ceiling-fan-in-living-room",
@@ -462,5 +478,13 @@
     "aspectRatio": 0.6669,
     "lqip": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAACwAwCdASoNABQAPu1iqk4ppaQiMAgBMB2JaQAAWpMDltoNp1rtgAD+6nx9EXCaA28uQmmXZWRbdu50PLPeItXkKIOerncIhDYEydO1Z3hVPFZHuWWMuko+SKMgBpRpQgA=",
     "bytes": 94103
+  },
+  "suburban-home-exterior-daylight": {
+    "src": "/img/photos/suburban-home-exterior-daylight",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": 1.7778,
+    "lqip": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAACwBACdASoUAAsAPu1iqU2ppaOiMAgBMB2JbACdH8GJ/gNBJYZ/n9kuxAi2xJ+UAP6RKcoQfqzJ2z+BSfG+POtc9gxH8Oa0umV0SJcyK5p1rssCzuskRWzuxMhiamYIpSo5XTaJi65SaqFZ/sQMSZzWSvUPfeVo995TuGdEew6cfd4tUr+JTsAA",
+    "bytes": 357087
   }
 }

@@ -1,27 +1,26 @@
 import type { Metadata, Viewport } from 'next';
-import { Figtree, Newsreader } from 'next/font/google';
+import { Poppins, Inter } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { AvailabilityStrip } from '@/components/AvailabilityStrip';
+import { TopBar } from '@/components/TopBar';
 import { StickyBar } from '@/components/StickyBar';
 import { Analytics } from '@/components/Analytics';
 import { Schema } from '@/components/Schema';
 import { businessNode, websiteNode } from '@/lib/schema';
 import { SITE_URL, business } from '@/lib/business';
 
-const figtree = Figtree({
+const display = Poppins({
   subsets: ['latin'],
-  weight: ['400', '500', '700'],
-  variable: '--font-figtree',
+  weight: ['500', '600', '700', '800'],
+  variable: '--font-display',
   display: 'swap',
 });
 
-const newsreader = Newsreader({
+const body = Inter({
   subsets: ['latin'],
-  weight: ['400'],
-  style: ['normal', 'italic'],
-  variable: '--font-newsreader',
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-body',
   display: 'swap',
 });
 
@@ -29,7 +28,7 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   viewportFit: 'cover',
-  themeColor: '#0165AC',
+  themeColor: '#0068A8',
 };
 
 export const metadata: Metadata = {
@@ -39,7 +38,7 @@ export const metadata: Metadata = {
     template: '%s',
   },
   description:
-    'Licensed master electrician in Parker, Colorado. Jud answers the phone and shows up when he said he would. Panels, EV chargers, wiring, lighting and emergency repairs.',
+    'Licensed residential electrician in Parker, Colorado. Fast response, licensed and insured, BBB A+ accredited. Panels, EV chargers, wiring, lighting and emergency repairs.',
   applicationName: business.name,
   authors: [{ name: business.owner.name }],
   creator: business.name,
@@ -50,7 +49,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-US" className={`${figtree.variable} ${newsreader.variable}`}>
+    <html lang="en-US" className={`${display.variable} ${body.variable}`}>
       <body>
         <a
           href="#main"
@@ -58,7 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to content
         </a>
-        <AvailabilityStrip />
+        <TopBar />
         <Header />
         <main id="main">{children}</main>
         <Footer />

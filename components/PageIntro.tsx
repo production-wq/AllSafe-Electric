@@ -17,9 +17,9 @@ export function PageIntro({
   aside?: React.ReactNode;
 }) {
   const grounds = {
-    blue: 'bg-gradient-to-b from-brand-50 via-white to-white',
-    leaf: 'bg-gradient-to-b from-leaf-50 via-white to-white',
-    sand: 'bg-gradient-to-b from-sand via-white to-white',
+    blue: 'bg-gradient-to-b from-blue-50 via-white to-white',
+    leaf: 'bg-gradient-to-b from-orange-50 via-white to-white',
+    sand: 'bg-gradient-to-b from-paper via-white to-white',
   } as const;
 
   return (
@@ -36,7 +36,7 @@ export function PageIntro({
               <p className={`eyebrow ${tone === 'blue' ? 'eyebrow-blue' : ''}`}>{eyebrow}</p>
             )}
             <h1 className="mt-3 text-display">{title}</h1>
-            {lead && <p className="mt-5 text-lead text-ink-soft">{lead}</p>}
+            {lead && <p className="mt-5 text-lead text-slate">{lead}</p>}
           </div>
           {aside && <div>{aside}</div>}
         </div>

@@ -3,9 +3,7 @@
 import Link from 'next/link';
 import { business } from '@/lib/business';
 import { track } from '@/lib/analytics';
-import { getAvailability } from '@/lib/hours';
 import { PhoneIcon, CalendarIcon } from './Icons';
-import { useEffect, useState } from 'react';
 
 type Loc =
   | 'header'
@@ -13,75 +11,57 @@ type Loc =
   | 'sticky_bar'
   | 'mid_page'
   | 'footer'
-  | 'availability_strip'
   | 'reviews'
   | 'inline';
 
+type Variant = 'primary' | 'blue' | 'outline' | 'ghost' | 'plain';
+
+function btnClass(variant: Variant, className: string) {
+  if (variant === 'plain') return className;
+  const map: Record<Exclude<Variant, 'plain'>, string> = {
+    primary: 'btn-primary',
+    blue: 'btn-blue',
+    outline: 'btn-outline',
+    ghost: 'btn-ghost',
+  };
+  return `btn ${map[variant]} ${className}`;
+}
+
 /**
- * Click-to-call, a REAL <a href="tel:"> (planning/docs/07 §2). The server-rendered
- * href is always the real number; CallRail's DNI swaps the *display* client-side.
- * Never a JS click handler.
+ * Click-to-call, a REAL <a href="tel:">. The server-rendered href is always the
+ * real number; CallRail DNI swaps the display client-side. Never a JS handler.
  */
 export function CallButton({
   location,
   service,
-  variant = 'secondary',
+  variant = 'outline',
   className = '',
   children,
 }: {
   location: Loc;
   service?: string;
-  variant?: 'primary' | 'secondary' | 'urgent' | 'ghost' | 'plain';
+  variant?: Variant;
   className?: string;
   children?: React.ReactNode;
 }) {
-  const [afterHours, setAfterHours] = useState<boolean | null>(null);
-  useEffect(() => {
-    const a = getAvailability();
-    setAfterHours(a.state !== 'open');
-  }, []);
-
-  const cls =
-    variant === 'plain'
-      ? className
-      : `btn ${
-          variant === 'primary'
-            ? 'btn-primary'
-            : variant === 'urgent'
-              ? 'btn-urgent'
-              : variant === 'ghost'
-                ? 'btn-ghost'
-                : 'btn-secondary'
-        } ${className}`;
-
-  const label =
-    children ??
-    (afterHours ? (
-      <>
-        <PhoneIcon width={20} height={20} /> Call the emergency line
-      </>
-    ) : (
-      <>
-        <PhoneIcon width={20} height={20} /> {business.phone.display}
-      </>
-    ));
-
   return (
     <a
       href={business.phone.href}
       data-cta="call"
       data-location={location}
-      className={cls}
-      onClick={() =>
-        track.call(location, { service, isBusinessHours: afterHours === null ? undefined : !afterHours })
-      }
+      className={btnClass(variant, className)}
+      onClick={() => track.call(location, { service })}
     >
-      {label}
+      {children ?? (
+        <>
+          <PhoneIcon width={19} height={19} /> {business.phone.display}
+        </>
+      )}
     </a>
   );
 }
 
-/** Click-to-book, Housecall Pro. The URL is imported once, never retyped (docs/07 §3). */
+/** Click-to-book, Housecall Pro. URL imported once, never retyped (docs/07 §3). */
 export function BookButton({
   location,
   service,
@@ -91,15 +71,11 @@ export function BookButton({
 }: {
   location: Loc;
   service?: string;
-  variant?: 'primary' | 'secondary' | 'ghost' | 'plain';
+  variant?: Variant;
   className?: string;
   children?: React.ReactNode;
 }) {
   const url = withUtm(business.bookingUrl, location);
-  const cls =
-    variant === 'plain'
-      ? className
-      : `btn ${variant === 'primary' ? 'btn-primary' : variant === 'ghost' ? 'btn-ghost' : 'btn-secondary'} ${className}`;
   return (
     <a
       href={url}
@@ -107,12 +83,12 @@ export function BookButton({
       rel="noopener"
       data-cta="book"
       data-location={location}
-      className={cls}
+      className={btnClass(variant, className)}
       onClick={() => track.book(location, { service })}
     >
       {children ?? (
         <>
-          <CalendarIcon width={20} height={20} /> Book a visit
+          <CalendarIcon width={19} height={19} /> Book Online
         </>
       )}
     </a>
@@ -135,7 +111,29 @@ export function EstimateLink({
       data-location={location}
       className={`link-cta ${className}`}
     >
-      {children ?? 'Get an estimate'}
+      {children ?? 'Get a free estimate'}
+    </Link>
+  );
+}
+
+/** Primary CTA used across the design: an orange "Get a Free Estimate" button. */
+export function EstimateButton({
+  location,
+  className = '',
+  children,
+}: {
+  location: Loc;
+  className?: string;
+  children?: React.ReactNode;
+}) {
+  return (
+    <Link
+      href="/contact/#estimate"
+      data-cta="estimate"
+      data-location={location}
+      className={`btn btn-primary ${className}`}
+    >
+      {children ?? 'Get a Free Estimate'}
     </Link>
   );
 }
@@ -146,14 +144,14 @@ function withUtm(url: string, location: string) {
     u.searchParams.set('utm_source', 'allsafe-site');
     u.searchParams.set('utm_medium', 'cta');
     u.searchParams.set('utm_campaign', location);
-    // Propagate the visitor's original source if we captured it.
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
-      for (const k of ['gclid', 'utm_source', 'utm_campaign']) {
+      for (const k of ['gclid', 'utm_campaign']) {
         const v = params.get(k);
-        if (v && k !== 'utm_source') u.searchParams.set(`orig_${k}`, v);
-        else if (v && k === 'utm_source') u.searchParams.set('orig_utm_source', v);
+        if (v) u.searchParams.set(`orig_${k}`, v);
       }
+      const os = params.get('utm_source');
+      if (os) u.searchParams.set('orig_utm_source', os);
     }
     return u.toString();
   } catch {
@@ -161,7 +159,7 @@ function withUtm(url: string, location: string) {
   }
 }
 
-/** The standard three-action row. Hierarchy per docs/07 §1; emergency flips Call to primary. */
+/** Standard action row: Estimate (primary orange), Call (outline). */
 export function CtaRow({
   location = 'mid_page',
   service,
@@ -177,16 +175,17 @@ export function CtaRow({
     <div className={`flex flex-wrap items-center gap-3 ${className}`}>
       {emergency ? (
         <>
-          <CallButton location={location} service={service} variant="urgent" />
-          <BookButton location={location} service={service} variant="secondary" />
+          <CallButton location={location} service={service} variant="primary" />
+          <EstimateButton location={location} className="!bg-blue-600 hover:!bg-blue-700 !shadow-none">
+            Get a Free Estimate
+          </EstimateButton>
         </>
       ) : (
         <>
-          <BookButton location={location} service={service} variant="primary" />
-          <CallButton location={location} service={service} variant="secondary" />
+          <EstimateButton location={location} />
+          <CallButton location={location} service={service} variant="outline" />
         </>
       )}
-      <EstimateLink location={location} />
     </div>
   );
 }

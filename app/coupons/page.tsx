@@ -63,22 +63,22 @@ export default function CouponsPage() {
           {offers.length > 0 ? (
             <div className="grid gap-5 sm:grid-cols-2">
               {offers.map((o) => (
-                <div key={o.title} className="card border-l-4 border-l-leaf-600 p-6">
+                <div key={o.title} className="card border-l-4 border-l-orange-500 p-6">
                   <h2 className="text-h3">{o.title}</h2>
-                  <p className="mt-2 text-muted">{o.detail}</p>
+                  <p className="mt-2 text-grey">{o.detail}</p>
                   {o.code && (
                     <p className="mt-3 font-mono text-[0.95rem]">
                       Mention <strong>{o.code}</strong> when you book
                     </p>
                   )}
-                  {o.expires && <p className="mt-1 text-[0.85rem] text-muted">Through {o.expires}</p>}
+                  {o.expires && <p className="mt-1 text-[0.85rem] text-grey">Through {o.expires}</p>}
                 </div>
               ))}
             </div>
           ) : (
             <div className="card p-6">
               <h2 className="text-h3">No promotions running right now</h2>
-              <p className="mt-2 text-muted">
+              <p className="mt-2 text-grey">
                 When there is a seasonal offer, a panel-upgrade rebate window, a generator
                 pre-season deal. It will show up here. In the meantime, the value below is standard
                 on every job.
@@ -90,7 +90,7 @@ export default function CouponsPage() {
           <ul className="mt-5 space-y-3">
             {alwaysIncluded.map((item) => (
               <li key={item} className="flex gap-3 text-[1.05rem]">
-                <CheckIcon className="mt-0.5 shrink-0 text-leaf-600" width={22} height={22} />
+                <CheckIcon className="mt-0.5 shrink-0 text-orange-500" width={22} height={22} />
                 <span>{item}</span>
               </li>
             ))}

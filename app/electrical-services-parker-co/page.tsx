@@ -61,7 +61,7 @@ export default function ServicesHubPage() {
 
           <section className="card bg-paper p-6">
             <h2 className="text-h2">Indoor lighting vs. outdoor lighting</h2>
-            <p className="mt-3 max-w-measure text-muted">
+            <p className="mt-3 max-w-measure text-grey">
               We split lighting into two pages so each answers its own question properly.{' '}
               <Link href="/lighting-services/" className="link-cta">
                 Indoor lighting

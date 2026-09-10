@@ -41,11 +41,11 @@ export function BookingCard() {
       aria-label="Book a visit"
     >
       <p className="flex items-center gap-2 text-h3 font-bold">
-        <CalendarIcon className="text-leaf-600" /> Book a visit
+        <CalendarIcon className="text-orange-500" /> Book a visit
       </p>
 
       <fieldset className="mt-4">
-        <legend className="text-[0.9rem] font-semibold text-muted">When</legend>
+        <legend className="text-[0.9rem] font-semibold text-grey">When</legend>
         <div className="mt-2 grid grid-cols-3 gap-2" role="radiogroup">
           {[
             ['today', 'Today'],
@@ -60,8 +60,8 @@ export function BookingCard() {
               onClick={() => setWhen(val)}
               className={`rounded border px-2 py-2.5 text-[0.95rem] font-medium transition-colors ${
                 when === val
-                  ? 'border-brand-600 bg-brand-600 text-white'
-                  : 'border-rule bg-white text-ink hover:border-brand-600'
+                  ? 'border-blue-600 bg-blue-600 text-white'
+                  : 'border-rule bg-white text-ink hover:border-blue-600'
               }`}
             >
               {label}
@@ -71,7 +71,7 @@ export function BookingCard() {
       </fieldset>
 
       <div className="mt-4">
-        <label htmlFor="hero-service" className="block text-[0.9rem] font-semibold text-muted">
+        <label htmlFor="hero-service" className="block text-[0.9rem] font-semibold text-grey">
           What do you need?
         </label>
         <select
@@ -90,7 +90,7 @@ export function BookingCard() {
       </div>
 
       <div className="mt-4">
-        <label htmlFor="hero-zip" className="block text-[0.9rem] font-semibold text-muted">
+        <label htmlFor="hero-zip" className="block text-[0.9rem] font-semibold text-grey">
           ZIP code
         </label>
         <input
@@ -107,12 +107,12 @@ export function BookingCard() {
       <button type="submit" className="btn btn-primary mt-5 w-full">
         Check availability
       </button>
-      <p className="mt-3 text-center text-[0.95rem] text-muted">
+      <p className="mt-3 text-center text-[0.95rem] text-grey">
         or call{' '}
         <a
           href={business.phone.href}
           onClick={() => track.call('hero')}
-          className="inline-flex items-center gap-1 font-semibold text-brand-700"
+          className="inline-flex items-center gap-1 font-semibold text-blue-700"
         >
           <PhoneIcon width={16} height={16} /> {business.phone.display}
         </a>

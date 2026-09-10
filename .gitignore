@@ -37,3 +37,12 @@ yarn-error.log*
 # local audit / report output
 /reports/
 /data/baseline/
+
+# Client source material, kept locally, not committed (too large / not site assets).
+# The WordPress export is 38MB; the uploads folder is the old wp-content dump.
+# Useful photos have been pulled into assets/source-photos/ and processed.
+/allsafeelectric.WordPress.*.xml
+/uploads/
+# The high-res logo lives at public/img/brand/allsafe-electric-logo.webp (committed);
+# the loose root copy is not needed in git.
+/allsafe-electrician-LOGO.webp

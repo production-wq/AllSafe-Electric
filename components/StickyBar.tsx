@@ -52,14 +52,14 @@ export function StickyBar({ emergency = false }: { emergency?: boolean }) {
         } transition-transform duration-300 ease-smooth`}
         style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
       >
-        <div className="grid h-[66px] grid-cols-3 bg-brand-800 text-white shadow-[0_-6px_24px_rgba(1,46,77,0.34)]">
+        <div className="grid h-[66px] grid-cols-3 bg-navy text-white shadow-[0_-6px_24px_rgba(1,46,77,0.34)]">
           <a
             href={business.phone.href}
             data-cta="call"
             data-location="sticky_bar"
             onClick={() => track.call('sticky_bar')}
             className={`${seg} ${
-              emergency ? 'bg-urgent hover:bg-[#952b26]' : 'hover:bg-brand-700'
+              emergency ? 'bg-orange-500 hover:bg-[#952b26]' : 'hover:bg-blue-700'
             }`}
           >
             <PhoneIcon width={21} height={21} />
@@ -72,7 +72,7 @@ export function StickyBar({ emergency = false }: { emergency?: boolean }) {
             data-cta="book"
             data-location="sticky_bar"
             onClick={() => track.book('sticky_bar')}
-            className={`${seg} bg-leaf-600 hover:bg-leaf-700`}
+            className={`${seg} bg-orange-500 hover:bg-orange-600`}
           >
             <CalendarIcon width={21} height={21} />
             Book
@@ -81,7 +81,7 @@ export function StickyBar({ emergency = false }: { emergency?: boolean }) {
             href="/contact/#estimate"
             data-cta="estimate"
             data-location="sticky_bar"
-            className={`${seg} hover:bg-brand-700`}
+            className={`${seg} hover:bg-blue-700`}
           >
             <svg
               width="21"

@@ -51,7 +51,7 @@ export default function BookPage() {
 
       <div className="section">
         <div className="container-page grid gap-10 lg:grid-cols-[1fr_320px]">
-          <Suspense fallback={<div className="card p-8 text-muted">Loading the scheduler…</div>}>
+          <Suspense fallback={<div className="card p-8 text-grey">Loading the scheduler…</div>}>
             <BookEmbed />
           </Suspense>
 
@@ -60,15 +60,15 @@ export default function BookPage() {
             <ol className="mt-4 space-y-3">
               {whatToExpect.map((s, i) => (
                 <li key={i} className="flex gap-3 text-[1rem]">
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-600 text-[0.85rem] font-bold text-white">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-600 text-[0.85rem] font-bold text-white">
                     {i + 1}
                   </span>
                   <span className="pt-0.5">{s}</span>
                 </li>
               ))}
             </ol>
-            <p className="mt-5 flex items-start gap-2 border-t border-rule pt-4 text-[0.95rem] text-muted">
-              <CheckIcon className="mt-0.5 shrink-0 text-leaf-600" width={20} height={20} />
+            <p className="mt-5 flex items-start gap-2 border-t border-rule pt-4 text-[0.95rem] text-grey">
+              <CheckIcon className="mt-0.5 shrink-0 text-orange-500" width={20} height={20} />
               Licensed master electrician · {business.licenses.master.id} · serving Parker since{' '}
               {business.founded.year}
             </p>

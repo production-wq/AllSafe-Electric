@@ -53,6 +53,28 @@ only, and `prefers-reduced-motion` is respected.
 
 ---
 
+## 1c. Design v3 (2026-09-10, client palette + designer homepage)
+
+The client supplied their designer's homepage artifact and their live brand palette, and
+asked us to build to both. Full record in `planning/docs/99`.
+
+| Change | Detail |
+|---|---|
+| **Palette** | `#0068A8` blue (primary), `#FF6600` orange (accent, CTAs, eyebrows), `#54595F` slate (body), `#7A7A7A` grey, `#000000` headings, navy for dark sections. This **reverses** the old "no orange" prime directive, on direct client instruction (flagged and confirmed first). |
+| **Fonts** | Poppins (display) + Inter (body). |
+| **Logo** | Now the real client-supplied `allsafe-electric-logo.webp` (2048x316, transparent), not the SVG recreation. Placed on a white plate on dark grounds. |
+| **Homepage** | Rebuilt section-for-section to the artifact: black info top bar, sticky header, navy hero with a curved edge + overlapping estimate form, stats band, about (stacked images + BBB tag), 4-card services row, why-choose 2x2, service areas + map, testimonials, FAQ with a blue contact card, navy CTA band. All-caps hero + eyebrows now allowed (diverges from docs/02 §3). |
+| **Testimonials** | The 4 homepage reviews (Todd, D.L., Mark, Nathan) are **real**, carried verbatim from the client's own previously published site (`data/testimonials.json`). No `aggregateRating` schema. |
+| **Blog** | Rebuilt from the WordPress export. 6 posts (was 4 interim), rewritten in Jud's voice from the old WP content, same titles/slugs. Index at `/blog/`, posts at `/blog/<slug>/`. Six 301s added in `data/url-map.csv` from the old root URLs. |
+| **Images** | Pulled Jud's headshot + a couple of lifestyle photos from `uploads/` into the pipeline. The 58 original client photos remain the primary source. No new Gemini images needed this pass. |
+| **Audit** | `scripts/audit-seo.ts` no longer bans orange; it warns on stray vivid colours outside the approved palette. The em-dash ban and all other checks stay. |
+
+**Still pending (unchanged):** everything in §2 and §3 below: price approvals, the Google
+Places key for the live review feed, the M-51 address question, email-hosting decision,
+CallRail/GA4 IDs, GSC exports for the full redirect map.
+
+---
+
 ## 2. Placeholder content: must be resolved before / shortly after launch
 
 Everything here is **scaffolded and visibly marked**, never published as fact (CLAUDE.md §1.8).

@@ -37,7 +37,7 @@ export default function PrivacyPage() {
 
       <div className="section">
         <div className="container-page prose-body space-y-5 text-[1.05rem]">
-          <p className="text-muted">Last updated: {LAST_UPDATED}</p>
+          <p className="text-grey">Last updated: {LAST_UPDATED}</p>
 
           <p>
             This policy explains what {business.name} (&ldquo;we,&rdquo; &ldquo;us&rdquo;) collects

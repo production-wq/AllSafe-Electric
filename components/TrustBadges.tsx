@@ -73,8 +73,8 @@ export function TrustBadges({ className = '' }: { className?: string }) {
 
       <ul className="flex flex-wrap items-center justify-center gap-x-7 gap-y-2.5">
         {assurances.map(({ icon: Icon, text }) => (
-          <li key={text} className="flex items-center gap-2 text-small text-muted">
-            <Icon width={17} height={17} className="shrink-0 text-leaf-600" />
+          <li key={text} className="flex items-center gap-2 text-small text-grey">
+            <Icon width={17} height={17} className="shrink-0 text-orange-500" />
             {text}
           </li>
         ))}

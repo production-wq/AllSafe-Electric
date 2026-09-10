@@ -85,8 +85,8 @@ export default async function ServicePage({
       <section
         className={`relative overflow-hidden border-b border-rule ${
           s.emergency
-            ? 'bg-gradient-to-b from-urgent-soft via-white to-white'
-            : 'bg-gradient-to-b from-brand-50 via-white to-white'
+            ? 'bg-gradient-to-b from-orange-50 via-white to-white'
+            : 'bg-gradient-to-b from-blue-50 via-white to-white'
         }`}
       >
         <span
@@ -97,23 +97,23 @@ export default async function ServicePage({
           <div>
             <div className="flex flex-wrap items-center gap-2">
               {s.emergency ? (
-                <span className="chip chip-urgent">Emergency line open</span>
+                <span className="chip chip-orange">Emergency line open</span>
               ) : (
                 group && <span className="chip chip-blue">{group.label}</span>
               )}
-              <span className="chip chip-sand">
+              <span className="chip chip-grey">
                 {s.indexed ? 'Serving Parker since 2018' : 'New service'}
               </span>
             </div>
 
             <h1 className="mt-5 text-display">{s.h1}</h1>
-            <p className="mt-5 max-w-xl text-lead text-ink-soft">{s.lead}</p>
+            <p className="mt-5 max-w-xl text-lead text-slate">{s.lead}</p>
             <CtaRow location="hero" service={s.slug} emergency={s.emergency} className="mt-7" />
 
             <dl className="mt-9 grid gap-px overflow-hidden rounded-card border border-rule bg-rule sm:grid-cols-3">
               {s.highlights.map((h) => (
                 <div key={h.label} className="bg-white px-4 py-4">
-                  <dt className="text-tiny font-semibold uppercase tracking-wide text-muted">
+                  <dt className="text-tiny font-semibold uppercase tracking-wide text-grey">
                     {h.label}
                   </dt>
                   <dd className="mt-1 text-body font-semibold text-ink">{h.value}</dd>
@@ -132,7 +132,7 @@ export default async function ServicePage({
               aspable={false}
             />
             {s.heroImageGap && (
-              <p className="bg-paper px-4 py-2 text-tiny text-muted">
+              <p className="bg-paper px-4 py-2 text-tiny text-grey">
                 Representative photo. A job-specific image for this service is queued.
               </p>
             )}
@@ -152,11 +152,11 @@ export default async function ServicePage({
             <div className="mt-8 grid gap-5 sm:grid-cols-2">
               {s.signs.map((sign, i) => (
                 <div key={sign.h3} className="card p-5">
-                  <span className="text-tiny font-bold text-brand-300">
+                  <span className="text-tiny font-bold text-blue-300">
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <h3 className="mt-1.5 text-h3">{sign.h3}</h3>
-                  <p className="mt-2 text-body text-ink-soft">{sign.body}</p>
+                  <p className="mt-2 text-body text-slate">{sign.body}</p>
                 </div>
               ))}
             </div>
@@ -188,10 +188,10 @@ export default async function ServicePage({
             <ol className="mt-8 space-y-6">
               {s.process.map((step, i) => (
                 <li key={i} className="flex gap-5">
-                  <span className="icon-tile bg-brand-600 text-body-lg font-bold text-white">
+                  <span className="icon-tile bg-blue-600 text-body-lg font-bold text-white">
                     {i + 1}
                   </span>
-                  <span className="pt-2.5 text-body-lg text-ink-soft">{step}</span>
+                  <span className="pt-2.5 text-body-lg text-slate">{step}</span>
                 </li>
               ))}
             </ol>
@@ -202,7 +202,7 @@ export default async function ServicePage({
             <h2 id="permits-heading" className="text-h2">
               Permits and inspection
             </h2>
-            <p className="prose-body mt-4 text-body-lg text-ink-soft">{s.permits}</p>
+            <p className="prose-body mt-4 text-body-lg text-slate">{s.permits}</p>
             <p className="mt-5">
               <Link href="/resources/" className="link-cta">
                 See our Parker and Douglas County permit guides
@@ -213,7 +213,7 @@ export default async function ServicePage({
           {/* Why Jud */}
           <section
             aria-labelledby="why-heading"
-            className="surface-dark overflow-hidden rounded-card bg-brand-800 p-6 md:p-8"
+            className="surface-dark overflow-hidden rounded-card bg-navy p-6 md:p-8"
           >
             <p className="eyebrow eyebrow-light">Why homeowners here call Jud</p>
             <h2 id="why-heading" className="mt-3 text-h2 text-white">
@@ -247,7 +247,7 @@ export default async function ServicePage({
                   <li key={city.slug}>
                     <Link
                       href={href}
-                      className="inline-flex items-center gap-2 rounded-chip border border-rule bg-white px-4 py-2 text-small font-medium transition-colors hover:border-brand-300 hover:bg-brand-50"
+                      className="inline-flex items-center gap-2 rounded-chip border border-rule bg-white px-4 py-2 text-small font-medium transition-colors hover:border-blue-300 hover:bg-blue-50"
                     >
                       {s.navLabel} in {city.name}
                     </Link>
@@ -267,10 +267,10 @@ export default async function ServicePage({
                 <li key={sib!.slug}>
                   <Link
                     href={`/${sib!.slug}/`}
-                    className="card card-interactive block h-full p-5"
+                    className="card card-hover block h-full p-5"
                   >
-                    <span className="block font-semibold text-brand-700">{sib!.navLabel}</span>
-                    <span className="mt-1.5 block text-small text-muted">{sib!.blurb}</span>
+                    <span className="block font-semibold text-blue-700">{sib!.navLabel}</span>
+                    <span className="mt-1.5 block text-small text-grey">{sib!.blurb}</span>
                   </Link>
                 </li>
               ))}
@@ -282,7 +282,7 @@ export default async function ServicePage({
         <aside className="lg:sticky lg:top-[calc(var(--header-h)+1.5rem)] lg:h-fit lg:self-start">
           <div className="card overflow-hidden">
             <div
-              className={`px-5 py-4 ${s.emergency ? 'bg-urgent' : 'bg-brand-800'} surface-dark`}
+              className={`px-5 py-4 ${s.emergency ? 'bg-orange-500' : 'bg-navy'} surface-dark`}
             >
               <h2 className="text-h3 text-white">Book {s.navLabel.toLowerCase()}</h2>
               <p className="mt-1 text-small text-white/80">
@@ -298,23 +298,23 @@ export default async function ServicePage({
                 emergency={s.emergency}
                 className="flex-col !items-stretch [&>a]:justify-center"
               />
-              <ul className="mt-5 space-y-2 border-t border-rule pt-4 text-small text-muted">
+              <ul className="mt-5 space-y-2 border-t border-rule pt-4 text-small text-grey">
                 <li className="flex items-center gap-2">
-                  <CheckIcon className="shrink-0 text-leaf-600" width={15} height={15} />
+                  <CheckIcon className="shrink-0 text-orange-500" width={15} height={15} />
                   Fixed price before work starts
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckIcon className="shrink-0 text-leaf-600" width={15} height={15} />
+                  <CheckIcon className="shrink-0 text-orange-500" width={15} height={15} />
                   Permits and inspection handled
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckIcon className="shrink-0 text-leaf-600" width={15} height={15} />
+                  <CheckIcon className="shrink-0 text-orange-500" width={15} height={15} />
                   Shoe covers on, good with dogs
                 </li>
               </ul>
-              <p className="mt-4 border-t border-rule pt-3 text-tiny text-muted">
+              <p className="mt-4 border-t border-rule pt-3 text-tiny text-grey">
                 {business.name}, Parker CO{' '}
-                <a href={business.phone.href} className="font-semibold text-brand-700">
+                <a href={business.phone.href} className="font-semibold text-blue-700">
                   {business.phone.display}
                 </a>
               </p>

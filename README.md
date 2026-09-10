@@ -88,15 +88,26 @@ planning/                the full planning package (docs 01–14, prompts, data)
    which branches deploy, and the `www` → apex redirect at the edge. It must stay strictly
    schema-valid (no comment keys), or the deploy is rejected.
 
+## Design system (2026-09-10, client palette + designer artifact)
+
+Built to the client's supplied palette and their designer's homepage artifact. See
+`planning/docs/99` for the full record. Colours: `#0068A8` blue, `#FF6600` orange
+(accent/CTAs), `#54595F` slate (body), `#7A7A7A` grey, `#000000` headings, navy for dark
+sections. Fonts: Poppins (display) + Inter (body). Tokens live in `tailwind.config.ts`
+and `app/globals.css`. The logo is `public/img/brand/allsafe-electric-logo.webp` (real,
+client-supplied).
+
 ## Editing content (no CMS)
 
 | To change… | Edit… |
 |---|---|
+| The design tokens (colour, type, spacing) | `tailwind.config.ts` + `app/globals.css` |
 | A service page's copy, price range, FAQs, hero photo | `lib/services.ts` |
 | A city page | `lib/cities.ts` |
 | Business facts (phone, address, hours, licences) | `lib/business.ts`: **only** here |
 | Homepage FAQ | `lib/faqs.ts` |
-| A blog post | `content/blog/<slug>.md` |
+| Homepage testimonials | `data/testimonials.json` (real reviews) |
+| A blog post | `content/blog/<slug>.md` (index `/blog/`, posts `/blog/<slug>/`) |
 | Nav / mega-menu / footer | `lib/nav.ts` |
 | Which tiers are published | `lib/publish.ts` |
 | Redirects | `data/url-map.csv` (never `next.config.mjs` by hand) |

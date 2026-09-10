@@ -70,11 +70,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <article>
         <header className="border-b border-rule bg-[linear-gradient(180deg,#f3f6f8,#ffffff)]">
           <div className="container-page max-w-3xl py-12">
-            <p className="text-[0.8rem] font-semibold uppercase tracking-wide text-leaf-600">
+            <p className="text-[0.8rem] font-semibold uppercase tracking-wide text-orange-500">
               {post.category}
             </p>
             <h1 className="mt-2 text-[2rem] leading-tight md:text-[2.75rem]">{post.title}</h1>
-            <p className="mt-4 text-[0.95rem] text-muted">
+            <p className="mt-4 text-[0.95rem] text-grey">
               By {business.owner.name}, {business.owner.jobTitle} ({business.licenses.master.id}) ·{' '}
               {new Date(post.datePublished).toLocaleDateString('en-US', {
                 month: 'long',
@@ -103,7 +103,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
           <div className="mt-10 rounded-card bg-paper p-5 text-[0.95rem]">
             <p className="font-semibold">About the author</p>
-            <p className="mt-1 text-muted">
+            <p className="mt-1 text-grey">
               {business.owner.name} is a licensed master electrician ({business.licenses.master.id})
               and the owner of {business.name}, serving Parker and the south Denver metro since{' '}
               {business.founded.year}.{' '}

@@ -1,19 +1,21 @@
 import type { Config } from 'tailwindcss';
 
 /**
- * Design tokens. Brand hexes eyedropped from
- * planning/assets/brand/allsafe-electric-logo.png (planning/docs/99, 2026-09-10):
- *   logo blue  #0165AC   ·   logo green  #008E6C
+ * Design tokens, v3 (2026-09-10).
  *
- * v2 (2026-09-10) widens the palette on client direction: full blue and green
- * ramps, a teal secondary, a warm sand neutral for section alternation, and a
- * gold used only for star ratings. Every hue sits OUTSIDE the 16 to 34 degree
- * orange band that scripts/audit-seo.ts fails the build on, so the "no orange"
- * prime directive still holds.
+ * The client supplied their live brand palette and asked us to use it, which
+ * REVERSES the "no orange" line in planning/CLAUDE.md §1.6. Logged in
+ * planning/docs/99. The palette:
  *
- * `green.600` (#007A5C) is the action colour: white text on it clears WCAG AA
- * at 5.3:1. The literal logo green #008E6C is 4.1:1 and is used only for
- * non-text accents such as the availability dot and hairlines.
+ *   #0068A8  blue     primary, structural, links, headers
+ *   #FF6600  orange   accent, primary CTAs, eyebrows, icons, badges
+ *   #54595F  slate    body text
+ *   #7A7A7A  grey     secondary / muted text
+ *   #000000  black    headings
+ *
+ * Dark sections (hero, CTA band, footer) use a deep navy derived from the blue.
+ * Layout, spacing and section flow follow the designer's homepage artifact
+ * (3f589566-2420-48b6-8eda-34269e1979ba).
  */
 const config: Config = {
   content: [
@@ -26,95 +28,75 @@ const config: Config = {
     container: {
       center: true,
       padding: { DEFAULT: '1.25rem', lg: '2rem' },
-      screens: { '2xl': '1240px' },
+      screens: { '2xl': '1200px' },
     },
     extend: {
       colors: {
-        ink: {
-          DEFAULT: '#10243A',
-          soft: '#33506B',
+        black: '#000000',
+        ink: '#111214', // headings, a hair off pure black for large blocks
+        slate: '#54595F', // body copy (client palette)
+        grey: '#7A7A7A', // secondary / muted (client palette)
+        rule: '#E3E7EB',
+        paper: '#F4F6F8',
+        blue: {
+          50: '#E8F2F9',
+          100: '#CFE5F2',
+          200: '#9CC9E4',
+          300: '#63A9D3',
+          400: '#2E88C0',
+          500: '#0F76B4',
+          600: '#0068A8', // client palette, primary
+          700: '#00568B',
+          800: '#01426B',
+          900: '#08314F',
         },
-        muted: '#5B7186',
-        rule: '#DEE7ED',
-        paper: '#F4F7F9',
-        sand: '#FAF6F0',
-        urgent: {
-          DEFAULT: '#B3352F',
-          soft: '#FBEFEE',
+        navy: {
+          DEFAULT: '#0A2E4C',
+          light: '#0E3A60',
+          deep: '#071F35',
         },
-        brand: {
-          50: '#EEF6FC',
-          100: '#DCEBF7',
-          200: '#B9D6EE',
-          300: '#7FB6DF',
-          400: '#3E90CB',
-          500: '#0F76BC',
-          600: '#0165AC', // logo blue
-          700: '#024D80',
-          800: '#013A62',
-          900: '#0A2E4D',
-        },
-        leaf: {
-          50: '#EEF9F4',
-          100: '#D6F0E6',
-          200: '#A8E0CB',
-          300: '#6DCBAB',
-          400: '#2FAE87',
-          500: '#008E6C', // logo green
-          600: '#007A5C', // action green, AA on white
-          700: '#00654B',
-          800: '#00543E',
-          900: '#02402F',
-        },
-        teal: {
-          50: '#E8F6F7',
-          100: '#CCEAED',
-          500: '#12909C',
-          600: '#0E7C86',
-          700: '#0B646C',
-        },
-        gold: {
-          50: '#FDF7E9',
-          100: '#F8EBC8',
-          500: '#E8A317', // star fill only, hue 40deg, outside the orange band
-          600: '#C4870F',
+        orange: {
+          50: '#FFF1E6',
+          100: '#FFDFC7',
+          200: '#FFBE8F',
+          300: '#FF9B54',
+          400: '#FF801F',
+          500: '#FF6600', // client palette, accent
+          600: '#E85600',
+          700: '#C24700',
         },
       },
       fontFamily: {
-        sans: ['var(--font-figtree)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        serif: ['var(--font-newsreader)', 'ui-serif', 'Georgia', 'serif'],
+        sans: ['var(--font-body)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['var(--font-display)', 'var(--font-body)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       fontSize: {
-        'display-lg': ['clamp(2.75rem, 5.5vw, 4.25rem)', { lineHeight: '1.03', letterSpacing: '-0.026em' }],
-        display: ['clamp(2.25rem, 4.4vw, 3.5rem)', { lineHeight: '1.06', letterSpacing: '-0.022em' }],
-        h1: ['clamp(2rem, 3.6vw, 3rem)', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
-        h2: ['clamp(1.625rem, 2.6vw, 2.375rem)', { lineHeight: '1.18', letterSpacing: '-0.016em' }],
-        h3: ['clamp(1.25rem, 1.5vw, 1.5rem)', { lineHeight: '1.32', letterSpacing: '-0.008em' }],
-        lead: ['clamp(1.125rem, 1.4vw, 1.3125rem)', { lineHeight: '1.6' }],
-        body: ['1.0625rem', { lineHeight: '1.68' }],
-        'body-lg': ['1.125rem', { lineHeight: '1.7' }],
-        small: ['0.9375rem', { lineHeight: '1.55' }],
-        tiny: ['0.8125rem', { lineHeight: '1.45' }],
+        'hero': ['clamp(2.5rem, 5.4vw, 4rem)', { lineHeight: '1.05', letterSpacing: '-0.01em', fontWeight: '800' }],
+        'display': ['clamp(2rem, 3.8vw, 3rem)', { lineHeight: '1.12', letterSpacing: '-0.01em', fontWeight: '700' }],
+        'h1': ['clamp(1.875rem, 3.2vw, 2.75rem)', { lineHeight: '1.14', letterSpacing: '-0.008em', fontWeight: '700' }],
+        'h2': ['clamp(1.5rem, 2.6vw, 2.125rem)', { lineHeight: '1.2', letterSpacing: '-0.006em', fontWeight: '700' }],
+        'h3': ['clamp(1.1875rem, 1.5vw, 1.375rem)', { lineHeight: '1.35', fontWeight: '700' }],
+        'lead': ['clamp(1.0625rem, 1.3vw, 1.1875rem)', { lineHeight: '1.65' }],
+        'body-lg': ['1.125rem', { lineHeight: '1.72' }],
+        'body': ['1.0625rem', { lineHeight: '1.7' }],
+        'small': ['0.9375rem', { lineHeight: '1.6' }],
+        'tiny': ['0.8125rem', { lineHeight: '1.5' }],
+        'eyebrow': ['0.8125rem', { lineHeight: '1.4', letterSpacing: '0.12em', fontWeight: '700' }],
       },
       maxWidth: {
-        measure: '66ch',
-        'measure-serif': '72ch',
-        content: '1240px',
+        measure: '65ch',
+        content: '1200px',
       },
       borderRadius: {
-        card: '14px',
-        btn: '10px',
-        chip: '999px',
+        card: '10px',
+        btn: '6px',
+        pill: '999px',
       },
       boxShadow: {
-        card: '0 1px 2px rgba(16, 36, 58, 0.04), 0 6px 20px -12px rgba(16, 36, 58, 0.14)',
-        lift: '0 2px 6px rgba(16, 36, 58, 0.06), 0 22px 48px -20px rgba(1, 101, 172, 0.28)',
-        float: '0 30px 70px -28px rgba(1, 62, 104, 0.42)',
-        ring: '0 0 0 1px rgba(1, 101, 172, 0.14)',
-      },
-      backgroundImage: {
-        'grid-faint':
-          'linear-gradient(rgba(1,101,172,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(1,101,172,0.06) 1px, transparent 1px)',
+        card: '0 1px 3px rgba(10, 46, 76, 0.06), 0 10px 30px -12px rgba(10, 46, 76, 0.16)',
+        lift: '0 18px 44px -16px rgba(10, 46, 76, 0.28)',
+        float: '0 30px 70px -24px rgba(7, 31, 53, 0.4)',
+        form: '0 24px 60px -18px rgba(10, 46, 76, 0.24)',
       },
       transitionTimingFunction: {
         smooth: 'cubic-bezier(0.16, 1, 0.3, 1)',

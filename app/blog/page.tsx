@@ -56,7 +56,7 @@ export default async function BlogIndex() {
                 />
               </Link>
               <div className="flex flex-1 flex-col p-5">
-                <p className="text-[0.8rem] font-semibold uppercase tracking-wide text-leaf-600">
+                <p className="text-[0.8rem] font-semibold uppercase tracking-wide text-orange-500">
                   {p.category}
                 </p>
                 <h2 className="mt-1.5 text-h3">
@@ -64,8 +64,8 @@ export default async function BlogIndex() {
                     {p.title}
                   </Link>
                 </h2>
-                <p className="mt-2 flex-1 text-[0.98rem] text-muted">{p.description}</p>
-                <p className="mt-3 text-[0.85rem] text-muted">
+                <p className="mt-2 flex-1 text-[0.98rem] text-grey">{p.description}</p>
+                <p className="mt-3 text-[0.85rem] text-grey">
                   {new Date(p.datePublished).toLocaleDateString('en-US', {
                     month: 'long',
                     day: 'numeric',

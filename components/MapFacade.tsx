@@ -40,11 +40,11 @@ export function MapFacade({ label = 'Allsafe Electric service area' }: { label?:
         aria-hidden
         className="absolute inset-0 opacity-[0.5] [background-image:linear-gradient(#d3dee6_1px,transparent_1px),linear-gradient(90deg,#d3dee6_1px,transparent_1px)] [background-size:28px_28px]"
       />
-      <span className="relative flex h-14 w-14 items-center justify-center rounded-full bg-brand-600 text-white shadow-lift">
+      <span className="relative flex h-14 w-14 items-center justify-center rounded-full bg-blue-600 text-white shadow-lift">
         <MapPinIcon />
       </span>
       <span className="relative font-semibold text-ink">Parker, CO &amp; the south Denver metro</span>
-      <span className="relative text-[0.9rem] text-muted">Tap to load the interactive map</span>
+      <span className="relative text-[0.9rem] text-grey">Tap to load the interactive map</span>
     </button>
   );
 }

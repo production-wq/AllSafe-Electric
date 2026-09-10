@@ -45,7 +45,7 @@ export function BookEmbed() {
       {(svc || when || zip) && (
         <div className="mb-6 rounded-card border border-rule bg-paper p-4 text-[0.95rem]">
           <p className="font-semibold">Carrying over from the last page:</p>
-          <ul className="mt-1 text-muted">
+          <ul className="mt-1 text-grey">
             {svc && <li>Service: {svc.navLabel}</li>}
             {when && <li>Timing: {when.replace('-', ' ')}</li>}
             {zip && <li>ZIP: {zip}</li>}
@@ -58,9 +58,9 @@ export function BookEmbed() {
 
       <div className="card p-6 md:p-8">
         <p className="flex items-center gap-2 text-h3 font-bold">
-          <CalendarIcon className="text-leaf-600" /> Book online with Housecall Pro
+          <CalendarIcon className="text-orange-500" /> Book online with Housecall Pro
         </p>
-        <p className="mt-2 text-muted">
+        <p className="mt-2 text-grey">
           Our scheduler is live any time. Pick a service and a window and you are on the calendar.
           It opens in a new tab; your details come back to us automatically.
         </p>
@@ -73,12 +73,12 @@ export function BookEmbed() {
         >
           Open the booking calendar
         </a>
-        <p className="mt-4 text-[0.95rem] text-muted">
+        <p className="mt-4 text-[0.95rem] text-grey">
           Prefer to talk it through?{' '}
           <a
             href={business.phone.href}
             onClick={() => track.call('inline', { service })}
-            className="inline-flex items-center gap-1 font-semibold text-brand-700"
+            className="inline-flex items-center gap-1 font-semibold text-blue-700"
           >
             <PhoneIcon width={16} height={16} /> {business.phone.display}
           </a>

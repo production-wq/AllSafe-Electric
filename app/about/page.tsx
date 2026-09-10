@@ -127,7 +127,7 @@ export default function AboutPage() {
                 </a>
               </li>
             </ul>
-            <p className="text-[0.95rem] text-muted">
+            <p className="text-[0.95rem] text-grey">
               Allsafe Electric is also a BBB Accredited Business with an A+ rating and HomeAdvisor
               Screened &amp; Approved. Award badges shown on the site link here; profile links are
               being added.
@@ -148,19 +148,19 @@ export default function AboutPage() {
               <dl className="mt-3 space-y-2 text-[0.95rem]">
                 <div>
                   <dt className="font-semibold">Founded</dt>
-                  <dd className="text-muted">January {business.founded.year}, in Parker</dd>
+                  <dd className="text-grey">January {business.founded.year}, in Parker</dd>
                 </div>
                 <div>
                   <dt className="font-semibold">Team</dt>
-                  <dd className="text-muted">Jud Cushing and Justin</dd>
+                  <dd className="text-grey">Jud Cushing and Justin</dd>
                 </div>
                 <div>
                   <dt className="font-semibold">Hours</dt>
-                  <dd className="text-muted">{business.hours.humanReadable}, Mountain time</dd>
+                  <dd className="text-grey">{business.hours.humanReadable}, Mountain time</dd>
                 </div>
                 <div>
                   <dt className="font-semibold">Scheduling</dt>
-                  <dd className="text-muted">{business.crm}. Book online any time</dd>
+                  <dd className="text-grey">{business.crm}. Book online any time</dd>
                 </div>
               </dl>
               <Link href="/reviews/" className="link-cta mt-4 inline-block text-[0.95rem]">

@@ -49,7 +49,7 @@ export default function ReviewsPage() {
       <section className="section">
         <div className="container-page max-w-2xl">
           <h2 className="text-h2">Just had us out? Leave a review</h2>
-          <p className="mt-3 text-muted">
+          <p className="mt-3 text-grey">
             It takes a minute and it genuinely helps other people in Parker find an electrician they
             can trust. If you can mention what we fixed, a panel, an EV charger, a tripping breaker, that helps even more.
           </p>
@@ -61,7 +61,7 @@ export default function ReviewsPage() {
           >
             Leave a Google review
           </a>
-          <p className="mt-4 text-[0.9rem] text-muted">
+          <p className="mt-4 text-[0.9rem] text-grey">
             We respond to every review, good or bad, usually within a couple of days.
           </p>
         </div>

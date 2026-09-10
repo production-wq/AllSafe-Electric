@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { SiteImage } from './SiteImage';
-import { CtaRow, CallButton, BookButton } from './cta';
+import { CtaRow, CallButton, EstimateButton } from './cta';
 import { EstimateForm } from './EstimateForm';
 import { business } from '@/lib/business';
 import type { Service } from '@/lib/services';
@@ -8,9 +8,9 @@ import { getService } from '@/lib/services';
 import { CheckIcon } from './Icons';
 
 const ACCENT = {
-  blue: { bar: 'bg-brand-500', tile: 'bg-brand-50 text-brand-600' },
-  leaf: { bar: 'bg-leaf-500', tile: 'bg-leaf-50 text-leaf-600' },
-  teal: { bar: 'bg-teal-500', tile: 'bg-teal-50 text-teal-600' },
+  blue: { bar: 'bg-blue-500', tile: 'bg-blue-50 text-blue-600' },
+  leaf: { bar: 'bg-orange-500', tile: 'bg-orange-50 text-orange-500' },
+  teal: { bar: 'bg-blue-400', tile: 'bg-blue-50 text-blue-600' },
 } as const;
 
 /** Service card. Photo, an h3, one line, a text link. Colour comes from the group. */
@@ -29,7 +29,7 @@ export function ServiceCard({
   const a = ACCENT[accent];
 
   return (
-    <article className="card card-interactive group relative flex flex-col overflow-hidden">
+    <article className="card card-hover group relative flex flex-col overflow-hidden">
       <div className="relative overflow-hidden">
         <SiteImage
           name={s.heroImage}
@@ -40,17 +40,17 @@ export function ServiceCard({
         />
         <span
           aria-hidden
-          className={`absolute inset-x-0 bottom-0 h-1 ${s.emergency ? 'bg-urgent' : a.bar}`}
+          className={`absolute inset-x-0 bottom-0 h-1 ${s.emergency ? 'bg-orange-500' : a.bar}`}
         />
       </div>
       <div className="flex flex-1 flex-col p-5">
-        <H className={`text-h3 ${s.emergency ? 'text-urgent' : ''}`}>
+        <H className={`text-h3 ${s.emergency ? 'text-orange-600' : ''}`}>
           <Link href={`/${s.slug}/`} className="text-inherit no-underline">
             <span className="absolute inset-0" aria-hidden />
             {s.navLabel}
           </Link>
         </H>
-        <p className="mt-2 flex-1 text-small text-muted">{s.blurb}</p>
+        <p className="mt-2 flex-1 text-small text-grey">{s.blurb}</p>
         <span className="link-cta mt-4 text-small">
           {s.emergency ? 'Get help now' : 'See details and pricing'}
         </span>
@@ -76,19 +76,19 @@ export function StatBand({
       {items.map((it) => (
         <div
           key={it.label}
-          className={`px-5 py-7 text-center ${tone === 'dark' ? 'bg-brand-800' : 'bg-white'}`}
+          className={`px-5 py-7 text-center ${tone === 'dark' ? 'bg-navy' : 'bg-white'}`}
         >
           <dt className="sr-only">{it.label}</dt>
           <dd>
             <span
               className={`block text-h2 font-bold ${
-                tone === 'dark' ? 'text-white' : 'text-brand-600'
+                tone === 'dark' ? 'text-white' : 'text-blue-600'
               }`}
             >
               {it.value}
             </span>
             <span
-              className={`mt-1.5 block text-small ${tone === 'dark' ? 'text-white/75' : 'text-muted'}`}
+              className={`mt-1.5 block text-small ${tone === 'dark' ? 'text-white/75' : 'text-grey'}`}
             >
               {it.label}
             </span>
@@ -120,10 +120,10 @@ export function WhatHappensNext({ emergency = false }: { emergency?: boolean }) 
       <ol className="mt-6 space-y-5">
         {steps.map((s, i) => (
           <li key={i} className="flex gap-4">
-            <span className="icon-tile bg-brand-50 text-body-lg font-bold text-brand-600">
+            <span className="icon-tile bg-blue-50 text-body-lg font-bold text-blue-600">
               {i + 1}
             </span>
-            <span className="pt-2.5 text-body text-ink-soft">{s}</span>
+            <span className="pt-2.5 text-body text-slate">{s}</span>
           </li>
         ))}
       </ol>
@@ -136,32 +136,32 @@ export function PriceRange({ service }: { service: Service }) {
   const p = service.priceRange;
   const fmt = (n: number) => `$${n.toLocaleString('en-US')}`;
   return (
-    <div className="overflow-hidden rounded-card border border-leaf-100 bg-leaf-50">
-      <div className="border-b border-leaf-100 bg-white/60 px-6 py-4">
+    <div className="overflow-hidden rounded-card border border-orange-100 bg-orange-50">
+      <div className="border-b border-orange-100 bg-white/60 px-6 py-4">
         <h2 className="text-h2">
           What it costs {service.slug.includes('parker') ? 'in Parker' : 'in Douglas County'}
         </h2>
       </div>
       <div className="p-6">
-        <p className="text-h1 font-bold tracking-tight text-leaf-700">
+        <p className="text-h1 font-bold tracking-tight text-orange-600">
           {fmt(p.low)}
-          <span className="mx-2 text-h3 font-normal text-leaf-600/70">to</span>
+          <span className="mx-2 text-h3 font-normal text-orange-500/70">to</span>
           {fmt(p.high)}
         </p>
-        {p.unit && <p className="mt-1 text-small font-semibold text-leaf-700">{p.unit}</p>}
+        {p.unit && <p className="mt-1 text-small font-semibold text-orange-600">{p.unit}</p>}
 
-        <dl className="mt-6 space-y-4 border-t border-leaf-100 pt-5 text-body">
+        <dl className="mt-6 space-y-4 border-t border-orange-100 pt-5 text-body">
           <div>
             <dt className="font-semibold text-ink">What moves the price</dt>
-            <dd className="mt-0.5 text-ink-soft">{p.drivers}.</dd>
+            <dd className="mt-0.5 text-slate">{p.drivers}.</dd>
           </div>
           <div>
             <dt className="font-semibold text-ink">What is included</dt>
-            <dd className="mt-0.5 text-ink-soft">{p.includes}.</dd>
+            <dd className="mt-0.5 text-slate">{p.includes}.</dd>
           </div>
         </dl>
 
-        <p className="mt-5 rounded-btn bg-white/70 px-4 py-3 text-small text-ink-soft">
+        <p className="mt-5 rounded-btn bg-white/70 px-4 py-3 text-small text-slate">
           {p.needsApproval
             ? 'Estimated range, reviewed regularly. Your exact price is fixed in writing before any work begins.'
             : 'Typical installed range for this area. Your exact price is fixed in writing after Jud has seen the job.'}
@@ -187,10 +187,10 @@ export function IncludedList({
       <ul className="mt-6 grid gap-x-8 gap-y-3.5 sm:grid-cols-2">
         {items.map((item) => (
           <li key={item} className="flex gap-3 text-body">
-            <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-leaf-100">
-              <CheckIcon className="text-leaf-700" width={13} height={13} />
+            <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-orange-100">
+              <CheckIcon className="text-orange-600" width={13} height={13} />
             </span>
-            <span className="text-ink-soft">{item}</span>
+            <span className="text-slate">{item}</span>
           </li>
         ))}
       </ul>
@@ -209,14 +209,14 @@ export function CtaBlock({
   heading?: string;
 }) {
   return (
-    <section className="surface-dark relative overflow-hidden bg-brand-800">
+    <section className="surface-dark relative overflow-hidden bg-navy">
       <span
         aria-hidden
-        className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-brand-600/40 blur-3xl"
+        className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-blue-600/40 blur-3xl"
       />
       <span
         aria-hidden
-        className="pointer-events-none absolute -bottom-32 -left-20 h-96 w-96 rounded-full bg-leaf-600/25 blur-3xl"
+        className="pointer-events-none absolute -bottom-32 -left-20 h-96 w-96 rounded-full bg-orange-500/25 blur-3xl"
       />
       <div className="container-page relative grid gap-12 py-16 lg:grid-cols-2 lg:py-24">
         <div>
@@ -230,12 +230,16 @@ export function CtaBlock({
           <div className="mt-8 flex flex-wrap gap-3">
             {emergency ? (
               <>
-                <CallButton location="footer" service={service} variant="urgent" />
-                <BookButton location="footer" service={service} variant="ghost" />
+                <CallButton location="footer" service={service} variant="primary">
+                  Call {business.phone.display}
+                </CallButton>
+                <EstimateButton location="footer" className="!bg-transparent !shadow-none btn-ghost">
+                  Get a Free Estimate
+                </EstimateButton>
               </>
             ) : (
               <>
-                <BookButton location="footer" service={service} variant="primary" />
+                <EstimateButton location="footer" />
                 <CallButton location="footer" service={service} variant="ghost" />
               </>
             )}
@@ -243,15 +247,15 @@ export function CtaBlock({
 
           <ul className="mt-10 space-y-2.5 border-t border-white/15 pt-6 text-small text-white/75">
             <li className="flex items-start gap-2.5">
-              <CheckIcon className="mt-0.5 shrink-0 text-leaf-200" width={17} height={17} />
+              <CheckIcon className="mt-0.5 shrink-0 text-orange-200" width={17} height={17} />
               Licensed master electrician, {business.licenses.master.id}
             </li>
             <li className="flex items-start gap-2.5">
-              <CheckIcon className="mt-0.5 shrink-0 text-leaf-200" width={17} height={17} />
+              <CheckIcon className="mt-0.5 shrink-0 text-orange-200" width={17} height={17} />
               Serving Parker and the south metro since {business.founded.year}
             </li>
             <li className="flex items-start gap-2.5">
-              <CheckIcon className="mt-0.5 shrink-0 text-leaf-200" width={17} height={17} />
+              <CheckIcon className="mt-0.5 shrink-0 text-orange-200" width={17} height={17} />
               {business.address.streetAddress}, {business.address.addressLocality},{' '}
               {business.address.addressRegion} {business.address.postalCode}
             </li>
@@ -260,10 +264,10 @@ export function CtaBlock({
 
         <div className="rounded-card bg-white p-6 text-ink shadow-float md:p-8">
           <h3 className="text-h3">Get an estimate</h3>
-          <p className="mt-1.5 text-small text-muted">
+          <p className="mt-1.5 text-small text-grey">
             Tell us what is going on. We reply the same business day.
           </p>
-          <EstimateForm compact defaultService={service} formId="cta-block" />
+          <EstimateForm variant="compact" defaultService={service} formId="cta-block" />
         </div>
       </div>
     </section>

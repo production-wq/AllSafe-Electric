@@ -23,13 +23,13 @@ export function FaqList({
         {faqs.map((f, i) => (
           <details
             key={i}
-            className="group overflow-hidden rounded-card border border-rule bg-white transition-colors duration-200 open:border-brand-200 hover:border-brand-200"
+            className="group overflow-hidden rounded-card border border-rule bg-white transition-colors duration-200 open:border-blue-200 hover:border-blue-200"
           >
             <summary className="flex cursor-pointer list-none items-center justify-between gap-5 px-5 py-4 text-body-lg font-semibold [&::-webkit-details-marker]:hidden">
               {f.q}
               <span
                 aria-hidden
-                className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-600 transition-all duration-200 group-open:rotate-45 group-open:bg-brand-600 group-open:text-white"
+                className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-600 transition-all duration-200 group-open:rotate-45 group-open:bg-blue-600 group-open:text-white"
               >
                 <svg
                   width="16"
@@ -44,8 +44,8 @@ export function FaqList({
                 </svg>
               </span>
             </summary>
-            <div className="border-t border-rule/70 bg-brand-50/30 px-5 pb-5 pt-4">
-              <p className="prose-body text-body text-ink-soft">{f.a}</p>
+            <div className="border-t border-rule/70 bg-blue-50/30 px-5 pb-5 pt-4">
+              <p className="prose-body text-body text-slate">{f.a}</p>
             </div>
           </details>
         ))}

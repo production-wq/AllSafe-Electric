@@ -49,13 +49,13 @@ export default function ContactPage() {
         <div className="container-page grid gap-12 lg:grid-cols-[1fr_380px]">
           <div>
             <div className="flex flex-wrap gap-3">
-              <CallButton location="mid_page" variant="secondary" />
+              <CallButton location="mid_page" variant="outline" />
               <BookButton location="mid_page" variant="primary" />
             </div>
 
             <div id="estimate" className="mt-10 scroll-mt-28 card p-6 md:p-8">
               <h2 className="text-h2">Request an estimate</h2>
-              <p className="mt-2 text-muted">
+              <p className="mt-2 text-grey">
                 Eight quick fields. A photo of the panel or the problem really speeds things up.
               </p>
               <EstimateForm formId="contact-estimate" />
@@ -66,8 +66,8 @@ export default function ContactPage() {
             <div className="card p-6">
               <h2 className="text-h3">Allsafe Electric</h2>
               <address className="mt-3 space-y-3 not-italic text-[1rem]">
-                <p className="flex items-start gap-2 text-muted">
-                  <MapPinIcon width={18} height={18} className="mt-1 shrink-0 text-brand-600" />
+                <p className="flex items-start gap-2 text-grey">
+                  <MapPinIcon width={18} height={18} className="mt-1 shrink-0 text-blue-600" />
                   <span>
                     {a.streetAddress}
                     <br />
@@ -75,13 +75,13 @@ export default function ContactPage() {
                   </span>
                 </p>
                 <p className="flex items-center gap-2">
-                  <PhoneIcon width={18} height={18} className="shrink-0 text-brand-600" />
-                  <a href={business.phone.href} className="font-semibold text-brand-700">
+                  <PhoneIcon width={18} height={18} className="shrink-0 text-blue-600" />
+                  <a href={business.phone.href} className="font-semibold text-blue-700">
                     {business.phone.display}
                   </a>
                 </p>
-                <p className="flex items-start gap-2 text-muted">
-                  <ClockIcon width={18} height={18} className="mt-1 shrink-0 text-brand-600" />
+                <p className="flex items-start gap-2 text-grey">
+                  <ClockIcon width={18} height={18} className="mt-1 shrink-0 text-blue-600" />
                   <span>
                     {business.hours.humanReadable}
                     <br />
@@ -97,7 +97,7 @@ export default function ContactPage() {
                   Google profile
                 </a>
               </div>
-              <p className="mt-4 border-t border-rule pt-3 text-[0.9rem] text-muted">
+              <p className="mt-4 border-t border-rule pt-3 text-[0.9rem] text-grey">
                 Licences {business.licenses.master.id} · {business.licenses.contractor.id}
               </p>
             </div>

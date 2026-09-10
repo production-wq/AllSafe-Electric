@@ -8,7 +8,7 @@ export function Breadcrumbs({ items }: { items: { name: string; path: string }[]
   return (
     <nav aria-label="Breadcrumb" className="border-b border-rule bg-white">
       <div className="container-page py-3">
-        <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.9rem] text-muted">
+        <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.9rem] text-grey">
           {items.map((it, i) => {
             const last = i === items.length - 1;
             return (
@@ -19,7 +19,7 @@ export function Breadcrumbs({ items }: { items: { name: string; path: string }[]
                     {it.name}
                   </span>
                 ) : (
-                  <Link href={it.path} className="hover:text-brand-700 hover:underline">
+                  <Link href={it.path} className="hover:text-blue-700 hover:underline">
                     {it.name}
                   </Link>
                 )}

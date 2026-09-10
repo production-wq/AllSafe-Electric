@@ -83,7 +83,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
         </p>
       )}
 
-      <section className="relative overflow-hidden border-b border-rule bg-gradient-to-b from-brand-50 via-white to-white">
+      <section className="relative overflow-hidden border-b border-rule bg-gradient-to-b from-blue-50 via-white to-white">
         <span
           aria-hidden
           className="pointer-events-none absolute inset-0 bg-grid-faint [background-size:34px_34px] opacity-50"
@@ -92,17 +92,17 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
           <div>
             <div className="flex flex-wrap items-center gap-2">
               <span className="chip chip-blue">{c.county} County, Colorado</span>
-              <span className="chip chip-leaf">
+              <span className="chip chip-blue">
                 {c.driveTimeMin === 0 ? 'Home base' : `${c.driveTimeMin} min from the shop`}
               </span>
             </div>
             <h1 className="mt-5 text-display">Electrician in {c.name}, CO</h1>
-            <p className="mt-5 max-w-2xl text-lead text-ink-soft">{c.lead}</p>
+            <p className="mt-5 max-w-2xl text-lead text-slate">{c.lead}</p>
             <CtaRow location="hero" className="mt-7" />
           </div>
 
           <div className="card overflow-hidden">
-            <div className="surface-dark bg-brand-800 px-6 py-4">
+            <div className="surface-dark bg-navy px-6 py-4">
               <h2 className="text-h3 text-white">{c.name} at a glance</h2>
             </div>
             <dl className="divide-y divide-rule">
@@ -116,13 +116,13 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
                 { k: 'Electric utility', v: `${c.utility.name}${c.utility.verify ? '*' : ''}` },
               ].map((row) => (
                 <div key={row.k} className="flex justify-between gap-5 px-6 py-3.5">
-                  <dt className="text-small text-muted">{row.k}</dt>
+                  <dt className="text-small text-grey">{row.k}</dt>
                   <dd className="text-right text-small font-semibold text-ink">{row.v}</dd>
                 </div>
               ))}
             </dl>
             {c.utility.verify && (
-              <p className="border-t border-rule bg-paper px-6 py-3 text-tiny text-muted">
+              <p className="border-t border-rule bg-paper px-6 py-3 text-tiny text-grey">
                 *Confirm your address. CORE and Xcel territory does not follow city limits.
               </p>
             )}
@@ -141,10 +141,10 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
                 <Link
                   key={s!.slug}
                   href={`/${s!.slug}/`}
-                  className="card p-4 hover:border-brand-600"
+                  className="card p-4 hover:border-blue-600"
                 >
-                  <span className="font-semibold text-brand-700">{s!.navLabel}</span>
-                  <span className="mt-1 block text-[0.9rem] text-muted">{s!.h1}</span>
+                  <span className="font-semibold text-blue-700">{s!.navLabel}</span>
+                  <span className="mt-1 block text-[0.9rem] text-grey">{s!.h1}</span>
                 </Link>
               ))}
             </div>
@@ -157,7 +157,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
             <h2 id="stock-heading" className="text-h2">
               What {c.name} homes are like electrically
             </h2>
-            <p className="prose-body mt-4 text-[1.05rem] text-muted">{c.housingStock}</p>
+            <p className="prose-body mt-4 text-[1.05rem] text-grey">{c.housingStock}</p>
           </section>
 
           <section aria-labelledby="permit-heading">
@@ -165,8 +165,8 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
               Permits and inspections in {c.name}
             </h2>
             <p className="mt-2 font-semibold">{c.permitAuthority}</p>
-            <p className="prose-body mt-2 text-[1.05rem] text-muted">{c.permitProcess}</p>
-            <p className="mt-3 text-[0.9rem] text-muted">
+            <p className="prose-body mt-2 text-[1.05rem] text-grey">{c.permitProcess}</p>
+            <p className="mt-3 text-[0.9rem] text-grey">
               Permit rules and fees change. We confirm current requirements with the jurisdiction
               before every permitted job.{' '}
               <Link href="/resources/" className="link-cta">
@@ -183,12 +183,12 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
             <p className="mt-2 font-semibold">
               {c.utility.name}
               {c.utility.verify && (
-                <span className="ml-2 rounded bg-paper px-2 py-0.5 text-[0.75rem] font-normal text-muted">
+                <span className="ml-2 rounded bg-paper px-2 py-0.5 text-[0.75rem] font-normal text-grey">
                   verify your address
                 </span>
               )}
             </p>
-            <p className="prose-body mt-2 text-[1.05rem] text-muted">{c.utility.note}</p>
+            <p className="prose-body mt-2 text-[1.05rem] text-grey">{c.utility.note}</p>
           </section>
 
           <section aria-labelledby="hoods-heading">
@@ -218,7 +218,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
                 <li key={oc!.slug}>
                   <Link
                     href={`/electricians/${oc!.slug}/`}
-                    className="inline-block rounded border border-rule bg-white px-3 py-1.5 text-[0.95rem] hover:border-brand-600"
+                    className="inline-block rounded border border-rule bg-white px-3 py-1.5 text-[0.95rem] hover:border-blue-600"
                   >
                     Electrician in {oc!.name}
                   </Link>
@@ -227,7 +227,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
               <li>
                 <Link
                   href="/service-area/"
-                  className="inline-block rounded border border-rule bg-white px-3 py-1.5 text-[0.95rem] hover:border-brand-600"
+                  className="inline-block rounded border border-rule bg-white px-3 py-1.5 text-[0.95rem] hover:border-blue-600"
                 >
                   Full service area
                 </Link>
@@ -239,7 +239,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
         <aside className="space-y-5 lg:sticky lg:top-[calc(var(--header-h)+1rem)] lg:h-fit">
           <div className="card p-5">
             <h2 className="text-h3">Book in {c.name}</h2>
-            <p className="mt-1 text-[0.95rem] text-muted">{c.responseExpectation}</p>
+            <p className="mt-1 text-[0.95rem] text-grey">{c.responseExpectation}</p>
             <div className="mt-4">
               <CtaRow
                 location="mid_page"
