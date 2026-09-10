@@ -7,8 +7,8 @@ export default function NotFound() {
     <section className="section">
       <div className="container-page max-w-2xl">
         <p className="eyebrow">Page not found</p>
-        <h1 className="mt-1 text-step-4">That page isn&apos;t here</h1>
-        <p className="mt-4 text-step-1 text-muted">
+        <h1 className="mt-1 text-h1">That page isn&apos;t here</h1>
+        <p className="mt-4 text-h3 text-muted">
           The link may be old, or the page moved. Here is where most people are headed.
         </p>
 
@@ -24,7 +24,7 @@ export default function NotFound() {
             <Link
               key={href}
               href={href}
-              className="rounded-card border border-rule bg-white p-4 font-semibold text-brand-blue-deep hover:border-brand-blue"
+              className="rounded-card border border-rule bg-white p-4 font-semibold text-brand-700 hover:border-brand-600"
             >
               {label}
             </Link>
@@ -32,7 +32,7 @@ export default function NotFound() {
         </div>
 
         <p className="mt-8 text-muted">
-          Or just call —{' '}
+          Or just call, {' '}
           <a href={business.phone.href} className="link-cta">
             {business.phone.display}
           </a>
@@ -44,7 +44,7 @@ export default function NotFound() {
           <ul className="mt-3 grid gap-1.5 sm:grid-cols-2">
             {services.map((s) => (
               <li key={s.slug}>
-                <Link href={`/${s.slug}/`} className="text-brand-blue-deep hover:underline">
+                <Link href={`/${s.slug}/`} className="text-brand-700 hover:underline">
                   {s.navLabel}
                 </Link>
               </li>

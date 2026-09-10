@@ -8,7 +8,7 @@ import { track } from '@/lib/analytics';
 import { CalendarIcon, PhoneIcon } from './Icons';
 
 /**
- * Housecall Pro booking — planning/docs/07 §3.
+ * Housecall Pro booking, planning/docs/07 §3.
  * PREFERRED: embed the HCP booking script here so the visitor stays on-domain and
  * GA4/CallRail attribution stays intact. The embed snippet comes from the client's
  * HCP account → Online Booking → Embed (open item #9). Until it is provided, this
@@ -53,12 +53,12 @@ export function BookEmbed() {
         </div>
       )}
 
-      {/* HCP embed target — script injected once the snippet is supplied. */}
+      {/* HCP embed target. Script injected once the snippet is supplied. */}
       <div id="hcp-booking-embed" aria-live="polite" />
 
       <div className="card p-6 md:p-8">
-        <p className="flex items-center gap-2 text-step-1 font-bold">
-          <CalendarIcon className="text-brand-green" /> Book online with Housecall Pro
+        <p className="flex items-center gap-2 text-h3 font-bold">
+          <CalendarIcon className="text-leaf-600" /> Book online with Housecall Pro
         </p>
         <p className="mt-2 text-muted">
           Our scheduler is live any time. Pick a service and a window and you are on the calendar.
@@ -78,7 +78,7 @@ export function BookEmbed() {
           <a
             href={business.phone.href}
             onClick={() => track.call('inline', { service })}
-            className="inline-flex items-center gap-1 font-semibold text-brand-blue-deep"
+            className="inline-flex items-center gap-1 font-semibold text-brand-700"
           >
             <PhoneIcon width={16} height={16} /> {business.phone.display}
           </a>

@@ -6,14 +6,14 @@ import { services } from '@/lib/services';
 import { citySlugs } from '@/lib/cities';
 
 /**
- * Estimate form Server Action — planning/docs/07 §4.
+ * Estimate form Server Action, planning/docs/07 §4.
  * No third-party iframe. Honeypot + timing check, NO CAPTCHA.
  *
  * Leads fan out to (best-effort, never block the user):
- *   1. email  → allsafehomeservices@gmail.com   (plural — see planning/CLAUDE.md §3)
+ *   1. email  → allsafehomeservices@gmail.com   (plural, see planning/CLAUDE.md §3)
  *   2. webhook → Housecall Pro (create customer)
  *   3. webhook → Built Right Digital lead log
- *   4. GA4 `generate_lead` — fired client-side on the returned {ok:true}
+ *   4. GA4 `generate_lead`. Fired client-side on the returned {ok:true}
  *
  * If a destination fails the visitor still sees success and the lead is logged for
  * retry. Never show a homeowner an error because a webhook timed out.
@@ -106,8 +106,8 @@ export async function submitEstimate(
   ]).then((results) => {
     const failed = results.filter((r) => r.status === 'rejected');
     if (failed.length) {
-      // Queue for retry — in production this is a durable queue; here we log loudly.
-      console.error(`[lead ${leadId}] ${failed.length} destination(s) failed — queued for retry`, {
+      // Queue for retry, in production this is a durable queue; here we log loudly.
+      console.error(`[lead ${leadId}] ${failed.length} destination(s) failed. Queued for retry`, {
         lead,
       });
     }
@@ -116,7 +116,7 @@ export async function submitEstimate(
   return {
     ok: true,
     leadId,
-    values: { ...values, city: guessCity(values.zip) ?? '' },
+    values: {...values, city: guessCity(values.zip) ?? '' },
   };
 }
 
@@ -150,7 +150,7 @@ async function sendEmail(lead: Record<string, unknown>) {
   const to = process.env.LEAD_EMAIL_TO || business.email.leads;
   const from = process.env.LEAD_EMAIL_FROM || business.email.public;
   if (!key) {
-    console.info('[lead] RESEND_API_KEY not set — email not sent. Lead:', lead.leadId);
+    console.info('[lead] RESEND_API_KEY not set, email not sent. Lead:', lead.leadId);
     return;
   }
   const lines = Object.entries(lead)
@@ -163,7 +163,7 @@ async function sendEmail(lead: Record<string, unknown>) {
       from: `Allsafe Electric Website <${from}>`,
       to: [to],
       reply_to: String(lead.email),
-      subject: `New estimate request — ${lead.service} (${lead.zip})`,
+      subject: `New estimate request, ${lead.service} (${lead.zip})`,
       text: lines,
     }),
   });

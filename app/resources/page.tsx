@@ -8,7 +8,7 @@ import { webPageNode, breadcrumbNode } from '@/lib/schema';
 
 export const metadata: Metadata = pageMetadata({
   path: '/resources/',
-  title: 'Electrical Permits & Utilities — Douglas County, CO',
+  title: 'Electrical Permits & Utilities in Douglas County, CO',
   description:
     'Plain-English guidance for Parker and Douglas County homeowners: who issues electrical permits, CORE vs Xcel territory, and Colorado code basics.',
   ogEyebrow: 'Resources',
@@ -32,17 +32,17 @@ const permitAuthorities = [
   },
   {
     area: 'Castle Rock',
-    who: 'Town of Castle Rock — Development Services',
+    who: 'Town of Castle Rock, Development Services',
     url: 'https://www.crgov.com/151/Building-Division',
   },
   {
     area: 'Lone Tree',
-    who: 'City of Lone Tree — Community Development',
+    who: 'City of Lone Tree, Community Development',
     url: 'https://www.cityoflonetree.com/',
   },
   {
     area: 'Centennial (Arapahoe County)',
-    who: 'City of Centennial — Building Division',
+    who: 'City of Centennial, Building Division',
     url: 'https://www.centennialco.gov/',
   },
 ];
@@ -80,7 +80,7 @@ export default function ResourcesPage() {
       />
       <PageIntro
         eyebrow="Resources"
-        title="Permits, utilities & code — the local basics"
+        title="Permits, utilities & code, the local basics"
         lead="The rules that actually apply to a home in Parker and Douglas County, in plain English, with links to the authority for every claim. We re-check these quarterly."
         crumbs={crumbs}
       />
@@ -88,7 +88,7 @@ export default function ResourcesPage() {
       <div className="section">
         <div className="container-page"><div className="max-w-3xl space-y-12">
           <section>
-            <h2 className="text-step-2">Who issues your electrical permit</h2>
+            <h2 className="text-h2">Who issues your electrical permit</h2>
             <p className="mt-2 text-muted">
               It depends on whether your address is inside a city or in unincorporated county land.
               We determine the right authority for every permitted job and file it for you.
@@ -98,7 +98,7 @@ export default function ResourcesPage() {
                 <li key={p.area} className="py-4">
                   <p className="font-semibold">{p.area}</p>
                   <p className="mt-0.5 text-muted">
-                    {p.who} —{' '}
+                    {p.who}, {' '}
                     <a href={p.url} target="_blank" rel="noopener" className="link-cta text-[0.95rem]">
                       official building page
                     </a>
@@ -113,13 +113,13 @@ export default function ResourcesPage() {
           </section>
 
           <section>
-            <h2 className="text-step-2">CORE Electric Cooperative vs. Xcel Energy</h2>
+            <h2 className="text-h2">CORE Electric Cooperative vs. Xcel Energy</h2>
             <p className="mt-3 text-[1.05rem] text-muted">
               This matters more than most homeowners realise. Parker and Castle Rock are largely
               served by <strong className="text-ink">CORE Electric Cooperative</strong> (formerly
               IREA), while Highlands Ranch, Lone Tree and Centennial are mostly{' '}
               <strong className="text-ink">Xcel Energy</strong>. Territory does not follow city
-              limits — it can change street by street. Almost every &ldquo;Colorado electrical
+              limits. It can change street by street. Almost every &ldquo;Colorado electrical
               rebate&rdquo; article online assumes Xcel and is therefore wrong for much of Parker.
             </p>
             <p className="mt-3 text-[1.05rem] text-muted">
@@ -141,7 +141,7 @@ export default function ResourcesPage() {
           </section>
 
           <section>
-            <h2 className="text-step-2">Colorado electrical code</h2>
+            <h2 className="text-h2">Colorado electrical code</h2>
             <p className="mt-3 text-[1.05rem] text-muted">
               Colorado is governed by the state{' '}
               <a
@@ -151,12 +151,11 @@ export default function ResourcesPage() {
                 className="link-cta"
               >
                 Electrical Board (DORA)
-              </a>
-              , which adopts a specific edition of the National Electrical Code with state
+              </a>, which adopts a specific edition of the National Electrical Code with state
               amendments, and licenses every electrician and contractor. Local jurisdictions inspect
-              to that code. If you want to verify our licences —{' '}
+              to that code. If you want to verify our licences, {' '}
               <span className="whitespace-nowrap">ME.0601023</span> and{' '}
-              <span className="whitespace-nowrap">EC.0101068</span> — the{' '}
+              <span className="whitespace-nowrap">EC.0101068</span>, the{' '}
               <a
                 href="https://apps.colorado.gov/dora/licensing/Lookup/LicenseLookup.aspx"
                 target="_blank"
@@ -170,14 +169,14 @@ export default function ResourcesPage() {
           </section>
 
           <section>
-            <h2 className="text-step-2">In-depth guides &amp; tools — in progress</h2>
+            <h2 className="text-h2">In-depth guides &amp; tools, in progress</h2>
             <p className="mt-2 text-muted">
               These are being written and built with proper research and source citations, and
               released as each is ready.
             </p>
             <div className="mt-5 grid gap-6 sm:grid-cols-2">
               <div>
-                <h3 className="text-step-1">Local guides</h3>
+                <h3 className="text-h3">Local guides</h3>
                 <ul className="mt-2 space-y-1.5 text-[0.98rem] text-muted">
                   {plannedGuides.map((g) => (
                     <li key={g}>{g}</li>
@@ -185,7 +184,7 @@ export default function ResourcesPage() {
                 </ul>
               </div>
               <div>
-                <h3 className="text-step-1">Free tools</h3>
+                <h3 className="text-h3">Free tools</h3>
                 <ul className="mt-2 space-y-1.5 text-[0.98rem] text-muted">
                   {plannedTools.map((t) => (
                     <li key={t}>{t}</li>

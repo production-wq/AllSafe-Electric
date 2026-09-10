@@ -5,87 +5,125 @@ import { EstimateForm } from './EstimateForm';
 import { business } from '@/lib/business';
 import type { Service } from '@/lib/services';
 import { getService } from '@/lib/services';
+import { CheckIcon } from './Icons';
 
-/** Service card — photo, <h3>, one sentence, a text link. No shadow, no hover lift. */
-export function ServiceCard({ slug, headingLevel = 3 }: { slug: string; headingLevel?: 2 | 3 }) {
+const ACCENT = {
+  blue: { bar: 'bg-brand-500', tile: 'bg-brand-50 text-brand-600' },
+  leaf: { bar: 'bg-leaf-500', tile: 'bg-leaf-50 text-leaf-600' },
+  teal: { bar: 'bg-teal-500', tile: 'bg-teal-50 text-teal-600' },
+} as const;
+
+/** Service card. Photo, an h3, one line, a text link. Colour comes from the group. */
+export function ServiceCard({
+  slug,
+  headingLevel = 3,
+  accent = 'blue',
+}: {
+  slug: string;
+  headingLevel?: 2 | 3;
+  accent?: keyof typeof ACCENT;
+}) {
   const s = getService(slug);
   if (!s) return null;
   const H = `h${headingLevel}` as 'h2' | 'h3';
+  const a = ACCENT[accent];
+
   return (
-    <article className="card overflow-hidden">
-      <Link href={`/${s.slug}/`} className="block">
+    <article className="card card-interactive group relative flex flex-col overflow-hidden">
+      <div className="relative overflow-hidden">
         <SiteImage
           name={s.heroImage}
           alt={s.heroAlt}
-          sizes="(min-width: 1024px) 380px, (min-width: 640px) 45vw, 90vw"
-          className="aspect-[4/3] w-full object-cover"
+          sizes="(min-width: 1024px) 340px, (min-width: 640px) 45vw, 92vw"
+          className="aspect-[16/11] w-full object-cover transition-transform duration-500 ease-smooth group-hover:scale-[1.03]"
           aspable={false}
         />
-      </Link>
-      <div className="p-5">
-        <H className={`text-step-1 ${s.emergency ? 'text-urgent' : ''}`}>
-          <Link href={`/${s.slug}/`} className="text-inherit no-underline hover:underline">
+        <span
+          aria-hidden
+          className={`absolute inset-x-0 bottom-0 h-1 ${s.emergency ? 'bg-urgent' : a.bar}`}
+        />
+      </div>
+      <div className="flex flex-1 flex-col p-5">
+        <H className={`text-h3 ${s.emergency ? 'text-urgent' : ''}`}>
+          <Link href={`/${s.slug}/`} className="text-inherit no-underline">
+            <span className="absolute inset-0" aria-hidden />
             {s.navLabel}
           </Link>
         </H>
-        <p className="mt-1.5 text-[1rem] text-muted">{oneLine(s)}</p>
-        <Link href={`/${s.slug}/`} className="link-cta mt-3 inline-block text-[0.95rem]">
-          {s.emergency ? 'Get help now' : `Learn about ${s.navLabel.toLowerCase()}`}
-        </Link>
+        <p className="mt-2 flex-1 text-small text-muted">{s.blurb}</p>
+        <span className="link-cta mt-4 text-small">
+          {s.emergency ? 'Get help now' : 'See details and pricing'}
+        </span>
       </div>
     </article>
   );
 }
 
-function oneLine(s: Service): string {
-  const map: Record<string, string> = {
-    'emergency-electrical-repairs-parker-co':
-      'Sparks, burning smell, or half the house dark — a real person answers and Jud comes out.',
-    'electrical-panel-services':
-      'Fuse boxes, tripping breakers, and Federal Pacific panels replaced. Most run $2,200–$4,500.',
-    'electrical-outlet-services': 'Dead outlets traced and fixed, plus new outlets where you need them.',
-    'electrical-switch-services': 'Sparking switches, dead three-ways, and humming dimmers, sorted.',
-    'electrical-wiring-repairs-services': 'Aluminium wiring, damaged runs, and staged whole-home rewires.',
-    'lighting-services': 'Recessed cans, under-cabinet LED, and fixture swaps inside your home.',
-    'outdoor-lighting': 'Landscape, path, security, and holiday-light circuits built for Colorado weather.',
-    'residential-ev-charging': 'Level 2 home charging with a proper load calculation first.',
-    'ceiling-fan-installation': 'Fan-rated boxes, balanced blades, vaulted ceilings included.',
-    'home-automation': 'Smart switches, video doorbells, and the neutrals and transformers they need.',
-    'whole-home-surge-protection': 'One panel-mounted device shields the whole house from spikes.',
-    'smoke-detectors': 'Interconnected smoke and CO detectors, brought up to Colorado code.',
-    'home-electrical-safety-inspections': 'A licensed electrician opens the panel and gives you a written report.',
-    'generator-installation': 'Automatic standby power sized to what you actually need to keep on.',
-    'electrical-troubleshooting': 'Breaker trips, flickering lights, and dead circuits traced to the real cause.',
-    'hot-tub-electrical-hookup': 'A code-correct 240V GFCI circuit and disconnect, ready for delivery day.',
-  };
-  return map[s.slug] ?? s.metaDescription;
+/** Compact stat and proof row. */
+export function StatBand({
+  items,
+  tone = 'light',
+}: {
+  items: { value: string; label: string }[];
+  tone?: 'light' | 'dark';
+}) {
+  return (
+    <dl
+      className={`grid gap-px overflow-hidden rounded-card sm:grid-cols-2 lg:grid-cols-4 ${
+        tone === 'dark' ? 'bg-white/15' : 'bg-rule'
+      }`}
+    >
+      {items.map((it) => (
+        <div
+          key={it.label}
+          className={`px-5 py-7 text-center ${tone === 'dark' ? 'bg-brand-800' : 'bg-white'}`}
+        >
+          <dt className="sr-only">{it.label}</dt>
+          <dd>
+            <span
+              className={`block text-h2 font-bold ${
+                tone === 'dark' ? 'text-white' : 'text-brand-600'
+              }`}
+            >
+              {it.value}
+            </span>
+            <span
+              className={`mt-1.5 block text-small ${tone === 'dark' ? 'text-white/75' : 'text-muted'}`}
+            >
+              {it.label}
+            </span>
+          </dd>
+        </div>
+      ))}
+    </dl>
+  );
 }
 
-/** "What happens next" — the conversion lever for an anxious buyer (docs/07 §7). */
+/** "What happens next", the conversion lever for an anxious buyer (docs/07 §7). */
 export function WhatHappensNext({ emergency = false }: { emergency?: boolean }) {
   const steps = emergency
     ? [
-        'You call. We confirm the address and a two-hour arrival window and tell you what to switch off.',
+        'You call. We confirm the address and a two-hour arrival window, and tell you what to switch off.',
         'Jud arrives, makes it safe, and finds the actual cause.',
-        'You get a fixed repair price before any work starts — the diagnostic fee comes off it.',
+        'You get a fixed repair price before any work starts. The diagnostic fee comes off it.',
         'We fix what is dangerous now and flag what to schedule properly later.',
       ]
     : [
         'You call or book online. A real person picks up during business hours.',
         'We confirm a two-hour arrival window that works for you.',
         'Jud arrives, looks at the job, and gives you a fixed price.',
-        'You decide. No pressure, no upsell.',
+        'You decide. No pressure, and no upsell.',
       ];
   return (
     <div className="card p-6 md:p-8">
-      <h2 className="text-step-2">What happens next</h2>
-      <ol className="mt-4 space-y-4">
+      <h2 className="text-h2">What happens next</h2>
+      <ol className="mt-6 space-y-5">
         {steps.map((s, i) => (
           <li key={i} className="flex gap-4">
-            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-blue text-[0.95rem] font-bold text-white">
+            <span className="icon-tile bg-brand-50 text-body-lg font-bold text-brand-600">
               {i + 1}
             </span>
-            <span className="pt-1 text-[1.05rem]">{s}</span>
+            <span className="pt-2.5 text-body text-ink-soft">{s}</span>
           </li>
         ))}
       </ol>
@@ -93,34 +131,74 @@ export function WhatHappensNext({ emergency = false }: { emergency?: boolean }) 
   );
 }
 
-/** Price range — always a visibly-marked estimate. planning/docs/09 §4. */
+/** Price range. Always a visibly-marked estimate (planning/docs/09 §4). */
 export function PriceRange({ service }: { service: Service }) {
   const p = service.priceRange;
   const fmt = (n: number) => `$${n.toLocaleString('en-US')}`;
   return (
-    <div className="card border-l-4 border-l-brand-green p-6">
-      <h2 className="text-step-2">
-        What it costs {service.slug.includes('parker') ? 'in Parker' : 'in Douglas County'}
-      </h2>
-      <p className="mt-3 text-step-1 font-semibold text-ink">
-        {p.unit ? `${fmt(p.low)}–${fmt(p.high)} ${p.unit}` : `${fmt(p.low)}–${fmt(p.high)}`}
-      </p>
-      <p className="mt-2 text-[1.02rem] text-muted">
-        <strong className="text-ink">What moves the price:</strong> {p.drivers}.
-      </p>
-      <p className="mt-1.5 text-[1.02rem] text-muted">
-        <strong className="text-ink">Included:</strong> {p.includes}.
-      </p>
-      <p className="mt-3 text-[0.9rem] text-muted">
-        {p.needsApproval
-          ? 'Estimated range, updated periodically. Your exact price is fixed in writing before any work begins.'
-          : 'Typical installed range for this area. Your exact price is fixed in writing after Jud sees the job.'}
-      </p>
+    <div className="overflow-hidden rounded-card border border-leaf-100 bg-leaf-50">
+      <div className="border-b border-leaf-100 bg-white/60 px-6 py-4">
+        <h2 className="text-h2">
+          What it costs {service.slug.includes('parker') ? 'in Parker' : 'in Douglas County'}
+        </h2>
+      </div>
+      <div className="p-6">
+        <p className="text-h1 font-bold tracking-tight text-leaf-700">
+          {fmt(p.low)}
+          <span className="mx-2 text-h3 font-normal text-leaf-600/70">to</span>
+          {fmt(p.high)}
+        </p>
+        {p.unit && <p className="mt-1 text-small font-semibold text-leaf-700">{p.unit}</p>}
+
+        <dl className="mt-6 space-y-4 border-t border-leaf-100 pt-5 text-body">
+          <div>
+            <dt className="font-semibold text-ink">What moves the price</dt>
+            <dd className="mt-0.5 text-ink-soft">{p.drivers}.</dd>
+          </div>
+          <div>
+            <dt className="font-semibold text-ink">What is included</dt>
+            <dd className="mt-0.5 text-ink-soft">{p.includes}.</dd>
+          </div>
+        </dl>
+
+        <p className="mt-5 rounded-btn bg-white/70 px-4 py-3 text-small text-ink-soft">
+          {p.needsApproval
+            ? 'Estimated range, reviewed regularly. Your exact price is fixed in writing before any work begins.'
+            : 'Typical installed range for this area. Your exact price is fixed in writing after Jud has seen the job.'}
+        </p>
+      </div>
     </div>
   );
 }
 
-/** Full CTA block for the bottom of a page — Book · Call · Estimate form. */
+/** Bulleted "what is included" list. */
+export function IncludedList({
+  items,
+  title = 'What the price covers',
+}: {
+  items: string[];
+  title?: string;
+}) {
+  return (
+    <section aria-labelledby="included-heading">
+      <h2 id="included-heading" className="text-h2">
+        {title}
+      </h2>
+      <ul className="mt-6 grid gap-x-8 gap-y-3.5 sm:grid-cols-2">
+        {items.map((item) => (
+          <li key={item} className="flex gap-3 text-body">
+            <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-leaf-100">
+              <CheckIcon className="text-leaf-700" width={13} height={13} />
+            </span>
+            <span className="text-ink-soft">{item}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+/** Full CTA band for the bottom of a page. Book, Call, and the estimate form. */
 export function CtaBlock({
   service,
   emergency = false,
@@ -131,39 +209,58 @@ export function CtaBlock({
   heading?: string;
 }) {
   return (
-    <section className="bg-brand-blue-deep text-white">
-      <div className="container-page grid gap-10 py-14 lg:grid-cols-2 lg:py-20">
+    <section className="surface-dark relative overflow-hidden bg-brand-800">
+      <span
+        aria-hidden
+        className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-brand-600/40 blur-3xl"
+      />
+      <span
+        aria-hidden
+        className="pointer-events-none absolute -bottom-32 -left-20 h-96 w-96 rounded-full bg-leaf-600/25 blur-3xl"
+      />
+      <div className="container-page relative grid gap-12 py-16 lg:grid-cols-2 lg:py-24">
         <div>
-          <h2 className="text-step-3 text-white">{heading}</h2>
-          <p className="mt-3 max-w-md text-white/85">
+          <p className="eyebrow eyebrow-light">Talk to a real person</p>
+          <h2 className="mt-3 text-h1 text-white">{heading}</h2>
+          <p className="mt-4 max-w-md text-body-lg text-white/80">
             {emergency
-              ? `Call now — during the day Jud usually picks up on the first ring. Or book the next available window online.`
-              : `Book a visit online any time, or call and talk it through with a real person. Free estimates on quoted work; the diagnostic fee on a service call comes off the repair.`}
+              ? 'Call now. During the day Jud usually picks up on the first ring, and you get a two-hour arrival window rather than a vague promise.'
+              : 'Book a visit online any time, or call and talk it through with a real person. Free estimates on quoted work, and the diagnostic fee on a service call comes off the repair.'}
           </p>
-          <div className="mt-6 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-wrap gap-3">
             {emergency ? (
               <>
                 <CallButton location="footer" service={service} variant="urgent" />
-                <BookButton location="footer" service={service} variant="secondary" />
+                <BookButton location="footer" service={service} variant="ghost" />
               </>
             ) : (
               <>
                 <BookButton location="footer" service={service} variant="primary" />
-                <CallButton location="footer" service={service} variant="secondary" />
+                <CallButton location="footer" service={service} variant="ghost" />
               </>
             )}
           </div>
-          <p className="mt-6 text-[0.95rem] text-white/75">
-            {business.name} · {business.address.streetAddress}, {business.address.addressLocality},{' '}
-            {business.address.addressRegion} {business.address.postalCode} ·{' '}
-            <a href={business.phone.href} className="font-semibold text-white underline">
-              {business.phone.display}
-            </a>
-          </p>
+
+          <ul className="mt-10 space-y-2.5 border-t border-white/15 pt-6 text-small text-white/75">
+            <li className="flex items-start gap-2.5">
+              <CheckIcon className="mt-0.5 shrink-0 text-leaf-200" width={17} height={17} />
+              Licensed master electrician, {business.licenses.master.id}
+            </li>
+            <li className="flex items-start gap-2.5">
+              <CheckIcon className="mt-0.5 shrink-0 text-leaf-200" width={17} height={17} />
+              Serving Parker and the south metro since {business.founded.year}
+            </li>
+            <li className="flex items-start gap-2.5">
+              <CheckIcon className="mt-0.5 shrink-0 text-leaf-200" width={17} height={17} />
+              {business.address.streetAddress}, {business.address.addressLocality},{' '}
+              {business.address.addressRegion} {business.address.postalCode}
+            </li>
+          </ul>
         </div>
-        <div className="rounded-card bg-white p-6 text-ink">
-          <h3 className="text-step-1">Get an estimate</h3>
-          <p className="mt-1 text-[0.95rem] text-muted">
+
+        <div className="rounded-card bg-white p-6 text-ink shadow-float md:p-8">
+          <h3 className="text-h3">Get an estimate</h3>
+          <p className="mt-1.5 text-small text-muted">
             Tell us what is going on. We reply the same business day.
           </p>
           <EstimateForm compact defaultService={service} formId="cta-block" />

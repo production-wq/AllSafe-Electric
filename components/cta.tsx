@@ -18,7 +18,7 @@ type Loc =
   | 'inline';
 
 /**
- * Click-to-call — a REAL <a href="tel:"> (planning/docs/07 §2). The server-rendered
+ * Click-to-call, a REAL <a href="tel:"> (planning/docs/07 §2). The server-rendered
  * href is always the real number; CallRail's DNI swaps the *display* client-side.
  * Never a JS click handler.
  */
@@ -31,7 +31,7 @@ export function CallButton({
 }: {
   location: Loc;
   service?: string;
-  variant?: 'primary' | 'secondary' | 'urgent' | 'plain';
+  variant?: 'primary' | 'secondary' | 'urgent' | 'ghost' | 'plain';
   className?: string;
   children?: React.ReactNode;
 }) {
@@ -49,7 +49,9 @@ export function CallButton({
             ? 'btn-primary'
             : variant === 'urgent'
               ? 'btn-urgent'
-              : 'btn-secondary'
+              : variant === 'ghost'
+                ? 'btn-ghost'
+                : 'btn-secondary'
         } ${className}`;
 
   const label =
@@ -79,7 +81,7 @@ export function CallButton({
   );
 }
 
-/** Click-to-book — Housecall Pro. The URL is imported once, never retyped (docs/07 §3). */
+/** Click-to-book, Housecall Pro. The URL is imported once, never retyped (docs/07 §3). */
 export function BookButton({
   location,
   service,
@@ -89,7 +91,7 @@ export function BookButton({
 }: {
   location: Loc;
   service?: string;
-  variant?: 'primary' | 'secondary' | 'plain';
+  variant?: 'primary' | 'secondary' | 'ghost' | 'plain';
   className?: string;
   children?: React.ReactNode;
 }) {
@@ -97,7 +99,7 @@ export function BookButton({
   const cls =
     variant === 'plain'
       ? className
-      : `btn ${variant === 'primary' ? 'btn-primary' : 'btn-secondary'} ${className}`;
+      : `btn ${variant === 'primary' ? 'btn-primary' : variant === 'ghost' ? 'btn-ghost' : 'btn-secondary'} ${className}`;
   return (
     <a
       href={url}

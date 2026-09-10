@@ -9,9 +9,9 @@ import coupons from '@/data/coupons.json';
 
 export const metadata: Metadata = pageMetadata({
   path: '/coupons/',
-  title: 'Coupons & Offers | Allsafe Electric — Parker, CO',
+  title: 'Coupons & Offers | Allsafe Electric, Parker CO',
   description:
-    'Current offers from Allsafe Electric in Parker, plus what is always included on every visit — a real arrival window and a fixed price up front.',
+    'Current offers from Allsafe Electric in Parker, plus what is always included on every visit, a real arrival window and a fixed price up front.',
   ogEyebrow: 'Offers · Parker, CO',
 });
 
@@ -25,7 +25,7 @@ const alwaysIncluded = [
   'A fixed price in writing before any work starts',
   'The diagnostic fee credited toward the repair if you go ahead',
   'Free estimates on straightforward quoted work',
-  'Shoe covers, drop cloths, and a tidy work area — every visit',
+  'Shoe covers, drop cloths, and a tidy work area. Every visit',
   'A licensed master electrician on the job, not a rotating crew',
 ];
 
@@ -54,7 +54,7 @@ export default function CouponsPage() {
       <PageIntro
         eyebrow="Offers"
         title="Coupons & offers"
-        lead="We keep pricing honest rather than inflating a rate to discount it. Any current promotion is below — and here is what every customer gets regardless."
+        lead="We keep pricing honest rather than inflating a rate to discount it. Any current promotion is below, and here is what every customer gets regardless."
         crumbs={crumbs}
       />
 
@@ -63,8 +63,8 @@ export default function CouponsPage() {
           {offers.length > 0 ? (
             <div className="grid gap-5 sm:grid-cols-2">
               {offers.map((o) => (
-                <div key={o.title} className="card border-l-4 border-l-brand-green p-6">
-                  <h2 className="text-step-1">{o.title}</h2>
+                <div key={o.title} className="card border-l-4 border-l-leaf-600 p-6">
+                  <h2 className="text-h3">{o.title}</h2>
                   <p className="mt-2 text-muted">{o.detail}</p>
                   {o.code && (
                     <p className="mt-3 font-mono text-[0.95rem]">
@@ -77,20 +77,20 @@ export default function CouponsPage() {
             </div>
           ) : (
             <div className="card p-6">
-              <h2 className="text-step-1">No promotions running right now</h2>
+              <h2 className="text-h3">No promotions running right now</h2>
               <p className="mt-2 text-muted">
-                When there is a seasonal offer — a panel-upgrade rebate window, a generator
-                pre-season deal — it will show up here. In the meantime, the value below is standard
+                When there is a seasonal offer, a panel-upgrade rebate window, a generator
+                pre-season deal. It will show up here. In the meantime, the value below is standard
                 on every job.
               </p>
             </div>
           )}
 
-          <h2 className="mt-12 text-step-2">Always included</h2>
+          <h2 className="mt-12 text-h2">Always included</h2>
           <ul className="mt-5 space-y-3">
             {alwaysIncluded.map((item) => (
               <li key={item} className="flex gap-3 text-[1.05rem]">
-                <CheckIcon className="mt-0.5 shrink-0 text-brand-green" width={22} height={22} />
+                <CheckIcon className="mt-0.5 shrink-0 text-leaf-600" width={22} height={22} />
                 <span>{item}</span>
               </li>
             ))}

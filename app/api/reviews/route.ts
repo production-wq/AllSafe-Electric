@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { getReviews } from '@/lib/reviews';
 
 /**
- * Live Google reviews feed — planning/docs/07 §5.
+ * Live Google reviews feed, planning/docs/07 §5.
  * ISR: revalidate every 6 hours. Keeps us inside the Places API caching terms and
  * keeps every marketing page static. The API key stays server-side.
  */

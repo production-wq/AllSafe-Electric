@@ -11,7 +11,7 @@ import { PhoneIcon, MapPinIcon, ClockIcon } from '@/components/Icons';
 
 export const metadata: Metadata = pageMetadata({
   path: '/contact/',
-  title: 'Contact Allsafe Electric — Parker, CO Electrician | Estimate',
+  title: 'Contact Allsafe Electric | Parker, CO Electrician',
   description:
     'Call (303) 648-1934, book online, or send an estimate request. Allsafe Electric replies the same business day. Parker, CO and the south Denver metro.',
   ogEyebrow: 'Contact · Parker, CO',
@@ -41,7 +41,7 @@ export default function ContactPage() {
       <PageIntro
         eyebrow="Contact"
         title="Three ways to reach us"
-        lead="Call and talk to a real person, book a visit online, or send the details and we'll reply the same business day. If it's an emergency, call — don't wait for the email."
+        lead="Call and talk to a real person, book a visit online, or send the details and we'll reply the same business day. If it's an emergency, call. Don't wait for the email."
         crumbs={crumbs}
       />
 
@@ -54,7 +54,7 @@ export default function ContactPage() {
             </div>
 
             <div id="estimate" className="mt-10 scroll-mt-28 card p-6 md:p-8">
-              <h2 className="text-step-2">Request an estimate</h2>
+              <h2 className="text-h2">Request an estimate</h2>
               <p className="mt-2 text-muted">
                 Eight quick fields. A photo of the panel or the problem really speeds things up.
               </p>
@@ -64,10 +64,10 @@ export default function ContactPage() {
 
           <aside className="space-y-6">
             <div className="card p-6">
-              <h2 className="text-step-1">Allsafe Electric</h2>
+              <h2 className="text-h3">Allsafe Electric</h2>
               <address className="mt-3 space-y-3 not-italic text-[1rem]">
                 <p className="flex items-start gap-2 text-muted">
-                  <MapPinIcon width={18} height={18} className="mt-1 shrink-0 text-brand-blue" />
+                  <MapPinIcon width={18} height={18} className="mt-1 shrink-0 text-brand-600" />
                   <span>
                     {a.streetAddress}
                     <br />
@@ -75,13 +75,13 @@ export default function ContactPage() {
                   </span>
                 </p>
                 <p className="flex items-center gap-2">
-                  <PhoneIcon width={18} height={18} className="shrink-0 text-brand-blue" />
-                  <a href={business.phone.href} className="font-semibold text-brand-blue-deep">
+                  <PhoneIcon width={18} height={18} className="shrink-0 text-brand-600" />
+                  <a href={business.phone.href} className="font-semibold text-brand-700">
                     {business.phone.display}
                   </a>
                 </p>
                 <p className="flex items-start gap-2 text-muted">
-                  <ClockIcon width={18} height={18} className="mt-1 shrink-0 text-brand-blue" />
+                  <ClockIcon width={18} height={18} className="mt-1 shrink-0 text-brand-600" />
                   <span>
                     {business.hours.humanReadable}
                     <br />

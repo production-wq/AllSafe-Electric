@@ -1,5 +1,5 @@
 /**
- * URL preservation contract — planning/docs/04 §3, planning/CLAUDE.md §1.1.
+ * URL preservation contract, planning/docs/04 §3, planning/CLAUDE.md §1.1.
  *
  *   npm run test:preservation            # static check against the last build
  *   npm run test:preservation -- --live https://staging.example.com
@@ -44,7 +44,7 @@ async function staticCheck(preserved: { url: string }[], redirects: Map<string, 
       console.log(`  ↪ ${url} → 301 → ${dest} (ok)`);
       continue;
     }
-    failures.push(`  ✗ ${url} — no prerendered page and no 301 in url-map.csv`);
+    failures.push(`  ✗ ${url}, no prerendered page and no 301 in url-map.csv`);
   }
   return failures;
 }
@@ -68,7 +68,7 @@ async function liveCheck(preserved: { url: string }[]) {
         failures.push(`  ✗ ${row.url} → ${res.status}`);
       }
     } catch (e) {
-      failures.push(`  ✗ ${row.url} — ${(e as Error).message}`);
+      failures.push(`  ✗ ${row.url}, ${(e as Error).message}`);
     }
   }
   return failures;
@@ -93,7 +93,7 @@ async function main() {
 
   if (failures.length) {
     failures.forEach((f) => console.log(f));
-    console.log(`\n✗ Preservation test FAILED — ${failures.length} URL(s) at risk. This blocks launch.`);
+    console.log(`\n✗ Preservation test FAILED, ${failures.length} URL(s) at risk. This blocks launch.`);
     process.exit(1);
   }
   console.log('✓ Every preserved URL resolves. Preservation contract intact.');

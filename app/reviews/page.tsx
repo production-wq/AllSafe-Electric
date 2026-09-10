@@ -10,9 +10,9 @@ import { business } from '@/lib/business';
 
 export const metadata: Metadata = pageMetadata({
   path: '/reviews/',
-  title: 'Allsafe Electric Reviews — Parker, CO Electrician | Google',
+  title: 'Allsafe Electric Reviews | Parker, CO Electrician',
   description:
-    'Read Allsafe Electric’s Google reviews — real customers in Parker and Douglas County who name Jud and Justin. Then leave your own after your visit.',
+    'Read Allsafe Electric’s Google reviews. Real customers in Parker and Douglas County who name Jud and Justin. Then leave your own after your visit.',
   ogEyebrow: 'Reviews · Parker, CO',
 });
 
@@ -25,7 +25,7 @@ export default function ReviewsPage() {
   const reviews = getFallbackReviewsSync();
   return (
     <>
-      {/* WebPage only — no Review / aggregateRating schema until first-party
+      {/* WebPage only, no Review / aggregateRating schema until first-party
           collection exists (planning/docs/06 §3, docs/99 2026-09-08). */}
       <Schema
         nodes={[
@@ -40,7 +40,7 @@ export default function ReviewsPage() {
       <PageIntro
         eyebrow="Reviews"
         title="What Parker homeowners say about Jud"
-        lead="Allsafe Electric’s reviews live on Google, where they can’t be edited or cherry-picked. The best ones name Jud and Justin personally — which is exactly the point."
+        lead="Allsafe Electric’s reviews live on Google, where they can’t be edited or cherry-picked. The best ones name Jud and Justin personally, which is exactly the point."
         crumbs={crumbs}
       />
 
@@ -48,11 +48,10 @@ export default function ReviewsPage() {
 
       <section className="section">
         <div className="container-page max-w-2xl">
-          <h2 className="text-step-2">Just had us out? Leave a review</h2>
+          <h2 className="text-h2">Just had us out? Leave a review</h2>
           <p className="mt-3 text-muted">
             It takes a minute and it genuinely helps other people in Parker find an electrician they
-            can trust. If you can mention what we fixed — a panel, an EV charger, a tripping breaker
-            — that helps even more.
+            can trust. If you can mention what we fixed, a panel, an EV charger, a tripping breaker, that helps even more.
           </p>
           <a
             href={business.google.writeReviewUrl}

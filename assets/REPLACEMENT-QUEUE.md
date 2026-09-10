@@ -6,11 +6,11 @@ appends here automatically when it produces an image.
 
 ## Priority order (docs/11 §2)
 
-1. **Jud, daylight, entryway, looking at camera** — currently a real full-res photo
+1. **Jud, daylight, entryway, looking at camera**, currently a real full-res photo
    (`allsafe-electrician-in-home-service-portrait`). docs/11 wants the ~2000 px original of
-   the bathroom-lighting photo too — a 5-minute ask of the owner.
-2. Jud + Justin together, van visible — not yet supplied.
-3. Van in a recognisable Parker / Castle Rock setting (for city pages) — ask the owner to take
+   the bathroom-lighting photo too, a 5-minute ask of the owner.
+2. Jud + Justin together, van visible, not yet supplied.
+3. Van in a recognisable Parker / Castle Rock setting (for city pages), ask the owner to take
    one on his next job in each service area. Beats any generated street shot.
 
 ## Service hero gaps (interim real photo in use; generate or replace)
@@ -23,12 +23,12 @@ appends here automatically when it produces an image.
 | `/generator-installation/` | `allsafe-electrician-beside-home-sauna` | Standby generator on a concrete pad beside a suburban Colorado home, autumn light. 3:2. No brand marks. |
 | `/hot-tub-electrical-hookup/` | `electrician-working-on-outdoor-stone-wall-outlet` | Outdoor GFCI disconnect box on a fence near a covered hot tub on a deck, evening light. 3:2. |
 
-## City establishing images (no image shown now — hero uses an "at a glance" card)
+## City establishing images (no image shown now: hero uses an "at a glance" card)
 
 `city-parker-co`, `city-castle-rock-co`, `city-highlands-ranch-co`, `city-lone-tree-co`,
-`city-centennial-co` — briefs in `lib/cities.ts` (`heroImageBrief`). Prefer a real van photo
+`city-centennial-co`, briefs in `lib/cities.ts` (`heroImageBrief`). Prefer a real van photo
 in that city. Vary lighting/season across the five so they are not visibly identical.
 
 ## Log
 
-_(empty — `scripts/images-generate.ts` appends entries here on each run)_
+_(empty, `scripts/images-generate.ts` appends entries here on each run)_

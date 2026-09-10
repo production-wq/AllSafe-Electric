@@ -1,5 +1,5 @@
 /**
- * Tier indexation gate — planning/docs/09 §3, planning/CLAUDE.md §1.7.
+ * Tier indexation gate, planning/docs/09 §3, planning/CLAUDE.md §1.7.
  *
  *   npm run report:indexation -- --tier=1
  *
@@ -19,8 +19,7 @@ import { abs } from '../lib/business';
 const TIERS: Record<string, () => string[]> = {
   '0': () => [
     abs('/'),
-    abs('/electrical-services-parker-co/'),
-    ...services.map((s) => abs(`/${s.slug}/`)),
+    abs('/electrical-services-parker-co/'), ...services.map((s) => abs(`/${s.slug}/`)),
     abs('/about/'),
     abs('/reviews/'),
     abs('/contact/'),
@@ -48,7 +47,7 @@ async function main() {
 
   const saPath = process.env.GSC_SERVICE_ACCOUNT_JSON;
   if (!saPath) {
-    console.log(`Tier ${tier} — ${urls.length} URLs. GSC API not configured.\n`);
+    console.log(`Tier ${tier}, ${urls.length} URLs. GSC API not configured.\n`);
     console.log('Manual check (Search Console → URL Inspection, or Pages report filtered to these):');
     urls.forEach((u) => console.log('  ' + u));
     console.log(

@@ -1,5 +1,5 @@
 /**
- * Gemini image generation — planning/docs/11 §3, prompts/image-briefs.md.
+ * Gemini image generation, planning/docs/11 §3, prompts/image-briefs.md.
  *
  *   npm run images:generate -- --refs         # 3 style references, review first
  *   npm run images:generate                    # the full gap run (uses refs if present)
@@ -18,7 +18,7 @@
  * a badge, or a named landmark.
  *
  * KEY HANDLING: GEMINI_API_KEY comes from .env.local ONLY. Never committed, never
- * bundled, never logged. This runs on a dev machine or in CI at build time — never
+ * bundled, never logged. This runs on a dev machine or in CI at build time, never
  * in the browser.
  *
  * OUTPUT: assets/generated/<name>.png (EXIF-free by construction). Then run
@@ -164,7 +164,7 @@ async function main() {
 
   const refs = await loadRefs();
   console.log(
-    `Style references: ${refs.length ? `${refs.length} loaded` : 'NONE — run with --refs first for consistency'}\n`
+    `Style references: ${refs.length ? `${refs.length} loaded` : 'NONE. Run with --refs first for consistency'}\n`
   );
 
   const briefs = gapBriefs().filter((b) => !only || b.name === only);
@@ -180,7 +180,7 @@ async function main() {
       await writeFile(outFile, buf);
       await appendFile(
         QUEUE,
-        `\n- [ ] \`${b.name}.png\` — GENERATED ${new Date().toISOString().slice(0, 10)}. Used by: ${b.usedBy}. Replace with a real photo when available.`
+        `\n- [ ] \`${b.name}.png\`, GENERATED ${new Date().toISOString().slice(0, 10)}. Used by: ${b.usedBy}. Replace with a real photo when available.`
       );
       console.log(`  ✓ ${b.name}.png`);
       ok++;

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { abs, SITE_URL, business } from './business';
 
 /**
- * Per-page metadata — planning/docs/05 §2.
+ * Per-page metadata, planning/docs/05 §2.
  * title 50–60 chars, description 140–158, self-referencing absolute canonical,
  * page-specific OG image, robots directive. Uniqueness is enforced by
  * scripts/audit-seo.ts, which fails the build on a duplicate or an out-of-range length.

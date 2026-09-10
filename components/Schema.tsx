@@ -2,7 +2,7 @@ import { graph, type JsonLd } from '@/lib/schema';
 
 /**
  * Server component. Emits one <script type="application/ld+json"> with an @graph.
- * planning/docs/06 — hand-authored, injected server-side, no plugin.
+ * planning/docs/06. Hand-authored, injected server-side, no plugin.
  */
 export function Schema({ nodes }: { nodes: JsonLd[] }) {
   const json = JSON.stringify(graph(nodes));

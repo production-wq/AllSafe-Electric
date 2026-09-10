@@ -11,7 +11,7 @@ export const metadata: Metadata = pageMetadata({
   path: '/electrical-services-parker-co/',
   title: 'Residential Electrical Services in Parker, CO | Allsafe',
   description:
-    'All 16 residential electrical services from Allsafe Electric in Parker — panels, EV chargers, wiring, lighting, generators, inspections and emergency repairs.',
+    'All 16 residential electrical services from Allsafe Electric in Parker. Panels, EV chargers, wiring, lighting, generators, inspections and emergency repairs.',
   ogEyebrow: 'Services · Parker, CO',
 });
 
@@ -38,7 +38,7 @@ export default function ServicesHubPage() {
       <PageIntro
         eyebrow="Services"
         title="Residential electrical services in Parker, CO"
-        lead="Strictly residential — no commercial, no industrial. Jud and Justin do the work themselves. Every page below tells you what it costs to find out and how fast someone can be there."
+        lead="Strictly residential, no commercial, no industrial. Jud and Justin do the work themselves. Every page below tells you what it costs to find out and how fast someone can be there."
         crumbs={crumbs}
       />
 
@@ -46,7 +46,7 @@ export default function ServicesHubPage() {
         <div className="container-page space-y-14">
           {serviceGroups.map((g) => (
             <section key={g.id} aria-labelledby={`grp-${g.id}`}>
-              <h2 id={`grp-${g.id}`} className="text-step-2">
+              <h2 id={`grp-${g.id}`} className="text-h2">
                 {g.label}
               </h2>
               <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -60,7 +60,7 @@ export default function ServicesHubPage() {
           ))}
 
           <section className="card bg-paper p-6">
-            <h2 className="text-step-2">Indoor lighting vs. outdoor lighting</h2>
+            <h2 className="text-h2">Indoor lighting vs. outdoor lighting</h2>
             <p className="mt-3 max-w-measure text-muted">
               We split lighting into two pages so each answers its own question properly.{' '}
               <Link href="/lighting-services/" className="link-cta">

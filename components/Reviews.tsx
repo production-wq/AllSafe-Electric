@@ -8,7 +8,7 @@ import { Stars, GoogleG } from './Icons';
 import { business } from '@/lib/business';
 
 /**
- * Live Google reviews — planning/docs/07 §5.
+ * Live Google reviews, planning/docs/07 §5.
  * - Build-time snapshot is passed as `initial` (SSR content); the client refreshes
  *   from /api/reviews (the ISR route, revalidate 6h).
  * - Google attribution is mandatory: the G mark + "Google review", names and photos
@@ -60,7 +60,7 @@ export function Reviews({ initial }: { initial: ReviewsPayload }) {
         <p className="eyebrow flex items-center gap-2">
           <GoogleG /> Google reviews
         </p>
-        <h2 id="reviews-heading" className="mt-1 text-step-3">
+        <h2 id="reviews-heading" className="mt-1 text-h2">
           What Parker neighbours say about Jud
         </h2>
 
@@ -79,7 +79,7 @@ export function Reviews({ initial }: { initial: ReviewsPayload }) {
                       unoptimized
                     />
                   ) : (
-                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-blue/10 font-semibold text-brand-blue">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-600/10 font-semibold text-brand-600">
                       {r.authorName.charAt(0)}
                     </span>
                   )}
@@ -97,7 +97,7 @@ export function Reviews({ initial }: { initial: ReviewsPayload }) {
                   target="_blank"
                   rel="noopener"
                   onClick={() => track.clickGbp('reviews')}
-                  className="mt-4 inline-flex items-center gap-1.5 text-[0.85rem] text-muted hover:text-brand-blue-deep"
+                  className="mt-4 inline-flex items-center gap-1.5 text-[0.85rem] text-muted hover:text-brand-700"
                 >
                   <GoogleG /> Google review
                 </a>
@@ -107,12 +107,12 @@ export function Reviews({ initial }: { initial: ReviewsPayload }) {
         ) : (
           <div className="mt-8 card flex flex-col items-start gap-4 p-8 md:flex-row md:items-center md:justify-between">
             <div>
-              <p className="flex items-center gap-2 text-step-1 font-semibold">
+              <p className="flex items-center gap-2 text-h3 font-semibold">
                 <GoogleG /> Read the reviews on Google
               </p>
               <p className="mt-2 max-w-lg text-muted">
                 Allsafe Electric&apos;s Google reviews name Jud and Justin by name. The live feed loads
-                here once connected — until then, they are all on the Google Business Profile.
+                here once connected. Until then, they are all on the Google Business Profile.
               </p>
             </div>
             <a

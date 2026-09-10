@@ -32,8 +32,8 @@ export async function generateMetadata({
   return pageMetadata({
     path: `/electricians/${c.slug}/`,
     title: `${c.name}, CO Electrician | Allsafe Electric`,
-    description: `Licensed electrician for ${c.name}, CO — panels, EV chargers, wiring and emergency repairs. ${near}. A real person answers the phone. Call ${business.phone.display}.`,
-    index: PUBLISH.TIER_1_CITIES, // gated — planning/docs/09 §3
+    description: `Licensed electrician for ${c.name}, CO. Panels, EV chargers, wiring and emergency repairs. ${near}. A real person answers the phone. Call ${business.phone.display}.`,
+    index: PUBLISH.TIER_1_CITIES, // gated. Planning/docs/09 §3
     ogEyebrow: `Electrician · ${c.name}, CO`,
   });
 }
@@ -58,11 +58,10 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
     <>
       <Schema
         nodes={[
-          {
-            ...webPageNode({
+          {...webPageNode({
               path: `/electricians/${c.slug}/`,
               name: `Electrician in ${c.name}, CO`,
-              description: `Allsafe Electric — residential electrical services in ${c.name}, Colorado.`,
+              description: `Allsafe Electric. Residential electrical services in ${c.name}, Colorado.`,
               about: true,
               significantLinks: c.priorityServices
                 .map((slug) => services.find((s) => s.cityServiceSlug === slug)?.slug)
@@ -79,48 +78,53 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
 
       {!PUBLISH.TIER_1_CITIES && (
         <p className="bg-amber-50 px-4 py-2 text-center text-[0.8rem] text-amber-900">
-          Staging note: this city page is built but not yet published (noindex) — it releases once
+          Staging note: this city page is built but not yet published (noindex). It releases once
           Tier 0 clears the indexation gate. See planning/docs/09 §3.
         </p>
       )}
 
-      <section className="border-b border-rule bg-[linear-gradient(180deg,#f3f6f8,#ffffff)]">
-        <div className="container-page grid gap-10 py-12 lg:grid-cols-[1.15fr_0.85fr] lg:py-16">
+      <section className="relative overflow-hidden border-b border-rule bg-gradient-to-b from-brand-50 via-white to-white">
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-grid-faint [background-size:34px_34px] opacity-50"
+        />
+        <div className="container-page relative grid gap-10 py-14 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:py-20">
           <div>
-            <p className="eyebrow">{c.county} County, Colorado</p>
-            <h1 className="mt-1 text-[2rem] leading-tight md:text-[2.9rem]">
-              Electrician in {c.name}, CO
-            </h1>
-            <p className="mt-4 max-w-2xl text-step-1 text-muted">{c.lead}</p>
-            <CtaRow location="hero" className="mt-6" />
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="chip chip-blue">{c.county} County, Colorado</span>
+              <span className="chip chip-leaf">
+                {c.driveTimeMin === 0 ? 'Home base' : `${c.driveTimeMin} min from the shop`}
+              </span>
+            </div>
+            <h1 className="mt-5 text-display">Electrician in {c.name}, CO</h1>
+            <p className="mt-5 max-w-2xl text-lead text-ink-soft">{c.lead}</p>
+            <CtaRow location="hero" className="mt-7" />
           </div>
-          <div className="card h-fit self-center p-6">
-            <h2 className="text-step-1">{c.name} at a glance</h2>
-            <dl className="mt-3 space-y-2.5 text-[0.98rem]">
-              <div className="flex justify-between gap-4">
-                <dt className="text-muted">County</dt>
-                <dd className="text-right font-medium">{c.county} County</dd>
-              </div>
-              <div className="flex justify-between gap-4">
-                <dt className="text-muted">From the Parker shop</dt>
-                <dd className="text-right font-medium">
-                  {c.driveTimeMin === 0 ? 'This is home base' : `~${c.driveTimeMin} min`}
-                </dd>
-              </div>
-              <div className="flex justify-between gap-4">
-                <dt className="text-muted">Permit authority</dt>
-                <dd className="text-right font-medium">{c.permitAuthority}</dd>
-              </div>
-              <div className="flex justify-between gap-4">
-                <dt className="text-muted">Electric utility</dt>
-                <dd className="text-right font-medium">
-                  {c.utility.name}
-                  {c.utility.verify ? '*' : ''}
-                </dd>
-              </div>
+
+          <div className="card overflow-hidden">
+            <div className="surface-dark bg-brand-800 px-6 py-4">
+              <h2 className="text-h3 text-white">{c.name} at a glance</h2>
+            </div>
+            <dl className="divide-y divide-rule">
+              {[
+                { k: 'County', v: `${c.county} County` },
+                {
+                  k: 'From the Parker shop',
+                  v: c.driveTimeMin === 0 ? 'This is home base' : `About ${c.driveTimeMin} min`,
+                },
+                { k: 'Permit authority', v: c.permitAuthority },
+                { k: 'Electric utility', v: `${c.utility.name}${c.utility.verify ? '*' : ''}` },
+              ].map((row) => (
+                <div key={row.k} className="flex justify-between gap-5 px-6 py-3.5">
+                  <dt className="text-small text-muted">{row.k}</dt>
+                  <dd className="text-right text-small font-semibold text-ink">{row.v}</dd>
+                </div>
+              ))}
             </dl>
             {c.utility.verify && (
-              <p className="mt-3 text-[0.8rem] text-muted">*Confirm your address — CORE/Xcel territory doesn&apos;t follow city limits.</p>
+              <p className="border-t border-rule bg-paper px-6 py-3 text-tiny text-muted">
+                *Confirm your address. CORE and Xcel territory does not follow city limits.
+              </p>
             )}
           </div>
         </div>
@@ -129,7 +133,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
       <div className="container-page grid gap-12 py-12 lg:grid-cols-[1fr_340px] lg:py-16">
         <div className="min-w-0 space-y-12">
           <section aria-labelledby="svc-heading">
-            <h2 id="svc-heading" className="text-step-3">
+            <h2 id="svc-heading" className="text-h2">
               Electrical services we provide in {c.name}
             </h2>
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
@@ -137,9 +141,9 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
                 <Link
                   key={s!.slug}
                   href={`/${s!.slug}/`}
-                  className="card p-4 hover:border-brand-blue"
+                  className="card p-4 hover:border-brand-600"
                 >
-                  <span className="font-semibold text-brand-blue-deep">{s!.navLabel}</span>
+                  <span className="font-semibold text-brand-700">{s!.navLabel}</span>
                   <span className="mt-1 block text-[0.9rem] text-muted">{s!.h1}</span>
                 </Link>
               ))}
@@ -150,20 +154,20 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
           </section>
 
           <section aria-labelledby="stock-heading">
-            <h2 id="stock-heading" className="text-step-3">
+            <h2 id="stock-heading" className="text-h2">
               What {c.name} homes are like electrically
             </h2>
             <p className="prose-body mt-4 text-[1.05rem] text-muted">{c.housingStock}</p>
           </section>
 
           <section aria-labelledby="permit-heading">
-            <h2 id="permit-heading" className="text-step-3">
+            <h2 id="permit-heading" className="text-h2">
               Permits and inspections in {c.name}
             </h2>
             <p className="mt-2 font-semibold">{c.permitAuthority}</p>
             <p className="prose-body mt-2 text-[1.05rem] text-muted">{c.permitProcess}</p>
             <p className="mt-3 text-[0.9rem] text-muted">
-              Permit rules and fees change — we confirm current requirements with the jurisdiction
+              Permit rules and fees change. We confirm current requirements with the jurisdiction
               before every permitted job.{' '}
               <Link href="/resources/" className="link-cta">
                 See our permit guides
@@ -173,7 +177,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
           </section>
 
           <section aria-labelledby="utility-heading">
-            <h2 id="utility-heading" className="text-step-3">
+            <h2 id="utility-heading" className="text-h2">
               Who powers your home in {c.name}
             </h2>
             <p className="mt-2 font-semibold">
@@ -188,7 +192,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
           </section>
 
           <section aria-labelledby="hoods-heading">
-            <h2 id="hoods-heading" className="text-step-3">
+            <h2 id="hoods-heading" className="text-h2">
               Neighbourhoods we work in
             </h2>
             <ul className="mt-4 flex flex-wrap gap-2">
@@ -206,7 +210,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
           <FaqList faqs={c.faqs} heading={`Questions from ${c.name} homeowners`} id={`faq-${c.slug}`} />
 
           <section aria-labelledby="near-heading">
-            <h2 id="near-heading" className="text-step-3">
+            <h2 id="near-heading" className="text-h2">
               Nearby areas
             </h2>
             <ul className="mt-3 flex flex-wrap gap-2">
@@ -214,7 +218,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
                 <li key={oc!.slug}>
                   <Link
                     href={`/electricians/${oc!.slug}/`}
-                    className="inline-block rounded border border-rule bg-white px-3 py-1.5 text-[0.95rem] hover:border-brand-blue"
+                    className="inline-block rounded border border-rule bg-white px-3 py-1.5 text-[0.95rem] hover:border-brand-600"
                   >
                     Electrician in {oc!.name}
                   </Link>
@@ -223,7 +227,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
               <li>
                 <Link
                   href="/service-area/"
-                  className="inline-block rounded border border-rule bg-white px-3 py-1.5 text-[0.95rem] hover:border-brand-blue"
+                  className="inline-block rounded border border-rule bg-white px-3 py-1.5 text-[0.95rem] hover:border-brand-600"
                 >
                   Full service area
                 </Link>
@@ -234,7 +238,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
 
         <aside className="space-y-5 lg:sticky lg:top-[calc(var(--header-h)+1rem)] lg:h-fit">
           <div className="card p-5">
-            <h2 className="text-step-1">Book in {c.name}</h2>
+            <h2 className="text-h3">Book in {c.name}</h2>
             <p className="mt-1 text-[0.95rem] text-muted">{c.responseExpectation}</p>
             <div className="mt-4">
               <CtaRow
@@ -244,7 +248,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
             </div>
           </div>
           <div className="h-64">
-            <MapFacade label={`Allsafe Electric — ${c.name} service area`} />
+            <MapFacade label={`Allsafe Electric, ${c.name} service area`} />
           </div>
         </aside>
       </div>

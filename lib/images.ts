@@ -1,9 +1,9 @@
 import manifest from '@/data/image-manifest.json';
 
 /**
- * Image manifest — written by scripts/images-process.ts from assets/source-photos.
+ * Image manifest, written by scripts/images-process.ts from assets/source-photos.
  * Every published image gets explicit width/height (CLS) and a base64 LQIP blur.
- * EXIF (incl. GPS) is stripped at processing time — planning/docs/11 §4.
+ * EXIF (incl. GPS) is stripped at processing time, planning/docs/11 §4.
  */
 
 export interface ImageEntry {
@@ -25,7 +25,7 @@ export function img(name: string): ImageEntry {
   const key = name.replace(/\.(jpe?g|png|webp|avif)$/i, '');
   const entry = M[key] ?? M[name];
   if (!entry) {
-    // Fail loud in dev, degrade in prod — a missing image should be caught by audit.
+    // Fail loud in dev, degrade in prod, a missing image should be caught by audit.
     if (process.env.NODE_ENV !== 'production') {
       throw new Error(`[images] no manifest entry for "${name}". Run: npm run images:process`);
     }

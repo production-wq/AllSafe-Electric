@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 /**
- * Visible breadcrumb — a <nav> with an ordered list, never headings
+ * Visible breadcrumb, a <nav> with an ordered list, never headings
  * (planning/docs/05 §1 rule 5). Must match the BreadcrumbList JSON-LD exactly.
  */
 export function Breadcrumbs({ items }: { items: { name: string; path: string }[] }) {
@@ -19,7 +19,7 @@ export function Breadcrumbs({ items }: { items: { name: string; path: string }[]
                     {it.name}
                   </span>
                 ) : (
-                  <Link href={it.path} className="hover:text-brand-blue-deep hover:underline">
+                  <Link href={it.path} className="hover:text-brand-700 hover:underline">
                     {it.name}
                   </Link>
                 )}

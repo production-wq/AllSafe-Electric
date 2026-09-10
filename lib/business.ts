@@ -1,6 +1,6 @@
 /**
  * Canonical business facts. Single source of truth.
- * Copied verbatim from planning/CLAUDE.md §3 — never paraphrase, never edit a value
+ * Copied verbatim from planning/CLAUDE.md §3, never paraphrase, never edit a value
  * here without an entry in planning/docs/99-decisions-log.md.
  *
  * NAP (name / address / phone) must render byte-identical everywhere it appears as
@@ -36,7 +36,7 @@ export const business = {
   email: {
     /** Shown publicly on the site. */
     public: 'info@allsafehomeservice.com',
-    /** Where estimate-form leads are delivered. Plural — unlike the domain. */
+    /** Where estimate-form leads are delivered. Plural, unlike the domain. */
     leads: 'allsafehomeservices@gmail.com',
   },
 
@@ -62,7 +62,7 @@ export const business = {
       id: 'EC.0101068',
       by: 'Colorado State Electrical Board',
     },
-    /** DORA public license lookup — makes the numbers verifiable. */
+    /** DORA public license lookup, makes the numbers verifiable. */
     verifyUrl: 'https://apps.colorado.gov/dora/licensing/Lookup/LicenseLookup.aspx',
   },
 
@@ -86,14 +86,14 @@ export const business = {
     facebook: 'https://www.facebook.com/Allsafehomeservices/',
   },
 
-  /** Housecall Pro online booking — already live for this account.
+  /** Housecall Pro online booking. Already live for this account.
    *  Note the double-encoded space in the slug. Do not hand-retype. */
   bookingUrl:
     'https://book.housecallpro.com/book/ALLSAFE-%20%20ELECTRIC/90cac4ddcd384b32ac8f1b8fd91f6562?v2=true',
 
   crm: 'Housecall Pro',
 
-  /** planning/docs/06 §2 — GeoCoordinates for the LocalBusiness entity. */
+  /** planning/docs/06 §2. GeoCoordinates for the LocalBusiness entity. */
   geo: { latitude: 39.5078411, longitude: -104.7595946 },
 } as const;
 

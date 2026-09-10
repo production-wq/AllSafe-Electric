@@ -3,13 +3,13 @@
  *
  * TIER GATE: these 5 Tier-1 pages are built here but planning/docs/09 §3 gates their
  * *publication* on Tier 0 reaching ≥80% indexed and ≥14 days since launch. Until then
- * they are excluded from the sitemap and marked noindex — see lib/publish.ts and
+ * they are excluded from the sitemap and marked noindex, see lib/publish.ts and
  * app/sitemap.ts. Flip `PUBLISH_TIER_1` when the gate clears.
  *
  * Content is built from planning/data/service-areas.csv (housing_notes, drive_time,
  * county, electric_utility_verify). Utility assignments carry a "verify" flag because
  * CORE vs Xcel territory does not follow city limits (planning/docs/08 §5, open item #13).
- * Reviews-from-this-city are NOT included — no verified review text is available
+ * Reviews-from-this-city are NOT included, no verified review text is available
  * (BUILD-NOTES.md). Each page still clears the 4-of-7 anti-thin-content bar on the
  * strength of permits, housing stock, utility, neighborhoods, drive time, and a local FAQ.
  */
@@ -44,13 +44,13 @@ export const cities: City[] = [
     utility: {
       name: 'CORE Electric Cooperative',
       verify: true,
-      note: 'Most of Parker is served by CORE Electric Cooperative (formerly IREA), not Xcel. This matters for rebates — most "Colorado electrical rebate" articles assume Xcel and are wrong for Parker. Confirm your address on CORE\'s service map.',
+      note: 'Most of Parker is served by CORE Electric Cooperative (formerly IREA), not Xcel. This matters for rebates. Most "Colorado electrical rebate" articles assume Xcel and are wrong for Parker. Confirm your address on CORE\'s service map.',
     },
     permitAuthority: 'Town of Parker Building Division',
     permitProcess:
       'Homes inside Parker town limits permit through the Town of Parker Building Division. Panel and service upgrades, new circuits, EV chargers, hot tubs and generators all require a permit and a rough and/or final inspection. We file the application, coordinate the CORE disconnect and reconnect for service work, and meet the inspector. Verify current fees on parkerco.gov before scheduling.',
     housingStock:
-      'Parker grew fast between 1995 and 2015, so a large share of homes are 1990s–2000s builds now running 100A–150A service that was never meant to carry two EVs, a hot tub and central AC at once. The older Pinery and Ponderosa areas have 1970s–80s homes with aging panels — some Federal Pacific and Zinsco — and the occasional aluminium branch circuit.',
+      'Parker grew fast between 1995 and 2015, so a large share of homes are 1990s–2000s builds now running 100A–150A service that was never meant to carry two EVs, a hot tub and central AC at once. The older Pinery and Ponderosa areas have 1970s–80s homes with aging panels. Some Federal Pacific and Zinsco, and the occasional aluminium branch circuit.',
     neighborhoods: [
       'Stonegate',
       'Stroh Ranch',
@@ -68,7 +68,7 @@ export const cities: City[] = [
       'outlet-repair',
     ],
     lead:
-      'Allsafe Electric is based in Parker. Jud has run the business here since 2018 and lives the same commute you do. For most of the town — Stonegate, Stroh Ranch, Canterberry Crossing, The Pinery — he can often be on site within two hours during business hours, and a real person answers the phone when you call.',
+      'Allsafe Electric is based in Parker. Jud has run the business here since 2018 and lives the same commute you do. For most of the town. Stonegate, Stroh Ranch, Canterberry Crossing, The Pinery. He can often be on site within two hours during business hours, and a real person answers the phone when you call.',
     faqs: [
       {
         q: 'Who issues electrical permits in Parker?',
@@ -84,7 +84,7 @@ export const cities: City[] = [
       },
       {
         q: 'Do you cover the Pinery and Pradera?',
-        a: 'Yes — both are a short drive from the shop. The Pinery\'s older homes see more panel and generator work; Pradera\'s custom homes and HOA design review come up on outdoor lighting and generator placement.',
+        a: 'Yes. Both are a short drive from the shop. The Pinery\'s older homes see more panel and generator work; Pradera\'s custom homes and HOA design review come up on outdoor lighting and generator placement.',
       },
     ],
     heroImageBrief:
@@ -136,7 +136,7 @@ export const cities: City[] = [
       },
       {
         q: 'How quickly can you get to The Meadows or Crystal Valley for an emergency?',
-        a: 'During business hours, usually within an hour or so once we confirm the call — the drive from Parker is straightforward. Evenings route through the after-hours line.',
+        a: 'During business hours, usually within an hour or so once we confirm the call, the drive from Parker is straightforward. Evenings route through the after-hours line.',
       },
       {
         q: 'Are generators common in Castle Rock?',
@@ -180,11 +180,11 @@ export const cities: City[] = [
       'electrical-inspection',
     ],
     lead:
-      'Highlands Ranch is a straight 20-minute run from the Parker shop. The housing stock is consistent — mostly 1990s master-planned — so Jud knows what he is walking into: original panels reaching the end of their service life, and homeowners adding EV chargers to a service that can usually take one with a proper load calculation.',
+      'Highlands Ranch is a straight 20-minute run from the Parker shop. The housing stock is consistent, mostly 1990s master-planned, so Jud knows what he is walking into: original panels reaching the end of their service life, and homeowners adding EV chargers to a service that can usually take one with a proper load calculation.',
     faqs: [
       {
         q: 'Which building department covers Highlands Ranch?',
-        a: 'Douglas County — Highlands Ranch is unincorporated. Permits and inspections for panel work, EV chargers and generators all go through the county Building Division, which we handle for you.',
+        a: 'Douglas County, Highlands Ranch is unincorporated. Permits and inspections for panel work, EV chargers and generators all go through the county Building Division, which we handle for you.',
       },
       {
         q: 'Is Highlands Ranch on Xcel or CORE?',
@@ -192,7 +192,7 @@ export const cities: City[] = [
       },
       {
         q: 'My Highlands Ranch home still has its original 1990s panel. Does it need replacing?',
-        a: 'Not automatically — but at 30-plus years it is worth an inspection. We check the brand, the breaker condition, the bus, and the grounding, and tell you whether it is fine, worth monitoring, or due.',
+        a: 'Not automatically, but at 30-plus years it is worth an inspection. We check the brand, the breaker condition, the bus, and the grounding, and tell you whether it is fine, worth monitoring, or due.',
       },
       {
         q: 'Can my Highlands Ranch home take an EV charger without a panel upgrade?',
@@ -209,7 +209,7 @@ export const cities: City[] = [
     tier: 1,
     driveTimeMin: 15,
     responseExpectation:
-      'About 15 minutes from Parker — one of the closer service areas. Same-day for urgent calls.',
+      'About 15 minutes from Parker, one of the closer service areas. Same-day for urgent calls.',
     utility: {
       name: 'Xcel Energy',
       verify: true,
@@ -219,7 +219,7 @@ export const cities: City[] = [
     permitProcess:
       'Lone Tree is an incorporated city with its own permitting, separate from Douglas County. Panel upgrades, EV chargers, generators, hot tubs and new circuits are permitted and inspected by the City. Several Lone Tree communities also have active HOAs with design review for exterior equipment. We file with the City and coordinate the utility and inspection.',
     housingStock:
-      'Lone Tree skews newer, larger, and more affluent, with high EV adoption and strong demand for smart-home wiring, standby generators, and landscape lighting. Most homes have 200A service, so the work is less about capacity and more about adding well-planned circuits — a second EV charger, a shop subpanel, a whole-house generator — to homes that can support them.',
+      'Lone Tree skews newer, larger, and more affluent, with high EV adoption and strong demand for smart-home wiring, standby generators, and landscape lighting. Most homes have 200A service, so the work is less about capacity and more about adding well-planned circuits, a second EV charger, a shop subpanel, a whole-house generator, to homes that can support them.',
     neighborhoods: [
       'Heritage Hills',
       'Carriage Club',
@@ -235,7 +235,7 @@ export const cities: City[] = [
       'electrical-inspection',
     ],
     lead:
-      'Lone Tree is only about 15 minutes from the Parker shop, so it is one of the areas Jud reaches quickest. The work here tends toward the higher end — dual EV chargers, whole-house generators, smart-home wiring, and landscape lighting on larger lots — on homes that usually have the 200A service to support it.',
+      'Lone Tree is only about 15 minutes from the Parker shop, so it is one of the areas Jud reaches quickest. The work here tends toward the higher end. Dual EV chargers, whole-house generators, smart-home wiring, and landscape lighting on larger lots, on homes that usually have the 200A service to support it.',
     faqs: [
       {
         q: 'Does Lone Tree handle its own permits?',
@@ -247,11 +247,11 @@ export const cities: City[] = [
       },
       {
         q: 'Do Lone Tree HOAs restrict generators?',
-        a: 'Several do — placement, screening, and sound are the usual concerns, especially in Heritage Hills and Carriage Club. We site the unit to meet both the City code and the HOA guidelines; our HOA guide covers the association process.',
+        a: 'Several do. Placement, screening, and sound are the usual concerns, especially in Heritage Hills and Carriage Club. We site the unit to meet both the City code and the HOA guidelines; our HOA guide covers the association process.',
       },
       {
         q: 'Can you do whole-home surge protection and smart-home wiring in the same visit?',
-        a: 'Yes. Bundling the panel-side work — an SPD, a generator interlock, smart-switch neutrals — into one visit is efficient and common on Lone Tree jobs.',
+        a: 'Yes. Bundling the panel-side work, an SPD, a generator interlock, smart-switch neutrals. Into one visit is efficient and common on Lone Tree jobs.',
       },
     ],
     heroImageBrief:
@@ -268,13 +268,13 @@ export const cities: City[] = [
     utility: {
       name: 'Xcel Energy',
       verify: true,
-      note: 'Most of Centennial is Xcel Energy, though the far south edge can be CORE. Centennial is in Arapahoe County, not Douglas — the permitting is different. Verify both for your address.',
+      note: 'Most of Centennial is Xcel Energy, though the far south edge can be CORE. Centennial is in Arapahoe County, not Douglas, the permitting is different. Verify both for your address.',
     },
     permitAuthority: 'City of Centennial (permits administered through a third-party provider)',
     permitProcess:
       'Centennial is an incorporated city in Arapahoe County and contracts out building-permit administration. Panel upgrades, EV chargers, generators and new circuits are permitted and inspected. The process and fee schedule differ from Douglas County, so we confirm the current requirements with the City\'s permit provider before scheduling.',
     housingStock:
-      'Centennial covers a broad range, roughly 1960s to 2000s. The older stock — parts of the area built in the 1960s and 70s — is where aluminium branch wiring and Federal Pacific panels show up, and where inspection, panel and outlet work is heaviest. The newer subdivisions off Smoky Hill and in the southeast are more straightforward.',
+      'Centennial covers a broad range, roughly 1960s to 2000s. The older stock, meaning the parts of the area built in the 1960s and 70s, is where aluminium branch wiring and Federal Pacific panels show up, and where inspection, panel and outlet work is heaviest. The newer subdivisions off Smoky Hill and in the southeast are more straightforward.',
     neighborhoods: [
       'Willow Creek',
       'Homestead',
@@ -291,15 +291,15 @@ export const cities: City[] = [
       'emergency-electrician',
     ],
     lead:
-      'Centennial is about 22 minutes from Parker and sits in Arapahoe County, so the permitting is different from our Douglas County work — we handle that. The 1960s–70s neighbourhoods here keep Jud busy with panel replacements, aluminium-wiring corrections, and outlet work in homes getting updated for the first time in decades.',
+      'Centennial is about 22 minutes from Parker and sits in Arapahoe County, so the permitting is different from our Douglas County work, we handle that. The 1960s–70s neighbourhoods here keep Jud busy with panel replacements, aluminium-wiring corrections, and outlet work in homes getting updated for the first time in decades.',
     faqs: [
       {
-        q: 'Centennial is in a different county — does that change anything?',
+        q: 'Centennial is in a different county, does that change anything?',
         a: 'Only the paperwork. Centennial is an incorporated city in Arapahoe County with its own permit process, separate from Douglas County. The work and the standards are the same; we file with the right authority.',
       },
       {
         q: 'My 1970s Centennial home has aluminium wiring. What do I do?',
-        a: 'It is a known, correctable condition — not a teardown. The fix is proper pigtailing with rated connectors at every device, or selective replacement. We assess the extent and give you a scoped price.',
+        a: 'It is a known, correctable condition, not a teardown. The fix is proper pigtailing with rated connectors at every device, or selective replacement. We assess the extent and give you a scoped price.',
       },
       {
         q: 'Do Centennial homes from the 60s and 70s have Federal Pacific panels?',
@@ -315,7 +315,7 @@ export const cities: City[] = [
   },
 ];
 
-/** Tier-2 service areas — listed in the footer and service-area hub, not yet built as pages. */
+/** Tier-2 service areas. Listed in the footer and service-area hub, not yet built as pages. */
 export const tier2Areas = [
   'Castle Pines',
   'Aurora (south)',
@@ -326,7 +326,7 @@ export const tier2Areas = [
   'Sedalia',
 ];
 
-/** Tier-3 Parker neighborhoods — only these five, per planning/docs/03 §4. Not yet built. */
+/** Tier-3 Parker neighborhoods, only these five, per planning/docs/03 §4. Not yet built. */
 export const tier3Neighborhoods = [
   'Stonegate',
   'Stroh Ranch',

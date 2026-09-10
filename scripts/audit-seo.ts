@@ -1,5 +1,5 @@
 /**
- * SEO audit — planning/docs/05 §8, planning/CLAUDE.md §6.
+ * SEO audit, planning/docs/05 §8, planning/CLAUDE.md §6.
  *
  *   npm run audit:seo        (expects a prior `next build`)
  *
@@ -24,9 +24,9 @@ const HTML_DIR = join(ROOT, '.next', 'server', 'app');
 const REAL_TEL = '+13036481934';
 
 /**
- * Orange detection — CLAUDE.md §1.6, docs/14 "Brand". The previous agency used
+ * Orange detection, CLAUDE.md §1.6, docs/14 "Brand". The previous agency used
  * orange throughout; the owner named it twice. We parse every colour token and
- * flag any whose hue sits in the orange band with real saturation/lightness —
+ * flag any whose hue sits in the orange band with real saturation/lightness, 
  * this does NOT flag white, the brand blue, the brand green, or --urgent red.
  */
 function toHsl(r: number, g: number, b: number): [number, number, number] {
@@ -112,7 +112,7 @@ async function auditFile(file: string) {
   const root = parse(html, { comment: false });
   const isNoindex = /<meta[^>]+name=["']robots["'][^>]+noindex/i.test(html);
 
-  // Orange — parse actual colour tokens, not a blunt regex
+  // Orange. Parse actual colour tokens, not a blunt regex
   const orange = findOrange(html);
   if (orange) err(page, `orange colour found: ${orange}`);
 
@@ -179,7 +179,7 @@ async function auditFile(file: string) {
       err(page, `<img> with no alt attribute (src=${img.getAttribute('src')?.slice(0, 50)})`);
       continue;
     }
-    if (alt === '') continue; // decorative — allowed
+    if (alt === '') continue; // decorative. Allowed
     const words = alt.split(/\s+/);
     const cityCount = (alt.match(/\b(parker|castle rock|highlands ranch|lone tree|centennial)\b/gi) || [])
       .length;
@@ -195,9 +195,22 @@ async function auditFile(file: string) {
     if (num !== REAL_TEL) err(page, `tel: link is not the real number: ${href}`);
   }
 
+  /**
+   * House style: NO em dashes in customer-facing copy. A page peppered with them
+   * reads as machine-written, which is the opposite of the trust this site has to
+   * build. En dashes in ranges (Mon–Fri, $2,200–$4,500, 1960–1983) are correct
+   * typography and are deliberately allowed.
+   */
+  const visibleText = (root.querySelector('main')?.text ?? '') + (root.querySelector('footer')?.text ?? '');
+  const emDashes = (visibleText.match(/—/g) ?? []).length;
+  if (emDashes > 0) {
+    const sample = visibleText.match(/.{0,45}—.{0,45}/)?.[0]?.replace(/\s+/g, ' ') ?? '';
+    err(page, `${emDashes} em dash(es) in visible copy. Rewrite the sentence: "…${sample.trim()}…"`);
+  }
+
   // Empty hrefs
   if (root.querySelectorAll('a[href=""]').length)
-    err(page, 'empty href="" link (do not port these — docs/10 §3)');
+    err(page, 'empty href="" link (do not port these. Docs/10 §3)');
 
   // Thin content
   const main = root.querySelector('main');

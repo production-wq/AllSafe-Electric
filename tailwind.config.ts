@@ -1,17 +1,19 @@
 import type { Config } from 'tailwindcss';
 
 /**
- * Design tokens — planning/docs/02 §2–§4, with the PROVISIONAL brand hexes
- * replaced by values eyedropped from planning/assets/brand/allsafe-electric-logo.png.
- * See planning/docs/99 "2026-09-10 — Brand hexes".
+ * Design tokens. Brand hexes eyedropped from
+ * planning/assets/brand/allsafe-electric-logo.png (planning/docs/99, 2026-09-10):
+ *   logo blue  #0165AC   ·   logo green  #008E6C
  *
- *   logo blue  (house mark + wordmark)  ≈ #0165AC
- *   logo green (pine + tagline)         ≈ #008E6C
+ * v2 (2026-09-10) widens the palette on client direction: full blue and green
+ * ramps, a teal secondary, a warm sand neutral for section alternation, and a
+ * gold used only for star ratings. Every hue sits OUTSIDE the 16 to 34 degree
+ * orange band that scripts/audit-seo.ts fails the build on, so the "no orange"
+ * prime directive still holds.
  *
- * `brand-green` (the action color) is darkened to #007A5C so white text on it
- * clears WCAG AA (4.5:1) — the true logo green #008E6C is 4.1:1 and is used only
- * for non-text accents (the availability dot, rules). No orange anywhere — the
- * audit script fails the build if a retired-orange hex appears (scripts/audit-seo.ts).
+ * `green.600` (#007A5C) is the action colour: white text on it clears WCAG AA
+ * at 5.3:1. The literal logo green #008E6C is 4.1:1 and is used only for
+ * non-text accents such as the availability dot and hairlines.
  */
 const config: Config = {
   content: [
@@ -24,22 +26,58 @@ const config: Config = {
     container: {
       center: true,
       padding: { DEFAULT: '1.25rem', lg: '2rem' },
-      screens: { '2xl': '1200px' },
+      screens: { '2xl': '1240px' },
     },
     extend: {
       colors: {
-        ink: '#12283D',
-        paper: '#F3F6F8',
-        rule: '#D8E2E8',
+        ink: {
+          DEFAULT: '#10243A',
+          soft: '#33506B',
+        },
         muted: '#5B7186',
-        urgent: '#A3302A',
+        rule: '#DEE7ED',
+        paper: '#F4F7F9',
+        sand: '#FAF6F0',
+        urgent: {
+          DEFAULT: '#B3352F',
+          soft: '#FBEFEE',
+        },
         brand: {
-          blue: '#0165AC',
-          'blue-deep': '#024D80',
-          'blue-darker': '#013A62',
-          green: '#007A5C',
-          'green-strong': '#00654B',
-          'green-bright': '#008E6C',
+          50: '#EEF6FC',
+          100: '#DCEBF7',
+          200: '#B9D6EE',
+          300: '#7FB6DF',
+          400: '#3E90CB',
+          500: '#0F76BC',
+          600: '#0165AC', // logo blue
+          700: '#024D80',
+          800: '#013A62',
+          900: '#0A2E4D',
+        },
+        leaf: {
+          50: '#EEF9F4',
+          100: '#D6F0E6',
+          200: '#A8E0CB',
+          300: '#6DCBAB',
+          400: '#2FAE87',
+          500: '#008E6C', // logo green
+          600: '#007A5C', // action green, AA on white
+          700: '#00654B',
+          800: '#00543E',
+          900: '#02402F',
+        },
+        teal: {
+          50: '#E8F6F7',
+          100: '#CCEAED',
+          500: '#12909C',
+          600: '#0E7C86',
+          700: '#0B646C',
+        },
+        gold: {
+          50: '#FDF7E9',
+          100: '#F8EBC8',
+          500: '#E8A317', // star fill only, hue 40deg, outside the orange band
+          600: '#C4870F',
         },
       },
       fontFamily: {
@@ -47,31 +85,40 @@ const config: Config = {
         serif: ['var(--font-newsreader)', 'ui-serif', 'Georgia', 'serif'],
       },
       fontSize: {
-        // planning/docs/02 §3 — major third, 18px base
-        'step--1': ['0.875rem', { lineHeight: '1.5' }],
-        'step-0': ['1.125rem', { lineHeight: '1.65' }],
-        'step-1': ['1.375rem', { lineHeight: '1.5' }],
-        'step-2': ['1.75rem', { lineHeight: '1.35' }],
-        'step-3': ['2.25rem', { lineHeight: '1.25' }],
-        'step-4': ['3rem', { lineHeight: '1.15' }],
-        'step-5': ['3.75rem', { lineHeight: '1.05' }],
+        'display-lg': ['clamp(2.75rem, 5.5vw, 4.25rem)', { lineHeight: '1.03', letterSpacing: '-0.026em' }],
+        display: ['clamp(2.25rem, 4.4vw, 3.5rem)', { lineHeight: '1.06', letterSpacing: '-0.022em' }],
+        h1: ['clamp(2rem, 3.6vw, 3rem)', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+        h2: ['clamp(1.625rem, 2.6vw, 2.375rem)', { lineHeight: '1.18', letterSpacing: '-0.016em' }],
+        h3: ['clamp(1.25rem, 1.5vw, 1.5rem)', { lineHeight: '1.32', letterSpacing: '-0.008em' }],
+        lead: ['clamp(1.125rem, 1.4vw, 1.3125rem)', { lineHeight: '1.6' }],
+        body: ['1.0625rem', { lineHeight: '1.68' }],
+        'body-lg': ['1.125rem', { lineHeight: '1.7' }],
+        small: ['0.9375rem', { lineHeight: '1.55' }],
+        tiny: ['0.8125rem', { lineHeight: '1.45' }],
       },
       maxWidth: {
-        measure: '68ch', // Figtree body
-        'measure-serif': '74ch', // Newsreader review text
-        content: '1200px',
+        measure: '66ch',
+        'measure-serif': '72ch',
+        content: '1240px',
       },
-      spacing: {
-        section: '6rem', // 96px desktop rhythm
-        'section-sm': '3.5rem', // 56px mobile
+      borderRadius: {
+        card: '14px',
+        btn: '10px',
+        chip: '999px',
       },
-      borderRadius: { card: '6px' },
       boxShadow: {
-        // Two levels only — planning/docs/02 §2
-        lift: '0 12px 32px -8px rgba(18, 40, 61, 0.22), 0 4px 12px -4px rgba(18, 40, 61, 0.12)',
-        rest: '0 1px 2px rgba(18, 40, 61, 0.06)',
+        card: '0 1px 2px rgba(16, 36, 58, 0.04), 0 6px 20px -12px rgba(16, 36, 58, 0.14)',
+        lift: '0 2px 6px rgba(16, 36, 58, 0.06), 0 22px 48px -20px rgba(1, 101, 172, 0.28)',
+        float: '0 30px 70px -28px rgba(1, 62, 104, 0.42)',
+        ring: '0 0 0 1px rgba(1, 101, 172, 0.14)',
       },
-      transitionDuration: { 180: '180ms' },
+      backgroundImage: {
+        'grid-faint':
+          'linear-gradient(rgba(1,101,172,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(1,101,172,0.06) 1px, transparent 1px)',
+      },
+      transitionTimingFunction: {
+        smooth: 'cubic-bezier(0.16, 1, 0.3, 1)',
+      },
     },
   },
   plugins: [],

@@ -209,3 +209,51 @@ dynamic rendering and breaks full SSG on affected routes.
 once the third-party set is final. Documented in `BUILD-NOTES.md`.
 **Affects:** docs/14 "Legal and privacy", `next.config.mjs`
 **Decided by:** Build team
+
+## 2026-09-10 — House style: no em dashes, enforced in CI
+**Decision:** Em dashes are banned from all customer-facing copy. All 273 occurrences were
+rewritten as periods, commas or restructured sentences. `scripts/audit-seo.ts` now fails the
+build if a single `—` appears in the visible text of any rendered page.
+**Why:** Client feedback: a page dense with em dashes reads as machine-written, which is the
+opposite of the trust this site exists to build for an audience that is already sceptical.
+**Note:** EN dashes in ranges are correct typography and are deliberately still allowed:
+`Mon–Fri`, `$2,200–$4,500`, `1960–1983`.
+**Affects:** every content file, `scripts/audit-seo.ts`
+**Decided by:** Client
+
+## 2026-09-10 — Design v2: wider palette, larger type, more copy, more varied photography
+**Decision:** Reworked the visual system on client direction. It stays inside the brand
+(blue and green, still zero orange) but is materially warmer and more modern:
+- **Palette widened** from two colours to full blue and green ramps (50 to 900) plus a teal
+  secondary, a warm `sand` neutral for section alternation, and a gold used only for star
+  ratings. Every added hue sits OUTSIDE the 16 to 34 degree orange band the audit fails on.
+- **Type scale rebuilt** on fluid `clamp()` sizes with a new `display` tier for heroes and
+  tighter tracking on large sizes.
+- **Surfaces modernised**: card radius 6px to 14px, layered and brand-tinted shadows, subtle
+  grid and blur-glow backgrounds, coloured chips, icon tiles, and a restrained hover state on
+  cards.
+- **More copy** throughout: services gained `blurb`, `highlights` and `included` fields; the
+  homepage gained a stat band, a "Meet Jud" section and a work gallery; the FAQ went from 7
+  to 10 questions; service pages gained a "what the price covers" block and a second photo.
+- **Photography spread out.** Roughly half the service heroes are now detail or product shots
+  (a lit chandelier, a ceiling fan, an open panel, a USB outlet) rather than another photo of
+  Jud, and the four homepage proof cards use four visually distinct images. Previously two
+  near-identical tablet shots sat side by side.
+**Divergence from docs/02, logged deliberately:** §6.4 asks for no radius beyond 6px and §7
+for no hover state on cards; §2 discourages decorative gradients. The client asked for a more
+modern feel and these are the levers that deliver it. The load-bearing rules are untouched:
+no orange, green stays the action colour, blue stays structural, `--urgent` is still emergency
+only, one bold element per page, and `prefers-reduced-motion` is respected.
+**Affects:** `tailwind.config.ts`, `app/globals.css`, every component and page
+**Decided by:** Client
+
+## 2026-09-10 — Dark-surface link colour bug, fixed at the root
+**Decision:** Added a `.surface-dark` class. Any dark ground (footer, CTA band, availability
+strip, sticky bar) sets `color: #fff` and makes descendant anchors inherit it.
+**Why:** The base `a { color: brand-700 }` rule was winning on anchors that carried no explicit
+text colour, so the mobile sticky bar rendered a blue icon and blue "Book" label on the green
+segment. Effectively invisible. Per docs/02 §6.5 and §2 that bar is a blue ground with a green
+Book segment and white text on both.
+**Affects:** `app/globals.css`, `components/StickyBar.tsx`, `Footer.tsx`, `sections.tsx`,
+`AvailabilityStrip.tsx`
+**Decided by:** Client report, build team fix

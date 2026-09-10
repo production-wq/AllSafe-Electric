@@ -1,4 +1,4 @@
-/** Inline SVG icons only — no icon font (planning/docs/05 §5). 24×24, currentColor. */
+/** Inline SVG icons only, no icon font (planning/docs/05 §5). 24×24, currentColor. */
 import type { SVGProps } from 'react';
 
 const base = (p: SVGProps<SVGSVGElement>) => ({
@@ -10,8 +10,7 @@ const base = (p: SVGProps<SVGSVGElement>) => ({
   strokeWidth: 2,
   strokeLinecap: 'round' as const,
   strokeLinejoin: 'round' as const,
-  'aria-hidden': true,
-  ...p,
+  'aria-hidden': true, ...p,
 });
 
 export const PhoneIcon = (p: SVGProps<SVGSVGElement>) => (

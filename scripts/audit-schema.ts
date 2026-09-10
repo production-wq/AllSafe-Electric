@@ -1,5 +1,5 @@
 /**
- * Schema audit — planning/docs/06 §6.
+ * Schema audit, planning/docs/06 §6.
  *
  *   npm run audit:schema     (expects a prior `next build`)
  *
@@ -104,11 +104,11 @@ async function auditFile(file: string) {
 
   // Anti-patterns (planning/docs/06 §7)
   if (types.has('AggregateRating') || types.has('aggregateRating'))
-    err(page, 'AggregateRating present — forbidden (docs/06 §3)');
+    err(page, 'AggregateRating present. Forbidden (docs/06 §3)');
   if ([...types].filter((t) => t === 'Electrician' || t === 'LocalBusiness').length > 1)
     err(page, 'more than one Electrician/LocalBusiness entity');
   // Review node only allowed if it is first-party (we emit none)
-  if (types.has('Review')) err(page, 'Review node present — none should be emitted (docs/06 §3)');
+  if (types.has('Review')) err(page, 'Review node present. None should be emitted (docs/06 §3)');
 
   // telephone must be the real number wherever it appears
   const telMatches = JSON.stringify(graphs).match(/"telephone":\s*"([^"]+)"/g) ?? [];

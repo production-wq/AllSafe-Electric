@@ -1,32 +1,51 @@
 import type { Faq } from '@/lib/services';
 
 /**
- * FAQ — native <details> so the answers are in the initial HTML (indexable,
- * planning/docs/05 §4) and keyboard-operable with no JS. Visible text must match
- * the FAQPage JSON-LD exactly (planning/docs/06 §7).
+ * FAQ built on native <details> so the answers sit in the initial HTML
+ * (indexable, planning/docs/05 §4) and work with the keyboard and no JS.
+ * Visible text must match the FAQPage JSON-LD exactly (planning/docs/06 §7).
  */
-export function FaqList({ faqs, heading = 'Common questions', id = 'faq' }: { faqs: Faq[]; heading?: string; id?: string }) {
+export function FaqList({
+  faqs,
+  heading = 'Common questions',
+  id = 'faq',
+}: {
+  faqs: Faq[];
+  heading?: string;
+  id?: string;
+}) {
   return (
     <section aria-labelledby={`${id}-heading`}>
-      <h2 id={`${id}-heading`} className="text-step-3">
+      <h2 id={`${id}-heading`} className="text-h2">
         {heading}
       </h2>
-      <div className="mt-6 divide-y divide-rule border-y border-rule">
+      <div className="mt-7 space-y-3">
         {faqs.map((f, i) => (
-          <details key={i} className="group py-4">
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-step-1 font-semibold [&::-webkit-details-marker]:hidden">
+          <details
+            key={i}
+            className="group overflow-hidden rounded-card border border-rule bg-white transition-colors duration-200 open:border-brand-200 hover:border-brand-200"
+          >
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-5 px-5 py-4 text-body-lg font-semibold [&::-webkit-details-marker]:hidden">
               {f.q}
               <span
                 aria-hidden
-                className="shrink-0 text-brand-blue transition-transform group-open:rotate-45"
+                className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-600 transition-all duration-200 group-open:rotate-45 group-open:bg-brand-600 group-open:text-white"
               >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                  strokeLinecap="round"
+                >
                   <path d="M12 5v14M5 12h14" />
                 </svg>
               </span>
             </summary>
-            <div className="prose-body mt-3 text-[1.05rem] text-muted">
-              <p>{f.a}</p>
+            <div className="border-t border-rule/70 bg-brand-50/30 px-5 pb-5 pt-4">
+              <p className="prose-body text-body text-ink-soft">{f.a}</p>
             </div>
           </details>
         ))}

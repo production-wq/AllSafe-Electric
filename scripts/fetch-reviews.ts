@@ -1,5 +1,5 @@
 /**
- * Build-time Google reviews snapshot — planning/docs/07 §5.
+ * Build-time Google reviews snapshot, planning/docs/07 §5.
  *
  *   npm run fetch:reviews
  *
@@ -9,7 +9,7 @@
  * .env.local (GOOGLE_PLACES_API_KEY) and never leaves this process.
  *
  * NO review text is ever hand-written into that file. If this script has no key,
- * the reviews section renders a "read on Google" state — which is honest and fine.
+ * the reviews section renders a "read on Google" state, which is honest and fine.
  */
 import 'dotenv/config';
 import { writeFile } from 'node:fs/promises';
@@ -24,7 +24,7 @@ async function main() {
     console.error(
       'GOOGLE_PLACES_API_KEY and GOOGLE_PLACE_ID must be set in .env.local.\n' +
         'Request the Place ID from the account manager (planning/docs/99 #6).\n' +
-        'Skipping — the site will show the "read on Google" state until this runs.'
+        'Skipping, the site will show the "read on Google" state until this runs.'
     );
     process.exit(1);
   }
@@ -81,7 +81,7 @@ async function main() {
     ) + '\n'
   );
   console.log(`✓ wrote ${reviews.length} reviews → data/reviews.fallback.json`);
-  console.log('  (Reminder: do NOT emit aggregateRating / Review schema from this — docs/06 §3.)');
+  console.log('  (Reminder: do NOT emit aggregateRating / Review schema from this, docs/06 §3.)');
 }
 
 main().catch((e) => {

@@ -1,5 +1,5 @@
 /**
- * Image processing — planning/docs/11 §4.
+ * Image processing, planning/docs/11 §4.
  *
  *   npm run images:process
  *
@@ -71,7 +71,7 @@ async function processOne(file: string, generated: boolean): Promise<[string, En
       : undefined;
 
   const base = sharp(file, { failOn: 'none' }).rotate();
-  if (resize) base.resize({ ...resize, withoutEnlargement: true });
+  if (resize) base.resize({...resize, withoutEnlargement: true });
 
   const jpgBuf = await base.clone().jpeg({ quality: 78, mozjpeg: true, progressive: true }).toBuffer();
   const webpBuf = await base.clone().webp({ quality: 80 }).toBuffer();
@@ -86,8 +86,7 @@ async function processOne(file: string, generated: boolean): Promise<[string, En
     height: out.height ?? 0,
     aspectRatio: +((out.width ?? 1) / (out.height ?? 1)).toFixed(4),
     lqip: await lqip(jpgBuf),
-    bytes: jpgBuf.byteLength,
-    ...(generated ? { generated: true } : {}),
+    bytes: jpgBuf.byteLength, ...(generated ? { generated: true } : {}),
   };
   return [slug, entry];
 }
@@ -121,7 +120,7 @@ async function main() {
   await writeFile(MANIFEST, JSON.stringify(sorted, null, 2) + '\n');
   console.log(`\n${count} images processed → public/img/photos/`);
   console.log(`manifest → data/image-manifest.json`);
-  if (oversize) console.warn(`⚠ ${oversize} master JPEGs over 250KB — acceptable for masters; next/image serves smaller derivatives.`);
+  if (oversize) console.warn(`⚠ ${oversize} master JPEGs over 250KB. Acceptable for masters; next/image serves smaller derivatives.`);
 }
 
 main().catch((e) => {

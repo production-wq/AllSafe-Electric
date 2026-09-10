@@ -3,7 +3,7 @@ import { services } from '@/lib/services';
 import { cities } from '@/lib/cities';
 
 /**
- * /llms.txt — planning/docs/09 §10. A plain-text index for answer engines:
+ * /llms.txt, planning/docs/09 §10. A plain-text index for answer engines:
  * key pages with one-line descriptions, the NAP block, and the service list.
  */
 export const dynamic = 'force-static';
@@ -30,7 +30,7 @@ export function GET() {
   lines.push(`Google Business Profile: ${business.google.profileUrl}`);
   lines.push('');
   lines.push('## Key pages');
-  lines.push(`- ${abs('/')}: Home — Parker residential electrician who answers the phone`);
+  lines.push(`- ${abs('/')}: Home. Parker residential electrician who answers the phone`);
   lines.push(`- ${abs('/electrical-services-parker-co/')}: All residential electrical services`);
   lines.push(`- ${abs('/about/')}: About Jud and Justin, licences and credentials`);
   lines.push(`- ${abs('/reviews/')}: Google reviews`);

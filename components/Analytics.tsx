@@ -3,7 +3,7 @@
 import Script from 'next/script';
 
 /**
- * GA4 + CallRail — planning/docs/13. Third-party scripts load afterInteractive so
+ * GA4 + CallRail, planning/docs/13. Third-party scripts load afterInteractive so
  * nothing blocks render (planning/docs/05 §5). Consent Mode v2 defaults to denied
  * and is granted after a consent choice (wire the banner to `window.__grantConsent`).
  * Renders nothing until the public IDs are set, so local/staging stays clean.

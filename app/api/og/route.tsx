@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og';
 import { business } from '@/lib/business';
 
 /**
- * Per-page Open Graph image — planning/docs/11 §5. 1200×630, brand-blue ground,
+ * Per-page Open Graph image, planning/docs/11 §5. 1200×630, brand-600 ground,
  * the page title, and the phone number. Generated at the edge, cached hard.
  */
 // Rendered on demand per title, then cached hard at the edge.

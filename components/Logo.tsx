@@ -23,11 +23,11 @@ export function Logo({
       viewBox="0 0 340 74"
       className={className}
       role="img"
-      aria-label="Allsafe Electric — Safety Security Satisfaction"
+      aria-label="Allsafe Electric. Safety Security Satisfaction"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      {/* sparkles — 4-point */}
+      {/* sparkles, 4-point */}
       <path d="M10 13 q1 -6 2 0 q6 1 0 2 q-1 6 -2 0 q-6 -1 0 -2z" fill={green} />
       <path d="M40 58 q0.8 -4.5 1.6 0 q4.5 0.8 0 1.6 q-0.8 4.5 -1.6 0 q-4.5 -0.8 0 -1.6z" fill={blue} />
       {/* pine, peeking behind the house on the right */}

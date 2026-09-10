@@ -4,9 +4,9 @@ import { join } from 'node:path';
 import { marked } from 'marked';
 
 /**
- * Blog — planning/docs/09 §8. Posts are Markdown files in content/blog/ with a
+ * Blog, planning/docs/09 §8. Posts are Markdown files in content/blog/ with a
  * simple `--- key: value ---` front-matter block. Attributed to Judson Cushing,
- * Master Electrician (ME.0601023) — never "Admin" (planning/docs/10 §6).
+ * Master Electrician (ME.0601023), never "Admin" (planning/docs/10 §6).
  * Rendered server-side; `marked` is a build-time dependency only.
  */
 

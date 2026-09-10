@@ -12,7 +12,7 @@ export const metadata: Metadata = pageMetadata({
   path: '/book/',
   title: 'Book an Electrician in Parker, CO | Allsafe Electric',
   description:
-    'Book Allsafe Electric online through Housecall Pro — the scheduler is live any time. Or call (303) 648-1934 during business hours and talk to Jud directly.',
+    'Book Allsafe Electric online through Housecall Pro, the scheduler is live any time. Or call (303) 648-1934 during business hours and talk to Jud directly.',
   ogEyebrow: 'Book · Parker, CO',
 });
 
@@ -25,7 +25,7 @@ const whatToExpect = [
   'Pick a service and a window that works for you',
   'We confirm a two-hour arrival slot',
   'Jud arrives, looks at the job, and gives you a fixed price',
-  'You decide — no pressure, no upsell',
+  'You decide, no pressure, no upsell',
 ];
 
 export default function BookPage() {
@@ -35,7 +35,7 @@ export default function BookPage() {
         nodes={[
           webPageNode({
             path: '/book/',
-            name: 'Book an electrician — Allsafe Electric',
+            name: 'Book an electrician. Allsafe Electric',
             description: 'Schedule a residential electrical visit with Allsafe Electric in Parker, CO.',
             about: true,
           }),
@@ -56,11 +56,11 @@ export default function BookPage() {
           </Suspense>
 
           <aside className="card h-fit p-6">
-            <h2 className="text-step-1">What to expect</h2>
+            <h2 className="text-h3">What to expect</h2>
             <ol className="mt-4 space-y-3">
               {whatToExpect.map((s, i) => (
                 <li key={i} className="flex gap-3 text-[1rem]">
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-blue text-[0.85rem] font-bold text-white">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-600 text-[0.85rem] font-bold text-white">
                     {i + 1}
                   </span>
                   <span className="pt-0.5">{s}</span>
@@ -68,7 +68,7 @@ export default function BookPage() {
               ))}
             </ol>
             <p className="mt-5 flex items-start gap-2 border-t border-rule pt-4 text-[0.95rem] text-muted">
-              <CheckIcon className="mt-0.5 shrink-0 text-brand-green" width={20} height={20} />
+              <CheckIcon className="mt-0.5 shrink-0 text-leaf-600" width={20} height={20} />
               Licensed master electrician · {business.licenses.master.id} · serving Parker since{' '}
               {business.founded.year}
             </p>

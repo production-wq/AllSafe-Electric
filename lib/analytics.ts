@@ -1,5 +1,5 @@
 /**
- * GA4 event helpers — planning/docs/07 §8, planning/docs/13 §2.
+ * GA4 event helpers, planning/docs/07 §8, planning/docs/13 §2.
  * All events are no-ops until NEXT_PUBLIC_GA4_ID is set and the gtag snippet loads
  * (components/Analytics.tsx). Safe to call unconditionally from client components.
  */

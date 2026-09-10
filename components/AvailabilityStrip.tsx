@@ -6,7 +6,7 @@ import { business } from '@/lib/business';
 import { track } from '@/lib/analytics';
 
 /**
- * Live availability strip — planning/docs/02 §1 (the one bold element), §6.2.
+ * Live availability strip. Planning/docs/02 §1 (the one bold element), §6.2.
  * SSR renders a truthful JS-off fallback; the client specialises it to the real
  * America/Denver clock and refreshes each minute. Green dot open, blue dot closed.
  * Never red. Height is reserved (var(--strip-h)) so it never shifts layout.
@@ -25,7 +25,7 @@ export function AvailabilityStrip() {
 
   return (
     <div
-      className="bg-brand-blue-deep text-white"
+      className="surface-dark bg-brand-800"
       style={{ minHeight: 'var(--strip-h)' }}
       role="status"
       aria-live="polite"

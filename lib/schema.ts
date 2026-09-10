@@ -1,5 +1,5 @@
 /**
- * Hand-authored JSON-LD — planning/docs/06. Emitted server-side by <Schema />.
+ * Hand-authored JSON-LD, planning/docs/06. Emitted server-side by <Schema />.
  * No plugin, no client injection.
  *
  * ONE root entity (#business), referenced everywhere by @id. Never repeat a full
@@ -26,7 +26,7 @@ export function graph(nodes: JsonLd[]): JsonLd {
   return { '@context': 'https://schema.org', '@graph': nodes.filter(Boolean) };
 }
 
-/** Root Electrician entity — sitewide, injected once in the root layout. */
+/** Root Electrician entity. Sitewide, injected once in the root layout. */
 export function businessNode(): JsonLd {
   const a = business.address;
   return {
@@ -149,12 +149,9 @@ export function webPageNode(opts: {
     name: opts.name,
     description: opts.description,
     inLanguage: 'en-US',
-    isPartOf: opts.isPartOf === false ? undefined : { '@id': ID.website },
-    ...(opts.about ? { about: { '@id': ID.business } } : {}),
-    ...(opts.primaryImage
+    isPartOf: opts.isPartOf === false ? undefined : { '@id': ID.website }, ...(opts.about ? { about: { '@id': ID.business } } : {}), ...(opts.primaryImage
       ? { primaryImageOfPage: { '@type': 'ImageObject', url: abs(opts.primaryImage) } }
-      : {}),
-    ...(opts.significantLinks?.length ? { significantLink: opts.significantLinks.map(abs) } : {}),
+      : {}), ...(opts.significantLinks?.length ? { significantLink: opts.significantLinks.map(abs) } : {}),
   };
 }
 

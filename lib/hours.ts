@@ -71,7 +71,7 @@ export function getAvailability(date = new Date()): Availability {
     };
   }
 
-  // Closed — figure out the next opening day.
+  // Closed. Figure out the next opening day.
   let d = day;
   let addDays = 0;
   do {

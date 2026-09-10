@@ -45,10 +45,10 @@ export function EstimateForm({
     return (
       <div
         role="status"
-        className="rounded-card border border-brand-green/40 bg-brand-green/5 p-6 text-ink"
+        className="rounded-card border border-leaf-600/40 bg-leaf-600/5 p-6 text-ink"
       >
-        <p className="flex items-center gap-2 text-step-1 font-semibold">
-          <CheckIcon className="text-brand-green" /> Sent.
+        <p className="flex items-center gap-2 text-h3 font-semibold">
+          <CheckIcon className="text-leaf-600" /> Sent.
         </p>
         <p className="mt-2 text-[1rem]">
           Thanks{state.values?.name ? `, ${state.values.name.split(' ')[0]}` : ''}. We have your
@@ -195,7 +195,7 @@ export function EstimateForm({
 
           <div>
             <label htmlFor={`${formId}-photo`} className="block text-[0.95rem] font-semibold">
-              Photo <span className="font-normal text-muted">(optional — a photo of the panel or the problem really helps)</span>
+              Photo <span className="font-normal text-muted">(optional, a photo of the panel or the problem really helps)</span>
             </label>
             <input
               id={`${formId}-photo`}
@@ -215,7 +215,7 @@ export function EstimateForm({
 
       <p className="text-[0.85rem] text-muted">
         We reply the same business day. Your details are used only to contact you about this
-        request — see our{' '}
+        request. See our{' '}
         <Link href="/privacy-policy/" className="underline">
           privacy policy
         </Link>
@@ -230,8 +230,7 @@ function Field({
   name,
   error,
   hint,
-  type = 'text',
-  ...rest
+  type = 'text', ...rest
 }: {
   label: string;
   name: string;

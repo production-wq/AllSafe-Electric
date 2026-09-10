@@ -5,7 +5,7 @@ import { join } from 'node:path';
 import { business } from './business';
 
 /**
- * Live Google reviews — planning/docs/07 §5.
+ * Live Google reviews, planning/docs/07 §5.
  *
  * - Google Places API (New), `reviews` field, SERVER-SIDE ONLY. The key never
  *   reaches the browser.
@@ -15,7 +15,7 @@ import { business } from './business';
  * - Falls back to data/reviews.fallback.json (a build-time snapshot) so an API
  *   outage never blanks the section. If that is empty too, the component renders
  *   a "read our reviews on Google" state.
- * - NO aggregateRating / Review schema is emitted from this data — marking up
+ * - NO aggregateRating / Review schema is emitted from this data. Marking up
  *   third-party reviews as first-party is a guideline violation (planning/docs/06 §3).
  */
 
@@ -95,7 +95,7 @@ async function fallbackSnapshot(): Promise<Review[]> {
 }
 
 /**
- * Synchronous build-time snapshot — used by SSG pages so they stay fully static.
+ * Synchronous build-time snapshot. Used by SSG pages so they stay fully static.
  * The client <Reviews> component then refreshes from /api/reviews/ (the ISR route).
  */
 export function getFallbackReviewsSync(): ReviewsPayload {

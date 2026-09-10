@@ -1,4 +1,4 @@
-# Allsafe Electric — website
+# Allsafe Electric, website
 
 Residential electrician in Parker, Colorado. Owner/operator **Judson "Jud" Cushing**;
 second tech **Justin**. Client of Built Right Digital.
@@ -34,7 +34,7 @@ npm run test:preservation   # every URL in data/preserved-urls.csv still resolve
 npm run typecheck
 ```
 
-All five are wired into CI (`.github/workflows/ci.yml`) and **fail the build** — no waiver
+All five are wired into CI (`.github/workflows/ci.yml`) and **fail the build**, no waiver
 (planning/docs/14). A deliberately-broken page was used to prove they bite; see BUILD-NOTES.
 
 ## Project layout
@@ -42,30 +42,30 @@ All five are wired into CI (`.github/workflows/ci.yml`) and **fail the build** �
 ```
 app/                     App Router routes
   page.tsx               Home (wireframe: planning/docs/02 §4)
-  [serviceSlug]/         16 service pages — flat root URLs, generateStaticParams, dynamicParams=false
+  [serviceSlug]/         16 service pages, flat root URLs, generateStaticParams, dynamicParams=false
   electrical-services-parker-co/   Services hub (preserved URL)
-  electricians/[city]/   5 Tier-1 city pages (GATED — see lib/publish.ts)
+  electricians/[city]/   5 Tier-1 city pages (GATED, see lib/publish.ts)
   blog/ , blog/[slug]/   Blog index + posts (content/blog/*.md)
   about/ reviews/ coupons/ contact/ book/ service-area/ resources/ privacy-policy/
   thank-you/             noindex, fires the conversion
-  api/reviews/route.ts   ISR (6h) — live Google reviews, server-side key
+  api/reviews/route.ts   ISR (6h), live Google reviews, server-side key
   api/og/route.tsx       per-page OG images (next/og)
-  actions/submit-estimate.ts   Server Action — form → email + HCP + lead-log + GA4
+  actions/submit-estimate.ts   Server Action, form → email + HCP + lead-log + GA4
   sitemap.ts robots.ts llms.txt/  not-found.tsx  icon.svg
 components/              Header, Footer, AvailabilityStrip, StickyBar, BookingCard,
                          EstimateForm, Reviews, Schema, Breadcrumbs, cta.tsx, sections.tsx, …
 lib/
-  business.ts            CANONICAL FACTS — single source. NAP, phone, licences, booking URL.
+  business.ts            CANONICAL FACTS, single source. NAP, phone, licences, booking URL.
   services.ts cities.ts faqs.ts   typed content data
   schema.ts              hand-authored JSON-LD builders (planning/docs/06)
   seo.ts hours.ts analytics.ts images.ts reviews.ts blog.ts nav.ts publish.ts
 scripts/
   images-process.ts      sharp: resize, strip EXIF, LQIP, manifest
-  images-generate.ts     Gemini (Nano Banana) — GAPS ONLY, env key, never people/badges
+  images-generate.ts     Gemini (Nano Banana), GAPS ONLY, env key, never people/badges
   fetch-reviews.ts       Places API (New) → data/reviews.fallback.json snapshot
   audit-seo.ts audit-schema.ts test-preservation.ts report-indexation.ts
 data/
-  preserved-urls.csv     bucket A — enforced in CI
+  preserved-urls.csv     bucket A, enforced in CI
   url-map.csv            redirects (next.config reads this); seed only
   gone-urls.json         bucket D 410s (middleware.ts reads this); empty until migration
   service-areas.csv keyword-map.csv content-review-schedule.csv
@@ -78,7 +78,7 @@ planning/                the full planning package (docs 01–14, prompts, data)
 1. Import the repo. Framework preset: Next.js. Build command `npm run build` (default).
 2. Set environment variables from `.env.example` (Production + Preview).
 3. Domains: apex `allsafehomeservice.com` primary, `www` → 301 to apex.
-4. **Do not touch DNS `MX` records** — email is on the current host. See
+4. **Do not touch DNS `MX` records**, email is on the current host. See
    `planning/docs/12-migration-runbook.md` §3. Change only `A`/`CNAME` unless the owner
    has approved a Google Workspace migration.
 5. Staging previews: password-protect them (Vercel → Deployment Protection) and confirm
@@ -92,7 +92,7 @@ planning/                the full planning package (docs 01–14, prompts, data)
 |---|---|
 | A service page's copy, price range, FAQs, hero photo | `lib/services.ts` |
 | A city page | `lib/cities.ts` |
-| Business facts (phone, address, hours, licences) | `lib/business.ts` — **only** here |
+| Business facts (phone, address, hours, licences) | `lib/business.ts`: **only** here |
 | Homepage FAQ | `lib/faqs.ts` |
 | A blog post | `content/blog/<slug>.md` |
 | Nav / mega-menu / footer | `lib/nav.ts` |

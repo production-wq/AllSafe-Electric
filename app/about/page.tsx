@@ -10,7 +10,7 @@ import { business } from '@/lib/business';
 
 export const metadata: Metadata = pageMetadata({
   path: '/about/',
-  title: 'About Allsafe Electric — Jud & Justin, Parker CO',
+  title: 'About Allsafe Electric | Jud & Justin, Parker CO',
   description:
     'Allsafe Electric is Jud Cushing, a licensed master electrician in Parker since 2018, and Justin. The two of them do the work themselves, start to finish.',
   ogEyebrow: 'About · Parker, CO',
@@ -45,7 +45,7 @@ export default function AboutPage() {
       <PageIntro
         eyebrow="About"
         title="It's Jud and Justin. That's the company."
-        lead="No call centre, no rotating crew, no sales rep. When you book Allsafe Electric, one of two licensed electricians shows up — and it is usually Jud, who has run the business out of Parker since 2018."
+        lead="No call centre, no rotating crew, no sales rep. When you book Allsafe Electric, one of two licensed electricians shows up, and it is usually Jud, who has run the business out of Parker since 2018."
         crumbs={crumbs}
       />
 
@@ -60,23 +60,23 @@ export default function AboutPage() {
                 className="w-full"
               />
             </div>
-            <h2 className="text-step-2">Why the business exists</h2>
+            <h2 className="text-h2">Why the business exists</h2>
             <p>
               Jud started Allsafe Electric in January 2018 after years working for larger shops. The
               idea was simple: be the electrician people actually want in their house. Answer the
               phone. Turn up when you said. Leave the place cleaner than you found it.
             </p>
             <p>
-              It sounds obvious. It is also, apparently, rare — the thing customers say most often
+              It sounds obvious. It is also, apparently, rare, the thing customers say most often
               is some version of &ldquo;I can&apos;t believe you answered,&rdquo; or &ldquo;I
               can&apos;t believe you actually showed up.&rdquo; That reaction is the whole reason to
               keep doing it this way.
             </p>
 
-            <h2 className="text-step-2">How a visit works</h2>
+            <h2 className="text-h2">How a visit works</h2>
             <p>
               You call or book online. A real person picks up during business hours. We confirm a
-              two-hour arrival window — not &ldquo;sometime Tuesday.&rdquo; Jud arrives, looks at the
+              two-hour arrival window, not &ldquo;sometime Tuesday.&rdquo; Jud arrives, looks at the
               job, and gives you a fixed price before any work starts. You decide. No pressure, no
               upsell, and if the honest answer is &ldquo;repair it, don&apos;t replace it,&rdquo;
               that is what you will hear.
@@ -86,20 +86,20 @@ export default function AboutPage() {
               property. Jud has a dog of his own and is fine working around yours.
             </p>
 
-            <h2 className="text-step-2">Strictly residential</h2>
+            <h2 className="text-h2">Strictly residential</h2>
             <p>
-              Allsafe is a residential contractor — houses, not warehouses. That focus is
+              Allsafe is a residential contractor, houses, not warehouses. That focus is
               deliberate. The panels, the code questions, the Douglas County permit process, the way
               a 1990s Parker home is wired: that is the work we do every day and know cold.
             </p>
 
-            <h2 id="credentials" className="scroll-mt-28 text-step-2">
+            <h2 id="credentials" className="scroll-mt-28 text-h2">
               Licences &amp; credentials
             </h2>
             <p>
               Both licences below are current and verifiable through the Colorado Department of
               Regulatory Agencies (DORA) licence lookup. Every permitted job is inspected by the
-              local jurisdiction — the Town of Parker, Douglas County, or the relevant city.
+              local jurisdiction, the Town of Parker, Douglas County, or the relevant city.
             </p>
             <ul className="not-prose space-y-2">
               <li className="card p-4">
@@ -144,7 +144,7 @@ export default function AboutPage() {
               />
             </div>
             <div className="card p-5">
-              <h2 className="text-step-1">The details</h2>
+              <h2 className="text-h3">The details</h2>
               <dl className="mt-3 space-y-2 text-[0.95rem]">
                 <div>
                   <dt className="font-semibold">Founded</dt>
@@ -160,7 +160,7 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <dt className="font-semibold">Scheduling</dt>
-                  <dd className="text-muted">{business.crm} — book online any time</dd>
+                  <dd className="text-muted">{business.crm}. Book online any time</dd>
                 </div>
               </dl>
               <Link href="/reviews/" className="link-cta mt-4 inline-block text-[0.95rem]">

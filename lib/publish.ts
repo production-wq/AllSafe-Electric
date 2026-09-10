@@ -1,5 +1,5 @@
 /**
- * Tier publication gates — planning/CLAUDE.md §1.7, planning/docs/09 §3.
+ * Tier publication gates, planning/CLAUDE.md §1.7, planning/docs/09 §3.
  *
  * Publishing 500 pages at once is what broke the current site (86 of 588 indexed).
  * Tier 0 (home, 16 services, core pages) ships at launch. Every later tier is gated
