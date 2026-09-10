@@ -83,8 +83,10 @@ planning/                the full planning package (docs 01–14, prompts, data)
    has approved a Google Workspace migration.
 5. Staging previews: password-protect them (Vercel → Deployment Protection) and confirm
    `noindex`. Never let a preview get indexed.
-6. Security headers, CSP, and redirects are in `next.config.mjs` (also mirrored in
-   `vercel.json` for reference).
+6. Security headers, CSP, and all content redirects live in `next.config.mjs` (the source
+   of truth), applied by the Next runtime. `vercel.json` only covers host-level concerns:
+   which branches deploy, and the `www` → apex redirect at the edge. It must stay strictly
+   schema-valid (no comment keys), or the deploy is rejected.
 
 ## Editing content (no CMS)
 
