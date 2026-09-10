@@ -16,13 +16,13 @@ Next.js 15 (App Router) · TypeScript · Tailwind · static-first · Vercel.
 ```bash
 npm install
 cp .env.example .env.local     # fill in keys as they become available (all optional for local dev)
-npm run images:process         # resize/strip-EXIF the real photos → public/img/photos + manifest
 npm run dev                    # http://localhost:3000
 ```
 
-`npm run images:process` must be run once after checkout (its output — `public/img/photos/`
-and `data/image-manifest.json` — is git-ignored). The source photos live in
-`assets/source-photos/` (58 real photos of Jud, from the client).
+Processed images (`public/img/photos/`) and `data/image-manifest.json` are **committed**, so
+the build works on a fresh checkout with no Python/sharp step. Re-run `npm run images:process`
+only when the source photos in `assets/source-photos/` change (58 real photos of Jud, from the
+client).
 
 ## Verify before every commit
 

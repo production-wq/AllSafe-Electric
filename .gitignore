@@ -19,10 +19,11 @@ next-env.d.ts
 .env.development.local
 .env.production.local
 
-# generated image working files (source-of-truth briefs stay in git; outputs do not)
+# Gemini working files — briefs stay in git, raw generations do not.
 /assets/generated/
-/public/img/_generated/
-/assets/manifest.json
+# NOTE: public/img/photos/ AND data/image-manifest.json ARE committed (derived but
+# stable) so `next build` works on a fresh checkout / on Vercel without running the
+# sharp+python image pipeline. Re-run `npm run images:process` when source photos change.
 
 # misc
 .DS_Store

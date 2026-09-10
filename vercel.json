@@ -1,0 +1,15 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nextjs",
+  "buildCommand": "next build",
+  "git": { "deploymentEnabled": { "main": true, "rebuild/allsafe-nextjs": true } },
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.allsafehomeservice.com" }],
+      "destination": "https://allsafehomeservice.com/:path*",
+      "permanent": true
+    }
+  ],
+  "_comment": "Security headers, CSP, and content redirects are defined in next.config.mjs (the source of truth) and applied by the Next runtime. This file only covers host-level concerns. Set env vars in the Vercel dashboard from .env.example. DNS: change A/CNAME only — never MX — until the email-hosting decision is made (planning/docs/12 §3)."
+}
