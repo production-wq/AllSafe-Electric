@@ -99,4 +99,4 @@ planning/                the full planning package (docs 01–14, prompts, data)
 | Which tiers are published | `lib/publish.ts` |
 | Redirects | `data/url-map.csv` (never `next.config.mjs` by hand) |
 
-Run `npm run build && npm run audit:seo && npm run audit:schema` after any content edit.
+Run `npm run build && npm run audit:seo && npm run audit:schema` after any content edit
