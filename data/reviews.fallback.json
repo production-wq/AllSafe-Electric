@@ -1,0 +1,4 @@
+{
+  "_comment": "Build-time snapshot fallback for the live Google reviews feed. Populated by: npm run fetch:reviews (needs GOOGLE_PLACES_API_KEY + GOOGLE_PLACE_ID). Until then the reviews section renders a designed read-on-Google state. Do NOT hand-write review text here.",
+  "reviews": []
+}

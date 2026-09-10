@@ -64,7 +64,7 @@ export const services: Service[] = [
     navLabel: 'Emergency repairs',
     title: 'Emergency Electrician in Parker, CO | Allsafe Electric',
     metaDescription:
-      'Sparks, burning smell, or half the house dark? Call Allsafe Electric at (303) 648-1934. If it is daytime, Jud usually picks up on the first ring. Parker and Douglas County.',
+      'Sparks, a burning smell, or half the house dark? Call Allsafe Electric. In the daytime Jud usually answers on the first ring. Parker and Douglas County.',
     primaryKeyword: 'emergency electrician parker',
     secondaryKeywords: [
       '24 hour electrician parker co',
@@ -77,7 +77,7 @@ export const services: Service[] = [
     cityServiceSlug: 'emergency-electrician',
     heroImage: 'allsafe-electrician-voltage-testing-breaker-panel.JPG',
     heroAlt:
-      'Jud from Allsafe Electric checking voltage at an open breaker panel during a service call',
+      'Jud from Allsafe Electric checking voltage at an open breaker panel',
     lead:
       'If you smell burning, see sparks, or lost power to part of the house, stop and call. During business hours Jud usually answers on the first ring and can often be on site within two hours. A diagnostic visit is a flat fee that comes off the repair if you go ahead. After 6pm the same number reaches the emergency line.',
     priceRange: {
@@ -117,7 +117,7 @@ export const services: Service[] = [
     navLabel: 'Troubleshooting',
     title: 'Electrical Troubleshooting in Parker, CO | Allsafe Electric',
     metaDescription:
-      'Breaker keeps tripping? Lights flicker? Outlet dead but the breaker is fine? Jud finds the actual cause and fixes it. Flat diagnostic fee in Parker and Douglas County.',
+      'Breaker keeps tripping? Lights flicker? Outlet dead but the breaker is fine? Jud traces the real cause and fixes it, for a flat diagnostic fee in Parker.',
     primaryKeyword: 'electrical troubleshooting parker',
     secondaryKeywords: [
       'breaker keeps tripping parker',
@@ -129,7 +129,7 @@ export const services: Service[] = [
     cityServiceSlug: undefined,
     heroImage: 'electrician-testing-kitchen-outlet-with-voltage-detector.JPG',
     heroAlt:
-      'Jud from Allsafe Electric testing a kitchen outlet with a voltage detector to trace a dead circuit',
+      'Jud from Allsafe Electric testing a kitchen outlet with a voltage detector',
     lead:
       'A circuit that keeps tripping, lights that flicker, or an outlet that quit are all symptoms of something specific — a loose connection, an overloaded circuit, a failing breaker, or a fault in the wall. We charge a flat fee to find it, trace it to the real cause, and give you a fixed price to repair. Same-week appointments, usually within two hours during business hours if it is urgent.',
     priceRange: {
@@ -165,9 +165,9 @@ export const services: Service[] = [
     slug: 'electrical-outlet-services',
     h1: 'Outlet repair and installation in Parker',
     navLabel: 'Outlets',
-    title: 'Outlet Repair & Installation in Parker, CO | Allsafe Electric',
+    title: 'Outlet Repair & Installation in Parker, CO | Allsafe',
     metaDescription:
-      'Dead outlets, loose plugs, and new outlets where you actually need them. GFCI and USB outlets, kitchen and garage circuits. Allsafe Electric, Parker and Douglas County.',
+      'Dead outlets traced and fixed, plus new, GFCI and USB outlets where you need them. Spec-grade devices, back-wired properly. Allsafe Electric, Parker CO.',
     primaryKeyword: 'outlet repair parker co',
     secondaryKeywords: [
       'outlet not working parker',
@@ -215,9 +215,9 @@ export const services: Service[] = [
     slug: 'electrical-switch-services',
     h1: 'Light switch repair and installation in Parker',
     navLabel: 'Switches & dimmers',
-    title: 'Light Switch Repair & Installation in Parker | Allsafe Electric',
+    title: 'Light Switch Repair in Parker, CO | Allsafe Electric',
     metaDescription:
-      'Switches that spark, three-way switches that fight each other, and dimmers that hum. Repaired or replaced properly by Allsafe Electric in Parker and Douglas County.',
+      'Switches that spark, dead three-way pairs, and dimmers that hum, repaired or replaced properly by a licensed electrician in Parker and Douglas County.',
     primaryKeyword: 'light switch replacement parker',
     secondaryKeywords: ['dimmer switch installation parker', 'three way switch repair parker'],
     group: 'repairs-safety',
@@ -261,9 +261,9 @@ export const services: Service[] = [
     slug: 'electrical-wiring-repairs-services',
     h1: 'Home wiring repair and rewiring in Parker',
     navLabel: 'Wiring & rewiring',
-    title: 'Home Wiring Repair & Rewiring in Parker, CO | Allsafe Electric',
+    title: 'Home Wiring Repair & Rewiring in Parker, CO | Allsafe',
     metaDescription:
-      'Aluminium branch wiring, backstabbed connections, additions, and full rewires. Allsafe Electric repairs and replaces residential wiring across Parker and Douglas County.',
+      'Aluminium branch wiring, damaged runs, additions and staged whole-home rewires. Allsafe Electric repairs and replaces residential wiring across Parker.',
     primaryKeyword: 'house rewiring parker co',
     secondaryKeywords: [
       'aluminum wiring replacement colorado',
@@ -286,7 +286,7 @@ export const services: Service[] = [
     },
     signs: [
       { h3: 'Silver-coloured branch wiring and a house built 1965–1975', body: 'Aluminium branch wiring. It is not a teardown, but the connections need proper correction with rated connectors.' },
-      { h3: 'Warm cover plates, flickering, or a faint plastic smell across several rooms', body: 'Connections failing at multiple points, often from age or the original wiring method.' },
+      { h3: 'Warm cover plates or a faint plastic smell in several rooms', body: 'Connections failing at multiple points, often from age or the original wiring method.' },
       { h3: 'Cloth-covered or ungrounded two-prong wiring', body: 'Common in pre-1970 homes. Grounding and selective replacement bring it up to a safe standard.' },
       { h3: 'A renovation, addition, or finished basement', body: 'New square footage needs new circuits sized and run to current code.' },
     ],
@@ -310,9 +310,9 @@ export const services: Service[] = [
     slug: 'home-electrical-safety-inspections',
     h1: 'Home electrical safety inspection in Parker',
     navLabel: 'Safety inspections',
-    title: 'Home Electrical Safety Inspection in Parker | Allsafe Electric',
+    title: 'Electrical Safety Inspection in Parker, CO | Allsafe',
     metaDescription:
-      'Buying a home, or in one over 20 years old? A licensed master electrician checks the panel, grounding, GFCI protection and wiring, and gives you a written report. Parker, CO.',
+      'Buying a home or in one over 20 years old? A licensed master electrician opens the panel, tests grounding and GFCI protection, and gives you a written report.',
     primaryKeyword: 'electrical inspection parker co',
     secondaryKeywords: [
       'home electrical safety inspection colorado',
@@ -359,9 +359,9 @@ export const services: Service[] = [
     slug: 'smoke-detectors',
     h1: 'Smoke and CO detector installation in Parker',
     navLabel: 'Smoke & CO detectors',
-    title: 'Smoke & CO Detector Installation in Parker, CO | Allsafe Electric',
+    title: 'Smoke Detector Installation in Parker | Allsafe Electric',
     metaDescription:
-      'Hardwired smoke and carbon monoxide detectors installed, interconnected, and brought up to code. Ten-year sealed units available. Allsafe Electric, Parker and Douglas County.',
+      'Hardwired smoke and CO detectors installed, interconnected and brought up to Colorado code, with ten-year sealed units available. Allsafe Electric, Parker.',
     primaryKeyword: 'smoke detector installation parker',
     secondaryKeywords: [
       'hardwired smoke detector replacement parker',
@@ -414,7 +414,7 @@ export const services: Service[] = [
     navLabel: 'Panel upgrades & repairs',
     title: 'Electrical Panel Upgrades & Repairs in Parker, CO | Allsafe',
     metaDescription:
-      'Breaker tripping or fuse box still in service? Jud upgrades panels across Parker and Douglas County. Licensed master electrician, permits handled. Call (303) 648-1934.',
+      'Breaker tripping or a fuse box still in service? Jud upgrades panels across Parker and Douglas County. Licensed master electrician, permits handled for you.',
     primaryKeyword: 'electrical panel upgrade parker',
     secondaryKeywords: [
       'breaker box replacement parker',
@@ -466,16 +466,16 @@ export const services: Service[] = [
     slug: 'whole-home-surge-protection',
     h1: 'Whole-home surge protection in Parker',
     navLabel: 'Surge protection',
-    title: 'Whole-Home Surge Protection in Parker, CO | Allsafe Electric',
+    title: 'Whole-Home Surge Protection in Parker, CO | Allsafe',
     metaDescription:
-      'A panel-mounted surge protective device shields everything in the house from grid spikes and lightning. Installed in about an hour by Allsafe Electric in Parker and Douglas County.',
+      'A panel-mounted device shields the whole house from grid spikes and lightning strikes. Installed in about an hour by a licensed Parker electrician.',
     primaryKeyword: 'whole home surge protector parker',
     secondaryKeywords: ['surge protection installation colorado'],
     group: 'power-panels',
     indexed: true,
     heroImage: 'allsafe-electrician-installing-breaker-panel-cover.JPG',
     heroAlt:
-      'Jud from Allsafe Electric refitting a breaker panel cover after installing a surge protective device',
+      'Jud from Allsafe Electric refitting a panel cover after installing surge protection',
     lead:
       'The Front Range gets grid switching spikes and summer lightning, and modern homes are full of electronics and appliance control boards that do not survive them. A surge protective device wired at the panel clamps those spikes before they reach anything. It installs in about an hour, mounts to a double-pole breaker, and covers the whole house.',
     priceRange: {
@@ -486,7 +486,7 @@ export const services: Service[] = [
       needsApproval: true,
     },
     signs: [
-      { h3: 'You have replaced a garage-door board, a mini-split board, or an oven panel', body: 'Those failures are frequently surge damage, not age.' },
+      { h3: 'You have replaced an appliance or garage-door control board', body: 'Those failures — mini-split, oven, garage-door boards — are frequently surge damage, not age.' },
       { h3: 'Lights flicker or blink when the grid switches', body: 'You are seeing the small end of what also delivers the big spikes.' },
       { h3: 'A new panel with an open slot', body: 'The best and cheapest time to add one is when the panel is already open.' },
       { h3: 'A house full of smart devices, a home office, or a media room', body: 'The replacement cost of what is plugged in is now well past the cost of protecting it.' },
@@ -511,9 +511,9 @@ export const services: Service[] = [
     slug: 'generator-installation',
     h1: 'Standby generator installation in Parker, CO',
     navLabel: 'Standby generators',
-    title: 'Standby Generator Installation in Parker, CO | Allsafe Electric',
+    title: 'Generator Installation in Parker, CO | Allsafe Electric',
     metaDescription:
-      'Automatic standby generators sized, installed, and wired to a transfer switch so the house rides through Front Range outages. Allsafe Electric, Parker and Douglas County.',
+      'Automatic standby generators sized, installed and wired to a transfer switch so your house rides through Front Range outages. Allsafe Electric, Parker CO.',
     primaryKeyword: 'standby generator installation parker co',
     secondaryKeywords: ['generac installer parker', 'whole house generator colorado cost'],
     group: 'power-panels',
@@ -561,7 +561,7 @@ export const services: Service[] = [
     navLabel: 'EV chargers',
     title: 'EV Charger Installation in Parker, CO | Allsafe Electric',
     metaDescription:
-      'Level 2 home EV charger installation, panel checks, and load calculations. Tesla and universal chargers wired to code across Parker, Lone Tree and Douglas County.',
+      'Level 2 home EV charger installation with a proper NEC load calculation first. Tesla and universal chargers wired to code across Parker and Douglas County.',
     primaryKeyword: 'ev charger installation parker co',
     secondaryKeywords: [
       'level 2 charger installation parker',
@@ -573,7 +573,7 @@ export const services: Service[] = [
     cityServiceSlug: 'ev-charger-installation',
     heroImage: 'electrician-tightening-connections-in-breaker-panel.JPG',
     heroAlt:
-      'Jud from Allsafe Electric torquing breaker connections while adding a circuit for an EV charger',
+      'Jud from Allsafe Electric torquing breaker connections for a new EV circuit',
     heroImageGap: true,
     imageBrief:
       'A wall-mounted Level 2 EV charger on a clean garage wall with the cable coiled, an SUV parked beside it, natural daylight from an open garage door. 3:2. No visible brand marks.',
@@ -613,9 +613,9 @@ export const services: Service[] = [
     slug: 'hot-tub-electrical-hookup',
     h1: 'Hot tub and spa electrical hookup in Parker',
     navLabel: 'Hot tub hookup',
-    title: 'Hot Tub & Spa Electrical Hookup in Parker, CO | Allsafe Electric',
+    title: 'Hot Tub Electrical Hookup in Parker | Allsafe Electric',
     metaDescription:
-      'A 240-volt GFCI-protected circuit and disconnect for your hot tub or swim spa, wired to code and passed by the inspector. Allsafe Electric, Parker and Douglas County.',
+      'A code-correct 240-volt GFCI circuit and disconnect for your hot tub or swim spa, wired and signed off by the inspector. Allsafe Electric, Parker CO.',
     primaryKeyword: 'hot tub electrical hookup parker',
     secondaryKeywords: ['spa wiring parker co', 'hot tub 220v installation colorado'],
     group: 'power-panels',
@@ -662,9 +662,9 @@ export const services: Service[] = [
     slug: 'lighting-services',
     h1: 'Indoor lighting installation in Parker',
     navLabel: 'Indoor lighting',
-    title: 'Indoor Lighting Installation in Parker, CO | Allsafe Electric',
+    title: 'Indoor Lighting Installation in Parker, CO | Allsafe',
     metaDescription:
-      'Recessed lighting, under-cabinet LED, fixture swaps, dimmers and chandeliers — installed cleanly inside your home. Allsafe Electric serves Parker and Douglas County.',
+      'Recessed cans, under-cabinet LED, fixture and chandelier swaps, and dimmers matched to the bulbs, installed cleanly inside your Parker home.',
     primaryKeyword: 'indoor lighting installation parker',
     secondaryKeywords: [
       'recessed lighting installation parker',
@@ -675,7 +675,7 @@ export const services: Service[] = [
     indexed: true,
     heroImage: 'allsafe-electrician-inspecting-kitchen-chandelier.JPG',
     heroAlt:
-      'Jud from Allsafe Electric checking a pendant fixture over a kitchen island in a Parker home',
+      'Jud from Allsafe Electric checking a pendant fixture over a kitchen island',
     lead:
       'This page is indoor lighting — recessed cans, under-cabinet strips, fixture and chandelier swaps, closet and pantry lights, and dimmers matched to the bulbs. For landscape, path, security and holiday lighting, see our outdoor lighting page. Most indoor lighting projects are a half to a full day, with minimal drywall work and every fixture on a dimmer if you want it.',
     priceRange: {
@@ -711,9 +711,9 @@ export const services: Service[] = [
     slug: 'outdoor-lighting',
     h1: 'Outdoor and landscape lighting in Parker',
     navLabel: 'Outdoor lighting',
-    title: 'Outdoor & Landscape Lighting in Parker, CO | Allsafe Electric',
+    title: 'Outdoor & Landscape Lighting in Parker, CO | Allsafe',
     metaDescription:
-      'Landscape, path, security and soffit lighting, plus weatherproof exterior outlets and holiday-light circuits. Allsafe Electric, Parker, Castle Rock and Douglas County.',
+      'Landscape, path, security and soffit lighting, plus weatherproof outlets and holiday-light circuits, built for Colorado weather. Allsafe Electric, Parker CO.',
     primaryKeyword: 'outdoor lighting parker co',
     secondaryKeywords: [
       'landscape lighting parker',
@@ -765,7 +765,7 @@ export const services: Service[] = [
     navLabel: 'Ceiling fans',
     title: 'Ceiling Fan Installation in Parker, CO | Allsafe Electric',
     metaDescription:
-      'New ceiling fans, replacements, and fan-rated box upgrades — including vaulted and two-story ceilings. Wobble-free, quiet, on the right switch. Allsafe Electric, Parker CO.',
+      'New ceiling fans and replacements on proper fan-rated boxes, including vaulted and two-story ceilings. Wobble-free and quiet. Allsafe Electric, Parker CO.',
     primaryKeyword: 'ceiling fan installation parker',
     secondaryKeywords: ['ceiling fan replacement parker co'],
     group: 'lighting-comfort',
@@ -809,9 +809,9 @@ export const services: Service[] = [
     slug: 'home-automation',
     h1: 'Smart home and automation wiring in Parker',
     navLabel: 'Smart home',
-    title: 'Smart Home & Automation Wiring in Parker, CO | Allsafe Electric',
+    title: 'Smart Home Wiring in Parker, CO | Allsafe Electric',
     metaDescription:
-      'Smart switches, video doorbells, thermostats, and the neutral wires and hubs they need — installed and actually working before we leave. Allsafe Electric, Parker CO.',
+      'Smart switches, video doorbells and thermostats, plus the neutrals, transformers and C-wires they need, installed and working before we leave. Parker, CO.',
     primaryKeyword: 'smart home electrician parker',
     secondaryKeywords: ['smart switch installation parker', 'home automation wiring colorado'],
     group: 'lighting-comfort',

@@ -1,0 +1,4 @@
+{
+  "_comment": "Offers require owner approval on the exact wording, amount, and expiry. Do NOT invent discounts. Populate from the owner; until then the coupons page shows the always-on value props only.",
+  "offers": []
+}

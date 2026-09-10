@@ -1,0 +1,9 @@
+url,content_type,facts_requiring_verification,verify_source,cadence,last_reviewed,owner
+/resources/parker-electrical-permit-guide/,resource,"permit requirements, fees, inspection process, submittal method",parkerco.gov building division,quarterly,,account manager
+/resources/douglas-county-electrical-permits/,resource,"permit requirements, fees, inspection scheduling",douglas.co.us building division,quarterly,,account manager
+/resources/core-vs-xcel-colorado-rebates/,resource,"service territory boundaries, active rebate programs, rebate amounts",CORE Electric Cooperative + Xcel Energy official pages,quarterly,,account manager
+/resources/colorado-electrical-code-basics/,resource,"adopted NEC edition, state amendments",Colorado State Electrical Board / DORA,semiannual,,account manager
+/resources/douglas-county-hoa-electrical-approvals/,resource,"HOA design review requirements per community",individual HOA sites,semiannual,,account manager
+/resources/electrical-panel-brands-to-watch-for/,resource,"recall status, manufacturer claims",CPSC + manufacturer,annual,,account manager
+all service pages,service,"price ranges",owner,quarterly,,account manager
+all city pages,city,"electric utility, permit authority, response time",utility + jurisdiction,semiannual,,account manager

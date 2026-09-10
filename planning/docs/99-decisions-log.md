@@ -20,8 +20,8 @@ Format:
 
 | # | Question | Blocks | Owner |
 |---|---|---|---|
-| 1 | `/electrical-services/` vs `/electrical-services-parker-co/` — which is real and indexed? | Phase 0 → IA | Build team |
-| 2 | Exact brand blue and green hexes from the logo | All design work | Build team |
+| 1 | `/electrical-services/` vs `/electrical-services-parker-co/` — which is real and indexed? | Phase 0 → IA | Build team | **INTERIM 2026-09-10** — recreated `-parker-co` at 200, 301 the bare one. VERIFY against GSC before launch (see log). |
+| 2 | ~~Exact brand blue and green hexes from the logo~~ **RESOLVED 2026-09-10** — `#0165AC` / `#008E6C` (action-green `#007A5C` for AA). See log. | All design work | Build team |
 | 3 | Which of the two Search Console properties is canonical? | All reporting | Account manager |
 | 4 | What is `M-51` in the address? Mailbox, suite, or staffed location? | GBP config, LSA verification | Account manager → owner |
 | 5 | Email hosting: migrate to Google Workspace or leave in place? | DNS cutover | Owner |
@@ -103,3 +103,109 @@ Publishing the same volume faster reproduces it.
 rejected; it is the exact pattern that produced 493 unindexed pages.
 **Affects:** docs/03 §5, docs/09 §1, §3
 **Decided by:** Build plan
+
+## 2026-09-10 — Brand hexes eyedropped from the logo (closes open question #2)
+**Decision:** `--brand-blue: #0165AC` (house mark + wordmark), `--brand-green-bright: #008E6C`
+(pine + tagline). The action-green used on buttons is darkened to **`#007A5C`** so white text
+on it clears WCAG AA (4.5:1); the true logo green #008E6C is 4.1:1 and is used only for
+non-text accents (the availability dot, hairlines). Footer/hover blue is `#024D80`.
+**Why:** Provisional values in docs/02 §2 (`#1F4E79` / `#4C8B54`) were placeholders. Sampled
+`planning/assets/brand/allsafe-electric-logo.png` — dominant blue #0165AC across 1,500+ px of
+the house icon, dominant green #008E6C across the pine. Contrast maths in `tailwind.config.ts`.
+**Alternatives considered:** Using the raw logo green on buttons — rejected, fails AA.
+**Affects:** docs/02 §2, `tailwind.config.ts`, `app/globals.css`
+**Decided by:** Build team
+
+## 2026-09-10 — Full Next.js + Vercel build; Tier 0 + Tier 1 city pages authored (gated)
+**Decision:** Built the site as specified in CLAUDE.md §2 — Next.js 15 App Router, TypeScript,
+Tailwind, RSC by default, `next/image`, hand-authored `<Schema />`, Server Action form,
+ISR-only reviews route. Tier 0 (home, 16 services, About/Reviews/Coupons/Contact/Book/
+Service-area/Resources/Privacy) is launch-ready. The 5 Tier-1 city pages are **authored and
+in the repo but gated**: `lib/publish.ts` `TIER_1_CITIES = false` → they are `noindex`, absent
+from `sitemap.xml`, and not in nav/footer browse lists. Flip the flag only after
+`npm run report:indexation -- --tier=0` clears 80% AND ≥14 days since launch (docs/09 §3).
+**Why:** The client asked for the geo-targeted pages to exist; the tier gate governs
+*publication*, not authoring. Building them now with the real `data/service-areas.csv` detail
+means they are ready to ship the moment the gate clears, without a fresh content sprint.
+**Affects:** docs/09 §3, `lib/publish.ts`, `app/sitemap.ts`, `app/electricians/[city]/page.tsx`
+**Decided by:** Build team + client request
+
+## 2026-09-10 — Dependencies added
+**Decision:** Beyond next/react/react-dom: `server-only` (RSC guard), and build-time-only
+`sharp` (image processing), `csv-parse` (redirect map + preservation test), `marked`
+(blog Markdown → HTML, server-side render, not shipped to client), `node-html-parser`
+(audit scripts parse prerendered HTML), `tsx`, `dotenv`, `glob`. **Zero of these ship in the
+client bundle.** Shared First Load JS is ~103 KB uncompressed (~40 KB gzipped) — inside the
+120 KB gzipped budget in docs/05 §5.
+**Why:** `sharp`/`csv-parse`/`marked` are the minimal tools for the image pipeline, the
+redirect mechanism, and the no-CMS blog. `node-html-parser` makes the guardrail scripts
+robust vs. regex.
+**Affects:** CLAUDE.md §4, `package.json`
+**Decided by:** Build team
+
+## 2026-09-10 — Front matter is enforced as typed data, not MDX front matter
+**Decision:** CLAUDE.md §4 asks every content file for `title / metaDescription / canonical /
+primaryKeyword / schemaTypes / lastReviewed` front matter. Services and cities are **typed TS
+data** (`lib/services.ts`, `lib/cities.ts`) with the equivalent fields (`title`,
+`metaDescription`, `primaryKeyword`, `secondaryKeywords`, canonical derived from `slug`,
+`schemaTypes` fixed by template, review cadence in `data/content-review-schedule.csv`). Blog
+posts keep a real `--- ---` front-matter block. `npm run audit:seo` + `audit:schema` enforce
+the outcomes (unique 50–60 title, 140–158 description, self-canonical, required schema types)
+on the built HTML — which is stricter than a field-presence check.
+**Why:** Typed data is what "a non-developer can still read" (CLAUDE.md §2) and it makes the
+16 service pages impossible to drift apart. The audit-on-output check is the real guardrail.
+**Affects:** CLAUDE.md §4, §6
+**Decided by:** Build team
+
+## 2026-09-10 — Placeholders shipped with explicit flags (price ranges, reviews, offers)
+**Decision:** Per the client's instruction, questionable/pending content is scaffolded and
+visibly marked, never published as fact:
+- **Price ranges** — every service shows a range inside a "*Estimated range … your exact price
+  is fixed in writing*" treatment. Only the **panel-upgrade $2,200–$4,500** figure is
+  doc-sourced (docs/09 §4); all 15 others carry `needsApproval: true` and are listed in
+  `BUILD-NOTES.md` for owner sign-off. `PriceRange` renders the caveat automatically.
+- **Reviews** — no review text is invented. The reviews section renders a designed "read on
+  Google" state until `npm run fetch:reviews` runs with a Places API key + Place ID
+  (open items #6). No `aggregateRating` / `Review` schema is emitted (docs/06 §3).
+- **Coupons** — `data/coupons.json` ships empty; the page shows the always-on value props only.
+- **Award badges** — only the two **undated** badges (BBB A+, HomeAdvisor) render;
+  `SHOW_DATED = false` in `components/TrustBadges.tsx` holds Best of Houzz 2023 / Angi 2022 /
+  Nextdoor 2022 until newer ones are confirmed (open item #8a). Nextdoor is labelled Nextdoor.
+- **City utility** — CORE vs Xcel per city carries a visible "verify your address" flag
+  (open item #13).
+**Affects:** CLAUDE.md §1.8, docs/06 §3, docs/07 §5–6, docs/09 §4
+**Decided by:** Build team + client instruction
+
+## 2026-09-10 — /electrical-services/ → /electrical-services-parker-co/ (interim, VERIFY)
+**Decision:** `next.config.mjs` 301s `/electrical-services/` → `/electrical-services-parker-co/`
+and a matching row is seeded in `data/url-map.csv`. The `-parker-co` hub is the one recreated
+at 200; it is the nav/footer target and the one in `data/preserved-urls.csv`.
+**Why:** The live homepage hero links to `/electrical-services/` and nav/footer to
+`/electrical-services-parker-co/`; one is likely a live 404 (open question #1). Consolidating
+to the nav/footer version is the safe default.
+**RISK / TODO:** Confirm against the GSC Pages report which of the two actually has impressions
+and inbound links before launch. If `/electrical-services/` is the indexed one, swap the
+recreated URL and the redirect direction. Do not launch without checking.
+**Affects:** docs/03 §2, CLAUDE.md §5, `next.config.mjs`, `data/url-map.csv`
+**Decided by:** Build team
+
+## 2026-09-10 — Sitemap is single-file for now (not section-split)
+**Decision:** `app/sitemap.ts` emits one `/sitemap.xml` with all Tier-0 + blog URLs. docs/05 §3
+asks for `sitemap-services / -locations / -content` under an index. Next 15's `generateSitemaps`
+produces `/sitemap/services.xml` etc. but does **not** auto-create the `/sitemap.xml` index,
+and a hand-rolled index route was judged more fragile than valuable at ~30 URLs.
+**TODO (v1.1):** split once the URL count grows (post Tier 2) — noted in the file.
+**Affects:** docs/05 §3, `app/sitemap.ts`
+**Decided by:** Build team
+
+## 2026-09-10 — Content Security Policy shipped with script 'unsafe-inline'
+**Decision:** `next.config.mjs` sets a full CSP (default-src 'self', object-src 'none',
+frame-ancestors 'self', host-allowlisted script/img/connect/frame), HSTS preload,
+X-Content-Type-Options, Referrer-Policy, Permissions-Policy, COOP. `script-src` includes
+`'unsafe-inline'` (+ googletagmanager, cdn.callrail.com).
+**Why:** GA4/GTM/CallRail and Next's hydration bootstrap need it; a nonce-based CSP forces
+dynamic rendering and breaks full SSG on affected routes.
+**TODO (hardening):** move to nonce-based CSP via middleware for the routes that can afford it,
+once the third-party set is final. Documented in `BUILD-NOTES.md`.
+**Affects:** docs/14 "Legal and privacy", `next.config.mjs`
+**Decided by:** Build team

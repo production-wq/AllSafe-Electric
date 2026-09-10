@@ -1,0 +1,21 @@
+url,status,evidence,notes
+/,200,indexed + ranking for Parker terms,"CRITICAL. Owner's primary lead source. Protect above all else."
+/emergency-electrical-repairs-parker-co/,200,in nav + footer,
+/electrical-services-parker-co/,200,in nav + footer,"VERIFY vs /electrical-services/ before build"
+/electrical-wiring-repairs-services/,200,in nav,
+/electrical-outlet-services/,200,in nav + footer,
+/electrical-switch-services/,200,in nav + footer,
+/electrical-panel-services/,200,in nav + footer,"Owner's #1 ranking complaint"
+/smoke-detectors/,200,in nav + footer,
+/home-automation/,200,in nav + footer,
+/ceiling-fan-installation/,200,in nav,
+/residential-ev-charging/,200,in nav + footer,
+/whole-home-surge-protection/,200,in nav,
+/outdoor-lighting/,200,in nav,"Split scope vs /lighting-services/"
+/lighting-services/,200,linked from homepage + footer,"Split scope vs /outdoor-lighting/"
+/home-electrical-safety-inspections/,200,in nav,
+/about/,200,in nav,
+/reviews/,200,in nav + homepage,
+/coupons/,200,in nav,
+/contact/,200,in nav + hero CTA,
+/privacy-policy/,200,in footer,

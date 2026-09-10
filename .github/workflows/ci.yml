@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NEXT_PUBLIC_SITE_URL: https://allsafehomeservice.com
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      # Guardrails — a violation fails the build, no waiver (planning/docs/14).
+      - name: SEO audit (headings, meta, canonicals, alt, orange, tel)
+        run: npm run audit:seo
+
+      - name: Schema audit (JSON-LD validity + required types + anti-patterns)
+        run: npm run audit:schema
+
+      - name: URL preservation contract
+        run: npm run test:preservation
+
+      # Optional live preservation check against the Vercel preview, if available
+      - name: URL preservation (live preview)
+        if: ${{ github.event_name == 'pull_request' && env.PREVIEW_URL != '' }}
+        env:
+          PREVIEW_URL: ${{ steps.vercel.outputs.preview-url || '' }}
+        run: npm run test:preservation -- --live "$PREVIEW_URL"
+        continue-on-error: true
