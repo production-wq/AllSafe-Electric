@@ -11,7 +11,7 @@ import { PhoneIcon, MenuIcon, CloseIcon, ChevronDownIcon } from './Icons';
 
 const GROUP_DOT = {
   'repairs-safety': 'bg-blue-600',
-  'power-panels': 'bg-orange-500',
+  'power-panels': 'bg-green-600',
   'lighting-comfort': 'bg-blue-400',
 } as const;
 
@@ -43,7 +43,7 @@ export function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav aria-label="Primary" className="hidden items-center lg:flex">
+        <nav aria-label="Primary" className="hidden items-center xl:flex">
           {primaryNav.map((item) =>
             item.mega ? (
               <div
@@ -54,7 +54,7 @@ export function Header() {
               >
                 <Link
                   href={item.href}
-                  className="flex items-center gap-1 px-2.5 py-2 text-[0.92rem] font-medium text-ink transition-colors hover:text-blue-600"
+                  className="flex shrink-0 items-center gap-1 whitespace-nowrap px-2 py-2 text-[0.92rem] font-medium text-ink transition-colors hover:text-blue-600"
                   aria-expanded={megaOpen}
                   onFocus={() => setMegaOpen(true)}
                 >
@@ -88,7 +88,7 @@ export function Header() {
                                   href={it.href}
                                   className={`block rounded px-2 py-1.5 text-small transition-colors hover:bg-paper ${
                                     it.emergency
-                                      ? 'font-semibold text-orange-600'
+                                      ? 'font-semibold text-urgent-500'
                                       : 'text-ink'
                                   }`}
                                 >
@@ -114,7 +114,7 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="px-2.5 py-2 text-[0.92rem] font-medium text-ink transition-colors hover:text-blue-600"
+                className="shrink-0 whitespace-nowrap px-2 py-2 text-[0.92rem] font-medium text-ink transition-colors hover:text-blue-600"
                 aria-current={pathname.startsWith(item.href) && item.href !== '/' ? 'page' : undefined}
               >
                 {item.label}
@@ -123,7 +123,7 @@ export function Header() {
           )}
         </nav>
 
-        <div className="hidden shrink-0 items-center gap-4 lg:flex">
+        <div className="hidden shrink-0 items-center gap-4 xl:flex">
           <a
             href={business.phone.href}
             data-cta="call"
@@ -143,7 +143,7 @@ export function Header() {
         </div>
 
         {/* Mobile / tablet controls */}
-        <div className="flex items-center gap-1 lg:hidden">
+        <div className="flex items-center gap-1 xl:hidden">
           <a
             href={business.phone.href}
             aria-label={`Call ${business.phone.display}`}
@@ -168,12 +168,12 @@ export function Header() {
 
       {/* Mobile drawer */}
       {open && (
-        <div className="lg:hidden">
+        <div className="xl:hidden">
           <nav
             aria-label="Mobile"
             className="max-h-[calc(100dvh-var(--header-h))] overflow-y-auto border-t border-rule bg-white px-5 pb-12 pt-4"
           >
-            <Link href="/emergency-electrical-repairs-parker-co/" className="block py-2.5 font-semibold text-orange-600">
+            <Link href="/emergency-electrical-repairs-parker-co/" className="block py-2.5 font-semibold text-urgent-500">
               Emergency Repairs
             </Link>
             {servicesMenu.map((col) => (
@@ -188,7 +188,7 @@ export function Header() {
                       <Link
                         href={it.href}
                         className={`block border-b border-rule/60 py-2.5 ${
-                          it.emergency ? 'font-semibold text-orange-600' : 'text-ink'
+                          it.emergency ? 'font-semibold text-urgent-500' : 'text-ink'
                         }`}
                       >
                         {it.label}

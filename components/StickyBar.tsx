@@ -10,7 +10,7 @@ import { PhoneIcon, CalendarIcon } from './Icons';
  * Mobile sticky action bar. planning/docs/02 §6.5: three equal segments
  * (Call · Book · Estimate), appears after 400px of scroll, brand-blue ground with
  * the Book segment in brand green. Text and icons are WHITE on both grounds, set
- * explicitly so the base `a` colour rule cannot win and produce blue-on-green.
+ * explicitly so the base `a` color rule cannot win and produce blue-on-green.
  * Height is reserved by the spacer so the bar never covers content.
  *
  * This is the highest-value component on the site. Most emergency traffic is on a phone.
@@ -59,7 +59,7 @@ export function StickyBar({ emergency = false }: { emergency?: boolean }) {
             data-location="sticky_bar"
             onClick={() => track.call('sticky_bar')}
             className={`${seg} ${
-              emergency ? 'bg-orange-500 hover:bg-[#952b26]' : 'hover:bg-blue-700'
+              emergency ? 'bg-urgent-500 hover:bg-urgent-600' : 'hover:bg-blue-700'
             }`}
           >
             <PhoneIcon width={21} height={21} />
@@ -72,7 +72,7 @@ export function StickyBar({ emergency = false }: { emergency?: boolean }) {
             data-cta="book"
             data-location="sticky_bar"
             onClick={() => track.book('sticky_bar')}
-            className={`${seg} bg-orange-500 hover:bg-orange-600`}
+            className={`${seg} bg-green-600 hover:bg-green-700`}
           >
             <CalendarIcon width={21} height={21} />
             Book

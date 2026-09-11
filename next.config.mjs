@@ -98,6 +98,67 @@ const nextConfig = {
         permanent: true,
       },
       ...redirectsFromCsv(),
+      // planning/docs/09 §1.5. The legacy WordPress site published a page per
+      // {service}-{city}-colorado combination, 536 URLs across these 10 services
+      // and ~54 city slugs, pulled from allsafehomeservice.com's own sitemaps
+      // (post-sitemap.xml, page-sitemap1-3.xml, local-sitemap.xml) 2026-09-11.
+      // None of that per-city split exists on the new site yet (Tier-2/3 city x
+      // service pages are Phase 2, still gated off) — every city variant of a
+      // given service collapses to that one real service page. A CSV row per
+      // URL would mean 536 near-identical rows, so these are :city wildcards
+      // instead. Safe as wildcards (unlike /electrician-:city/ below) because no
+      // real route on the new site matches the "-colorado" suffixed shape, so
+      // there is nothing for the pattern to accidentally shadow.
+      {
+        source: '/ceiling-fan-installation-:city-colorado/',
+        destination: '/ceiling-fan-installation/',
+        permanent: true,
+      },
+      {
+        source: '/electrical-outlet-services-:city-colorado/',
+        destination: '/electrical-outlet-services/',
+        permanent: true,
+      },
+      {
+        source: '/electrical-panel-services-:city-colorado/',
+        destination: '/electrical-panel-services/',
+        permanent: true,
+      },
+      {
+        source: '/electrical-switch-services-:city-colorado/',
+        destination: '/electrical-switch-services/',
+        permanent: true,
+      },
+      {
+        source: '/electrical-wiring-repairs-services-:city-colorado/',
+        destination: '/electrical-wiring-repairs-services/',
+        permanent: true,
+      },
+      {
+        source: '/residential-ev-charging-:city-colorado/',
+        destination: '/residential-ev-charging/',
+        permanent: true,
+      },
+      {
+        source: '/whole-home-surge-protection-:city-colorado/',
+        destination: '/whole-home-surge-protection/',
+        permanent: true,
+      },
+      {
+        source: '/home-electrical-safety-inspections-:city-colorado/',
+        destination: '/home-electrical-safety-inspections/',
+        permanent: true,
+      },
+      {
+        source: '/emergency-electrical-repairs-:city-colorado/',
+        destination: '/emergency-electrical-repairs-parker-co/',
+        permanent: true,
+      },
+      {
+        source: '/lighting-services-:city-colorado/',
+        destination: '/lighting-services/',
+        permanent: true,
+      },
     ];
   },
 
@@ -111,6 +172,16 @@ const nextConfig = {
       {
         source: '/img/:path*',
         headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+      },
+      // planning/docs/09 §1.7 (client audit, 2026-09-11). Vercel preview deployments
+      // and any other non-production host get a hard noindex, regardless of what the
+      // page's own <meta name="robots"> says — this is the safety net that stops a
+      // staging URL from ever getting indexed if a preview link leaks. Production
+      // itself never sends this header, since the host will match.
+      {
+        source: '/:path*',
+        missing: [{ type: 'host', value: 'allsafehomeservice.com' }],
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
       },
     ];
   },

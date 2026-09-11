@@ -38,7 +38,7 @@ export default async function BlogIndex() {
       <PageIntro
         eyebrow="Blog"
         title="Straight answers, no filler"
-        lead="Written by Jud, a licensed master electrician, for homeowners, not other electricians. Every post answers the question in the first paragraph."
+        lead="Written by a licensed master electrician, for homeowners, not other electricians. Every post answers the question in the first paragraph."
         crumbs={crumbs}
       />
 
@@ -56,7 +56,7 @@ export default async function BlogIndex() {
                 />
               </Link>
               <div className="flex flex-1 flex-col p-5">
-                <p className="text-[0.8rem] font-semibold uppercase tracking-wide text-orange-500">
+                <p className="text-[0.8rem] font-semibold uppercase tracking-wide text-green-600">
                   {p.category}
                 </p>
                 <h2 className="mt-1.5 text-h3">

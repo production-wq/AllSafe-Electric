@@ -38,7 +38,7 @@ export function Footer() {
               target="_blank"
               rel="noopener"
               aria-label="Allsafe Electric on Facebook"
-              className="flex h-10 w-10 items-center justify-center rounded-btn border border-white/20 text-white/80 transition-colors hover:border-orange-500 hover:text-orange-500"
+              className="flex h-10 w-10 items-center justify-center rounded-btn border border-white/20 text-white/80 transition-colors hover:border-green-600 hover:text-green-600"
             >
               <FacebookIcon />
             </a>
@@ -47,7 +47,7 @@ export function Footer() {
               target="_blank"
               rel="noopener"
               aria-label="Allsafe Electric on Google"
-              className="flex h-10 w-10 items-center justify-center rounded-btn border border-white/20 text-white/80 transition-colors hover:border-orange-500 hover:text-orange-500"
+              className="flex h-10 w-10 items-center justify-center rounded-btn border border-white/20 text-white/80 transition-colors hover:border-green-600 hover:text-green-600"
             >
               <InstagramIcon />
             </a>
@@ -56,7 +56,7 @@ export function Footer() {
 
         {/* Get in touch */}
         <div>
-          <h2 className="font-display text-tiny font-bold uppercase tracking-[0.12em] text-orange-500">
+          <h2 className="font-display text-tiny font-bold uppercase tracking-[0.12em] text-green-600">
             Get in Touch
           </h2>
           <address className="mt-4 space-y-3.5 text-small not-italic text-white/80">
@@ -70,13 +70,13 @@ export function Footer() {
             </p>
             <p className="flex items-center gap-2.5">
               <PhoneIcon width={16} height={16} className="shrink-0 text-white/45" />
-              <a href={business.phone.href} className="font-semibold text-white hover:text-orange-500">
+              <a href={business.phone.href} className="font-semibold text-white hover:text-green-600">
                 {business.phone.display}
               </a>
             </p>
             <p className="flex items-center gap-2.5">
               <MailIcon width={16} height={16} className="shrink-0 text-white/45" />
-              <a href={`mailto:${business.email.public}`} className="hover:text-orange-500">
+              <a href={`mailto:${business.email.public}`} className="hover:text-green-600">
                 {business.email.public}
               </a>
             </p>
@@ -85,7 +85,7 @@ export function Footer() {
 
         {/* Services */}
         <div>
-          <h2 className="font-display text-tiny font-bold uppercase tracking-[0.12em] text-orange-500">
+          <h2 className="font-display text-tiny font-bold uppercase tracking-[0.12em] text-green-600">
             Services
           </h2>
           <ul className="mt-4 space-y-2 text-small">
@@ -96,12 +96,23 @@ export function Footer() {
                 </Link>
               </li>
             ))}
+            {/* Chris' review, 2026-09-08: was miscategorized under Service Areas. */}
+            <li>
+              <Link href="/blog/" className="text-white/75 transition-colors hover:text-white">
+                Blog
+              </Link>
+            </li>
+            <li>
+              <Link href="/resources/" className="text-white/75 transition-colors hover:text-white">
+                Resources
+              </Link>
+            </li>
           </ul>
         </div>
 
         {/* Service areas */}
         <div>
-          <h2 className="font-display text-tiny font-bold uppercase tracking-[0.12em] text-orange-500">
+          <h2 className="font-display text-tiny font-bold uppercase tracking-[0.12em] text-green-600">
             Service Areas
           </h2>
           <ul className="mt-4 space-y-2 text-small">
@@ -112,11 +123,6 @@ export function Footer() {
                 </Link>
               </li>
             ))}
-            <li>
-              <Link href="/blog/" className="text-white/75 transition-colors hover:text-white">
-                Blog &amp; resources
-              </Link>
-            </li>
           </ul>
         </div>
       </div>

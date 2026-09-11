@@ -1,14 +1,20 @@
 import type { Config } from 'tailwindcss';
 
 /**
- * Design tokens, v3 (2026-09-10).
+ * Design tokens, v4 (2026-09-11).
  *
- * The client supplied their live brand palette and asked us to use it, which
- * REVERSES the "no orange" line in planning/CLAUDE.md §1.6. Logged in
- * planning/docs/99. The palette:
+ * v3 shipped the client's stated palette, which turned out to still include the
+ * orange the client's own style guide excludes as a CTA color (client audit,
+ * 2026-09-11, see planning/docs/99). Corrected here: accent is now GREEN, sampled
+ * directly from the real logo file (public/img/brand/allsafe-electric-logo.webp),
+ * confirmed with the client.
  *
  *   #0068A8  blue     primary, structural, links, headers
- *   #FF6600  orange   accent, primary CTAs, eyebrows, icons, badges
+ *   #007A56  green    accent, primary CTAs, eyebrows, icons (darkened from the
+ *                     sampled #009A6B so white-on-green text clears WCAG AA,
+ *                     4.5:1; #009A6B stays available as green-bright for large
+ *                     decorative use only, where it is 3.6:1)
+ *   #B3352F  urgent   emergency-only red. Never a generic CTA color.
  *   #54595F  slate    body text
  *   #7A7A7A  grey     secondary / muted text
  *   #000000  black    headings
@@ -55,15 +61,21 @@ const config: Config = {
           light: '#0E3A60',
           deep: '#071F35',
         },
-        orange: {
-          50: '#FFF1E6',
-          100: '#FFDFC7',
-          200: '#FFBE8F',
-          300: '#FF9B54',
-          400: '#FF801F',
-          500: '#FF6600', // client palette, accent
-          600: '#E85600',
-          700: '#C24700',
+        green: {
+          50: '#E6F5EF',
+          100: '#C2E7D8',
+          200: '#8ED0B3',
+          300: '#5AB88E',
+          400: '#26A069',
+          500: '#009A6B', // sampled from the logo, decorative / large text only (3.6:1 on white)
+          600: '#007A56', // CTA / text-safe, 5.36:1 white-on-green
+          700: '#00643F', // hover / pressed
+          800: '#004E30',
+        },
+        urgent: {
+          50: '#FBEEEC',
+          500: '#B3352F', // emergency-only. Never a generic CTA.
+          600: '#952B26',
         },
       },
       fontFamily: {

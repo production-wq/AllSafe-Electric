@@ -13,40 +13,46 @@ import { Schema } from '@/components/Schema';
 import { webPageNode, breadcrumbNode, faqPageNode, cityMainEntityNode } from '@/lib/schema';
 import { business } from '@/lib/business';
 
-export const dynamicParams = false;
-
-export function generateStaticParams() {
-  return citySlugs.map((city) => ({ city }));
+/**
+ * Shared render/metadata logic for the 5 city pages.
+ *
+ * NOTE (planning/docs/09, 2026-09-11): the URL spec calls for exact paths like
+ * /electrician-parker/ (literal prefix, no separator, singular "electrician").
+ * Next.js App Router does NOT support a folder name that mixes literal text with
+ * a dynamic segment (`electrician-[city]`) — it is parsed as one literal route,
+ * so generateStaticParams is never invoked and no city pages are actually built.
+ * (Verified empirically: a minimal `app/test-[foo]/page.tsx` repro never called
+ * generateStaticParams either; the folder rendered as a literal, static, param-less
+ * route.) So each city gets its own literal top-level folder
+ * (app/electrician-parker/, app/electrician-castle-rock/, ...) whose page.tsx just
+ * calls the functions below with a hardcoded slug — the same pattern already used
+ * for the per-city-service literal routes (electrical-services-parker-co, etc).
+ */
+export function generateCityMetadata(citySlug: string) {
+  return async function generateMetadata(): Promise<Metadata> {
+    const c = getCity(citySlug);
+    if (!c) return {};
+    return pageMetadata({
+      path: `/electrician-${c.slug}/`,
+      // Fixed-shape templates, sized so every current city name lands inside the
+      // audit's title (50-60 char) and meta description (140-158 char) windows —
+      // see scripts/audit-seo.ts. Re-check with a real city name before adding one.
+      title: `${c.name}, CO Licensed Electrician | Allsafe Electric`,
+      description: `Licensed electrician serving ${c.name}, CO: panels, EV chargers, wiring, and emergency repairs. A real person answers the phone. Call ${business.phone.display}.`,
+      index: PUBLISH.TIER_1_CITIES, // gated. Planning/docs/09 §3
+      ogEyebrow: `Electrician · ${c.name}, CO`,
+    });
+  };
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ city: string }>;
-}): Promise<Metadata> {
-  const { city } = await params;
-  const c = getCity(city);
-  if (!c) return {};
-  const near =
-    c.driveTimeMin === 0 ? 'Based right here in Parker' : `About ${c.driveTimeMin} min from the Parker shop`;
-  return pageMetadata({
-    path: `/electricians/${c.slug}/`,
-    title: `${c.name}, CO Electrician | Allsafe Electric`,
-    description: `Licensed electrician for ${c.name}, CO. Panels, EV chargers, wiring and emergency repairs. ${near}. A real person answers the phone. Call ${business.phone.display}.`,
-    index: PUBLISH.TIER_1_CITIES, // gated. Planning/docs/09 §3
-    ogEyebrow: `Electrician · ${c.name}, CO`,
-  });
-}
-
-export default async function CityPage({ params }: { params: Promise<{ city: string }> }) {
-  const { city } = await params;
-  const c = getCity(city);
+export function CityPageContent({ citySlug }: { citySlug: string }) {
+  const c = getCity(citySlug);
   if (!c) notFound();
 
   const crumbs = [
     { name: 'Home', path: '/' },
     { name: 'Areas we serve', path: '/service-area/' },
-    { name: c.name, path: `/electricians/${c.slug}/` },
+    { name: c.name, path: `/electrician-${c.slug}/` },
   ];
 
   const priorityServices = c.priorityServices
@@ -58,8 +64,9 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
     <>
       <Schema
         nodes={[
-          {...webPageNode({
-              path: `/electricians/${c.slug}/`,
+          {
+            ...webPageNode({
+              path: `/electrician-${c.slug}/`,
               name: `Electrician in ${c.name}, CO`,
               description: `Allsafe Electric. Residential electrical services in ${c.name}, Colorado.`,
               about: true,
@@ -71,17 +78,10 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
             mainEntity: cityMainEntityNode(c),
           },
           breadcrumbNode(crumbs),
-          faqPageNode(c.faqs, `/electricians/${c.slug}/`),
+          faqPageNode(c.faqs, `/electrician-${c.slug}/`),
         ]}
       />
       <Breadcrumbs items={crumbs} />
-
-      {!PUBLISH.TIER_1_CITIES && (
-        <p className="bg-amber-50 px-4 py-2 text-center text-[0.8rem] text-amber-900">
-          Staging note: this city page is built but not yet published (noindex). It releases once
-          Tier 0 clears the indexation gate. See planning/docs/09 §3.
-        </p>
-      )}
 
       <section className="relative overflow-hidden border-b border-rule bg-gradient-to-b from-blue-50 via-white to-white">
         <span
@@ -193,7 +193,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
 
           <section aria-labelledby="hoods-heading">
             <h2 id="hoods-heading" className="text-h2">
-              Neighbourhoods we work in
+              Neighborhoods we work in
             </h2>
             <ul className="mt-4 flex flex-wrap gap-2">
               {c.neighborhoods.map((n) => (
@@ -217,7 +217,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
               {otherCities.map((oc) => (
                 <li key={oc!.slug}>
                   <Link
-                    href={`/electricians/${oc!.slug}/`}
+                    href={`/electrician-${oc!.slug}/`}
                     className="inline-block rounded border border-rule bg-white px-3 py-1.5 text-[0.95rem] hover:border-blue-600"
                   >
                     Electrician in {oc!.name}

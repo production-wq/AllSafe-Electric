@@ -116,7 +116,7 @@ export function EstimateLink({
   );
 }
 
-/** Primary CTA used across the design: an orange "Get a Free Estimate" button. */
+/** Primary CTA used across the design: a green "Get a Free Estimate" button. */
 export function EstimateButton({
   location,
   className = '',
@@ -159,7 +159,7 @@ function withUtm(url: string, location: string) {
   }
 }
 
-/** Standard action row: Estimate (primary orange), Call (outline). */
+/** Standard action row: Estimate (primary green), Call (outline). */
 export function CtaRow({
   location = 'mid_page',
   service,

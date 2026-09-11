@@ -153,7 +153,7 @@ export default function ResourcesPage() {
                 Electrical Board (DORA)
               </a>, which adopts a specific edition of the National Electrical Code with state
               amendments, and licenses every electrician and contractor. Local jurisdictions inspect
-              to that code. If you want to verify our licences, {' '}
+              to that code. If you want to verify our licenses, {' '}
               <span className="whitespace-nowrap">ME.0601023</span> and{' '}
               <span className="whitespace-nowrap">EC.0101068</span>, the{' '}
               <a
@@ -162,7 +162,7 @@ export default function ResourcesPage() {
                 rel="noopener"
                 className="link-cta"
               >
-                DORA licence lookup
+                DORA license lookup
               </a>{' '}
               is public.
             </p>

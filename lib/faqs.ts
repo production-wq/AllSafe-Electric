@@ -7,16 +7,16 @@ import type { Faq } from './services';
  */
 export const homeFaqs: Faq[] = [
   {
-    q: 'Will Jud actually show up when he says he will?',
-    a: 'Yes, and it is the thing customers mention most. You get a two-hour arrival window rather than a vague day, a real person answers the phone, and if something changes you get a call instead of silence. Jud and Justin do the work themselves, so the person you booked is the person who turns up at your door.',
+    q: 'Will someone actually show up when they say they will?',
+    a: 'Yes, and it is the thing customers mention most. You get a two-hour arrival window rather than a vague day, a real person answers the phone, and if something changes you get a call instead of silence. We do the work ourselves, so the person you booked is the person who turns up at your door.',
   },
   {
     q: 'What area do you cover?',
-    a: 'Parker first, then Castle Rock, Highlands Ranch, Lone Tree, Centennial and the rest of south Douglas County and the south metro. Parker neighbourhoods such as Stonegate, Stroh Ranch, Pradera, The Pinery and Canterberry Crossing are usually a same-day call during business hours. Castle Rock and Highlands Ranch add about 20 minutes of drive time.',
+    a: 'Parker first, then Castle Rock, Highlands Ranch, Lone Tree, Centennial and the rest of south Douglas County and the south metro. Parker neighborhoods such as Stonegate, Stroh Ranch, Pradera, The Pinery and Canterberry Crossing are usually a same-day call during business hours. Castle Rock and Highlands Ranch add about 20 minutes of drive time.',
   },
   {
     q: 'Are you licensed and insured?',
-    a: 'Yes. Allsafe Electric holds Colorado master electrician licence ME.0601023 and electrical contractor licence EC.0101068, both verifiable through the state DORA lookup, and carries liability insurance. Every permitted job is inspected by the local jurisdiction, so you are never taking our word for the quality of the work.',
+    a: 'Yes. Allsafe Electric holds Colorado master electrician license ME.0601023 and electrical contractor license EC.0101068, both verifiable through the state DORA lookup, and carries liability insurance. Every permitted job is inspected by the local jurisdiction, so you are never taking our word for the quality of the work.',
   },
   {
     q: 'What does it cost to have you come out?',
@@ -32,11 +32,11 @@ export const homeFaqs: Faq[] = [
   },
   {
     q: 'How quickly can you get here in an emergency?',
-    a: 'During business hours we can often be on site within two hours across most of Parker. Weekday evenings reach an after-hours emergency line on the same number. Overnight and weekend calls are triaged, so genuine safety problems get a callback and everything else is booked for the next morning.',
+    a: 'Same-day for urgent calls, usually within a two-hour arrival window, across most of Parker. We are open weekdays, 8am to 6pm. A call outside those hours goes to voicemail and gets a callback first thing the next business day.',
   },
   {
     q: 'Are you good with dogs, and will you keep the house clean?',
-    a: 'Shoe covers go on at the door, tools stay on a drop cloth, and nobody smokes anywhere on your property. Jud has a dog of his own and is happy working around yours. The owner named all of this himself as the things that matter to customers, and it is standard on every visit rather than a special request.',
+    a: 'Shoe covers go on at the door, tools stay on a drop cloth, and nobody smokes anywhere on your property. The owner has a dog of his own and is happy working around yours. The owner named all of this himself as the things that matter to customers, and it is standard on every visit rather than a special request.',
   },
   {
     q: 'Do you handle the permit and the inspection?',

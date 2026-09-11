@@ -42,10 +42,11 @@ export const business = {
 
   hours: {
     timeZone: 'America/Denver',
-    // Mon–Fri 08:00–18:00. Weekend: closed (book online any time).
+    // Mon–Fri 08:00–18:00. Weekend: closed (book online any time). Client-confirmed,
+    // planning/docs/09 §1.9 (2026-09-11): no weekend or after-hours phone coverage —
+    // this matches GBP and the JSON-LD openingHoursSpecification exactly. A call
+    // outside these hours goes to voicemail; book online any time instead.
     weekday: { opens: '08:00', closes: '18:00' },
-    // Owner keeps an after-hours emergency line live to ~20:00 on weekdays.
-    afterHoursUntil: '20:00',
     humanReadable: 'Mon–Fri 8:00am–6:00pm',
   },
 

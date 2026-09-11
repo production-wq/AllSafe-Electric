@@ -12,7 +12,7 @@ export const metadata: Metadata = pageMetadata({
   path: '/reviews/',
   title: 'Allsafe Electric Reviews | Parker, CO Electrician',
   description:
-    'Read Allsafe Electric’s Google reviews. Real customers in Parker and Douglas County who name Jud and Justin. Then leave your own after your visit.',
+    'Read Allsafe Electric’s Google reviews. Real customers in Parker and Douglas County who name our team. Then leave your own after your visit.',
   ogEyebrow: 'Reviews · Parker, CO',
 });
 
@@ -39,8 +39,8 @@ export default function ReviewsPage() {
       />
       <PageIntro
         eyebrow="Reviews"
-        title="What Parker homeowners say about Jud"
-        lead="Allsafe Electric’s reviews live on Google, where they can’t be edited or cherry-picked. The best ones name Jud and Justin personally, which is exactly the point."
+        title="What Parker homeowners say about us"
+        lead="Allsafe Electric’s reviews live on Google, where they can’t be edited or cherry-picked. The best ones name our team personally, which is exactly the point."
         crumbs={crumbs}
       />
 

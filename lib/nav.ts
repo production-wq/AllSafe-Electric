@@ -27,7 +27,7 @@ export function footerColumns() {
     areas: [
       ...cities.map((c) => ({
         label: c.name,
-        href: PUBLISH.TIER_1_CITIES ? `/electricians/${c.slug}/` : '/service-area/',
+        href: PUBLISH.TIER_1_CITIES ? `/electrician-${c.slug}/` : '/service-area/',
       })),
       ...tier2Areas.map((a) => ({ label: a, href: '/service-area/' })),
     ],

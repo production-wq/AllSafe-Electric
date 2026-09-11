@@ -36,7 +36,7 @@ We test the ground-fault protection in the kitchen, bathrooms, garage, and outdo
 
 ## A sample of outlets, switches, and wiring
 
-We check a representative set of devices for correct wiring, polarity, and grounding, and we look at visible wiring in the attic, basement, and crawl space for aluminium branch circuits, damaged runs, or old cloth-covered wire.
+We check a representative set of devices for correct wiring, polarity, and grounding, and we look at visible wiring in the attic, basement, and crawl space for aluminum branch circuits, damaged runs, or old cloth-covered wire.
 
 ## What you get
 

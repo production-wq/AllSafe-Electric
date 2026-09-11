@@ -12,6 +12,7 @@ type Loc =
   | 'footer'
   | 'availability_strip'
   | 'reviews'
+  | 'homepage_marquee'
   | 'inline';
 
 declare global {

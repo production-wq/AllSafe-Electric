@@ -139,7 +139,7 @@ export const InstagramIcon = (p: SVGProps<SVGSVGElement>) => (
 export function Stars({
   rating = 5,
   className,
-  color = '#FF6600',
+  color = '#007A56',
   size = 18,
 }: {
   rating?: number;

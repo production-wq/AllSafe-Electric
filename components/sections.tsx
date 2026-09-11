@@ -9,11 +9,11 @@ import { CheckIcon } from './Icons';
 
 const ACCENT = {
   blue: { bar: 'bg-blue-500', tile: 'bg-blue-50 text-blue-600' },
-  leaf: { bar: 'bg-orange-500', tile: 'bg-orange-50 text-orange-500' },
+  leaf: { bar: 'bg-green-600', tile: 'bg-green-50 text-green-600' },
   teal: { bar: 'bg-blue-400', tile: 'bg-blue-50 text-blue-600' },
 } as const;
 
-/** Service card. Photo, an h3, one line, a text link. Colour comes from the group. */
+/** Service card. Photo, an h3, one line, a text link. Color comes from the group. */
 export function ServiceCard({
   slug,
   headingLevel = 3,
@@ -40,11 +40,11 @@ export function ServiceCard({
         />
         <span
           aria-hidden
-          className={`absolute inset-x-0 bottom-0 h-1 ${s.emergency ? 'bg-orange-500' : a.bar}`}
+          className={`absolute inset-x-0 bottom-0 h-1 ${s.emergency ? 'bg-green-600' : a.bar}`}
         />
       </div>
       <div className="flex flex-1 flex-col p-5">
-        <H className={`text-h3 ${s.emergency ? 'text-orange-600' : ''}`}>
+        <H className={`text-h3 ${s.emergency ? 'text-green-700' : ''}`}>
           <Link href={`/${s.slug}/`} className="text-inherit no-underline">
             <span className="absolute inset-0" aria-hidden />
             {s.navLabel}
@@ -104,14 +104,14 @@ export function WhatHappensNext({ emergency = false }: { emergency?: boolean }) 
   const steps = emergency
     ? [
         'You call. We confirm the address and a two-hour arrival window, and tell you what to switch off.',
-        'Jud arrives, makes it safe, and finds the actual cause.',
+        'We arrive, makes it safe, and finds the actual cause.',
         'You get a fixed repair price before any work starts. The diagnostic fee comes off it.',
         'We fix what is dangerous now and flag what to schedule properly later.',
       ]
     : [
         'You call or book online. A real person picks up during business hours.',
         'We confirm a two-hour arrival window that works for you.',
-        'Jud arrives, looks at the job, and gives you a fixed price.',
+        'We arrive, looks at the job, and gives you a fixed price.',
         'You decide. No pressure, and no upsell.',
       ];
   return (
@@ -136,21 +136,21 @@ export function PriceRange({ service }: { service: Service }) {
   const p = service.priceRange;
   const fmt = (n: number) => `$${n.toLocaleString('en-US')}`;
   return (
-    <div className="overflow-hidden rounded-card border border-orange-100 bg-orange-50">
-      <div className="border-b border-orange-100 bg-white/60 px-6 py-4">
+    <div className="overflow-hidden rounded-card border border-green-100 bg-green-50">
+      <div className="border-b border-green-100 bg-white/60 px-6 py-4">
         <h2 className="text-h2">
           What it costs {service.slug.includes('parker') ? 'in Parker' : 'in Douglas County'}
         </h2>
       </div>
       <div className="p-6">
-        <p className="text-h1 font-bold tracking-tight text-orange-600">
+        <p className="text-h1 font-bold tracking-tight text-green-700">
           {fmt(p.low)}
-          <span className="mx-2 text-h3 font-normal text-orange-500/70">to</span>
+          <span className="mx-2 text-h3 font-normal text-green-600/70">to</span>
           {fmt(p.high)}
         </p>
-        {p.unit && <p className="mt-1 text-small font-semibold text-orange-600">{p.unit}</p>}
+        {p.unit && <p className="mt-1 text-small font-semibold text-green-700">{p.unit}</p>}
 
-        <dl className="mt-6 space-y-4 border-t border-orange-100 pt-5 text-body">
+        <dl className="mt-6 space-y-4 border-t border-green-100 pt-5 text-body">
           <div>
             <dt className="font-semibold text-ink">What moves the price</dt>
             <dd className="mt-0.5 text-slate">{p.drivers}.</dd>
@@ -164,7 +164,7 @@ export function PriceRange({ service }: { service: Service }) {
         <p className="mt-5 rounded-btn bg-white/70 px-4 py-3 text-small text-slate">
           {p.needsApproval
             ? 'Estimated range, reviewed regularly. Your exact price is fixed in writing before any work begins.'
-            : 'Typical installed range for this area. Your exact price is fixed in writing after Jud has seen the job.'}
+            : 'Typical installed range for this area. Your exact price is fixed in writing after we have seen the job.'}
         </p>
       </div>
     </div>
@@ -187,8 +187,8 @@ export function IncludedList({
       <ul className="mt-6 grid gap-x-8 gap-y-3.5 sm:grid-cols-2">
         {items.map((item) => (
           <li key={item} className="flex gap-3 text-body">
-            <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-orange-100">
-              <CheckIcon className="text-orange-600" width={13} height={13} />
+            <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-green-100">
+              <CheckIcon className="text-green-700" width={13} height={13} />
             </span>
             <span className="text-slate">{item}</span>
           </li>
@@ -216,7 +216,7 @@ export function CtaBlock({
       />
       <span
         aria-hidden
-        className="pointer-events-none absolute -bottom-32 -left-20 h-96 w-96 rounded-full bg-orange-500/25 blur-3xl"
+        className="pointer-events-none absolute -bottom-32 -left-20 h-96 w-96 rounded-full bg-green-600/25 blur-3xl"
       />
       <div className="container-page relative grid gap-12 py-16 lg:grid-cols-2 lg:py-24">
         <div>
@@ -224,7 +224,7 @@ export function CtaBlock({
           <h2 className="mt-3 text-h1 text-white">{heading}</h2>
           <p className="mt-4 max-w-md text-body-lg text-white/80">
             {emergency
-              ? 'Call now. During the day Jud usually picks up on the first ring, and you get a two-hour arrival window rather than a vague promise.'
+              ? 'Call now. During the day we usually pick up on the first ring, and you get a two-hour arrival window rather than a vague promise.'
               : 'Book a visit online any time, or call and talk it through with a real person. Free estimates on quoted work, and the diagnostic fee on a service call comes off the repair.'}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
@@ -247,15 +247,15 @@ export function CtaBlock({
 
           <ul className="mt-10 space-y-2.5 border-t border-white/15 pt-6 text-small text-white/75">
             <li className="flex items-start gap-2.5">
-              <CheckIcon className="mt-0.5 shrink-0 text-orange-200" width={17} height={17} />
+              <CheckIcon className="mt-0.5 shrink-0 text-green-200" width={17} height={17} />
               Licensed master electrician, {business.licenses.master.id}
             </li>
             <li className="flex items-start gap-2.5">
-              <CheckIcon className="mt-0.5 shrink-0 text-orange-200" width={17} height={17} />
+              <CheckIcon className="mt-0.5 shrink-0 text-green-200" width={17} height={17} />
               Serving Parker and the south metro since {business.founded.year}
             </li>
             <li className="flex items-start gap-2.5">
-              <CheckIcon className="mt-0.5 shrink-0 text-orange-200" width={17} height={17} />
+              <CheckIcon className="mt-0.5 shrink-0 text-green-200" width={17} height={17} />
               {business.address.streetAddress}, {business.address.addressLocality},{' '}
               {business.address.addressRegion} {business.address.postalCode}
             </li>

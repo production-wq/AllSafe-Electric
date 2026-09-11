@@ -10,16 +10,25 @@ import { Schema } from '@/components/Schema';
 import { businessNode, websiteNode } from '@/lib/schema';
 import { SITE_URL, business } from '@/lib/business';
 
+/**
+ * Phase 1.12 (planning/docs/09, 2026-09-11): trimmed from 4 weights each (8
+ * font files) to 3. Dropped 500 from both: globals.css hardcodes h1-h4 and
+ * .btn at 600/700 already, and font-medium (500) shows up in only a handful
+ * of small text spots sitewide, not anywhere above the fold. next/font only
+ * emits a <link rel="preload"> for the weight/style files actually referenced
+ * in the initial render, so fewer declared weights means fewer render-blocking
+ * font requests on first paint.
+ */
 const display = Poppins({
   subsets: ['latin'],
-  weight: ['500', '600', '700', '800'],
+  weight: ['600', '700', '800'],
   variable: '--font-display',
   display: 'swap',
 });
 
 const body = Inter({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['400', '600', '700'],
   variable: '--font-body',
   display: 'swap',
 });

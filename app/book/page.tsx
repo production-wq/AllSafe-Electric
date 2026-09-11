@@ -12,8 +12,12 @@ export const metadata: Metadata = pageMetadata({
   path: '/book/',
   title: 'Book an Electrician in Parker, CO | Allsafe Electric',
   description:
-    'Book Allsafe Electric online through Housecall Pro, the scheduler is live any time. Or call (303) 648-1934 during business hours and talk to Jud directly.',
+    'Book Allsafe Electric online through Housecall Pro, the scheduler is live any time. Or call (303) 648-1934 during business hours and talk to a real person directly.',
   ogEyebrow: 'Book · Parker, CO',
+  // Thin 269-word Housecall Pro pass-through — not a page worth ranking on its own.
+  // Excluded from sitemap.ts too. Kept crawlable (follow) so internal PageRank still
+  // flows through it to /contact/ and the service pages it links out to.
+  index: false,
 });
 
 const crumbs = [
@@ -24,7 +28,7 @@ const crumbs = [
 const whatToExpect = [
   'Pick a service and a window that works for you',
   'We confirm a two-hour arrival slot',
-  'Jud arrives, looks at the job, and gives you a fixed price',
+  'We arrive, look at the job, and give you a fixed price',
   'You decide, no pressure, no upsell',
 ];
 
@@ -68,7 +72,7 @@ export default function BookPage() {
               ))}
             </ol>
             <p className="mt-5 flex items-start gap-2 border-t border-rule pt-4 text-[0.95rem] text-grey">
-              <CheckIcon className="mt-0.5 shrink-0 text-orange-500" width={20} height={20} />
+              <CheckIcon className="mt-0.5 shrink-0 text-green-600" width={20} height={20} />
               Licensed master electrician · {business.licenses.master.id} · serving Parker since{' '}
               {business.founded.year}
             </p>

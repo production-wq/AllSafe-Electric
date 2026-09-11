@@ -61,7 +61,7 @@ export function Reviews({ initial }: { initial: ReviewsPayload }) {
           <GoogleG /> Google reviews
         </p>
         <h2 id="reviews-heading" className="mt-1 text-h2">
-          What Parker neighbours say about Jud
+          What Parker neighbors say about us
         </h2>
 
         {reviews.length > 0 ? (
@@ -111,7 +111,7 @@ export function Reviews({ initial }: { initial: ReviewsPayload }) {
                 <GoogleG /> Read the reviews on Google
               </p>
               <p className="mt-2 max-w-lg text-grey">
-                Allsafe Electric&apos;s Google reviews name Jud and Justin by name. The live feed loads
+                Allsafe Electric&apos;s Google reviews name our team by name. The live feed loads
                 here once connected. Until then, they are all on the Google Business Profile.
               </p>
             </div>

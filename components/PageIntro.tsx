@@ -18,7 +18,7 @@ export function PageIntro({
 }) {
   const grounds = {
     blue: 'bg-gradient-to-b from-blue-50 via-white to-white',
-    leaf: 'bg-gradient-to-b from-orange-50 via-white to-white',
+    leaf: 'bg-gradient-to-b from-green-50 via-white to-white',
     sand: 'bg-gradient-to-b from-paper via-white to-white',
   } as const;
 

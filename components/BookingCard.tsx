@@ -41,7 +41,7 @@ export function BookingCard() {
       aria-label="Book a visit"
     >
       <p className="flex items-center gap-2 text-h3 font-bold">
-        <CalendarIcon className="text-orange-500" /> Book a visit
+        <CalendarIcon className="text-green-600" /> Book a visit
       </p>
 
       <fieldset className="mt-4">

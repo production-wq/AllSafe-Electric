@@ -75,10 +75,10 @@ export const services: Service[] = [
     slug: 'emergency-electrical-repairs-parker-co',
     h1: 'Emergency electrician in Parker, CO',
     navLabel: 'Emergency repairs',
-    blurb: 'Sparks, a burning smell, or half the house dark. A real person answers and Jud comes out.',
+    blurb: 'Sparks, a burning smell, or half the house dark. A real person answers and We come out.',
     title: 'Emergency Electrician in Parker, CO | Allsafe Electric',
     metaDescription:
-      'Sparks, a burning smell, or half the house dark? Call Allsafe Electric. In the daytime Jud usually answers on the first ring. Parker and Douglas County.',
+      'Sparks, a burning smell, or half the house dark? Call Allsafe Electric. In the daytime we usually answer on the first ring. Parker and Douglas County.',
     primaryKeyword: 'emergency electrician parker',
     secondaryKeywords: [
       '24 hour electrician parker co',
@@ -90,15 +90,15 @@ export const services: Service[] = [
     emergency: true,
     cityServiceSlug: 'emergency-electrician',
     heroImage: 'allsafe-electrician-voltage-testing-breaker-panel.JPG',
-    heroAlt: 'Jud from Allsafe Electric checking voltage at an open breaker panel',
+    heroAlt: 'An Allsafe Electric electrician checking voltage at an open breaker panel',
     bodyImage: 'electrician-testing-voltage-in-electrical-panel.JPG',
     bodyAlt: 'Voltage testing inside a residential electrical panel during a callout',
     lead:
-      'If you smell burning, see sparks, or lost power to part of the house, stop and call. During business hours Jud usually answers on the first ring and can often be on site within two hours. A diagnostic visit is a flat fee that comes off the repair if you go ahead. After 6pm the same number reaches the emergency line.',
+      'If you smell burning, see sparks, or lost power to part of the house, stop and call. Same-day for urgent calls, usually within a two-hour window, weekdays 8am to 6pm. We usually answer on the first ring. A diagnostic visit is a flat fee that comes off the repair if you go ahead.',
     highlights: [
       { label: 'Typical response', value: 'Within 2 hours in Parker' },
       { label: 'Diagnostic fee', value: 'Flat, credited to the repair' },
-      { label: 'Who arrives', value: 'Jud or Justin, never a subcontractor' },
+      { label: 'Who arrives', value: 'One of our licensed electricians, never a subcontractor' },
     ],
     priceRange: {
       low: 189,
@@ -140,7 +140,7 @@ export const services: Service[] = [
     ],
     process: [
       'You call. We confirm the address and a two-hour arrival window, and tell you what to switch off in the meantime.',
-      'Jud arrives, makes the area safe, and finds the actual cause rather than the symptom.',
+      'We arrive, makes the area safe, and finds the actual cause rather than the symptom.',
       'You get a fixed price to repair before any work happens. The diagnostic fee comes off it.',
       'We fix what is dangerous now and flag anything that should be scheduled properly later.',
     ],
@@ -148,12 +148,12 @@ export const services: Service[] = [
       'Most emergency repairs are like-for-like and do not need a permit. If the fix turns into a panel or service replacement, we pull the permit with the Town of Parker or Douglas County and handle the inspection. Verify current requirements with your jurisdiction before scheduling non-urgent follow-up work.',
     faqs: [
       {
-        q: 'Are you actually available after hours?',
-        a: `The same number, ${P}, reaches an after-hours emergency line on weekday evenings. Overnight and weekend calls are triaged. Genuine safety emergencies get a callback, and everything else is booked for the next morning.`,
+        q: 'Are you available on weekends or after hours?',
+        a: `We are open weekdays, 8am to 6pm, nothing on weekends. Call ${P} for a same-day urgent slot during those hours. A call outside them goes to voicemail and gets a callback first thing the next business day.`,
       },
       {
         q: 'What does an emergency visit cost?',
-        a: 'A flat diagnostic fee, higher in the evening than during the day, and it comes off the repair if you approve the work. You get the repair price in writing before anything starts.',
+        a: 'A flat diagnostic fee, and it comes off the repair if you approve the work. You get the repair price in writing before anything starts.',
       },
       {
         q: 'Should I turn the power off myself?',
@@ -182,7 +182,7 @@ export const services: Service[] = [
     blurb: 'Breaker trips, flickering lights, and dead circuits traced back to the real cause.',
     title: 'Electrical Troubleshooting in Parker, CO | Allsafe Electric',
     metaDescription:
-      'Breaker keeps tripping? Lights flicker? Outlet dead but the breaker is fine? Jud traces the real cause and fixes it, for a flat diagnostic fee in Parker.',
+      'Breaker keeps tripping? Lights flicker? Outlet dead but the breaker is fine? We trace the real cause and fix it, for a flat diagnostic fee in Parker.',
     primaryKeyword: 'electrical troubleshooting parker',
     secondaryKeywords: [
       'breaker keeps tripping parker',
@@ -192,7 +192,7 @@ export const services: Service[] = [
     group: 'repairs-safety',
     indexed: false,
     heroImage: 'electrician-testing-kitchen-outlet-with-voltage-detector.JPG',
-    heroAlt: 'Jud from Allsafe Electric testing a kitchen outlet with a voltage detector',
+    heroAlt: 'An Allsafe Electric electrician testing a kitchen outlet with a voltage detector',
     bodyImage: 'electrician-testing-three-gang-light-switches.JPG',
     bodyAlt: 'Testing a bank of three light switches to isolate a dead circuit',
     lead:
@@ -237,7 +237,7 @@ export const services: Service[] = [
     ],
     process: [
       'You describe what is happening and when. Half the diagnosis is in the pattern.',
-      'Jud isolates the circuit, tests under load, and traces the fault to a specific device, connection, or run.',
+      'We isolate the circuit, tests under load, and traces the fault to a specific device, connection, or run.',
       'You get the cause in plain language and a fixed price to repair it.',
       'We fix it and re-test the whole circuit, not just the one point.',
     ],
@@ -250,7 +250,7 @@ export const services: Service[] = [
       },
       {
         q: 'Can you tell me the cost over the phone?',
-        a: 'Not honestly. The diagnostic fee is flat and known up front. The repair price depends on what we find, and you get that in writing before we proceed.',
+        a: 'We can tell you the diagnostic fee up front. Because repair costs depend on what we find, we cannot give you an accurate repair price until we have diagnosed the issue. Once we do, you will receive the price in writing and approve it before any repair work begins.',
       },
       {
         q: 'My lights flicker all over the house. Is that dangerous?',
@@ -333,7 +333,7 @@ export const services: Service[] = [
     ],
     process: [
       'You call or book, and tell us which rooms and roughly how many.',
-      'Jud confirms the circuit can take the load, or plans a new one.',
+      'We confirm the circuit can take the load, or plans a new one.',
       'We install spec-grade, back-wired devices and tamper-resistant receptacles where kids are around.',
       'Every outlet on the affected circuit gets tested before we leave.',
     ],
@@ -414,7 +414,7 @@ export const services: Service[] = [
       },
     ],
     included: [
-      'Checking the box for backstabbed or aluminium connections and correcting them',
+      'Checking the box for backstabbed or aluminum connections and correcting them',
       'Matched decora devices and plates so a whole floor looks finished',
       'Dimmers rated for your actual bulb type, brought to the visit',
       'Smart switches joined to your network and named before we go',
@@ -423,7 +423,7 @@ export const services: Service[] = [
     ],
     process: [
       'Tell us which switches and what they do, or fail to do.',
-      'Jud checks each box for backstabbed or aluminium connections and corrects them.',
+      'We check each box for backstabbed or aluminum connections and corrects them.',
       'We install matched devices, and program smart switches onto your network if you want them.',
       'Every switch and the fixtures it controls get tested.',
     ],
@@ -436,7 +436,7 @@ export const services: Service[] = [
       },
       {
         q: 'Do smart switches need a neutral wire?',
-        a: 'Most do. Many Parker homes built after the mid-1980s have a neutral in the switch box, and older ones may not. Jud checks before recommending a specific switch.',
+        a: 'Most do. Many Parker homes built after the mid-1980s have a neutral in the switch box, and older ones may not. We check before recommending a specific switch.',
       },
       {
         q: 'Why does my dimmer buzz?',
@@ -454,10 +454,10 @@ export const services: Service[] = [
     slug: 'electrical-wiring-repairs-services',
     h1: 'Home wiring repair and rewiring in Parker',
     navLabel: 'Wiring & rewiring',
-    blurb: 'Aluminium wiring, damaged runs, additions, and staged whole-home rewires.',
+    blurb: 'Aluminum wiring, damaged runs, additions, and staged whole-home rewires.',
     title: 'Home Wiring Repair & Rewiring in Parker, CO | Allsafe',
     metaDescription:
-      'Aluminium branch wiring, damaged runs, additions and staged whole-home rewires. Allsafe Electric repairs and replaces residential wiring across Parker.',
+      'Aluminum branch wiring, damaged runs, additions and staged whole-home rewires. Allsafe Electric repairs and replaces residential wiring across Parker.',
     primaryKeyword: 'house rewiring parker co',
     secondaryKeywords: [
       'aluminum wiring replacement colorado',
@@ -471,7 +471,7 @@ export const services: Service[] = [
     bodyImage: 'allsafe-electrician-wiring-decorative-light-fixture.JPG',
     bodyAlt: 'Wiring a decorative light fixture into a ceiling box',
     lead:
-      'Most homes here do not need a full rewire. They need specific problems fixed: aluminium branch circuits pigtailed correctly, a run damaged by a nail or a rodent, or new circuits for a finished basement. When a rewire genuinely is the right call, which happens in some 1970s Pinery and Ponderosa homes and older Castle Rock stock, we stage it room by room so you are never without power for long.',
+      'Most homes here do not need a full rewire. They need specific problems fixed: aluminum branch circuits pigtailed correctly, a run damaged by a nail or a rodent, or new circuits for a finished basement. When a rewire genuinely is the right call, which happens in some 1970s Pinery and Ponderosa homes and older Castle Rock stock, we stage it room by room so you are never without power for long.',
     highlights: [
       { label: 'Most calls', value: 'Resolved without a full rewire' },
       { label: 'Rewires', value: 'Staged so power stays on' },
@@ -481,7 +481,7 @@ export const services: Service[] = [
       low: 350,
       high: 8000,
       drivers:
-        'a single repair versus remediating aluminium throughout versus a full rewire, plus access above the ceilings',
+        'a single repair versus remediating aluminum throughout versus a full rewire, plus access above the ceilings',
       includes:
         'copper materials, rated connectors, patching coordination, and the permit and inspection where required',
       needsApproval: true,
@@ -489,7 +489,7 @@ export const services: Service[] = [
     signs: [
       {
         h3: 'Silver branch wiring in a house built 1965 to 1975',
-        body: 'That is aluminium branch wiring. It is not a teardown, but the connections need proper correction with rated connectors.',
+        body: 'That is aluminum branch wiring. It is not a teardown, but the connections need proper correction with rated connectors.',
       },
       {
         h3: 'Warm cover plates or a faint plastic smell in several rooms',
@@ -513,7 +513,7 @@ export const services: Service[] = [
       'Drywall patching coordinated so you are not left chasing a second trade',
     ],
     process: [
-      'Jud inspects accessible wiring, the panel, and a sample of boxes, then tells you honestly whether this is a repair or a rewire.',
+      'We inspect accessible wiring, the panel, and a sample of boxes, then tells you honestly whether this is a repair or a rewire.',
       'You get a written scope with a room-by-room sequence and a price.',
       'We pull the permit, do the work in stages, and keep the essential circuits live.',
       'The jurisdiction inspects, and we coordinate the drywall patching.',
@@ -523,10 +523,10 @@ export const services: Service[] = [
     faqs: [
       {
         q: 'Does my house need a full rewire?',
-        a: 'Usually not. Most calls are resolved with targeted repairs and connection corrections. Jud will tell you if a rewire is genuinely warranted, and why.',
+        a: 'Usually not. Most calls are resolved with targeted repairs and connection corrections. We will tell you if a rewire is genuinely warranted, and why.',
       },
       {
-        q: 'Is aluminium wiring a dealbreaker on a house I am buying?',
+        q: 'Is aluminum wiring a dealbreaker on a house I am buying?',
         a: 'No. It is a known, correctable condition. Proper pigtailing with rated connectors, or a partial replacement, resolves it and satisfies most inspectors and insurers.',
       },
       {
@@ -608,7 +608,7 @@ export const services: Service[] = [
       'A written report you can hand to a lender, an insurer, or another contractor',
     ],
     process: [
-      'Jud walks the whole system: service entrance, meter, panel, grounding and bonding, a sample of outlets and switches, GFCI and AFCI protection, and visible wiring.',
+      'We walk the whole system: service entrance, meter, panel, grounding and bonding, a sample of outlets and switches, GFCI and AFCI protection, and visible wiring.',
       'Everything gets photographed and rated as safe, monitor, or address now.',
       'You get the written report the same day or the next morning.',
       'If you want the flagged items fixed, that is a separate quote and there is no obligation.',
@@ -656,7 +656,7 @@ export const services: Service[] = [
     group: 'repairs-safety',
     indexed: true,
     heroImage: 'allsafe-electrician-standing-in-modern-home.JPG',
-    heroAlt: 'Jud from Allsafe Electric in the hallway of a modern Parker home',
+    heroAlt: 'An Allsafe Electric electrician in the hallway of a modern Parker home',
     heroImageGap: true,
     imageBrief:
       'A hand mounting a white smoke detector to a hallway ceiling, viewed from below, warm daylight, suburban Colorado home. 4:3.',
@@ -744,7 +744,7 @@ export const services: Service[] = [
     blurb: 'Fuse boxes, tripping breakers, and Federal Pacific panels replaced. Most run $2,200 to $4,500.',
     title: 'Electrical Panel Upgrades & Repairs in Parker, CO | Allsafe',
     metaDescription:
-      'Breaker tripping or a fuse box still in service? Jud upgrades panels across Parker and Douglas County. Licensed master electrician, permits handled for you.',
+      'Breaker tripping or a fuse box still in service? We upgrade panels across Parker and Douglas County. Licensed master electrician, permits handled for you.',
     primaryKeyword: 'electrical panel upgrade parker',
     secondaryKeywords: [
       'breaker box replacement parker',
@@ -760,7 +760,7 @@ export const services: Service[] = [
     bodyImage: 'allsafe-electrician-installing-breaker-panel-cover.JPG',
     bodyAlt: 'Refitting the deadfront cover on a finished breaker panel',
     lead:
-      'If your breakers trip when the microwave and the toaster run together, you still have a fuse box, or your panel is a Federal Pacific or Zinsco, an upgrade is the fix. Most panel upgrades in Parker run $2,200 to $4,500. What moves the price is the amperage you need, where the meter sits, whether the mast has to be replaced, and what the inspector finds. Jud gives you the range on a first call and a fixed number after seeing it.',
+      'If your breakers trip when the microwave and the toaster run together, you still have a fuse box, or your panel is a Federal Pacific or Zinsco, an upgrade is the fix. Most panel upgrades in Parker run $2,200 to $4,500. What moves the price is the amperage you need, where the meter sits, whether the mast has to be replaced, and what the inspector finds. We give you the range on a first call and a fixed number after seeing it.',
     highlights: [
       { label: 'Typical range', value: '$2,200 to $4,500' },
       { label: 'Time on site', value: 'Usually a single day' },
@@ -806,7 +806,7 @@ export const services: Service[] = [
       'The inspection attended, and the old panel removed',
     ],
     process: [
-      'Jud confirms the amperage you need based on the actual loads rather than a guess, and checks the meter, mast, and grounding.',
+      'We confirm the amperage you need based on the actual loads rather than a guess, and checks the meter, mast, and grounding.',
       'You get a fixed price and the permit is filed with the Town of Parker or Douglas County.',
       'On the day, the utility disconnects, the old panel comes out, the new one goes in with every circuit labelled, and power is usually back within the day.',
       'The jurisdiction inspects, and CORE or Xcel reconnects.',
@@ -824,7 +824,7 @@ export const services: Service[] = [
       },
       {
         q: 'Do I need 200-amp service?',
-        a: 'Many Douglas County homes do once you add an EV charger, hot tub, or electric heat. Some are fine at 150. Jud sizes it to your real loads and your plans rather than a default.',
+        a: 'Many Douglas County homes do once you add an EV charger, hot tub, or electric heat. Some are fine at 150. We size it to your real loads and your plans rather than a default.',
       },
       {
         q: 'Is a Federal Pacific panel actually dangerous?',
@@ -898,7 +898,7 @@ export const services: Service[] = [
       'Advice on point-of-use protection for the few things that need both layers',
     ],
     process: [
-      'Jud checks the panel for space and inspects the grounding, which the device depends on.',
+      'We check the panel for space and inspects the grounding, which the device depends on.',
       'We mount a UL-1449 listed device on a dedicated double-pole breaker.',
       'The indicator confirms it is live and protecting.',
       'We note it on the panel schedule so the next electrician knows it is there.',
@@ -920,7 +920,7 @@ export const services: Service[] = [
       },
       {
         q: 'Can you add it without a new panel?',
-        a: 'Yes, as long as there is space for a double-pole breaker and the grounding is sound. Jud checks both before quoting.',
+        a: 'Yes, as long as there is space for a double-pole breaker and the grounding is sound. We check both before quoting.',
       },
     ],
     related: [
@@ -944,7 +944,7 @@ export const services: Service[] = [
     indexed: false,
     cityServiceSlug: 'generator-installation',
     heroImage: 'allsafe-electrician-beside-home-sauna.JPG',
-    heroAlt: 'Jud from Allsafe Electric beside installed equipment at a Parker home',
+    heroAlt: 'An Allsafe Electric electrician beside installed equipment at a Parker home',
     heroImageGap: true,
     imageBrief:
       'A standby generator on a concrete pad beside a suburban Colorado home, landscaping around it, autumn light, mountains faint on the horizon. 3:2. No brand marks.',
@@ -991,7 +991,7 @@ export const services: Service[] = [
       'A walkthrough of the weekly self-exercise cycle and what to expect',
     ],
     process: [
-      'Jud does a load assessment covering what must stay on, what would be nice, and what that means in kW.',
+      'We do a load assessment covering what must stay on, what would be nice, and what that means in kW.',
       'We choose whole-house or essential circuits, site the pad for clearances and noise, and confirm the gas supply.',
       'We pull the electrical and gas permits, set the pad, and wire the transfer switch at the panel.',
       'The jurisdiction inspects, we commission and test it under load, and show you how it exercises itself weekly.',
@@ -1001,7 +1001,7 @@ export const services: Service[] = [
     faqs: [
       {
         q: 'What size generator do I need?',
-        a: 'It depends on whether you want the whole house or just essentials such as the furnace, fridge, well, sump, and some lights and outlets. Jud runs the numbers on your actual loads rather than quoting a default 22kW.',
+        a: 'It depends on whether you want the whole house or just essentials such as the furnace, fridge, well, sump, and some lights and outlets. We run the numbers on your actual loads rather than quoting a default 22kW.',
       },
       {
         q: 'Natural gas or propane?',
@@ -1048,7 +1048,7 @@ export const services: Service[] = [
     bodyImage: 'electrician-tightening-connections-in-breaker-panel.JPG',
     bodyAlt: 'Landing a new 240-volt circuit on a double-pole breaker in the panel',
     lead:
-      'A Level 2 charger adds 20 to 40 miles of range per hour, against 3 to 5 on a standard outlet. The job is a 240-volt circuit from the panel to where you park, plus the charger itself. Most Douglas County homes can take one on the existing service, and some need a panel upgrade or a load-management device first. Jud does the load calculation before you buy anything, so you know which situation you are in.',
+      'A Level 2 charger adds 20 to 40 miles of range per hour, against 3 to 5 on a standard outlet. The job is a 240-volt circuit from the panel to where you park, plus the charger itself. Most Douglas County homes can take one on the existing service, and some need a panel upgrade or a load-management device first. We do the load calculation before you buy anything, so you know which situation you are in.',
     highlights: [
       { label: 'Charging speed', value: '20 to 40 miles per hour' },
       { label: 'Load calc', value: 'Done before you buy' },
@@ -1090,7 +1090,7 @@ export const services: Service[] = [
       'A test at full rated current with the car actually charging',
     ],
     process: [
-      'Jud runs an NEC load calculation on your panel and service to confirm capacity.',
+      'We run an NEC load calculation on your panel and service to confirm capacity.',
       'We plan the route, the breaker size, and whether hardwired or a NEMA 14-50 outlet suits you better.',
       'We install the circuit and the charger, and configure any app or amperage limit.',
       'We test at full rated current and confirm the vehicle charges at the expected rate.',
@@ -1108,7 +1108,7 @@ export const services: Service[] = [
       },
       {
         q: 'Can my panel handle a charger?',
-        a: 'Often yes. Jud does a proper load calculation rather than guessing, and if it is close, a load-management device can avoid a full panel upgrade.',
+        a: 'Often yes. We do a proper load calculation rather than guessing, and if it is close, a load-management device can avoid a full panel upgrade.',
       },
       {
         q: 'Hardwired or plug-in?',
@@ -1183,7 +1183,7 @@ export const services: Service[] = [
       'The permit filed and the inspection attended',
     ],
     process: [
-      'Jud confirms the tub\'s electrical spec and checks the panel has capacity.',
+      'We confirm the tub\'s electrical spec and checks the panel has capacity.',
       'We plan the route, buried or surface, and the disconnect location for the five-foot rule and line of sight.',
       'We install the GFCI-protected circuit, the disconnect, and the equipotential bonding.',
       'The jurisdiction inspects, and you fill the tub.',
@@ -1268,15 +1268,15 @@ export const services: Service[] = [
     ],
     included: [
       'A layout walked through with you before anything is drilled',
-      'Colour temperature and dimming chosen to suit the room',
+      'Color temperature and dimming chosen to suit the room',
       'Cans placed around joists, HVAC, and existing framing',
       'Compatible dimmers so nothing hums or flickers',
       'Tidy cuts, with any patch pointed out before we make it',
       'Every fixture aimed, tested, and the site cleaned up',
     ],
     process: [
-      'We walk the rooms and talk through layout, colour temperature, and dimming.',
-      'Jud confirms the circuits and switch locations, and where cans can go around joists and HVAC.',
+      'We walk the rooms and talk through layout, color temperature, and dimming.',
+      'We confirm the circuits and switch locations, and where cans can go around joists and HVAC.',
       'We install, keeping cuts tidy, and set every fixture on a compatible dimmer.',
       'We aim, test, and clean up.',
     ],
@@ -1285,7 +1285,7 @@ export const services: Service[] = [
     faqs: [
       {
         q: 'How many recessed lights does a room need?',
-        a: 'As a rule of thumb, one every 4 to 6 feet in a grid, adjusted for the furniture and the ceiling height. Jud lays it out with you before drilling anything.',
+        a: 'As a rule of thumb, one every 4 to 6 feet in a grid, adjusted for the furniture and the ceiling height. We lay it out with you before drilling anything.',
       },
       {
         q: 'Can you add recessed lighting without wrecking the ceiling?',
@@ -1369,7 +1369,7 @@ export const services: Service[] = [
     ],
     process: [
       'We walk the property at dusk where we can, because that is the only way to plan lighting properly.',
-      'Jud sizes the transformer and plans runs, keeping low-voltage where possible to avoid trenching.',
+      'We size the transformer and plans runs, keeping low-voltage where possible to avoid trenching.',
       'We install wet-rated fixtures, a timer or photocell, and GFCI protection on every exterior circuit.',
       'We aim each fixture after dark and set the schedule.',
     ],
@@ -1456,7 +1456,7 @@ export const services: Service[] = [
     ],
     process: [
       'We confirm the box, and almost always replace it with a fan-rated one.',
-      'For a new location, Jud runs the wiring and sets the switch.',
+      'For a new location, we run the wiring and set the switch.',
       'We assemble, hang, and balance the fan, and set the down-rod for the ceiling height.',
       'We test every speed, the light, and the control.',
     ],
@@ -1477,7 +1477,7 @@ export const services: Service[] = [
       },
       {
         q: 'Can the fan and light be on separate switches?',
-        a: 'Yes, if there are enough wires in the box, or with a remote or smart control. Jud checks what is there and gives you the options.',
+        a: 'Yes, if there are enough wires in the box, or with a remote or smart control. We check what is there and give you the options.',
       },
     ],
     related: ['lighting-services', 'electrical-switch-services', 'home-automation'],
@@ -1542,7 +1542,7 @@ export const services: Service[] = [
     ],
     process: [
       'We go through the device list and check each box and circuit for what it needs.',
-      'Jud adds neutrals, upgrades the doorbell transformer, or runs a C-wire as required.',
+      'We add neutrals, upgrades the doorbell transformer, or runs a C-wire as required.',
       'We install the devices, join them to your Wi-Fi or hub, and label everything.',
       'We show you it working, every switch, scene, and camera.',
     ],
@@ -1551,7 +1551,7 @@ export const services: Service[] = [
     faqs: [
       {
         q: 'Do all smart switches need a neutral wire?',
-        a: 'Most do. Some newer models work without one but can cause flicker or a minimum-load issue with LED bulbs. Jud checks your boxes and recommends accordingly.',
+        a: 'Most do. Some newer models work without one but can cause flicker or a minimum-load issue with LED bulbs. We check your boxes and recommend accordingly.',
       },
       {
         q: 'Why does my video doorbell keep dropping offline?',

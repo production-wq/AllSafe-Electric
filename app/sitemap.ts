@@ -29,15 +29,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: abs('/reviews/'), lastModified: CONTENT_DATE },
     { url: abs('/coupons/'), lastModified: CONTENT_DATE },
     { url: abs('/contact/'), lastModified: CONTENT_DATE },
-    { url: abs('/book/'), lastModified: CONTENT_DATE },
+    // /book/ is a 269-word HousecallPro embed pass-through, deliberately noindex,follow
+    // (planning/docs/09 §1.4) — never in the sitemap.
     { url: abs('/resources/'), lastModified: CONTENT_DATE },
+    { url: abs('/sitemap-page/'), lastModified: CONTENT_DATE },
     { url: abs('/privacy-policy/'), lastModified: CONTENT_DATE },
     { url: abs('/blog/'), lastModified: CONTENT_DATE }, ...slugs.map((slug) => ({ url: abs(`/blog/${slug}/`), lastModified: CONTENT_DATE })),
   ];
 
   if (PUBLISH.TIER_1_CITIES) {
     for (const c of cities) {
-      entries.push({ url: abs(`/electricians/${c.slug}/`), lastModified: CONTENT_DATE });
+      entries.push({ url: abs(`/electrician-${c.slug}/`), lastModified: CONTENT_DATE });
     }
   }
 

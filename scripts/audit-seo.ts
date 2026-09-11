@@ -12,8 +12,10 @@
  *   - invalid JSON-LD
  *   - an <img> with no alt, or keyword-stuffed alt
  *   - a tel: link whose number is not +13036481934
- *   - any retired-orange hex anywhere in the HTML
- * Warns on: thin body copy, missing OG image.
+ *   - any orange hex anywhere in the HTML (client style guide excludes it, 2026-09-11)
+ *   - a British spelling (neighbourhood, licence, aluminium, colour, ...)
+ *   - an em dash in visible copy
+ * Warns on: thin body copy, missing OG image, a stray colour outside the approved palette.
  */
 import { readdir, readFile } from 'node:fs/promises';
 import { join, relative } from 'node:path';
@@ -24,24 +26,53 @@ const HTML_DIR = join(ROOT, '.next', 'server', 'app');
 const REAL_TEL = '+13036481934';
 
 /**
- * Palette check (planning/docs/99, 2026-09-10). The client supplied their live
- * brand palette and asked us to use it, which REVERSES the old "no orange" line.
- * Orange #FF6600 is now the brand accent. This check no longer bans orange; it
- * only flags *stray* colours: any saturated hex that is not part of the approved
- * palette or a mandated third-party brand colour (Google logo, star gold).
+ * Palette check (planning/docs/99, 2026-09-11). v3 shipped orange as the client's
+ * "live palette" accent; the client's 2026-09-11 audit clarified their actual style
+ * guide excludes orange as a CTA colour entirely. Accent is GREEN, sampled from the
+ * real logo file. Orange is a hard build failure again. Everything else outside the
+ * approved set is a warning, not a failure (stock photo/OG-image gradients etc. can
+ * legitimately use adjacent shades).
  */
 const APPROVED_HEX = new Set(
   [
-    // client palette
-    '#0068a8', '#54595f', '#ff6600', '#7a7a7a', '#000000',
-    // derived scale in use
+    '#0068a8', '#54595f', '#7a7a7a', '#000000',
     '#00568b', '#01426b', '#08314f', '#0a2e4c', '#0e3a60', '#071f35',
-    '#e85600', '#c24700', '#111214', '#e3e7eb', '#f4f6f8', '#ffffff',
-    '#e8f2f9', '#fff1e6', '#ffdfc7', '#0f76b4', '#2e88c0',
+    '#007a56', '#00643f', '#004e30', '#009a6b',
+    '#b3352f', '#952b26',
+    '#111214', '#e3e7eb', '#f4f6f8', '#ffffff',
+    '#e8f2f9', '#e6f5ef', '#c2e7d8', '#8ed0b3', '#0f76b4', '#2e88c0',
     // mandated third-party
     '#4285f4', '#34a853', '#fbbc05', '#ea4335',
   ].map((h) => h.toLowerCase())
 );
+
+function hexToRgb(hex: string): [number, number, number] {
+  return [parseInt(hex.slice(1, 3), 16), parseInt(hex.slice(3, 5), 16), parseInt(hex.slice(5, 7), 16)];
+}
+
+function isOrange(r: number, g: number, b: number): boolean {
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  if (max - min < 60) return false; // grey/near-neutral
+  let h = 0;
+  const d = max - min;
+  if (max === r) h = ((g - b) / d + (g < b ? 6 : 0)) * 60;
+  else if (max === g) h = ((b - r) / d + 2) * 60;
+  else h = ((r - g) / d + 4) * 60;
+  return h >= 15 && h <= 45 && max > 140; // orange/amber band, excludes gold #FBBC05 (~45°, dimmer edge case checked separately)
+}
+
+function findOrange(text: string): string | null {
+  const hexRe = /#([0-9a-f]{6})\b/gi;
+  let m: RegExpExecArray | null;
+  while ((m = hexRe.exec(text))) {
+    const hex = `#${m[1].toLowerCase()}`;
+    if (hex === '#fbbc05') continue; // Google's own logo yellow, mandated, not brand orange
+    const [r, g, b] = hexToRgb(hex);
+    if (isOrange(r, g, b)) return hex;
+  }
+  return null;
+}
 
 function findStrayColour(text: string): string | null {
   const hexRe = /#([0-9a-f]{6})\b/gi;
@@ -49,13 +80,25 @@ function findStrayColour(text: string): string | null {
   while ((m = hexRe.exec(text))) {
     const hex = `#${m[1].toLowerCase()}`;
     if (APPROVED_HEX.has(hex)) continue;
-    const r = parseInt(m[1].slice(0, 2), 16);
-    const g = parseInt(m[1].slice(2, 4), 16);
-    const b = parseInt(m[1].slice(4, 6), 16);
+    const [r, g, b] = hexToRgb(hex);
     const max = Math.max(r, g, b);
     const min = Math.min(r, g, b);
-    // only care about vivid, non-grey colours we did not sanction
     if (max - min > 90 && max > 120) return hex;
+  }
+  return null;
+}
+
+// Client audit 2026-09-11: American English throughout, everywhere except the
+// license identifiers ME.0601023 / EC.0101068 (which do not contain these words).
+const BRITISH_WORDS = [
+  'neighbourhood', 'neighbourhoods', 'licence', 'licences', 'aluminium',
+  'colour', 'colours', 'organisation', 'organisational', 'recognise', 'recognised',
+  'favour', 'centre',
+];
+function findBritishSpelling(bodyText: string): string | null {
+  const lower = bodyText.toLowerCase();
+  for (const w of BRITISH_WORDS) {
+    if (new RegExp(`\\b${w}\\b`).test(lower)) return w;
   }
   return null;
 }
@@ -94,7 +137,10 @@ async function auditFile(file: string) {
   const root = parse(html, { comment: false });
   const isNoindex = /<meta[^>]+name=["']robots["'][^>]+noindex/i.test(html);
 
-  // Palette: flag stray vivid colours outside the approved set
+  // Palette: orange is a hard fail (client style guide excludes it as a CTA colour,
+  // 2026-09-11). Anything else vivid and unapproved is just a warning.
+  const orange = findOrange(html);
+  if (orange) err(page, `orange hex found (${orange}) — client style guide excludes orange, use green (--green)`);
   const stray = findStrayColour(html);
   if (stray) warn(page, `colour outside the approved palette: ${stray}`);
 
@@ -189,6 +235,11 @@ async function auditFile(file: string) {
     const sample = visibleText.match(/.{0,45}—.{0,45}/)?.[0]?.replace(/\s+/g, ' ') ?? '';
     err(page, `${emDashes} em dash(es) in visible copy. Rewrite the sentence: "…${sample.trim()}…"`);
   }
+
+  // American English only (client audit 2026-09-11). License ID strings
+  // (ME.0601023 / EC.0101068) contain no British-spelled words, so no exclusion needed.
+  const british = findBritishSpelling(visibleText);
+  if (british) err(page, `British spelling "${british}" in visible copy — use American English`);
 
   // Empty hrefs
   if (root.querySelectorAll('a[href=""]').length)

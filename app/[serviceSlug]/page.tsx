@@ -57,9 +57,9 @@ export default async function ServicePage({
     ? cities.map((c) => ({
         city: c,
         href: PUBLISH.TIER_2_CITY_SERVICE
-          ? `/electricians/${c.slug}/${s.cityServiceSlug}/`
+          ? `/electrician-${c.slug}/${s.cityServiceSlug}/`
           : PUBLISH.TIER_1_CITIES
-            ? `/electricians/${c.slug}/`
+            ? `/electrician-${c.slug}/`
             : '/service-area/',
       }))
     : [];
@@ -85,7 +85,7 @@ export default async function ServicePage({
       <section
         className={`relative overflow-hidden border-b border-rule ${
           s.emergency
-            ? 'bg-gradient-to-b from-orange-50 via-white to-white'
+            ? 'bg-gradient-to-b from-green-50 via-white to-white'
             : 'bg-gradient-to-b from-blue-50 via-white to-white'
         }`}
       >
@@ -97,7 +97,7 @@ export default async function ServicePage({
           <div>
             <div className="flex flex-wrap items-center gap-2">
               {s.emergency ? (
-                <span className="chip chip-orange">Emergency line open</span>
+                <span className="chip chip-green">Emergency line open</span>
               ) : (
                 group && <span className="chip chip-blue">{group.label}</span>
               )}
@@ -123,6 +123,14 @@ export default async function ServicePage({
           </div>
 
           <div className="overflow-hidden rounded-card border border-rule shadow-lift">
+            {/*
+              Kevin's review, 2026-09-08: this internal "photo queued" note was
+              rendering to real visitors on the s.heroImageGap === true pages. It
+              is production-tracking metadata, not something a homeowner should
+              see, so it no longer renders. s.heroImageGap stays in lib/services.ts
+              as the internal checklist of which hero photos are still stock and
+              need a real job photo (planning/docs, photography direction).
+            */}
             <SiteImage
               name={s.heroImage}
               alt={s.heroAlt}
@@ -131,11 +139,6 @@ export default async function ServicePage({
               className="h-[300px] w-full object-cover sm:h-[420px]"
               aspable={false}
             />
-            {s.heroImageGap && (
-              <p className="bg-paper px-4 py-2 text-tiny text-grey">
-                Representative photo. A job-specific image for this service is queued.
-              </p>
-            )}
           </div>
         </div>
       </section>
@@ -210,18 +213,18 @@ export default async function ServicePage({
             </p>
           </section>
 
-          {/* Why Jud */}
+          {/* Why us */}
           <section
             aria-labelledby="why-heading"
             className="surface-dark overflow-hidden rounded-card bg-navy p-6 md:p-8"
           >
-            <p className="eyebrow eyebrow-light">Why homeowners here call Jud</p>
+            <p className="eyebrow eyebrow-light">Why homeowners here call us</p>
             <h2 id="why-heading" className="mt-3 text-h2 text-white">
               A real person, start to finish
             </h2>
             <p className="mt-4 max-w-2xl text-body-lg text-white/80">
               A real person answers the phone, you get a two-hour window rather than a vague day,
-              and Jud or Justin does the work. Not a rotating crew, and not a subcontractor you have
+              and one of our licensed electricians does the work. Not a rotating crew, and not a subcontractor you have
               never met. Allsafe&apos;s Google reviews name them both personally.
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
@@ -229,7 +232,7 @@ export default async function ServicePage({
                 <GoogleG /> Read reviews from Parker customers
               </Link>
               <span className="flex items-center gap-2 text-small text-white/70">
-                <ShieldIcon width={17} height={17} /> Licence {business.licenses.master.id}
+                <ShieldIcon width={17} height={17} /> License {business.licenses.master.id}
               </span>
             </div>
           </section>
@@ -282,12 +285,12 @@ export default async function ServicePage({
         <aside className="lg:sticky lg:top-[calc(var(--header-h)+1.5rem)] lg:h-fit lg:self-start">
           <div className="card overflow-hidden">
             <div
-              className={`px-5 py-4 ${s.emergency ? 'bg-orange-500' : 'bg-navy'} surface-dark`}
+              className={`px-5 py-4 ${s.emergency ? 'bg-green-600' : 'bg-navy'} surface-dark`}
             >
               <h2 className="text-h3 text-white">Book {s.navLabel.toLowerCase()}</h2>
               <p className="mt-1 text-small text-white/80">
                 {s.emergency
-                  ? 'Call now. In the daytime Jud usually picks up on the first ring.'
+                  ? 'Call now. In the daytime we usually pick up on the first ring.'
                   : 'A real person answers, Mon to Fri, 8 to 6. Book online any time.'}
               </p>
             </div>
@@ -300,15 +303,15 @@ export default async function ServicePage({
               />
               <ul className="mt-5 space-y-2 border-t border-rule pt-4 text-small text-grey">
                 <li className="flex items-center gap-2">
-                  <CheckIcon className="shrink-0 text-orange-500" width={15} height={15} />
+                  <CheckIcon className="shrink-0 text-green-600" width={15} height={15} />
                   Fixed price before work starts
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckIcon className="shrink-0 text-orange-500" width={15} height={15} />
+                  <CheckIcon className="shrink-0 text-green-600" width={15} height={15} />
                   Permits and inspection handled
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckIcon className="shrink-0 text-orange-500" width={15} height={15} />
+                  <CheckIcon className="shrink-0 text-green-600" width={15} height={15} />
                   Shoe covers on, good with dogs
                 </li>
               </ul>
@@ -323,11 +326,14 @@ export default async function ServicePage({
         </aside>
       </div>
 
-      <CtaBlock
-        service={s.slug}
-        emergency={s.emergency}
-        heading={`Book ${s.navLabel.toLowerCase()} in Parker`}
-      />
+      {/*
+        Kevin's review, 2026-09-08: the old heading interpolated the raw nav
+        keyword ("Book ceiling fans in Parker", "Book switches & dimmers in
+        Parker"), which reads like scraped SEO text rather than something a
+        person would say. CtaBlock's own default heading, "Ready to get it
+        sorted?", already works for every service without that risk.
+      */}
+      <CtaBlock service={s.slug} emergency={s.emergency} />
     </>
   );
 }

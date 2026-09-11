@@ -127,7 +127,7 @@ export default function PrivacyPage() {
           <p>
             We keep enquiry and job records for as long as needed for the work, warranty, tax and
             legal purposes, then delete them. Analytics data is retained for 14 months. We use
-            reasonable technical and organisational measures to protect your information; no method
+            reasonable technical and organizational measures to protect your information; no method
             of transmission is completely secure.
           </p>
 

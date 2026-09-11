@@ -41,7 +41,7 @@ const datedBadges: Badge[] = [
 ];
 
 const assurances = [
-  { icon: ShieldIcon, text: `Licence ${business.licenses.master.id}` },
+  { icon: ShieldIcon, text: `License ${business.licenses.master.id}` },
   { icon: CheckIcon, text: 'Free estimates on quoted work' },
   { icon: ClockIcon, text: 'Locally owned since 2018' },
 ];
@@ -74,7 +74,7 @@ export function TrustBadges({ className = '' }: { className?: string }) {
       <ul className="flex flex-wrap items-center justify-center gap-x-7 gap-y-2.5">
         {assurances.map(({ icon: Icon, text }) => (
           <li key={text} className="flex items-center gap-2 text-small text-grey">
-            <Icon width={17} height={17} className="shrink-0 text-orange-500" />
+            <Icon width={17} height={17} className="shrink-0 text-green-600" />
             {text}
           </li>
         ))}

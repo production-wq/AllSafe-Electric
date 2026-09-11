@@ -12,7 +12,7 @@ export default function ThankYouPage() {
   return (
     <section className="section">
       <div className="container-page max-w-2xl text-center">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-orange-500 text-white">
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-600 text-white">
           <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
             <path d="M20 6 9 17l-5-5" />
           </svg>
@@ -24,7 +24,7 @@ export default function ThankYouPage() {
           <a href={business.phone.href} className="link-cta">
             {business.phone.display}
           </a>{' '}
-          and Jud will usually pick up.
+          and a real person will usually pick up.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link href="/" className="btn btn-outline">

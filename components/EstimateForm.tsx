@@ -50,10 +50,10 @@ export function EstimateForm({
     return (
       <div
         role="status"
-        className="rounded-card border border-orange-200 bg-orange-50 p-6 text-ink"
+        className="rounded-card border border-green-200 bg-green-50 p-6 text-ink"
       >
         <p className="flex items-center gap-2 text-h3">
-          <CheckIcon className="text-orange-500" /> Got it, thanks.
+          <CheckIcon className="text-green-600" /> Got it, thanks.
         </p>
         <p className="mt-2 text-body text-slate">
           {state.values?.name ? `Thanks, ${state.values.name.split(' ')[0]}. ` : ''}We have your
@@ -84,7 +84,7 @@ export function EstimateForm({
       {state.error && (
         <p
           role="alert"
-          className="col-span-full rounded border border-orange-300 bg-orange-50 px-3 py-2 text-small text-orange-700"
+          className="col-span-full rounded border border-green-300 bg-green-50 px-3 py-2 text-small text-green-800"
         >
           {state.error}
         </p>
@@ -130,7 +130,7 @@ export function EstimateForm({
         required
       />
       {err.message && (
-        <p id={`${formId}-message-err`} className="mt-1 text-tiny text-orange-700">
+        <p id={`${formId}-message-err`} className="mt-1 text-tiny text-green-800">
           {err.message}
         </p>
       )}
@@ -298,7 +298,7 @@ function Field({
         {...rest}
       />
       {error && (
-        <p id={`${id}-err`} className="mt-1 text-tiny text-orange-700">
+        <p id={`${id}-err`} className="mt-1 text-tiny text-green-800">
           {error}
         </p>
       )}

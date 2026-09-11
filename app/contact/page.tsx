@@ -85,7 +85,7 @@ export default function ContactPage() {
                   <span>
                     {business.hours.humanReadable}
                     <br />
-                    Mountain time · after-hours emergency line on weekday evenings
+                    Mountain time · book online any time
                   </span>
                 </p>
               </address>
@@ -98,7 +98,7 @@ export default function ContactPage() {
                 </a>
               </div>
               <p className="mt-4 border-t border-rule pt-3 text-[0.9rem] text-grey">
-                Licences {business.licenses.master.id} · {business.licenses.contractor.id}
+                Licenses {business.licenses.master.id} · {business.licenses.contractor.id}
               </p>
             </div>
             <div className="h-72">

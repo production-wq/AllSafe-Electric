@@ -45,7 +45,7 @@ export default function AboutPage() {
       <PageIntro
         eyebrow="About"
         title="It's Jud and Justin. That's the company."
-        lead="No call centre, no rotating crew, no sales rep. When you book Allsafe Electric, one of two licensed electricians shows up, and it is usually Jud, who has run the business out of Parker since 2018."
+        lead="No call center, no rotating crew, no sales rep. When you book Allsafe Electric, one of two licensed electricians shows up, and it is usually Jud, who has run the business out of Parker since 2018."
         crumbs={crumbs}
       />
 
@@ -94,16 +94,16 @@ export default function AboutPage() {
             </p>
 
             <h2 id="credentials" className="scroll-mt-28 text-h2">
-              Licences &amp; credentials
+              Licenses &amp; credentials
             </h2>
             <p>
-              Both licences below are current and verifiable through the Colorado Department of
-              Regulatory Agencies (DORA) licence lookup. Every permitted job is inspected by the
+              Both licenses below are current and verifiable through the Colorado Department of
+              Regulatory Agencies (DORA) license lookup. Every permitted job is inspected by the
               local jurisdiction, the Town of Parker, Douglas County, or the relevant city.
             </p>
             <ul className="not-prose space-y-2">
               <li className="card p-4">
-                <span className="font-semibold">Master Electrician Licence</span> ·{' '}
+                <span className="font-semibold">Master Electrician License</span> ·{' '}
                 {business.licenses.master.id} ·{' '}
                 <a
                   href={business.licenses.verifyUrl}
@@ -115,7 +115,7 @@ export default function AboutPage() {
                 </a>
               </li>
               <li className="card p-4">
-                <span className="font-semibold">Electrical Contractor Licence</span> ·{' '}
+                <span className="font-semibold">Electrical Contractor License</span> ·{' '}
                 {business.licenses.contractor.id} ·{' '}
                 <a
                   href={business.licenses.verifyUrl}
@@ -148,7 +148,11 @@ export default function AboutPage() {
               <dl className="mt-3 space-y-2 text-[0.95rem]">
                 <div>
                   <dt className="font-semibold">Founded</dt>
-                  <dd className="text-grey">January {business.founded.year}, in Parker</dd>
+                  <dd className="text-grey">January {business.founded.year}, in Parker (8 years in business)</dd>
+                </div>
+                <div>
+                  <dt className="font-semibold">Jud&apos;s experience</dt>
+                  <dd className="text-grey">15+ years in the trade, 8 running Allsafe</dd>
                 </div>
                 <div>
                   <dt className="font-semibold">Team</dt>

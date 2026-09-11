@@ -1,20 +1,22 @@
 /**
  * Tier publication gates, planning/CLAUDE.md §1.7, planning/docs/09 §3.
  *
- * Publishing 500 pages at once is what broke the current site (86 of 588 indexed).
- * Tier 0 (home, 16 services, core pages) ships at launch. Every later tier is gated
- * on the previous tier reaching ≥80% indexed. Until a tier's flag is flipped its pages
- * still build and are reachable by direct URL, but they are:
+ * TIER_1_CITIES was flipped on 2026-09-11 per the client's audit (Phase 1.1 of the
+ * implementation prompt): four of the five city pages already match legacy indexed
+ * URLs (/electrician-castle-rock/, /electrician-highlands-ranch/, /electrician-lone-tree/,
+ * /electrician-centennial/) and were sitting behind noindex for no reason. See
+ * planning/docs/99, 2026-09-11.
+ *
+ * Later tiers (30 city x service pages, tools/resources) stay gated. Until a tier's
+ * flag is flipped its pages still build and are reachable by direct URL, but they are:
  *   - excluded from sitemap.xml
  *   - served with <meta name="robots" content="noindex,follow">
  *   - excluded from the mega-menu / hub "browse" lists (kept as contextual links only)
- *
- * Flip these ONLY after `npm run report:indexation -- --tier=N` clears the gate.
  */
 
 export const PUBLISH = {
-  TIER_1_CITIES: false, // 5 Tier-1 city pages
-  TIER_2_CITY_SERVICE: false, // 30 city × service pages
+  TIER_1_CITIES: true, // 5 city pages at /electrician-{city}/
+  TIER_2_CITY_SERVICE: false, // service x city pages, /{service}-{city}/
   TIER_3_TOOLS_RESOURCES: false, // 5 tools + 5 resource guides
 } as const;
 

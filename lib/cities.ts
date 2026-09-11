@@ -34,7 +34,7 @@ export interface City {
 
 export const cities: City[] = [
   {
-    slug: 'parker-co',
+    slug: 'parker',
     name: 'Parker',
     county: 'Douglas',
     tier: 1,
@@ -50,7 +50,7 @@ export const cities: City[] = [
     permitProcess:
       'Homes inside Parker town limits permit through the Town of Parker Building Division. Panel and service upgrades, new circuits, EV chargers, hot tubs and generators all require a permit and a rough and/or final inspection. We file the application, coordinate the CORE disconnect and reconnect for service work, and meet the inspector. Verify current fees on parkerco.gov before scheduling.',
     housingStock:
-      'Parker grew fast between 1995 and 2015, so a large share of homes are 1990s–2000s builds now running 100A–150A service that was never meant to carry two EVs, a hot tub and central AC at once. The older Pinery and Ponderosa areas have 1970s–80s homes with aging panels. Some Federal Pacific and Zinsco, and the occasional aluminium branch circuit.',
+      'Parker grew fast between 1995 and 2015, so a large share of homes are 1990s–2000s builds now running 100A–150A service that was never meant to carry two EVs, a hot tub and central AC at once. The older Pinery and Ponderosa areas have 1970s–80s homes with aging panels. Some Federal Pacific and Zinsco, and the occasional aluminum branch circuit.',
     neighborhoods: [
       'Stonegate',
       'Stroh Ranch',
@@ -68,7 +68,7 @@ export const cities: City[] = [
       'outlet-repair',
     ],
     lead:
-      'Allsafe Electric is based in Parker. Jud has run the business here since 2018 and lives the same commute you do. For most of the town. Stonegate, Stroh Ranch, Canterberry Crossing, The Pinery. He can often be on site within two hours during business hours, and a real person answers the phone when you call.',
+      'Allsafe Electric is based in Parker. We have run the business here since 2018 and live the same commute you do, for most of the town: Stonegate, Stroh Ranch, Canterberry Crossing, The Pinery. We can often be on site within two hours during business hours, and a real person answers the phone when you call.',
     faqs: [
       {
         q: 'Who issues electrical permits in Parker?',
@@ -91,7 +91,7 @@ export const cities: City[] = [
       'A quiet residential street of two-story stone-and-siding homes in Parker, Colorado, mature trees, mountains faint on the horizon, late afternoon light. 16:9.',
   },
   {
-    slug: 'castle-rock-co',
+    slug: 'castle-rock',
     name: 'Castle Rock',
     county: 'Douglas',
     tier: 1,
@@ -124,7 +124,7 @@ export const cities: City[] = [
       'emergency-electrician',
     ],
     lead:
-      'Castle Rock is about 18 minutes from the Parker shop, so Jud covers it regularly. Downtown\'s older homes see a lot of inspection and rewiring work; the newer subdivisions off Founders and Meadows Parkway are more panel upgrades and EV chargers. Either way, you get the same licensed master electrician and the same phone that gets answered.',
+      'Castle Rock is about 18 minutes from the Parker shop, so we cover it regularly. Downtown\'s older homes see a lot of inspection and rewiring work; the newer subdivisions off Founders and Meadows Parkway are more panel upgrades and EV chargers. Either way, you get the same licensed master electrician and the same phone that gets answered.',
     faqs: [
       {
         q: 'Does Castle Rock use Douglas County for permits?',
@@ -136,7 +136,7 @@ export const cities: City[] = [
       },
       {
         q: 'How quickly can you get to The Meadows or Crystal Valley for an emergency?',
-        a: 'During business hours, usually within an hour or so once we confirm the call, the drive from Parker is straightforward. Evenings route through the after-hours line.',
+        a: 'Same-day, usually within an hour or so once we confirm the call, the drive from Parker is straightforward. We are open weekdays 8am to 6pm; a call outside those hours gets a callback the next business day.',
       },
       {
         q: 'Are generators common in Castle Rock?',
@@ -147,7 +147,7 @@ export const cities: City[] = [
       'A residential street in Castle Rock, Colorado with two-story homes, the Castle Rock butte faint in the distance, clear morning light, autumn. 16:9.',
   },
   {
-    slug: 'highlands-ranch-co',
+    slug: 'highlands-ranch',
     name: 'Highlands Ranch',
     county: 'Douglas',
     tier: 1,
@@ -180,7 +180,7 @@ export const cities: City[] = [
       'electrical-inspection',
     ],
     lead:
-      'Highlands Ranch is a straight 20-minute run from the Parker shop. The housing stock is consistent, mostly 1990s master-planned, so Jud knows what he is walking into: original panels reaching the end of their service life, and homeowners adding EV chargers to a service that can usually take one with a proper load calculation.',
+      'Highlands Ranch is a straight 20-minute run from the Parker shop. The housing stock is consistent, mostly 1990s master-planned, so we know what to expect: original panels reaching the end of their service life, and homeowners adding EV chargers to a service that can usually take one with a proper load calculation.',
     faqs: [
       {
         q: 'Which building department covers Highlands Ranch?',
@@ -196,14 +196,14 @@ export const cities: City[] = [
       },
       {
         q: 'Can my Highlands Ranch home take an EV charger without a panel upgrade?',
-        a: 'Usually, if it has 200A service and some spare capacity. Jud runs a load calculation first. If it is tight, a load-management device often avoids a full upgrade.',
+        a: 'Usually, if it has 200A service and some spare capacity. We run a load calculation first. If it is tight, a load-management device often avoids a full upgrade.',
       },
     ],
     heroImageBrief:
       'A residential street in Highlands Ranch, Colorado, rows of consistent two-story homes, foothills in the background, bright midday light. 16:9.',
   },
   {
-    slug: 'lone-tree-co',
+    slug: 'lone-tree',
     name: 'Lone Tree',
     county: 'Douglas',
     tier: 1,
@@ -235,7 +235,7 @@ export const cities: City[] = [
       'electrical-inspection',
     ],
     lead:
-      'Lone Tree is only about 15 minutes from the Parker shop, so it is one of the areas Jud reaches quickest. The work here tends toward the higher end. Dual EV chargers, whole-house generators, smart-home wiring, and landscape lighting on larger lots, on homes that usually have the 200A service to support it.',
+      'Lone Tree is only about 15 minutes from the Parker shop, so it is one of the areas we reach quickest. The work here tends toward the higher end. Dual EV chargers, whole-house generators, smart-home wiring, and landscape lighting on larger lots, on homes that usually have the 200A service to support it.',
     faqs: [
       {
         q: 'Does Lone Tree handle its own permits?',
@@ -243,7 +243,7 @@ export const cities: City[] = [
       },
       {
         q: 'We have two EVs in Lone Tree. What are our options?',
-        a: 'Two chargers on one 200A service is common here. Depending on your other loads, that can be two dedicated circuits, a load-sharing pair, or a small service upgrade. Jud runs the numbers and lays out the choices.',
+        a: 'Two chargers on one 200A service is common here. Depending on your other loads, that can be two dedicated circuits, a load-sharing pair, or a small service upgrade. We run the numbers and lay out the choices.',
       },
       {
         q: 'Do Lone Tree HOAs restrict generators?',
@@ -258,7 +258,7 @@ export const cities: City[] = [
       'A residential street in Lone Tree, Colorado with larger newer two-story homes, manicured landscaping, foothills behind, warm late-afternoon light. 16:9.',
   },
   {
-    slug: 'centennial-co',
+    slug: 'centennial',
     name: 'Centennial',
     county: 'Arapahoe',
     tier: 1,
@@ -274,7 +274,7 @@ export const cities: City[] = [
     permitProcess:
       'Centennial is an incorporated city in Arapahoe County and contracts out building-permit administration. Panel upgrades, EV chargers, generators and new circuits are permitted and inspected. The process and fee schedule differ from Douglas County, so we confirm the current requirements with the City\'s permit provider before scheduling.',
     housingStock:
-      'Centennial covers a broad range, roughly 1960s to 2000s. The older stock, meaning the parts of the area built in the 1960s and 70s, is where aluminium branch wiring and Federal Pacific panels show up, and where inspection, panel and outlet work is heaviest. The newer subdivisions off Smoky Hill and in the southeast are more straightforward.',
+      'Centennial covers a broad range, roughly 1960s to 2000s. The older stock, meaning the parts of the area built in the 1960s and 70s, is where aluminum branch wiring and Federal Pacific panels show up, and where inspection, panel and outlet work is heaviest. The newer subdivisions off Smoky Hill and in the southeast are more straightforward.',
     neighborhoods: [
       'Willow Creek',
       'Homestead',
@@ -291,14 +291,14 @@ export const cities: City[] = [
       'emergency-electrician',
     ],
     lead:
-      'Centennial is about 22 minutes from Parker and sits in Arapahoe County, so the permitting is different from our Douglas County work, we handle that. The 1960s–70s neighbourhoods here keep Jud busy with panel replacements, aluminium-wiring corrections, and outlet work in homes getting updated for the first time in decades.',
+      'Centennial is about 22 minutes from Parker and sits in Arapahoe County, so the permitting is different from our Douglas County work, we handle that. The 1960s–70s neighborhoods here keep us busy with panel replacements, aluminum-wiring corrections, and outlet work in homes getting updated for the first time in decades.',
     faqs: [
       {
         q: 'Centennial is in a different county, does that change anything?',
         a: 'Only the paperwork. Centennial is an incorporated city in Arapahoe County with its own permit process, separate from Douglas County. The work and the standards are the same; we file with the right authority.',
       },
       {
-        q: 'My 1970s Centennial home has aluminium wiring. What do I do?',
+        q: 'My 1970s Centennial home has aluminum wiring. What do I do?',
         a: 'It is a known, correctable condition, not a teardown. The fix is proper pigtailing with rated connectors at every device, or selective replacement. We assess the extent and give you a scoped price.',
       },
       {

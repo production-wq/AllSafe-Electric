@@ -22,7 +22,7 @@ export function GET(req: Request) {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          background: 'linear-gradient(135deg, #024D80 0%, #0165AC 60%, #013A62 100%)',
+          background: 'linear-gradient(135deg, #0E3A60 0%, #0A2E4C 60%, #071F35 100%)',
           padding: '64px',
           fontFamily: 'sans-serif',
           color: '#fff',
@@ -33,7 +33,7 @@ export function GET(req: Request) {
             style={{
               width: 44,
               height: 44,
-              background: '#008E6C',
+              background: '#007A56',
               borderRadius: 8,
               display: 'flex',
             }}
@@ -42,7 +42,7 @@ export function GET(req: Request) {
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-          <div style={{ fontSize: 22, fontWeight: 600, color: '#BFE9DA' }}>{eyebrow}</div>
+          <div style={{ fontSize: 22, fontWeight: 600, color: '#8ED0B3' }}>{eyebrow}</div>
           <div style={{ fontSize: 60, fontWeight: 700, lineHeight: 1.1, maxWidth: '960px' }}>
             {title}
           </div>

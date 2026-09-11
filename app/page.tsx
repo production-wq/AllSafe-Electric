@@ -5,6 +5,8 @@ import { SiteImage } from '@/components/SiteImage';
 import { EstimateForm } from '@/components/EstimateForm';
 import { ServiceCard } from '@/components/sections';
 import { Testimonials } from '@/components/Testimonials';
+import { ReviewsMarquee } from '@/components/ReviewsMarquee';
+import { getFallbackReviewsSync } from '@/lib/reviews';
 import { MapFacade } from '@/components/MapFacade';
 import { FaqList } from '@/components/Faq';
 import { Schema } from '@/components/Schema';
@@ -19,6 +21,7 @@ import {
   ClockIcon,
   PriceTagIcon,
   MapPinIcon,
+  CalendarIcon,
 } from '@/components/Icons';
 import { business } from '@/lib/business';
 import { homeFaqs } from '@/lib/faqs';
@@ -34,10 +37,10 @@ export const metadata: Metadata = pageMetadata({
 });
 
 const stats = [
-  { value: '15+', label: 'Years in Business' },
-  { value: '400+', label: '5-Star Reviews' },
+  { value: '8', label: 'Years in Business' },
+  { value: '148', label: '5-Star Google Reviews' },
   { value: 'A+', label: 'BBB Accredited, Licensed & Insured' },
-  { value: '60 min', label: 'Average Emergency Response' },
+  { value: 'Same-Day', label: 'For Urgent Calls, 2-Hr Window' },
 ];
 
 const aboutPoints = [
@@ -93,8 +96,27 @@ export default function HomePage() {
         ]}
       />
 
-      {/* ── Hero ─────────────────────────────────────────────────────────── */}
+      {/*
+        ── Hero ──────────────────────────────────────────────────────────
+        Background photo added 2026-09-11 (client: "there should be an image
+        on the hero section background"). family-and-golden-retriever-living-room
+        matches the client's own photography direction for the homepage, warm
+        residential, a family and a dog, not a panel/breaker close-up. It is
+        the page's LCP element, so it gets `priority` (Phase 1.12) instead of
+        the default lazy load. A navy scrim (bg-navy-gradient, translucent) sits
+        between the photo and the text so the white hero copy stays fully
+        readable at the contrast the audit checks for.
+      */}
       <section className="surface-dark relative overflow-hidden bg-navy-gradient">
+        <SiteImage
+          name="family-and-golden-retriever-living-room.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="pointer-events-none absolute inset-0 bg-navy-gradient opacity-[0.82]" />
         <span
           aria-hidden
           className="pointer-events-none absolute -right-40 -top-40 h-[36rem] w-[36rem] rounded-full bg-blue-500/20 blur-3xl"
@@ -112,6 +134,10 @@ export default function HomePage() {
             <EstimateButton location="hero" className="!px-8">
               Get My Free Estimate
             </EstimateButton>
+            {/* Chris' review, 2026-09-08: "Add a schedule here or schedule now CTA button." */}
+            <Link href="/book/" className="btn btn-ghost">
+              <CalendarIcon width={19} height={19} /> Schedule Now
+            </Link>
             <CallButton location="hero" variant="ghost">
               <PhoneIcon width={19} height={19} /> {business.phone.display}
             </CallButton>
@@ -167,31 +193,44 @@ export default function HomePage() {
         </div>
       </section>
 
+      <ReviewsMarquee initial={getFallbackReviewsSync()} />
+
       {/* ── About ────────────────────────────────────────────────────────── */}
       <section className="section bg-paper" aria-labelledby="about-heading">
         <div className="container-page grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div className="relative">
+          {/*
+            Redesigned 2026-09-11: the old version stacked a floating "BBB A+" card
+            and a headshot chip on top of the photo with negative-margin overlaps,
+            which read as cluttered/compact at in-between viewport widths (client
+            screenshot feedback). BBB is already covered by the stats row above and
+            TrustBadges elsewhere, so the corner card was redundant, not just messy,
+            and is dropped rather than repositioned. The headshot keeps its own
+            breathing room instead of overlapping the panel photo's corner.
+          */}
+          <div className="relative pb-14 sm:pb-16">
             <div className="overflow-hidden rounded-card border border-rule shadow-card">
               <SiteImage
                 name="allsafe-electrician-testing-residential-breaker-panel.JPG"
-                alt="Jud from Allsafe Electric testing a residential breaker panel in a Parker home"
+                alt="An Allsafe Electric electrician testing a residential breaker panel in a Parker home"
                 sizes="(min-width: 1024px) 560px, 100vw"
                 className="h-[360px] w-full object-cover sm:h-[440px]"
                 aspable={false}
               />
             </div>
-            <div className="absolute -bottom-6 -right-4 hidden w-44 overflow-hidden rounded-card border-4 border-white shadow-lift sm:block">
-              <SiteImage
-                name="jud-cushing-headshot.png"
-                alt="Judson Cushing, owner of Allsafe Electric"
-                sizes="180px"
-                className="h-40 w-full object-cover object-top"
-                aspable={false}
-              />
-            </div>
-            <div className="absolute -left-4 top-6 rounded-card bg-blue-600 px-4 py-3 text-white shadow-lift">
-              <p className="font-display text-lg font-bold leading-tight">BBB A+</p>
-              <p className="text-tiny text-white/80">Accredited, licensed &amp; insured in Colorado</p>
+            <div className="absolute -bottom-2 right-6 flex items-center gap-3 rounded-card border-4 border-white bg-white py-2 pl-2 pr-4 shadow-lift sm:-bottom-4">
+              <div className="h-14 w-14 shrink-0 overflow-hidden rounded-full">
+                <SiteImage
+                  name="jud-cushing-headshot.png"
+                  alt="Judson Cushing, owner of Allsafe Electric"
+                  sizes="56px"
+                  className="h-14 w-14 object-cover object-top"
+                  aspable={false}
+                />
+              </div>
+              <div>
+                <p className="text-small font-semibold leading-tight text-ink">Jud Cushing</p>
+                <p className="text-tiny text-grey">Owner, Allsafe Electric</p>
+              </div>
             </div>
           </div>
 
@@ -216,7 +255,7 @@ export default function HomePage() {
             <ul className="mt-6 space-y-3">
               {aboutPoints.map((p) => (
                 <li key={p} className="flex items-start gap-3 text-body">
-                  <ArrowRightIcon width={18} height={18} className="mt-1 shrink-0 text-orange-500" />
+                  <ArrowRightIcon width={18} height={18} className="mt-1 shrink-0 text-green-600" />
                   <span>{p}</span>
                 </li>
               ))}
@@ -261,7 +300,7 @@ export default function HomePage() {
           <div className="overflow-hidden rounded-card border border-rule shadow-card">
             <SiteImage
               name="allsafe-electrician-in-home-service-portrait.JPG"
-              alt="Jud Cushing of Allsafe Electric in a Parker home"
+              alt="An Allsafe Electric electrician in a Parker home"
               sizes="(min-width: 1024px) 480px, 100vw"
               className="h-[420px] w-full object-cover object-[50%_25%]"
               aspable={false}
@@ -305,7 +344,7 @@ export default function HomePage() {
             <ul className="mt-8 grid grid-cols-2 gap-x-6 gap-y-3">
               {['Parker', ...tier3Neighborhoods].map((n) => (
                 <li key={n} className="flex items-center gap-2.5 text-body">
-                  <MapPinIcon width={18} height={18} className="shrink-0 text-orange-500" />
+                  <MapPinIcon width={18} height={18} className="shrink-0 text-green-600" />
                   {n}
                 </li>
               ))}
@@ -337,7 +376,7 @@ export default function HomePage() {
             <div className="mt-6 overflow-hidden rounded-card border border-rule shadow-card">
               <SiteImage
                 name="electrician-pointing-to-circuit-breaker.JPG"
-                alt="Jud from Allsafe Electric pointing out a breaker during a home visit"
+                alt="An Allsafe Electric electrician pointing out a breaker during a home visit"
                 sizes="(min-width: 1024px) 400px, 100vw"
                 className="h-56 w-full object-cover"
                 aspable={false}
@@ -361,7 +400,7 @@ export default function HomePage() {
       <section className="surface-dark relative overflow-hidden bg-navy-gradient" id="estimate-cta">
         <span
           aria-hidden
-          className="pointer-events-none absolute -left-32 bottom-0 h-96 w-96 rounded-full bg-orange-500/15 blur-3xl"
+          className="pointer-events-none absolute -left-32 bottom-0 h-96 w-96 rounded-full bg-green-600/15 blur-3xl"
         />
         <div className="container-page relative grid gap-12 py-16 lg:grid-cols-2 lg:py-24">
           <div>
@@ -380,15 +419,15 @@ export default function HomePage() {
             </div>
             <ul className="mt-10 space-y-2.5 border-t border-white/15 pt-6 text-small text-white/75">
               <li className="flex items-center gap-2.5">
-                <CheckIcon width={16} height={16} className="shrink-0 text-orange-400" />
+                <CheckIcon width={16} height={16} className="shrink-0 text-green-500" />
                 Licensed &amp; insured, master license {business.licenses.master.id}
               </li>
               <li className="flex items-center gap-2.5">
-                <ClockIcon width={16} height={16} className="shrink-0 text-orange-400" />
-                {business.hours.humanReadable}, plus a weekday emergency line
+                <ClockIcon width={16} height={16} className="shrink-0 text-green-500" />
+                {business.hours.humanReadable}, same-day emergency calls
               </li>
               <li className="flex items-center gap-2.5">
-                <MapPinIcon width={16} height={16} className="shrink-0 text-orange-400" />
+                <MapPinIcon width={16} height={16} className="shrink-0 text-green-500" />
                 {business.address.streetAddress}, {business.address.addressLocality},{' '}
                 {business.address.addressRegion} {business.address.postalCode}
               </li>

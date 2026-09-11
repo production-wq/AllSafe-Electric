@@ -14,7 +14,7 @@ export function GET() {
   lines.push('');
   lines.push(
     `${business.name} is a licensed residential electrical contractor in Parker, Colorado, `
-    + `owned and operated by ${business.owner.name} (${business.owner.jobTitle}, licence `
+    + `owned and operated by ${business.owner.name} (${business.owner.jobTitle}, license `
     + `${business.licenses.master.id}). Serving Parker and the south Denver metro since `
     + `${business.founded.year}. Strictly residential.`
   );
@@ -25,17 +25,17 @@ export function GET() {
   lines.push(`Phone: ${business.phone.display}`);
   lines.push(`Email: ${business.email.public}`);
   lines.push(`Hours: ${business.hours.humanReadable} America/Denver`);
-  lines.push(`Licences: Master electrician ${business.licenses.master.id}; Electrical contractor ${business.licenses.contractor.id}`);
+  lines.push(`Licenses: Master electrician ${business.licenses.master.id}; Electrical contractor ${business.licenses.contractor.id}`);
   lines.push(`Booking: ${abs('/book/')}`);
   lines.push(`Google Business Profile: ${business.google.profileUrl}`);
   lines.push('');
   lines.push('## Key pages');
   lines.push(`- ${abs('/')}: Home. Parker residential electrician who answers the phone`);
   lines.push(`- ${abs('/electrical-services-parker-co/')}: All residential electrical services`);
-  lines.push(`- ${abs('/about/')}: About Jud and Justin, licences and credentials`);
+  lines.push(`- ${abs('/about/')}: About Jud and Justin, licenses and credentials`);
   lines.push(`- ${abs('/reviews/')}: Google reviews`);
   lines.push(`- ${abs('/contact/')}: Contact and free estimate request`);
-  lines.push(`- ${abs('/service-area/')}: Cities and neighbourhoods served`);
+  lines.push(`- ${abs('/service-area/')}: Cities and neighborhoods served`);
   lines.push(`- ${abs('/resources/')}: Douglas County permit authorities, CORE vs Xcel, Colorado code`);
   lines.push(`- ${abs('/blog/')}: Electrical advice for Parker homeowners`);
   lines.push('');

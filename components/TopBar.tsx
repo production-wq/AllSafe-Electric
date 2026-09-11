@@ -9,17 +9,20 @@ import { ShieldIcon, MapPinIcon } from './Icons';
 export function TopBar() {
   const a = business.address;
   return (
-    <div className="hidden bg-black text-white/85 md:block" style={{ minHeight: 'var(--strip-h)' }}>
+    <div
+      className="surface-dark hidden bg-navy-deep text-white/85 md:block"
+      style={{ minHeight: 'var(--strip-h)' }}
+    >
       <div className="container-page flex items-center justify-between gap-6 py-2 text-tiny">
         <p className="flex items-center gap-2">
-          <ShieldIcon width={14} height={14} className="shrink-0 text-orange" />
+          <ShieldIcon width={14} height={14} className="shrink-0 text-green-600" />
           <span>
             Master License {business.licenses.master.id} &middot; Electrical Contractor{' '}
             {business.licenses.contractor.id} &middot; BBB A+ Accredited
           </span>
         </p>
         <p className="flex items-center gap-2">
-          <MapPinIcon width={14} height={14} className="shrink-0 text-orange" />
+          <MapPinIcon width={14} height={14} className="shrink-0 text-green-600" />
           <span>
             {a.streetAddress}, {a.addressLocality}, {a.addressRegion} {a.postalCode}
           </span>

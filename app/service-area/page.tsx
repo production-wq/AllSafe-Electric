@@ -14,7 +14,7 @@ export const metadata: Metadata = pageMetadata({
   path: '/service-area/',
   title: 'Service Area | Parker, Castle Rock, Highlands Ranch',
   description:
-    'Allsafe Electric serves Parker, Castle Rock, Highlands Ranch, Lone Tree, Centennial and the south Denver metro. Drive times, response windows, neighbourhoods.',
+    'Allsafe Electric serves Parker, Castle Rock, Highlands Ranch, Lone Tree, Centennial and the south Denver metro. Drive times, response windows, neighborhoods.',
   ogEyebrow: 'Service area',
 });
 
@@ -32,7 +32,7 @@ export default function ServiceAreaPage() {
             path: '/service-area/',
             name: 'Allsafe Electric service area',
             description:
-              'The cities and neighbourhoods Allsafe Electric covers across Douglas County and the south Denver metro.',
+              'The cities and neighborhoods Allsafe Electric covers across Douglas County and the south Denver metro.',
             about: true,
           }),
           breadcrumbNode(crumbs),
@@ -41,7 +41,7 @@ export default function ServiceAreaPage() {
       <PageIntro
         eyebrow="Service area"
         title="Where Allsafe Electric works"
-        lead="Based in Parker, covering the south Denver metro. The closer you are, the faster Jud can be there. Parker neighbourhoods are usually a same-day call during business hours."
+        lead="Based in Parker, covering the south Denver metro. The closer you are, the faster we can be there. Parker neighborhoods are usually a same-day call during business hours."
         crumbs={crumbs}
       />
 
@@ -58,7 +58,7 @@ export default function ServiceAreaPage() {
                   <li key={c.slug} className="py-4">
                     <div className="flex flex-wrap items-baseline justify-between gap-2">
                       <Link
-                        href={`/electricians/${c.slug}/`}
+                        href={`/electrician-${c.slug}/`}
                         className="text-h3 font-semibold text-blue-700 hover:underline"
                       >
                         {c.name}, CO
@@ -97,7 +97,7 @@ export default function ServiceAreaPage() {
             </section>
 
             <section>
-              <h2 className="text-h2">Parker neighbourhoods</h2>
+              <h2 className="text-h2">Parker neighborhoods</h2>
               <p className="mt-2 text-grey">
                 Genuine local knowledge. Housing eras, panel brands, HOA design review. These five
                 are named on our homepage and are the areas we know best.

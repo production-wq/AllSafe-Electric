@@ -1,10 +1,10 @@
 import { business } from './business';
 
-export type AvailabilityState = 'open' | 'after-hours' | 'closed';
+export type AvailabilityState = 'open' | 'closed';
 
 export interface Availability {
   state: AvailabilityState;
-  /** 'green' when open, 'blue' when closed/after-hours. Never red. planning/docs/02 §6.2 */
+  /** 'green' when open, 'blue' when closed. Never red. planning/docs/02 §6.2 */
   dot: 'green' | 'blue';
   message: string;
   /** Short label for the sticky bar / call button context. */
@@ -50,24 +50,13 @@ export function getAvailability(date = new Date()): Availability {
   const isWeekday = day >= 1 && day <= 5;
   const open = hm(business.hours.weekday.opens);
   const close = hm(business.hours.weekday.closes);
-  const afterUntil = hm(business.hours.afterHoursUntil);
-  const { display } = business.phone;
 
   if (isWeekday && minutes >= open && minutes < close) {
     return {
       state: 'open',
       dot: 'green',
-      message: 'Open now · Jud answers this line · usually on site within 2 hours',
+      message: 'Open now · A real person answers this line · usually on site within 2 hours',
       shortLabel: 'Open now',
-    };
-  }
-
-  if (isWeekday && minutes >= close && minutes < afterUntil) {
-    return {
-      state: 'after-hours',
-      dot: 'blue',
-      message: `After hours · Emergency line open · call ${display}`,
-      shortLabel: 'After hours',
     };
   }
 
@@ -95,6 +84,6 @@ export function getAvailability(date = new Date()): Availability {
 export const AVAILABILITY_FALLBACK: Availability = {
   state: 'open',
   dot: 'green',
-  message: 'Jud answers this line · Mon–Fri 8am–6pm · book online any time',
+  message: 'A real person answers this line · Mon–Fri 8am–6pm · book online any time',
   shortLabel: 'Mon–Fri 8–6',
 };

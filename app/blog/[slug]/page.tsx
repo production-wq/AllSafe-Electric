@@ -70,7 +70,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <article>
         <header className="border-b border-rule bg-[linear-gradient(180deg,#f3f6f8,#ffffff)]">
           <div className="container-page max-w-3xl py-12">
-            <p className="text-[0.8rem] font-semibold uppercase tracking-wide text-orange-500">
+            <p className="text-[0.8rem] font-semibold uppercase tracking-wide text-green-600">
               {post.category}
             </p>
             <h1 className="mt-2 text-[2rem] leading-tight md:text-[2.75rem]">{post.title}</h1>
