@@ -4,7 +4,7 @@
   "private": true,
   "description": "Allsafe Electric — residential electrician, Parker CO. Next.js rebuild per planning/ package.",
   "engines": {
-    "node": "20.x"
+    "node": "24.x"
   },
   "scripts": {
     "dev": "next dev",
