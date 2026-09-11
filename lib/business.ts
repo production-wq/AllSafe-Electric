@@ -70,6 +70,13 @@ export const business = {
   google: {
     cid: '2391241286444373261',
     hexId: '0x876c921d22f6e837:0x212f6547dac3d50d',
+    /**
+     * Confirmed business fact (planning/docs/09, 2026-09-11): 148 reviews, 5.0
+     * rating on the Google Business Profile. Static, not pulled from the live
+     * Places feed (app/api/reviews only returns up to 5 individual reviews, not
+     * a review count) — update by hand when the client reports a new total.
+     */
+    reviewCount: 148,
     /** Read reviews / view the profile. */
     profileUrl: 'https://www.google.com/maps?cid=2391241286444373261',
     directionsUrl:

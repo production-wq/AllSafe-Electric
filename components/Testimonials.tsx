@@ -38,7 +38,8 @@ export function Testimonials() {
             <span>
               <Stars rating={5} size={16} />
               <span className="mt-0.5 flex items-center gap-1.5 text-tiny text-grey">
-                <GoogleG className="h-3.5 w-3.5" /> Google reviews &middot; {data.aggregate.cityLabel}
+                <GoogleG className="h-3.5 w-3.5" /> {business.google.reviewCount} Google reviews &middot;{' '}
+                {data.aggregate.cityLabel}
               </span>
             </span>
           </a>

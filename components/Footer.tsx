@@ -24,7 +24,7 @@ export function Footer() {
 
   return (
     <footer className="surface-dark bg-navy-deep">
-      <div className="container-page grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+      <div className="container-page grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr_1fr_1fr]">
         {/* Brand */}
         <div>
           <Logo onDark className="h-9 w-auto" />
@@ -96,17 +96,6 @@ export function Footer() {
                 </Link>
               </li>
             ))}
-            {/* Chris' review, 2026-09-08: was miscategorized under Service Areas. */}
-            <li>
-              <Link href="/blog/" className="text-white/75 transition-colors hover:text-white">
-                Blog
-              </Link>
-            </li>
-            <li>
-              <Link href="/resources/" className="text-white/75 transition-colors hover:text-white">
-                Resources
-              </Link>
-            </li>
           </ul>
         </div>
 
@@ -120,6 +109,34 @@ export function Footer() {
               <li key={`${s.href}-${i}`}>
                 <Link href={s.href} className="text-white/75 transition-colors hover:text-white">
                   {s.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/*
+          Company. Chris' review, 2026-09-08: Blog + Resources were miscategorized
+          under Service Areas. They aren't services or areas either, so this turn
+          gives them (and About, previously not in the footer at all) their own
+          column instead of forcing them into one of those two.
+        */}
+        <div>
+          <h2 className="font-display text-tiny font-bold uppercase tracking-[0.12em] text-green-600">
+            Company
+          </h2>
+          <ul className="mt-4 space-y-2 text-small">
+            {[
+              { href: '/about/', label: 'About' },
+              { href: '/reviews/', label: 'Reviews' },
+              { href: '/blog/', label: 'Blog' },
+              { href: '/resources/', label: 'Resources' },
+              { href: '/coupons/', label: 'Coupons' },
+              { href: '/privacy-policy/', label: 'Privacy Policy' },
+            ].map((l) => (
+              <li key={l.href}>
+                <Link href={l.href} className="text-white/75 transition-colors hover:text-white">
+                  {l.label}
                 </Link>
               </li>
             ))}
