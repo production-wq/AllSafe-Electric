@@ -3,13 +3,15 @@ import Link from 'next/link';
 import { pageMetadata } from '@/lib/seo';
 import { SiteImage } from '@/components/SiteImage';
 import { EstimateForm } from '@/components/EstimateForm';
-import { ServiceCard } from '@/components/sections';
+import { ServiceCard, StatBand } from '@/components/sections';
 import { Testimonials } from '@/components/Testimonials';
 import { ReviewsMarquee } from '@/components/ReviewsMarquee';
 import { getFallbackReviewsSync } from '@/lib/reviews';
 import { MapFacade } from '@/components/MapFacade';
 import { FaqList } from '@/components/Faq';
 import { Schema } from '@/components/Schema';
+import { Reveal } from '@/components/Reveal';
+import { PhotoGallery } from '@/components/PhotoGallery';
 import { EstimateButton, CallButton } from '@/components/cta';
 import {
   PhoneIcon,
@@ -22,6 +24,7 @@ import {
   PriceTagIcon,
   MapPinIcon,
   CalendarIcon,
+  GoogleG,
 } from '@/components/Icons';
 import { business } from '@/lib/business';
 import { homeFaqs } from '@/lib/faqs';
@@ -37,10 +40,14 @@ export const metadata: Metadata = pageMetadata({
 });
 
 const stats = [
-  { value: '8', label: 'Years in Business' },
-  { value: '148', label: '5-Star Google Reviews' },
-  { value: 'A+', label: 'BBB Accredited, Licensed & Insured' },
-  { value: 'Same-Day', label: 'For Urgent Calls, 2-Hr Window' },
+  { value: '8', label: 'Years in Business', icon: <ClockIcon width={20} height={20} /> },
+  {
+    value: String(business.google.reviewCount),
+    label: '5-Star Google Reviews',
+    icon: <GoogleG className="h-5 w-5" />,
+  },
+  { value: 'A+', label: 'BBB Accredited, Licensed & Insured', icon: <ShieldIcon width={20} height={20} /> },
+  { value: 'Same-Day', label: 'For Urgent Calls, 2-Hr Window', icon: <BoltIcon width={20} height={20} /> },
 ];
 
 const aboutPoints = [
@@ -177,19 +184,9 @@ export default function HomePage() {
       {/* ── Stats ────────────────────────────────────────────────────────── */}
       <section className="py-14">
         <div className="container-page">
-          <dl className="grid grid-cols-2 gap-y-8 sm:grid-cols-4 sm:divide-x sm:divide-rule">
-            {stats.map((s) => (
-              <div key={s.label} className="px-4 text-center">
-                <dt className="sr-only">{s.label}</dt>
-                <dd>
-                  <span className="block font-display text-4xl font-extrabold text-blue-600">
-                    {s.value}
-                  </span>
-                  <span className="mt-1 block text-small text-grey">{s.label}</span>
-                </dd>
-              </div>
-            ))}
-          </dl>
+          <Reveal>
+            <StatBand items={stats} tone="textured" />
+          </Reveal>
         </div>
       </section>
 
@@ -207,13 +204,13 @@ export default function HomePage() {
             and is dropped rather than repositioned. The headshot keeps its own
             breathing room instead of overlapping the panel photo's corner.
           */}
-          <div className="relative pb-14 sm:pb-16">
-            <div className="overflow-hidden rounded-card border border-rule shadow-card">
+          <Reveal className="relative pb-14 sm:pb-16">
+            <div className="overflow-hidden rounded-card border border-rule shadow-photo">
               <SiteImage
                 name="allsafe-electrician-testing-residential-breaker-panel.JPG"
                 alt="An Allsafe Electric electrician testing a residential breaker panel in a Parker home"
                 sizes="(min-width: 1024px) 560px, 100vw"
-                className="h-[360px] w-full object-cover sm:h-[440px]"
+                className="h-[360px] w-full object-cover sm:h-[460px]"
                 aspable={false}
               />
             </div>
@@ -232,9 +229,9 @@ export default function HomePage() {
                 <p className="text-tiny text-grey">Owner, Allsafe Electric</p>
               </div>
             </div>
-          </div>
+          </Reveal>
 
-          <div>
+          <Reveal delay={120}>
             <p className="eyebrow">About Us</p>
             <h2 id="about-heading" className="mt-3 text-h1">
               Your Friendly, Professional Local Electricians
@@ -263,7 +260,7 @@ export default function HomePage() {
             <Link href="/about/" className="btn btn-outline mt-8">
               More About Allsafe Electric
             </Link>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -287,8 +284,10 @@ export default function HomePage() {
           </div>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {featuredServices.map((slug) => (
-              <ServiceCard key={slug} slug={slug} />
+            {featuredServices.map((slug, i) => (
+              <Reveal key={slug} delay={i * 80} className="flex h-full">
+                <ServiceCard slug={slug} />
+              </Reveal>
             ))}
           </div>
         </div>
@@ -297,7 +296,7 @@ export default function HomePage() {
       {/* ── Why choose us ───────────────────────────────────────────────── */}
       <section className="section bg-paper" aria-labelledby="why-heading">
         <div className="container-page grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div className="overflow-hidden rounded-card border border-rule shadow-card">
+          <Reveal className="overflow-hidden rounded-card border border-rule shadow-photo">
             <SiteImage
               name="allsafe-electrician-in-home-service-portrait.JPG"
               alt="An Allsafe Electric electrician in a Parker home"
@@ -305,8 +304,8 @@ export default function HomePage() {
               className="h-[420px] w-full object-cover object-[50%_25%]"
               aspable={false}
             />
-          </div>
-          <div>
+          </Reveal>
+          <Reveal delay={120}>
             <p className="eyebrow">Why Choose Us</p>
             <h2 id="why-heading" className="mt-3 text-h1">
               Safe Work, Straight Answers
@@ -322,14 +321,49 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
-          </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/*
+        ── Real jobs, real homes ────────────────────────────────────────────
+        New section, "Job-Site Editorial" refresh (2026-09-13): the real 61-photo
+        job-site library gets a proper showcase instead of sitting behind small
+        cropped thumbnails site-wide. All genuine work photos, no stock imagery.
+      */}
+      <section className="section" aria-labelledby="gallery-heading">
+        <div className="container-page">
+          <Reveal className="max-w-2xl">
+            <p className="eyebrow">Real Jobs, Real Homes</p>
+            <h2 id="gallery-heading" className="mt-3 text-h1">
+              Every Photo Here Is Our Own Work
+            </h2>
+            <p className="mt-4 text-lead text-slate">
+              No stock photography. This is what a service call with Allsafe actually looks like,
+              in Parker homes like yours.
+            </p>
+          </Reveal>
+          <Reveal delay={100} className="mt-10">
+            <PhotoGallery
+              photos={[
+                { name: 'allsafe-electrician-adjusting-stairwell-chandelier.JPG', alt: 'Allsafe electrician adjusting a stairwell chandelier' },
+                { name: 'electrician-testing-gfci-kitchen-outlet.JPG', alt: 'Allsafe electrician testing a GFCI kitchen outlet' },
+                { name: 'allsafe-electrician-checking-ceiling-fan-light.JPG', alt: 'Allsafe electrician checking a ceiling fan light kit' },
+                { name: 'electrician-installing-weatherproof-duplex-outlets.JPG', alt: 'Allsafe electrician installing weatherproof outdoor outlets' },
+                { name: 'allsafe-electrician-voltage-testing-breaker-panel.JPG', alt: 'Allsafe electrician voltage testing a breaker panel' },
+                { name: 'illuminated-ornate-crystal-chandelier.JPG', alt: 'A crystal chandelier installed by Allsafe Electric' },
+                { name: 'allsafe-electrician-holding-lineman-pliers.JPG', alt: 'Allsafe electrician with lineman pliers on a job' },
+                { name: 'electrician-tool-belt-and-ladder-low-angle.JPG', alt: 'Allsafe electrician tool belt and ladder on site' },
+              ]}
+            />
+          </Reveal>
         </div>
       </section>
 
       {/* ── Service areas ───────────────────────────────────────────────── */}
       <section className="section" aria-labelledby="areas-heading">
         <div className="container-page grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div>
+          <Reveal>
             <p className="eyebrow">Service Areas</p>
             <h2 id="areas-heading" className="mt-3 text-h1">
               Proudly Serving Parker and Surrounding Neighborhoods
@@ -355,10 +389,10 @@ export default function HomePage() {
               </Link>
               <EstimateButton location="mid_page">Contact Us for a Free Estimate</EstimateButton>
             </div>
-          </div>
-          <div className="h-[400px] overflow-hidden rounded-card border border-rule shadow-card">
+          </Reveal>
+          <Reveal delay={120} className="h-[400px] overflow-hidden rounded-card border border-rule shadow-photo">
             <MapFacade label="Allsafe Electric service area around Parker, CO" />
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -368,12 +402,12 @@ export default function HomePage() {
       {/* ── FAQ ─────────────────────────────────────────────────────────── */}
       <section className="section" aria-labelledby="faq-heading">
         <div className="container-page grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
-          <div>
+          <Reveal>
             <p className="eyebrow">FAQ</p>
             <h2 id="faq-heading" className="mt-3 text-h1">
               Questions Homeowners Ask Us
             </h2>
-            <div className="mt-6 overflow-hidden rounded-card border border-rule shadow-card">
+            <div className="mt-6 overflow-hidden rounded-card border border-rule shadow-photo">
               <SiteImage
                 name="electrician-pointing-to-circuit-breaker.JPG"
                 alt="An Allsafe Electric electrician pointing out a breaker during a home visit"
@@ -391,13 +425,20 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-          </div>
-          <FaqList faqs={homeFaqs.slice(0, 6)} heading="Common questions" id="home-faq" />
+          </Reveal>
+          <Reveal delay={120}>
+            <FaqList faqs={homeFaqs.slice(0, 6)} heading="Common questions" id="home-faq" />
+          </Reveal>
         </div>
       </section>
 
-      {/* ── CTA band ────────────────────────────────────────────────────── */}
-      <section className="surface-dark relative overflow-hidden bg-navy-gradient" id="estimate-cta">
+      {/*
+        ── CTA band ─────────────────────────────────────────────────────────
+        bg-graphite-texture instead of bg-navy-gradient (already used for the
+        hero above) so the two dark sections on this page read as distinct,
+        "Job-Site Editorial" refresh 2026-09-13.
+      */}
+      <section className="surface-dark relative overflow-hidden bg-graphite-texture" id="estimate-cta">
         <span
           aria-hidden
           className="pointer-events-none absolute -left-32 bottom-0 h-96 w-96 rounded-full bg-green-600/15 blur-3xl"

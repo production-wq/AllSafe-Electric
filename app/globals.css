@@ -32,6 +32,11 @@
   --urgent: #b3352f;
   --urgent-600: #952b26;
 
+  /* Second dark surface, distinct from --navy, added for the "Job-Site Editorial"
+   * refresh (2026-09-13) so dark sections stop all reading as the same navy block. */
+  --graphite: #1b232e;
+  --graphite-light: #242e3b;
+
   --strip-h: 40px;
   --header-h: 74px;
   color-scheme: light;
@@ -345,6 +350,26 @@
     background: linear-gradient(160deg, var(--navy-light) 0%, var(--navy) 45%, var(--navy-deep) 100%);
   }
 
+  /* Textured graphite surface, an alternative dark ground to --navy so repeated
+   * dark sections (stat bands, CTA variants) don't all look identical. */
+  .bg-graphite-texture {
+    background-color: var(--graphite);
+    background-image: radial-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+      linear-gradient(160deg, var(--graphite-light) 0%, var(--graphite) 60%);
+    background-size: 18px 18px, 100% 100%;
+  }
+
+  /* Faint technical-grid texture for light hero grounds (bg-grid-faint utility,
+   * previously referenced in PageIntro.tsx / service+city hero sections with no
+   * definition anywhere — a silent no-op. Given a real, subtle implementation as
+   * part of the "Job-Site Editorial" refresh, 2026-09-13. Callers override
+   * background-size with an arbitrary value, e.g. [background-size:34px_34px]. */
+  .bg-grid-faint {
+    background-image: linear-gradient(var(--rule) 1px, transparent 1px),
+      linear-gradient(90deg, var(--rule) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
   /* ── Long-form article body (blog) ─────────────────────────────────── */
   .article-prose {
     max-width: 44rem;
@@ -474,6 +499,23 @@
   }
 }
 
+/* ── Scroll reveal, components/Reveal.tsx ───────────────────────────────
+ * JS toggles .reveal-visible on intersection. Reveal.tsx itself bails out on
+ * prefers-reduced-motion and renders children with no wrapper transition at
+ * all (the safer fix — it means there is never a frame where content is
+ * opacity:0 waiting on JS for a reduced-motion user); the CSS below is a
+ * defense-in-depth second layer, not the only guard. */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 640ms cubic-bezier(0.16, 1, 0.3, 1), transform 640ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -483,6 +525,10 @@
     scroll-behavior: auto !important;
   }
   .btn:hover {
+    transform: none;
+  }
+  .reveal {
+    opacity: 1;
     transform: none;
   }
 }

@@ -61,6 +61,12 @@ const config: Config = {
           light: '#0E3A60',
           deep: '#071F35',
         },
+        // Second dark surface, added for the "Job-Site Editorial" refresh (2026-09-13)
+        // so repeated dark sections don't all read as the same navy block.
+        graphite: {
+          DEFAULT: '#1B232E',
+          light: '#242E3B',
+        },
         green: {
           50: '#E6F5EF',
           100: '#C2E7D8',
@@ -103,12 +109,20 @@ const config: Config = {
         card: '10px',
         btn: '6px',
         pill: '999px',
+        // Alias of `pill`. Was referenced as `rounded-chip` in PageIntro.tsx and the
+        // service/city hero sections with no matching config entry anywhere — a
+        // silent no-op. Given a real definition, 2026-09-13.
+        chip: '999px',
       },
       boxShadow: {
         card: '0 1px 3px rgba(10, 46, 76, 0.06), 0 10px 30px -12px rgba(10, 46, 76, 0.16)',
         lift: '0 18px 44px -16px rgba(10, 46, 76, 0.28)',
         float: '0 30px 70px -24px rgba(7, 31, 53, 0.4)',
         form: '0 24px 60px -18px rgba(10, 46, 76, 0.24)',
+        // "Job-Site Editorial" refresh (2026-09-13): shadows for the new
+        // photo-forward modules (PhotoGallery, full-bleed zigzag bands).
+        photo: '0 24px 56px -20px rgba(10, 46, 76, 0.35)',
+        ambient: '0 2px 10px rgba(10, 46, 76, 0.08)',
       },
       transitionTimingFunction: {
         smooth: 'cubic-bezier(0.16, 1, 0.3, 1)',

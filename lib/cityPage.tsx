@@ -10,6 +10,9 @@ import { FaqList } from '@/components/Faq';
 import { CtaBlock, CtaRow } from '@/components/sections';
 import { MapFacade } from '@/components/MapFacade';
 import { Schema } from '@/components/Schema';
+import { Reveal } from '@/components/Reveal';
+import { StepList } from '@/components/StepList';
+import { PhotoGallery } from '@/components/PhotoGallery';
 import { webPageNode, breadcrumbNode, faqPageNode, cityMainEntityNode } from '@/lib/schema';
 import { business } from '@/lib/business';
 
@@ -97,7 +100,8 @@ export function CityPageContent({ citySlug }: { citySlug: string }) {
               </span>
             </div>
             <h1 className="mt-5 text-display">Electrician in {c.name}, CO</h1>
-            <p className="mt-5 max-w-2xl text-lead text-slate">{c.lead}</p>
+            <p className="mt-5 max-w-2xl text-lead text-slate">{c.overview ?? c.lead}</p>
+            {c.driveTimeContext && <p className="mt-3 max-w-2xl text-body text-grey">{c.driveTimeContext}</p>}
             <CtaRow location="hero" className="mt-7" />
           </div>
 
@@ -165,7 +169,14 @@ export function CityPageContent({ citySlug }: { citySlug: string }) {
               Permits and inspections in {c.name}
             </h2>
             <p className="mt-2 font-semibold">{c.permitAuthority}</p>
-            <p className="prose-body mt-2 text-[1.05rem] text-grey">{c.permitProcess}</p>
+            {typeof c.permitProcess === 'string' ? (
+              <p className="prose-body mt-2 text-[1.05rem] text-grey">{c.permitProcess}</p>
+            ) : (
+              <>
+                <p className="prose-body mt-2 text-[1.05rem] text-grey">{c.permitProcess.intro}</p>
+                <StepList steps={c.permitProcess.steps.map((body) => ({ body }))} tone="green" />
+              </>
+            )}
             <p className="mt-3 text-[0.9rem] text-grey">
               Permit rules and fees change. We confirm current requirements with the jurisdiction
               before every permitted job.{' '}
@@ -195,17 +206,40 @@ export function CityPageContent({ citySlug }: { citySlug: string }) {
             <h2 id="hoods-heading" className="text-h2">
               Neighborhoods we work in
             </h2>
+            {c.neighborhoodNotes && c.neighborhoodNotes.length > 0 && (
+              <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                {c.neighborhoodNotes.map((nn) => (
+                  <div key={nn.name} className="card p-4">
+                    <span className="font-semibold text-ink">{nn.name}</span>
+                    <p className="mt-1 text-small text-grey">{nn.note}</p>
+                  </div>
+                ))}
+              </div>
+            )}
             <ul className="mt-4 flex flex-wrap gap-2">
-              {c.neighborhoods.map((n) => (
-                <li
-                  key={n}
-                  className="rounded border border-rule bg-white px-3 py-1.5 text-[0.95rem]"
-                >
-                  {n}
-                </li>
-              ))}
+              {c.neighborhoods
+                .filter((n) => !c.neighborhoodNotes?.some((nn) => nn.name === n))
+                .map((n) => (
+                  <li key={n} className="rounded border border-rule bg-white px-3 py-1.5 text-[0.95rem]">
+                    {n}
+                  </li>
+                ))}
             </ul>
           </section>
+
+          {c.galleryImages && c.galleryImages.length > 0 && (
+            <section aria-labelledby="gallery-heading">
+              <h2 id="gallery-heading" className="text-h2">
+                Our work around {c.name}
+              </h2>
+              <p className="mt-2 text-small text-grey">
+                General job photos from Allsafe Electric, not necessarily taken in {c.name} itself.
+              </p>
+              <Reveal className="mt-5">
+                <PhotoGallery photos={c.galleryImages} />
+              </Reveal>
+            </section>
+          )}
 
           <FaqList faqs={c.faqs} heading={`Questions from ${c.name} homeowners`} id={`faq-${c.slug}`} />
 

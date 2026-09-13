@@ -1,4 +1,5 @@
 import { Stars, GoogleG } from './Icons';
+import { PullQuote } from './PullQuote';
 import { business } from '@/lib/business';
 import data from '@/data/testimonials.json';
 
@@ -8,6 +9,30 @@ interface Review {
   headline: string;
   rating: number;
   text: string;
+}
+
+/**
+ * One real review as a large pull-quote, "Job-Site Editorial" refresh
+ * (2026-09-13). Additive to the 4-card grid below, not a replacement — lets a
+ * service or city page feature a single relevant review without repeating the
+ * exact same four testimonials that appear on the homepage. `authorIndex`
+ * picks from data/testimonials.json's real reviews (all genuine, carried over
+ * from the client's previous site) — never a fabricated quote.
+ */
+export function FeaturedTestimonial({ authorIndex = 0 }: { authorIndex?: number }) {
+  const reviews = data.reviews as Review[];
+  const r = reviews[authorIndex] ?? reviews[0];
+  if (!r) return null;
+  return (
+    <div>
+      <PullQuote quote={r.text} attribution={`${r.author}, ${r.location}`} />
+      <div className="mt-3 flex items-center gap-2 text-small text-grey">
+        <Stars rating={r.rating} size={15} />
+        <GoogleG className="h-3.5 w-3.5" />
+        <span>Verified Google review</span>
+      </div>
+    </div>
+  );
 }
 
 /**

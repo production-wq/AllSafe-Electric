@@ -60,10 +60,32 @@ export interface Service {
   signs: { h3: string; body: string }[];
   /** What the price covers. Bulleted, scannable. */
   included: string[];
-  process: string[];
+  process: string[] | { title: string; body: string }[];
   permits: string;
   faqs: Faq[];
   related: string[];
+
+  /**
+   * Content-depth fields, planning/plans/crispy-forging-clock.md Part B, added
+   * 2026-09-13. All optional so services not yet migrated keep building/typing
+   * clean. Every new field must trace to a fact already in lib/business.ts or
+   * elsewhere in this entry, never a fabricated stat or claim.
+   */
+  /** 150-250w of real context: what this service means for Parker/Douglas
+   * County housing stock or code, not marketing filler. */
+  overview?: string;
+  /** Replaces the identical hardcoded "Why us" block every service page used
+   * to render (app/[serviceSlug]/page.tsx) with real per-service copy. */
+  whyUs?: { heading: string; body: string };
+  /** Honest "what this doesn't cover" — genuinely useful, not padding. */
+  notIncluded?: string[];
+  /** 50-100w of real NEC / local-code context tied to this service. */
+  codeNote?: string;
+  /** 4-8 image-manifest filenames specific to this service. Cap low rather
+   * than pad with unrelated photos if the inventory is thin. */
+  galleryImages?: { name: string; alt: string }[];
+  /** Links into /resources/ or /blog/. */
+  relatedReading?: { title: string; href: string }[];
 }
 
 const P = '(303) 648-1934';
@@ -111,23 +133,23 @@ export const services: Service[] = [
     signs: [
       {
         h3: 'A burning or fishy smell near an outlet or panel',
-        body: 'That smell is hot plastic. Turn the breaker off if you can reach it safely and call. This is not a wait-until-morning problem.',
+        body: 'That smell is hot plastic, usually insulation breaking down around a loose or overloaded connection. Turn the breaker off if you can reach it safely and call. This is not a wait-until-morning problem, and it rarely fixes itself.',
       },
       {
         h3: 'Buzzing, crackling, or a warm breaker panel',
-        body: 'A panel should be silent and cool to the touch. Noise or heat means a loose connection is arcing behind the cover.',
+        body: 'A panel should be silent and cool to the touch, full stop. Noise or heat means a loose connection is arcing behind the cover, and arcing is how electrical fires start in a wall you cannot see.',
       },
       {
         h3: 'Half the house has power and half does not',
-        body: 'Usually a lost neutral or one leg of the incoming service. It can push 240 volts into 120-volt circuits and damage electronics, so kill the main if you know how.',
+        body: 'Usually a lost neutral or one leg of the incoming service, not a simple tripped breaker. It can push 240 volts into circuits built for 120 and damage electronics, so kill the main if you know how and call before plugging anything back in.',
       },
       {
         h3: 'Scorch marks, a hot outlet, or a plug that falls out',
-        body: 'Worn or overloaded outlets overheat. Stop using it, cover it, and have it replaced rather than taped over.',
+        body: 'Worn or overloaded outlets overheat internally before you ever see a spark. Stop using it, cover it so nothing gets plugged in by accident, and have it replaced rather than taped over or ignored.',
       },
       {
         h3: 'Water reached wiring, a panel, or outlets',
-        body: 'After a burst pipe, an ice dam, or a roof leak, do not re-energise anything that got wet until it has been checked.',
+        body: 'After a burst pipe, an ice dam, or a roof leak, do not re-energise anything that got wet until it has been checked. Water and old insulation is a slow-building hazard, not something that dries out and becomes safe on its own.',
       },
     ],
     included: [
@@ -139,25 +161,37 @@ export const services: Service[] = [
       'A written note of anything that should be scheduled properly later',
     ],
     process: [
-      'You call. We confirm the address and a two-hour arrival window, and tell you what to switch off in the meantime.',
-      'We arrive, makes the area safe, and finds the actual cause rather than the symptom.',
-      'You get a fixed price to repair before any work happens. The diagnostic fee comes off it.',
-      'We fix what is dangerous now and flag anything that should be scheduled properly later.',
+      {
+        title: 'You call',
+        body: 'We confirm your address and a two-hour arrival window, and tell you what is safe to switch off yourself while you wait.',
+      },
+      {
+        title: 'We arrive and make it safe',
+        body: 'One of our two licensed electricians gets the immediate danger under control first, then traces the fault to its actual cause instead of patching the symptom.',
+      },
+      {
+        title: 'You approve a fixed price',
+        body: 'Before any repair work starts, you get the price in writing. The diagnostic fee you already paid comes off that total.',
+      },
+      {
+        title: "We fix it, and flag what's next",
+        body: 'We repair what is dangerous now. If something else should be scheduled properly later, rewiring, a panel upgrade, we tell you honestly rather than upselling it on the spot.',
+      },
     ],
     permits:
       'Most emergency repairs are like-for-like and do not need a permit. If the fix turns into a panel or service replacement, we pull the permit with the Town of Parker or Douglas County and handle the inspection. Verify current requirements with your jurisdiction before scheduling non-urgent follow-up work.',
     faqs: [
       {
         q: 'Are you available on weekends or after hours?',
-        a: `We are open weekdays, 8am to 6pm, nothing on weekends. Call ${P} for a same-day urgent slot during those hours. A call outside them goes to voicemail and gets a callback first thing the next business day.`,
+        a: `We are open weekdays, 8am to 6pm, nothing on weekends. Call ${P} for a same-day urgent slot during those hours. A call outside them goes to voicemail and gets a callback first thing the next business day. If it is genuinely dangerous outside our hours, sparks, fire, smoke, call 911 first.`,
       },
       {
         q: 'What does an emergency visit cost?',
-        a: 'A flat diagnostic fee, and it comes off the repair if you approve the work. You get the repair price in writing before anything starts.',
+        a: 'A flat diagnostic fee, and it comes off the repair if you approve the work. You get the repair price in writing before anything starts, so there is never a surprise number at the end.',
       },
       {
         q: 'Should I turn the power off myself?',
-        a: 'If you can safely reach the breaker for the affected area, switch it off. If the panel is hot, buzzing, or you are not sure which breaker it is, leave it alone and call.',
+        a: 'If you can safely reach the breaker for the affected area, switch it off. If the panel is hot, buzzing, or you are not sure which breaker it is, leave it alone and call. We will walk you through it on the phone if needed.',
       },
       {
         q: 'How fast can someone get here?',
@@ -167,11 +201,47 @@ export const services: Service[] = [
         q: 'The power company says the outage is on my side. Now what?',
         a: 'That means the fault is past the meter, so it is the panel, the main, or a circuit. That is exactly what we handle. Call and we will work to the timeline you are dealing with.',
       },
+      {
+        q: 'Is a service call the same as an emergency call?',
+        a: 'Not quite. A service call is for something that can wait for a normal appointment, a switch that does not work, a fixture to hang. An emergency call is for something actively unsafe right now. If you are not sure which one you have, call and describe it, we will tell you honestly which it is.',
+      },
+      {
+        q: 'Will the same electrician who diagnoses it also fix it?',
+        a: "Yes. We are a two-person shop, Jud and Justin, so the electrician who arrives and finds the cause is the one who repairs it. Nothing gets handed off to a subcontractor or a different crew.",
+      },
+      {
+        q: 'What if the emergency turns out to be bigger than expected?',
+        a: 'We stop and tell you before doing anything beyond the original scope. If your panel or wiring needs more than a repair, you get that news, and a separate written price, before we touch it.',
+      },
     ],
     related: [
       'electrical-panel-services',
       'electrical-troubleshooting',
       'electrical-outlet-services',
+    ],
+    overview:
+      '"Emergency" gets used loosely in electrical advertising, so here is exactly what it means with Allsafe. We answer live, weekdays 8am to 6pm, and a genuinely dangerous situation, sparks, a burning smell, a hot panel, usually gets a same-day slot within about two hours. We do not run a 24-hour dispatch line, and we would rather say that plainly than imply round-the-clock coverage we cannot back up. If your problem happens outside those hours and is not immediately dangerous, a dead outlet, a breaker that trips once and resets fine, leave the affected area off, book online, and we will get to it the next business day. If it is dangerous, a hot panel, a burning smell, exposed wiring, call 911 first, then us. When you do call, one of our two licensed electricians comes out, never a subcontractor and never a rotating crew, so the person who diagnoses the problem is the same person who fixes it. That has been true since we started in Parker in 2018.',
+    whyUs: {
+      heading: 'The same two electricians, every time',
+      body: 'Bigger companies dispatch whoever is free that day. Allsafe is Jud and Justin. One of us answers the phone, one of us shows up, and one of us stands behind the fix. That means no re-explaining the problem to a new face, no guessing whether the last visit notes made it into a system, and a fixed price you approve in person before anything starts.',
+    },
+    notIncluded: [
+      'Drywall, paint, or trim repair after we access wiring behind a wall',
+      'Code corrections unrelated to the original emergency, those get a separate written quote',
+      'Permit fees themselves, we file for the permit but the jurisdiction sets its own fee',
+      'Weekend or after-hours dispatch, we are weekdays 8am to 6pm only',
+    ],
+    codeNote:
+      'Most true emergency repairs, replacing a failed breaker, reconnecting a loose neutral, are like-for-like fixes under the National Electrical Code and do not trigger a permit on their own. Douglas County and the Town of Parker do require one once a repair turns into a service or panel replacement, or new circuits get added. If your emergency uncovers a bigger problem, an undersized panel, aluminum branch wiring, we tell you before it becomes its own project, not after.',
+    galleryImages: [
+      { name: 'electrician-removing-breaker-panel-cover-screw.JPG', alt: 'Allsafe electrician removing a breaker panel cover during an emergency call' },
+      { name: 'electrician-tightening-connections-in-breaker-panel.JPG', alt: 'Allsafe electrician tightening a loose connection inside a breaker panel' },
+      { name: 'open-residential-electrical-breaker-panel.JPG', alt: 'An open residential breaker panel during an Allsafe Electric repair' },
+      { name: 'electrical-panel-main-breaker-inspection.JPG', alt: 'Allsafe electrician inspecting a main breaker' },
+    ],
+    relatedReading: [
+      { title: 'Emergency electrical repairs in Highlands Ranch', href: '/blog/emergency-electrical-repairs-highlands-ranch/' },
+      { title: 'Parker and Douglas County permit guides', href: '/resources/' },
     ],
   },
   {

@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import Link from 'next/link';
 import { SiteImage } from './SiteImage';
 import { CtaRow, CallButton, EstimateButton } from './cta';
@@ -64,34 +65,38 @@ export function StatBand({
   items,
   tone = 'light',
 }: {
-  items: { value: string; label: string }[];
-  tone?: 'light' | 'dark';
+  items: { value: string; label: string; icon?: ReactNode }[];
+  /** 'textured' uses the graphite surface (globals.css .bg-graphite-texture) so
+   * repeated dark sections on one page don't all read as the same navy block. */
+  tone?: 'light' | 'dark' | 'textured';
 }) {
+  const dark = tone === 'dark' || tone === 'textured';
   return (
     <dl
       className={`grid gap-px overflow-hidden rounded-card sm:grid-cols-2 lg:grid-cols-4 ${
-        tone === 'dark' ? 'bg-white/15' : 'bg-rule'
+        dark ? 'bg-white/15' : 'bg-rule'
       }`}
     >
       {items.map((it) => (
         <div
           key={it.label}
-          className={`px-5 py-7 text-center ${tone === 'dark' ? 'bg-navy' : 'bg-white'}`}
+          className={`px-5 py-7 text-center ${
+            tone === 'textured' ? 'bg-graphite-texture' : dark ? 'bg-navy' : 'bg-white'
+          }`}
         >
           <dt className="sr-only">{it.label}</dt>
           <dd>
-            <span
-              className={`block text-h2 font-bold ${
-                tone === 'dark' ? 'text-white' : 'text-blue-600'
-              }`}
-            >
-              {it.value}
-            </span>
-            <span
-              className={`mt-1.5 block text-small ${tone === 'dark' ? 'text-white/75' : 'text-grey'}`}
-            >
-              {it.label}
-            </span>
+            {it.icon && (
+              <span
+                className={`mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-pill ${
+                  dark ? 'bg-white/10 text-green-500' : 'bg-green-50 text-green-600'
+                }`}
+              >
+                {it.icon}
+              </span>
+            )}
+            <span className={`block text-h2 font-bold ${dark ? 'text-white' : 'text-blue-600'}`}>{it.value}</span>
+            <span className={`mt-1.5 block text-small ${dark ? 'text-white/75' : 'text-grey'}`}>{it.label}</span>
           </dd>
         </div>
       ))}

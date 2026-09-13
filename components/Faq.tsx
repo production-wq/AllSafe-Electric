@@ -9,21 +9,27 @@ export function FaqList({
   faqs,
   heading = 'Common questions',
   id = 'faq',
+  layout = 'single',
 }: {
   faqs: Faq[];
   heading?: string;
   id?: string;
+  /** 'split' lays the list out in two columns on wider screens, for the longer
+   * 8-10 item FAQ sets the content-depth pass produces. Item order still reads
+   * top-to-bottom then wraps to the next column (CSS columns), not left-right
+   * pairs, so answer length differences don't misalign the grid. */
+  layout?: 'single' | 'split';
 }) {
   return (
     <section aria-labelledby={`${id}-heading`}>
       <h2 id={`${id}-heading`} className="text-h2">
         {heading}
       </h2>
-      <div className="mt-7 space-y-3">
+      <div className={layout === 'split' ? 'mt-7 space-y-3 md:columns-2 md:gap-5 [&>*]:mb-3' : 'mt-7 space-y-3'}>
         {faqs.map((f, i) => (
           <details
             key={i}
-            className="group overflow-hidden rounded-card border border-rule bg-white transition-colors duration-200 open:border-blue-200 hover:border-blue-200"
+            className="group overflow-hidden rounded-card border border-rule bg-white break-inside-avoid-column transition-colors duration-200 open:border-blue-200 hover:border-blue-200"
           >
             <summary className="flex cursor-pointer list-none items-center justify-between gap-5 px-5 py-4 text-body-lg font-semibold [&::-webkit-details-marker]:hidden">
               {f.q}

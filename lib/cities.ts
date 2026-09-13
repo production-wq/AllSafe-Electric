@@ -23,13 +23,31 @@ export interface City {
   responseExpectation: string;
   utility: { name: string; verify: boolean; note: string };
   permitAuthority: string;
-  permitProcess: string;
+  permitProcess: string | { intro: string; steps: string[] };
   housingStock: string;
   neighborhoods: string[];
   priorityServices: string[]; // cityServiceSlug values
   lead: string;
   faqs: { q: string; a: string }[];
   heroImageBrief: string;
+
+  /**
+   * Content-depth fields, planning/plans/crispy-forging-clock.md Part B, added
+   * 2026-09-13. All optional so cities not yet migrated keep building/typing
+   * clean. Every new field must trace to a fact already in this entry or in
+   * lib/business.ts, never an invented detail.
+   */
+  /** 150-200w, promoted/expanded from `lead`. */
+  overview?: string;
+  /** 3-5 of the `neighborhoods` entries get one real sentence (home age, a
+   * common issue) — only where genuinely differentiable, not forced onto every
+   * neighborhood. */
+  neighborhoodNotes?: { name: string; note: string }[];
+  /** 20-30w, reuses `driveTimeMin` to tie response-time trust into copy. */
+  driveTimeContext?: string;
+  /** General job photos. Explicitly NOT staged as taken in this specific city
+   * (none are) — caption honestly. */
+  galleryImages?: { name: string; alt: string }[];
 }
 
 export const cities: City[] = [
@@ -47,10 +65,18 @@ export const cities: City[] = [
       note: 'Most of Parker is served by CORE Electric Cooperative (formerly IREA), not Xcel. This matters for rebates. Most "Colorado electrical rebate" articles assume Xcel and are wrong for Parker. Confirm your address on CORE\'s service map.',
     },
     permitAuthority: 'Town of Parker Building Division',
-    permitProcess:
-      'Homes inside Parker town limits permit through the Town of Parker Building Division. Panel and service upgrades, new circuits, EV chargers, hot tubs and generators all require a permit and a rough and/or final inspection. We file the application, coordinate the CORE disconnect and reconnect for service work, and meet the inspector. Verify current fees on parkerco.gov before scheduling.',
+    permitProcess: {
+      intro:
+        'Panel and service upgrades, new circuits, EV chargers, hot tubs and generators all require a permit and a rough and/or final inspection inside Parker town limits.',
+      steps: [
+        'We confirm whether your address is inside Parker town limits or unincorporated Douglas County, since each permits through a different office.',
+        'We file the permit application with the correct authority and pull any required CORE Electric Cooperative disconnect and reconnect for service work.',
+        'We schedule and meet the inspector on site, so you do not have to take time off work to be there.',
+        'We verify current permit fees on parkerco.gov before scheduling non-urgent work, since they change periodically.',
+      ],
+    },
     housingStock:
-      'Parker grew fast between 1995 and 2015, so a large share of homes are 1990s–2000s builds now running 100A–150A service that was never meant to carry two EVs, a hot tub and central AC at once. The older Pinery and Ponderosa areas have 1970s–80s homes with aging panels. Some Federal Pacific and Zinsco, and the occasional aluminum branch circuit.',
+      'Parker grew fast between 1995 and 2015, so a large share of homes are 1990s–2000s builds now running 100A–150A service that was never meant to carry two EVs, a hot tub and central AC at once. The older Pinery and Ponderosa areas have 1970s–80s homes with aging panels. Some Federal Pacific and Zinsco, and the occasional aluminum branch circuit. Panel capacity, not damaged wiring, is the single most common reason we get called out to a Parker home for anything beyond a repair: the house was fine until a second EV or a hot tub got added to a panel that was already near its limit.',
     neighborhoods: [
       'Stonegate',
       'Stroh Ranch',
@@ -86,9 +112,44 @@ export const cities: City[] = [
         q: 'Do you cover the Pinery and Pradera?',
         a: 'Yes. Both are a short drive from the shop. The Pinery\'s older homes see more panel and generator work; Pradera\'s custom homes and HOA design review come up on outdoor lighting and generator placement.',
       },
+      {
+        q: 'How is response time different in Parker versus your other service areas?',
+        a: 'We are based here, so there is no drive time added to a Parker appointment window, unlike Castle Rock or Highlands Ranch, which add 15 to 20 minutes. During business hours, urgent calls in Parker are usually on site within two hours.',
+      },
+      {
+        q: 'Do you handle both older and newer Parker homes?',
+        a: 'Yes, and they tend to need different things. Newer subdivisions like Stonegate and Canterberry Crossing mostly need panel capacity work as families add EVs and hot tubs to a panel sized for less. Older Pinery-area homes more often need an outdated panel brand, Federal Pacific or Zinsco, replaced outright.',
+      },
+      {
+        q: 'What license should I ask to see?',
+        a: 'Master Electrician License ME.0601023 and Electrical Contractor License EC.0101068, both verifiable through the Colorado State Electrical Board\'s public license lookup. We are also BBB A+ accredited.',
+      },
     ],
     heroImageBrief:
       'A quiet residential street of two-story stone-and-siding homes in Parker, Colorado, mature trees, mountains faint on the horizon, late afternoon light. 16:9.',
+    overview:
+      'Allsafe Electric is based in Parker, and has been since 2018. This is not a satellite territory for us, it is where the shop is, and where Jud and Justin live the same streets and the same seasons as the people who call us. We know which subdivisions were built to what panel size, which older neighborhoods still have a Federal Pacific panel or two waiting to be found, and which HOAs want outdoor lighting work done a certain way. Being based here also means no drive-time markup on your appointment window, and it means the person quoting your job has probably already been three streets over that same week.',
+    neighborhoodNotes: [
+      {
+        name: 'Stonegate',
+        note: '1990s-2000s tract homes on 100-150A panels, common candidates for a capacity upgrade once an EV or hot tub gets added.',
+      },
+      {
+        name: 'The Pinery',
+        note: '1970s-80s stock where Federal Pacific and Zinsco panels still turn up, along with the occasional aluminum branch circuit.',
+      },
+      {
+        name: 'Pradera',
+        note: 'Custom-built homes with active HOA design review, most often outdoor lighting and generator placement.',
+      },
+    ],
+    driveTimeContext: 'We are based in Parker itself, so there is no drive time built into your appointment window.',
+    galleryImages: [
+      { name: 'suburban-home-exterior-daylight.JPG', alt: 'A suburban Parker, Colorado home exterior in daylight' },
+      { name: 'allsafe-electrician-standing-in-modern-home.JPG', alt: 'Allsafe electrician on a job inside a Parker home' },
+      { name: 'electrician-tool-bag-on-kitchen-counter.JPG', alt: 'Allsafe electrician tool bag staged on a kitchen counter' },
+      { name: 'allsafe-electrician-preparing-service-estimate-on-tablet.JPG', alt: 'Allsafe electrician preparing a written estimate on a tablet' },
+    ],
   },
   {
     slug: 'castle-rock',

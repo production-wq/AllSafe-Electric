@@ -10,6 +10,9 @@ import { SiteImage } from '@/components/SiteImage';
 import { CtaRow, PriceRange, CtaBlock, IncludedList } from '@/components/sections';
 import { FaqList } from '@/components/Faq';
 import { Schema } from '@/components/Schema';
+import { Reveal } from '@/components/Reveal';
+import { StepList } from '@/components/StepList';
+import { PhotoGallery } from '@/components/PhotoGallery';
 import { GoogleG, CheckIcon, ShieldIcon } from '@/components/Icons';
 import { business } from '@/lib/business';
 import { serviceNode, webPageNode, breadcrumbNode, faqPageNode } from '@/lib/schema';
@@ -53,6 +56,9 @@ export default async function ServicePage({
 
   const group = serviceGroups.find((g) => g.id === s.group);
   const siblings = s.related.map(getService).filter(Boolean);
+  // process is string[] on services not yet migrated to the richer step shape
+  // (planning/plans/crispy-forging-clock.md Part B) — normalize to StepItem[].
+  const processSteps = s.process.map((step) => (typeof step === 'string' ? { body: step } : step));
   const cityVariants = s.cityServiceSlug
     ? cities.map((c) => ({
         city: c,
@@ -146,59 +152,86 @@ export default async function ServicePage({
       {/* ── Body ─────────────────────────────────────────────────────────── */}
       <div className="container-page grid gap-14 py-14 lg:grid-cols-[1fr_340px] lg:py-20">
         <div className="min-w-0 space-y-16">
+          {/* Overview, planning/plans/crispy-forging-clock.md Part B */}
+          {s.overview && (
+            <Reveal>
+              <p className="prose-body text-lead text-slate">{s.overview}</p>
+            </Reveal>
+          )}
+
           {/* Signs */}
-          <section aria-labelledby="signs-heading">
-            <p className="eyebrow eyebrow-blue">Do any of these sound familiar?</p>
-            <h2 id="signs-heading" className="mt-3 text-h1">
-              Signs you need this
-            </h2>
-            <div className="mt-8 grid gap-5 sm:grid-cols-2">
-              {s.signs.map((sign, i) => (
-                <div key={sign.h3} className="card p-5">
-                  <span className="text-tiny font-bold text-blue-300">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <h3 className="mt-1.5 text-h3">{sign.h3}</h3>
-                  <p className="mt-2 text-body text-slate">{sign.body}</p>
-                </div>
-              ))}
-            </div>
-          </section>
+          <Reveal>
+            <section aria-labelledby="signs-heading">
+              <p className="eyebrow eyebrow-blue">Do any of these sound familiar?</p>
+              <h2 id="signs-heading" className="mt-3 text-h1">
+                Signs you need this
+              </h2>
+              <div className="mt-8 grid gap-5 sm:grid-cols-2">
+                {s.signs.map((sign, i) => (
+                  <div key={sign.h3} className="card p-5">
+                    <span className="text-tiny font-bold text-blue-300">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <h3 className="mt-1.5 text-h3">{sign.h3}</h3>
+                    <p className="mt-2 text-body text-slate">{sign.body}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </Reveal>
 
           <PriceRange service={s} />
 
           <IncludedList items={s.included} />
 
-          {/* Mid-page photo */}
-          {s.bodyImage && (
-            <figure className="overflow-hidden rounded-card border border-rule">
-              <SiteImage
-                name={s.bodyImage}
-                alt={s.bodyAlt ?? s.heroAlt}
-                sizes="(min-width: 1024px) 760px, 100vw"
-                className="h-[260px] w-full object-cover sm:h-[340px]"
-                aspable={false}
-              />
-            </figure>
+          {/* Not included, planning/plans/crispy-forging-clock.md Part B: honest
+              "what this doesn't cover" — genuinely useful, not padding. */}
+          {s.notIncluded && s.notIncluded.length > 0 && (
+            <section aria-labelledby="not-included-heading" className="rounded-card border border-rule p-6 md:p-8">
+              <h2 id="not-included-heading" className="text-h2">
+                What this doesn&apos;t cover
+              </h2>
+              <ul className="mt-4 space-y-2.5">
+                {s.notIncluded.map((item) => (
+                  <li key={item} className="flex items-start gap-2.5 text-body text-slate">
+                    <span aria-hidden className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-grey" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          {/* Mid-page photo(s): a gallery when this service has curated photos,
+              otherwise the single body photo it always had. */}
+          {s.galleryImages && s.galleryImages.length > 0 ? (
+            <Reveal>
+              <PhotoGallery photos={s.galleryImages} />
+            </Reveal>
+          ) : (
+            s.bodyImage && (
+              <figure className="overflow-hidden rounded-card border border-rule">
+                <SiteImage
+                  name={s.bodyImage}
+                  alt={s.bodyAlt ?? s.heroAlt}
+                  sizes="(min-width: 1024px) 760px, 100vw"
+                  className="h-[260px] w-full object-cover sm:h-[340px]"
+                  aspable={false}
+                />
+              </figure>
+            )
           )}
 
           {/* Process */}
-          <section aria-labelledby="process-heading">
-            <p className="eyebrow">Start to finish</p>
-            <h2 id="process-heading" className="mt-3 text-h1">
-              How the job goes
-            </h2>
-            <ol className="mt-8 space-y-6">
-              {s.process.map((step, i) => (
-                <li key={i} className="flex gap-5">
-                  <span className="icon-tile bg-blue-600 text-body-lg font-bold text-white">
-                    {i + 1}
-                  </span>
-                  <span className="pt-2.5 text-body-lg text-slate">{step}</span>
-                </li>
-              ))}
-            </ol>
-          </section>
+          <Reveal>
+            <section aria-labelledby="process-heading">
+              <p className="eyebrow">Start to finish</p>
+              <h2 id="process-heading" className="mt-3 text-h1">
+                How the job goes
+              </h2>
+              <StepList steps={processSteps} />
+            </section>
+          </Reveal>
 
           {/* Permits */}
           <section aria-labelledby="permits-heading" className="rounded-card bg-paper p-6 md:p-8">
@@ -206,6 +239,7 @@ export default async function ServicePage({
               Permits and inspection
             </h2>
             <p className="prose-body mt-4 text-body-lg text-slate">{s.permits}</p>
+            {s.codeNote && <p className="prose-body mt-4 text-body text-slate">{s.codeNote}</p>}
             <p className="mt-5">
               <Link href="/resources/" className="link-cta">
                 See our Parker and Douglas County permit guides
@@ -214,30 +248,51 @@ export default async function ServicePage({
           </section>
 
           {/* Why us */}
-          <section
-            aria-labelledby="why-heading"
-            className="surface-dark overflow-hidden rounded-card bg-navy p-6 md:p-8"
-          >
-            <p className="eyebrow eyebrow-light">Why homeowners here call us</p>
-            <h2 id="why-heading" className="mt-3 text-h2 text-white">
-              A real person, start to finish
-            </h2>
-            <p className="mt-4 max-w-2xl text-body-lg text-white/80">
-              A real person answers the phone, you get a two-hour window rather than a vague day,
-              and one of our licensed electricians does the work. Not a rotating crew, and not a subcontractor you have
-              never met. Allsafe&apos;s Google reviews name them both personally.
-            </p>
-            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
-              <Link href="/reviews/" className="link-cta !text-white !decoration-white/40">
-                <GoogleG /> Read reviews from Parker customers
-              </Link>
-              <span className="flex items-center gap-2 text-small text-white/70">
-                <ShieldIcon width={17} height={17} /> License {business.licenses.master.id}
-              </span>
-            </div>
-          </section>
+          <Reveal>
+            <section
+              aria-labelledby="why-heading"
+              className="surface-dark overflow-hidden rounded-card bg-graphite-texture p-6 md:p-8"
+            >
+              <p className="eyebrow eyebrow-light">Why homeowners here call us</p>
+              <h2 id="why-heading" className="mt-3 text-h2 text-white">
+                {s.whyUs?.heading ?? 'A real person, start to finish'}
+              </h2>
+              <p className="mt-4 max-w-2xl text-body-lg text-white/80">
+                {s.whyUs?.body ??
+                  'A real person answers the phone, you get a two-hour window rather than a vague day, and one of our licensed electricians does the work. Not a rotating crew, and not a subcontractor you have never met. Allsafe’s Google reviews name them both personally.'}
+              </p>
+              <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+                <Link href="/reviews/" className="link-cta !text-white !decoration-white/40">
+                  <GoogleG /> Read reviews from Parker customers
+                </Link>
+                <span className="flex items-center gap-2 text-small text-white/70">
+                  <ShieldIcon width={17} height={17} /> License {business.licenses.master.id}
+                </span>
+              </div>
+            </section>
+          </Reveal>
 
-          <FaqList faqs={s.faqs} />
+          <Reveal>
+            <FaqList faqs={s.faqs} />
+          </Reveal>
+
+          {/* Keep reading, planning/plans/crispy-forging-clock.md Part B */}
+          {s.relatedReading && s.relatedReading.length > 0 && (
+            <section aria-labelledby="reading-heading">
+              <h2 id="reading-heading" className="text-h2">
+                Keep reading
+              </h2>
+              <ul className="mt-4 flex flex-wrap gap-3">
+                {s.relatedReading.map((r) => (
+                  <li key={r.href}>
+                    <Link href={r.href} className="link-cta">
+                      {r.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
 
           {/* Areas */}
           {cityVariants.length > 0 && (
