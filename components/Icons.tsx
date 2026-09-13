@@ -178,3 +178,92 @@ export function GoogleG({ className }: { className?: string }) {
     </svg>
   );
 }
+
+/* ── Service icons, added 2026-09-14 for the homepage service ticker ──────
+ * Client asked for "relevant icons" on the marquee rather than a repeated
+ * generic separator. Same 24x24 currentColor stroke convention as above. */
+
+export const OutletIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}>
+    <rect x="3" y="3" width="18" height="18" rx="3" />
+    <path d="M9 9v2.5M15 9v2.5M9.5 16h5" />
+  </svg>
+);
+
+export const SwitchIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}>
+    <rect x="6" y="2.5" width="12" height="19" rx="2.5" />
+    <path d="M10 8.5h4M12 8.5v7" />
+  </svg>
+);
+
+export const PanelIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}>
+    <rect x="4" y="2.5" width="16" height="19" rx="2" />
+    <path d="M8 7h3M8 11h3M8 15h3M14.5 7h1.5M14.5 11h1.5M14.5 15h1.5" />
+  </svg>
+);
+
+export const LightbulbIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}>
+    <path d="M9 18h6M10 21.5h4" />
+    <path d="M12 2.5a6.5 6.5 0 0 0-3.8 11.8c.5.4.8 1 .8 1.7h6c0-.7.3-1.3.8-1.7A6.5 6.5 0 0 0 12 2.5z" />
+  </svg>
+);
+
+export const FanIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}>
+    <circle cx="12" cy="12" r="2.2" />
+    <path d="M12 9.8c0-3 .7-5.3 3-5.3s2.4 3.2-.9 5.3M14.2 12c3 0 5.3.7 5.3 3s-3.2 2.4-5.3-.9M9.8 12c-3 0-5.3-.7-5.3-3s3.2-2.4 5.3.9M12 14.2c0 3-.7 5.3-3 5.3s-2.4-3.2.9-5.3" />
+  </svg>
+);
+
+export const EvChargerIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}>
+    <rect x="4" y="3" width="10" height="18" rx="2" />
+    <path d="M9.5 8 7.5 12h3l-2 4M17 8v8a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2v-5l-2.5-2.5" />
+  </svg>
+);
+
+export const SmokeAlarmIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}>
+    <circle cx="12" cy="12" r="8.5" />
+    <circle cx="12" cy="12" r="2" />
+    <path d="M12 3.5v2M12 18.5v2M3.5 12h2M18.5 12h2" />
+  </svg>
+);
+
+export const SurgeIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}>
+    <path d="M12 2.5 4 13h6l-1 8.5L20 10h-6l1-7.5z" />
+  </svg>
+);
+
+export const GeneratorIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}>
+    <rect x="2.5" y="7" width="19" height="11" rx="2" />
+    <path d="M6.5 7V5M17.5 7V5M9 12.5h2l-1 3 3-4h-2l1-2.5z" />
+  </svg>
+);
+
+export const HotTubIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}>
+    <path d="M3 12h18v5a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3z" />
+    <path d="M7 9c0-1.5 1.5-1.5 1.5-3M12 9c0-1.5 1.5-1.5 1.5-3M17 9c0-1.5 1.5-1.5 1.5-3" />
+  </svg>
+);
+
+export const SmartHomeIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}>
+    <path d="M3.5 10.5 12 3.5l8.5 7" />
+    <path d="M5.5 9.5v9a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5v-9" />
+    <path d="M10 15.5a2.8 2.8 0 0 1 4 0M12 18h.01" />
+  </svg>
+);
+
+export const SearchIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}>
+    <circle cx="11" cy="11" r="7" />
+    <path d="m20 20-3.5-3.5" />
+  </svg>
+);

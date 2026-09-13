@@ -14,6 +14,7 @@ import { Reveal } from '@/components/Reveal';
 import { StepList } from '@/components/StepList';
 import { PhotoGallery } from '@/components/PhotoGallery';
 import { StickyTOC } from '@/components/StickyTOC';
+import { ServiceToCities } from '@/components/RelatedLinks';
 import { Parallax } from '@/components/Parallax';
 import { FeaturedTestimonial } from '@/components/Testimonials';
 import { ShieldIcon as ShieldMark, ClockIcon, PriceTagIcon, BoltIcon } from '@/components/Icons';
@@ -388,6 +389,10 @@ export default async function ServicePage({
               </ul>
             </section>
           )}
+
+          <Reveal>
+            <ServiceToCities serviceSlug={s.slug} />
+          </Reveal>
 
           {/* Related */}
           <section aria-labelledby="related-heading">

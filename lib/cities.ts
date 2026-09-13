@@ -1005,6 +1005,265 @@ export const cities: City[] = [
     heroImageBrief:
       'A historic residential street near downtown Littleton, Colorado, early 20th century homes with porches, mature trees, warm afternoon light. 16:9.',
   },
+
+  /* ─────────────────────────────────────────────────────────────────────────
+   * Tier 3, added 2026-09-14.
+   *
+   * These five are NOT on the client's published service-area page, but all
+   * five carry real Search Console demand against the legacy site (Lakewood is
+   * the single strongest non-Tier-1 signal in the whole dataset: 455 impressions
+   * on panel services, 395 on outlets, 294 on safety inspections). The client
+   * confirmed on 2026-09-14 that Allsafe does service them, so they get real
+   * pages rather than staying redirects.
+   *
+   * All five sit outside Douglas County, which means Xcel rather than CORE and
+   * a different permit office in each case. Both facts carry verify flags,
+   * because getting either wrong costs a customer a rebate or a failed
+   * inspection.
+   * ───────────────────────────────────────────────────────────────────────── */
+
+  {
+    slug: 'acres-green',
+    name: 'Acres Green',
+    county: 'Douglas',
+    tier: 2,
+    driveTimeMin: 12,
+    responseExpectation:
+      'About 12 minutes from the Parker shop. Same-day for urgent calls, often within two hours during business hours.',
+    utility: {
+      name: 'CORE Electric Cooperative',
+      verify: true,
+      note: 'Acres Green is generally CORE Electric Cooperative rather than Xcel, like most of Douglas County. Confirm your address before relying on any rebate written for Xcel customers.',
+    },
+    permitAuthority: 'Douglas County Building Division',
+    permitProcess:
+      'Acres Green is unincorporated Douglas County, so permits go through the county rather than a city office. Panel and service upgrades, EV chargers, hot tub circuits and generators all require a permit and inspection. We file with Douglas County, coordinate CORE for service work, and meet the inspector.',
+    housingStock:
+      'Acres Green is a compact 1970s and early 80s subdivision just north of Lone Tree, and the housing is unusually consistent for the area: single-family homes on modest lots, most still on their original service. That era means 100A panels are common, grounding is sometimes partial, and a fair number of homes still have the panel brands that era installed. Because the neighborhood sits close to the Lincoln Avenue corridor, a lot of owners here are adding EV charging, which is where the original panel size becomes the limiting factor.',
+    neighborhoods: ['Acres Green', 'Lincoln Park', 'Bradbury Ranch'],
+    priorityServices: ['panel-upgrade', 'ev-charger-installation', 'electrical-inspection', 'emergency-electrician'],
+    lead:
+      'Acres Green is twelve minutes from the shop and it is one of the more predictable neighborhoods we work in: 1970s and 80s homes, mostly original panels, and a steady stream of EV charger and panel capacity work.',
+    overview:
+      'Acres Green is a small, self-contained 1970s and 80s subdivision, which makes the electrical picture unusually consistent. Almost everything here was built within a narrow window, so homes tend to share the same original 100A service, the same grounding practices, and in a number of cases the same panel brands that era favored. None of that is automatically a problem, but it does mean a very high proportion of our calls here resolve into the same two jobs: a capacity upgrade, or replacing a panel that should not still be in service. The other driver is location. Acres Green sits right by the Lincoln Avenue corridor, so EV adoption is high, and a Level 2 charger is exactly the kind of continuous load a 1970s panel was never sized for. We do the load calculation before quoting, because sometimes the honest answer is that you have room already.',
+    driveTimeContext: 'About 12 minutes from our Parker shop.',
+    faqs: [
+      {
+        q: 'Is Acres Green permitted through Douglas County or Lone Tree?',
+        a: 'Douglas County. Acres Green is unincorporated, so despite sitting right next to Lone Tree it does not use the city building department. We confirm the parcel before filing.',
+      },
+      {
+        q: 'My 1970s home has a 100A panel. Can I add an EV charger?',
+        a: 'Sometimes, and the load calculation is what settles it. A Level 2 charger is a large continuous load, so whether your existing service carries it depends on what else the house runs. We do that math first rather than selling you an upgrade you may not need.',
+      },
+      {
+        q: 'Is Acres Green on CORE or Xcel?',
+        a: 'Generally CORE Electric Cooperative, like most of Douglas County. It matters because EV charger and heat pump rebates differ between providers, and most Colorado rebate articles online assume Xcel.',
+      },
+      {
+        q: 'Should I have the panel checked before buying here?',
+        a: 'It is worth it in this neighborhood specifically, because the housing is all from one era and that era has known panel issues. An electrical inspection opens the cover and tells you what brand and what condition, which a general home inspection will not.',
+      },
+    ],
+    heroImageBrief:
+      'A 1970s single-family home on a modest lot in the Acres Green area of Douglas County Colorado, mature trees, clear light. 16:9.',
+  },
+
+  {
+    slug: 'greenwood-village',
+    name: 'Greenwood Village',
+    county: 'Arapahoe',
+    tier: 2,
+    driveTimeMin: 18,
+    responseExpectation:
+      'About 18 minutes from the Parker shop. Same-day for urgent calls, next-day for scheduled work.',
+    utility: {
+      name: 'Xcel Energy',
+      verify: true,
+      note: 'Greenwood Village is Xcel Energy territory, unlike the Douglas County towns to the south which are on CORE. Rebate eligibility differs accordingly, so confirm from a recent bill.',
+    },
+    permitAuthority: 'City of Greenwood Village',
+    permitProcess:
+      'Greenwood Village runs its own building division. Panel and service work, EV chargers, generators, hot tubs and landscape lighting circuits are permitted and inspected by the city. Several neighborhoods also carry HOA architectural review, which is separate from the permit and applies to anything visible outside. We file the city permit and flag when an HOA submittal is likely needed too.',
+    housingStock:
+      'Greenwood Village spans large-lot estates and established 1970s through 1990s neighborhoods, with a commercial core along the Tech Center corridor that we do not serve. On the residential side the systems are bigger than average: 200A services are common, sub-panels are frequent, and there is usually substantial exterior work, landscape lighting, gate feeds, pool and spa circuits, water features. Older estates on acreage often have long buried runs between the house and outbuildings that were installed decades ago.',
+    neighborhoods: ['Greenwood Village', 'Cherry Hills Village', 'Preston Hollow', 'Greenwood Hills', 'The Preserve'],
+    priorityServices: ['panel-upgrade', 'generator-installation', 'electrical-inspection', 'ev-charger-installation'],
+    lead:
+      'Greenwood Village is about 18 minutes from the shop. The homes are larger than average and so are the electrical systems, with more exterior lighting, more sub-panels and more generator work than a standard subdivision.',
+    overview:
+      'Greenwood Village is an estate market, and residential electrical work there reflects it. Services are usually already 200A, sub-panels are normal rather than exceptional, and the majority of what goes wrong is outside the house: landscape and architectural lighting, gate and driveway feeds, pool and spa circuits, and buried runs to outbuildings. Those are the components that take twenty Colorado winters of freeze and thaw, and they fail long before interior wiring does. Two practical local notes. Greenwood Village permits through its own city building division rather than Arapahoe County, and it is Xcel territory while the Douglas County towns a few minutes south are on CORE, which regularly trips people up on rebate eligibility. We confirm both before quoting. Note that we are a strictly residential contractor, so the Tech Center commercial corridor is outside what we do.',
+    driveTimeContext: 'About 18 minutes from our Parker shop.',
+    faqs: [
+      {
+        q: 'Do you work on the large estate properties here?',
+        a: 'Yes, on the residential side. Bigger homes usually mean a main panel plus one or more sub-panels, extensive exterior lighting and buried feeds to outbuildings or gates. That is standard work for us, though fault-finding on a long buried run takes longer than a subdivision call and we price that honestly.',
+      },
+      {
+        q: 'Do you take commercial work in the Tech Center?',
+        a: 'No. Allsafe is a strictly residential contractor, houses rather than office buildings. If your address is commercial we will tell you straight away rather than taking the job and subcontracting it.',
+      },
+      {
+        q: 'Is Greenwood Village on Xcel or CORE?',
+        a: 'Xcel Energy. That differs from Parker, Castle Rock and the rest of Douglas County just south, which are on CORE. It matters for EV charger and heat pump rebate eligibility, so we check before quoting anything rebate-dependent.',
+      },
+      {
+        q: 'Sections of my landscape lighting have stopped working. What causes that?',
+        a: 'Usually a failed transformer, a corroded buried splice, or a run nicked during landscaping. It is one of the most common calls we get in this area given how much exterior lighting these properties carry. We trace the actual fault rather than replacing the whole system by default.',
+      },
+    ],
+    heroImageBrief:
+      'A large estate home in Greenwood Village, Colorado with mature landscaping and architectural exterior lighting at dusk. 16:9.',
+  },
+
+  {
+    slug: 'lakewood',
+    name: 'Lakewood',
+    county: 'Jefferson',
+    tier: 2,
+    driveTimeMin: 35,
+    responseExpectation:
+      'About 35 minutes from the Parker shop. Best booked as scheduled work; same-day urgent coverage depends on the day.',
+    utility: {
+      name: 'Xcel Energy',
+      verify: true,
+      note: 'Lakewood is Xcel Energy territory. Rebate programs differ from the CORE areas in Douglas County, so guidance written for Parker does not transfer.',
+    },
+    permitAuthority: 'City of Lakewood',
+    permitProcess:
+      'Lakewood runs its own building division, separate from Jefferson County. Because a large share of the housing predates 1980, service and panel replacements make up much of the permitted work here, and those need utility coordination for the disconnect and reconnect alongside the city inspection. Rewiring and grounding work is also permitted. We file with the City of Lakewood, coordinate Xcel, and meet the inspector.',
+    housingStock:
+      'Lakewood is one of the older suburbs on the Front Range and the housing splits sharply by era. The post-war neighborhoods, roughly 1950s through 1970s, carry the classic problems: original or first-replacement panels now well past their service life, 100A services that are undersized for modern use, ungrounded two-prong circuits, and cloth-insulated conductors in the oldest stock. Belmar and the newer infill developments are a different job entirely, mostly capacity work. The volume of older housing is why panel replacement is far and away the most common request we get from this area.',
+    neighborhoods: ['Belmar', 'Green Mountain', 'Applewood', 'Glennon Heights', 'Eiber', 'Union Square'],
+    priorityServices: ['panel-upgrade', 'electrical-inspection', 'outlet-repair', 'emergency-electrician'],
+    lead:
+      'Lakewood is about 35 minutes from the shop, and it is panel country. A large share of the housing is 1950s to 1970s, which means original services, ungrounded circuits, and panels that have reached the end of their working life.',
+    overview:
+      'Lakewood generates more panel-replacement enquiries than anywhere else we cover, and the housing stock explains why. Large parts of the city went up between the 1950s and 1970s, so the typical call involves an original or first-replacement panel that is now decades past its design life, a 100A service that was generous in 1962 and is not now, and ungrounded two-prong circuits throughout. The oldest homes add cloth-insulated conductors to that list. None of it is cause for alarm on its own, but it does mean the honest first step here is often an inspection rather than a quote, because what a realistic upgrade costs depends entirely on what is behind the panel cover and inside the walls. Newer infill around Belmar is straightforward capacity work by comparison. We are upfront about the drive: at roughly 35 minutes, Lakewood is best booked as scheduled work, and we group jobs there into the same run where we can.',
+    driveTimeContext: 'About 35 minutes from our Parker shop, so Lakewood work is best booked ahead as a scheduled visit.',
+    faqs: [
+      {
+        q: 'Is Lakewood too far for you?',
+        a: 'No, but we are straight about what the distance means. At about 35 minutes, scheduled work is easy to arrange and we group Lakewood jobs into one run where possible. For a genuine same-day emergency we will tell you honestly whether we can get there or whether someone closer serves you better.',
+      },
+      {
+        q: 'My Lakewood home still has a fuse box. Does it have to be replaced?',
+        a: 'In practical terms, yes. Fuse boxes are not inherently unsafe when intact, but they cannot support modern loads, most insurers now ask about them, and replacement parts are increasingly hard to source. A panel replacement also gets you grounding and AFCI or GFCI protection that a fuse box cannot provide.',
+      },
+      {
+        q: 'What does an upgrade cost in an older Lakewood home?',
+        a: 'It depends on what is found once the cover is off, which is why we recommend starting with an inspection. Service length, meter position, grounding condition and whether the circuits themselves need attention all move the number. You get a fixed written price before any work begins.',
+      },
+      {
+        q: 'Are two-prong outlets a problem?',
+        a: 'They indicate ungrounded circuits, which is common in this housing stock. Running a proper ground is best where feasible; a GFCI-protected replacement labeled "no equipment ground" is a code-compliant middle path. Swapping in a three-prong outlet with no actual ground is the one thing to avoid, and it is unfortunately common in homes that have changed hands a few times.',
+      },
+      {
+        q: 'Does Lakewood permit through Jefferson County?',
+        a: 'No. The City of Lakewood has its own building division. Only unincorporated addresses nearby go through the county, and we confirm which applies before filing.',
+      },
+    ],
+    heroImageBrief:
+      'A 1960s brick ranch home on a tree-lined street in Lakewood, Colorado, established front garden, soft daylight. 16:9.',
+  },
+
+  {
+    slug: 'edgewater',
+    name: 'Edgewater',
+    county: 'Jefferson',
+    tier: 2,
+    driveTimeMin: 38,
+    responseExpectation:
+      'About 38 minutes from the Parker shop. Scheduled work only in most cases; we will say honestly if we cannot cover an urgent call.',
+    utility: {
+      name: 'Xcel Energy',
+      verify: true,
+      note: 'Edgewater is Xcel Energy territory. Confirm from a recent bill before relying on a rebate, since programs differ from the CORE areas we usually work in.',
+    },
+    permitAuthority: 'City of Edgewater',
+    permitProcess:
+      'Edgewater is a small city with its own building department. The housing is old enough that most permitted work here is service replacement, rewiring and grounding rather than new circuits, and those need Xcel coordination for the disconnect and reconnect alongside the city inspection. Lot sizes are tight, which occasionally affects where a new meter or panel can go. We file with the City of Edgewater and meet the inspector.',
+    housingStock:
+      'Edgewater is one of the oldest and most compact housing stocks we work in: small single-family homes on narrow lots, much of it pre-1960 and some considerably older, sitting just east of Sloan Lake. That age brings the full set of older-home electrical issues, original panels, 60A and 100A services, ungrounded circuits, cloth-insulated wiring and surviving knob-and-tube in the oldest properties. A significant amount of the housing has also been renovated in stages over the decades, which tends to leave modern circuits running off equipment that has not been touched in fifty years.',
+    neighborhoods: ['Edgewater', 'Sloan Lake', 'West Colfax', 'Lakeside'],
+    priorityServices: ['panel-upgrade', 'electrical-inspection', 'outlet-repair', 'emergency-electrician'],
+    lead:
+      'Edgewater is about 38 minutes out and it is the oldest housing stock we cover. Service upgrades, grounding, and inspections on homes that have been renovated piecemeal over decades make up nearly all the work.',
+    overview:
+      'Edgewater is small, old and dense, and the electrical work reflects all three. Most of the housing predates 1960 and a good deal predates 1940, so instead of capacity problems you get condition problems: original panels, 60A and 100A services that are genuinely undersized rather than merely tight, ungrounded two-prong circuits throughout, cloth-insulated conductors, and knob-and-tube surviving in the oldest properties. Nearly everything here has also been renovated in stages, which leaves the common Edgewater pattern of a modern kitchen circuit feeding off a panel nobody has opened since the 1950s. The honest starting point is an inspection: a realistic upgrade price depends on what is actually in the walls, and in this housing stock that is not visible from outside. One practical note, lots are narrow, so where a new meter or panel can physically go sometimes shapes the job.',
+    driveTimeContext: 'About 38 minutes from our Parker shop, the far edge of our range. Scheduled work suits it best.',
+    faqs: [
+      {
+        q: 'Do you really cover Edgewater from Parker?',
+        a: 'Yes, but honestly: at about 38 minutes it is the outer edge of our range and it suits scheduled work rather than emergencies. If you need someone the same hour we will say so rather than leaving you waiting.',
+      },
+      {
+        q: 'Does my Edgewater home have knob-and-tube?',
+        a: 'Possibly, in the pre-1940 stock. Often it is partially abandoned rather than fully live. Any that is still energized, buried in insulation, or spliced into modern work needs addressing, and insurers increasingly ask about it. We map what is genuinely still live before recommending scope.',
+      },
+      {
+        q: 'Is a 60A service enough?',
+        a: 'Not for a modern household, no. A 60A service predates central air, electric ranges of current draw, and anything resembling modern kitchen loads. If you are renovating, a service upgrade is usually the first line item rather than an optional extra.',
+      },
+      {
+        q: 'My lot is narrow. Does that affect a panel replacement?',
+        a: 'It can. Meter and panel placement has clearance requirements, and on tight Edgewater lots the obvious spot is not always a legal one. We check that on site before quoting, so the price you get accounts for where the equipment can actually go.',
+      },
+    ],
+    heroImageBrief:
+      'A small pre-1950 single-family home on a narrow lot in Edgewater, Colorado near Sloan Lake, mature street trees. 16:9.',
+  },
+
+  {
+    slug: 'denver',
+    name: 'Denver',
+    county: 'Denver',
+    tier: 2,
+    driveTimeMin: 32,
+    responseExpectation:
+      'About 32 minutes to south Denver from the Parker shop. Scheduled work is easiest to arrange.',
+    utility: {
+      name: 'Xcel Energy',
+      verify: true,
+      note: 'Denver is Xcel Energy territory throughout. Rebate and time-of-use programs differ from the CORE areas in Douglas County, so guidance written for Parker does not apply.',
+    },
+    permitAuthority: 'Denver Community Planning and Development',
+    permitProcess:
+      'Denver permits through Community Planning and Development, and it is the most process-heavy jurisdiction we work in. Service and panel replacements, rewiring, EV chargers and new circuits all require permits and inspection, and historic districts add review on anything that changes a street-facing elevation. We file early and coordinate Xcel for service work, because Denver timelines are longer than Douglas County ones and it is better to plan around that than be surprised by it.',
+    housingStock:
+      'Denver covers more housing eras than anywhere else we serve, so what matters is which part. We focus on south Denver, the side closest to Parker. Older central neighborhoods carry pre-1940 bungalows where knob-and-tube, ungrounded circuits and 60A services still turn up, and those are inspection and rewiring jobs. The post-war southern and southeastern neighborhoods are mostly 1950s through 1970s, which is panel replacement territory. Newer infill and scrape-and-rebuild properties are straightforward capacity work by comparison.',
+    neighborhoods: ['University Hills', 'Hampden', 'Virginia Village', 'Washington Park', 'Platt Park', 'Southmoor Park'],
+    priorityServices: ['panel-upgrade', 'electrical-inspection', 'ev-charger-installation', 'emergency-electrician'],
+    lead:
+      'We cover south Denver, roughly 32 minutes from the Parker shop. Most of the work is panel replacement in post-war neighborhoods and inspections on the older pre-war bungalows closer to the center.',
+    overview:
+      'Denver is a big enough market that the only useful thing to say is which part of it we serve and what the work involves. We cover south Denver, the side nearest Parker, roughly 32 minutes out. Neighborhoods like University Hills, Hampden, Virginia Village and Southmoor Park are largely 1950s to 1970s, and the typical job there is a panel replacement: an original service that has aged out, sometimes partial grounding, and a household now drawing considerably more than the panel was sized for. Closer to the center, the pre-1940 bungalows around Washington Park and Platt Park are a different job, where knob-and-tube, ungrounded circuits and 60A services mean an inspection is the honest first step before anyone quotes a number. Two practical notes specific to Denver: permitting runs through Community Planning and Development and takes longer than Douglas County, and historic district review can apply to anything that changes a street-facing elevation. We plan timelines around both rather than promising around them.',
+    driveTimeContext: 'About 32 minutes from our Parker shop to south Denver.',
+    faqs: [
+      {
+        q: 'Which parts of Denver do you serve?',
+        a: 'South Denver primarily, the side closest to Parker, including University Hills, Hampden, Virginia Village, Southmoor Park and the Washington Park area. For addresses well north or west, call and we will tell you honestly whether we are the right fit.',
+      },
+      {
+        q: 'How long do Denver permits take?',
+        a: 'Longer than Douglas County, and it varies by workload and whether historic review applies. We file early and build the timeline around the real process rather than quoting you an optimistic date we cannot control.',
+      },
+      {
+        q: 'My 1920s bungalow still has original wiring. Where do we start?',
+        a: 'An inspection. In pre-war housing what is behind the plaster genuinely determines the scope, and any quote given without opening the panel and checking a few boxes is a guess. Often a portion of the old wiring was abandoned years ago, which makes the real job smaller than people fear.',
+      },
+      {
+        q: 'Can you install an EV charger at a Denver home?',
+        a: 'Yes. It starts with a load calculation to confirm the existing service supports it, then a dedicated circuit, the right breaker, a Denver permit and an inspection. In older neighborhoods the answer is sometimes that a service upgrade comes first, and we tell you that before you buy the charger.',
+      },
+      {
+        q: 'Is Denver on Xcel?',
+        a: 'Yes, throughout. That differs from Parker and the rest of Douglas County, which are largely CORE Electric Cooperative, and it changes which rebate programs you qualify for.',
+      },
+    ],
+    heroImageBrief:
+      'A post-war brick ranch home on a wide street in south Denver, Colorado, mature trees, clear morning light. 16:9.',
+  },
 ];
 
 /**
@@ -1021,7 +1280,39 @@ export const cities: City[] = [
  * question is open for Lakewood, Denver, Edgewater and Acres Green, all of
  * which show real Search Console demand but no confirmed coverage.
  */
-export const tier2Areas = ['Greenwood Village', 'Sedalia', 'Larkspur'];
+export const tier2Areas = ['Sedalia', 'Larkspur'];
+
+/**
+ * Neighborhood name -> city page, where one genuinely exists.
+ *
+ * Client asked (2026-09-14) whether the "Neighborhoods we work in" entries could
+ * be linked. Some can: a number of names in those lists ARE towns with their own
+ * page, either exactly ("Stonegate", "The Pinery") or under an obvious variant
+ * ("Castle Pines North" -> Castle Pines). Most are not, and those stay plain
+ * text. Linking a neighborhood to an unrelated city page would mislead the
+ * reader and dilute the signal, so this only ever returns an exact or
+ * explicitly-aliased match.
+ *
+ * Returns the slug, or null when the neighborhood has no page of its own.
+ */
+const NEIGHBORHOOD_ALIASES: Record<string, string> = {
+  'castle pines north': 'castle-pines',
+  'castle pines village': 'castle-pines',
+  'pinery west': 'the-pinery',
+  'stonegate village': 'stonegate',
+  'aurora (south)': 'aurora',
+  'highlands ranch border': 'highlands-ranch',
+};
+
+export function cityLinkForNeighborhood(name: string, currentSlug?: string): string | null {
+  const key = name.trim().toLowerCase();
+  const exact = cities.find((c) => c.name.toLowerCase() === key);
+  const slug = exact?.slug ?? NEIGHBORHOOD_ALIASES[key] ?? null;
+  if (!slug) return null;
+  // Never link a page to itself.
+  if (currentSlug && slug === currentSlug) return null;
+  return cities.some((c) => c.slug === slug) ? slug : null;
+}
 
 /** Tier-3 Parker neighborhoods, only these five, per planning/docs/03 §4. Not yet built. */
 export const tier3Neighborhoods = [

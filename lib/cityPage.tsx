@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { citySlugs, getCity } from '@/lib/cities';
+import { citySlugs, getCity, cityLinkForNeighborhood } from '@/lib/cities';
 import { services } from '@/lib/services';
 import { PUBLISH } from '@/lib/publish';
 import { pageMetadata } from '@/lib/seo';
@@ -18,6 +18,7 @@ import { SiteImage } from '@/components/SiteImage';
 import { StatBand } from '@/components/sections';
 import { FeaturedTestimonial } from '@/components/Testimonials';
 import { StickyTOC } from '@/components/StickyTOC';
+import { CityToServices } from '@/components/RelatedLinks';
 import { HomeIcon, ShieldIcon, BoltIcon, ClockIcon, MapPinIcon } from '@/components/Icons';
 import { webPageNode, breadcrumbNode, faqPageNode, cityMainEntityNode } from '@/lib/schema';
 import { business } from '@/lib/business';
@@ -37,16 +38,33 @@ import { business } from '@/lib/business';
  * calls the functions below with a hardcoded slug — the same pattern already used
  * for the per-city-service literal routes (electrical-services-parker-co, etc).
  */
+/**
+ * Page title for a city, kept inside the audit's 50-60 character window for any
+ * city name. Tries the fullest form first and steps down only as needed, so
+ * short names keep the richer title and long ones still pass.
+ */
+function cityTitle(name: string): string {
+  const candidates = [
+    `${name}, CO Licensed Electrician | Allsafe Electric`,
+    `${name}, CO Electrician | Allsafe Electric`,
+    `Electrician in ${name}, CO | Allsafe Electric`,
+    `${name} Electrician | Allsafe Electric`,
+  ];
+  return candidates.find((t) => t.length >= 50 && t.length <= 60) ?? candidates[1];
+}
+
 export function generateCityMetadata(citySlug: string) {
   return async function generateMetadata(): Promise<Metadata> {
     const c = getCity(citySlug);
     if (!c) return {};
     return pageMetadata({
       path: `/electrician-${c.slug}/`,
-      // Fixed-shape templates, sized so every current city name lands inside the
-      // audit's title (50-60 char) and meta description (140-158 char) windows —
-      // see scripts/audit-seo.ts. Re-check with a real city name before adding one.
-      title: `${c.name}, CO Licensed Electrician | Allsafe Electric`,
+      // Length-aware rather than fixed-shape. The old fixed template broke the
+      // moment a long city name arrived: "Greenwood Village" pushed the title to
+      // 61 characters against the audit's 50-60 window (scripts/audit-seo.ts).
+      // Now it falls back to progressively shorter forms, so adding a city can
+      // never fail the audit on title length again. 2026-09-14.
+      title: cityTitle(c.name),
       description: `Licensed electrician serving ${c.name}, CO: panels, EV chargers, wiring, and emergency repairs. A real person answers the phone. Call ${business.phone.display}.`,
       index: PUBLISH.TIER_1_CITIES, // gated. Planning/docs/09 §3
       ogEyebrow: `Electrician · ${c.name}, CO`,
@@ -313,26 +331,58 @@ export function CityPageContent({ citySlug }: { citySlug: string }) {
             <h2 id="hoods-heading" className="text-h2">
               Neighborhoods we work in
             </h2>
+            {/* Neighborhoods that are also towns with their own page get linked;
+                the rest stay plain text. Client asked 2026-09-14 whether these
+                could be internally linked, and this is the honest version of
+                yes: only real matches, never a link to an unrelated page. */}
             {c.neighborhoodNotes && c.neighborhoodNotes.length > 0 && (
               <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                {c.neighborhoodNotes.map((nn) => (
-                  <div key={nn.name} className="card p-4">
-                    <span className="font-semibold text-ink">{nn.name}</span>
-                    <p className="mt-1 text-small text-grey">{nn.note}</p>
-                  </div>
-                ))}
+                {c.neighborhoodNotes.map((nn) => {
+                  const slug = cityLinkForNeighborhood(nn.name, c.slug);
+                  return (
+                    <div key={nn.name} className="card p-4">
+                      {slug ? (
+                        <Link href={`/electrician-${slug}/`} className="font-semibold">
+                          {nn.name}
+                        </Link>
+                      ) : (
+                        <span className="font-semibold text-ink">{nn.name}</span>
+                      )}
+                      <p className="mt-1 text-small text-grey">{nn.note}</p>
+                    </div>
+                  );
+                })}
               </div>
             )}
             <ul className="mt-4 flex flex-wrap gap-2">
               {c.neighborhoods
                 .filter((n) => !c.neighborhoodNotes?.some((nn) => nn.name === n))
-                .map((n) => (
-                  <li key={n} className="rounded border border-rule bg-white px-3 py-1.5 text-[0.95rem]">
-                    {n}
-                  </li>
-                ))}
+                .map((n) => {
+                  const slug = cityLinkForNeighborhood(n, c.slug);
+                  return (
+                    <li key={n}>
+                      {slug ? (
+                        <Link
+                          href={`/electrician-${slug}/`}
+                          className="inline-flex items-center gap-1.5 rounded-btn border border-rule bg-white px-3 py-1.5 text-[0.95rem] no-underline transition-colors hover:border-blue-300 hover:bg-blue-50"
+                        >
+                          <MapPinIcon width={13} height={13} className="text-green-600" />
+                          {n}
+                        </Link>
+                      ) : (
+                        <span className="inline-block rounded-btn border border-rule bg-white px-3 py-1.5 text-[0.95rem] text-slate">
+                          {n}
+                        </span>
+                      )}
+                    </li>
+                  );
+                })}
             </ul>
           </section>
+
+          <Reveal>
+            <CityToServices citySlug={c.slug} />
+          </Reveal>
 
           {/* Gallery, now on every city rather than 1 of 16. */}
           <Reveal>

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import type { ReactNode } from 'react';
 import Link from 'next/link';
 import { pageMetadata } from '@/lib/seo';
 import { SiteImage } from '@/components/SiteImage';
@@ -14,6 +15,7 @@ import { Reveal } from '@/components/Reveal';
 import { PhotoGallery } from '@/components/PhotoGallery';
 import { StepList } from '@/components/StepList';
 import { Marquee } from '@/components/Marquee';
+import { HeroSlideshow } from '@/components/HeroSlideshow';
 import { AnimatedHeading } from '@/components/AnimatedHeading';
 import { Parallax } from '@/components/Parallax';
 import { SectionHeading } from '@/components/SectionHeading';
@@ -33,10 +35,23 @@ import {
   MapPinIcon,
   CalendarIcon,
   GoogleG,
+  WrenchIcon,
+  OutletIcon,
+  SwitchIcon,
+  PanelIcon,
+  LightbulbIcon,
+  FanIcon,
+  EvChargerIcon,
+  SmokeAlarmIcon,
+  SurgeIcon,
+  GeneratorIcon,
+  HotTubIcon,
+  SmartHomeIcon,
+  SearchIcon,
 } from '@/components/Icons';
 import { business } from '@/lib/business';
 import { homeFaqs } from '@/lib/faqs';
-import { tier3Neighborhoods } from '@/lib/cities';
+import { cities, tier3Neighborhoods } from '@/lib/cities';
 import { webPageNode, faqPageNode } from '@/lib/schema';
 
 export const metadata: Metadata = pageMetadata({
@@ -141,6 +156,36 @@ const howItWorks = [
   },
 ];
 
+/*
+ * Ticker rows. Each service gets an icon that actually depicts it, per the
+ * client's "relevant icons" note (2026-09-14), rather than one repeated
+ * generic mark. The same icon set feeds both ticker instances on the page.
+ */
+const SERVICE_ICON: Record<string, ReactNode> = {
+  'emergency-electrical-repairs-parker-co': <BoltIcon width={17} height={17} />,
+  'electrical-troubleshooting': <SearchIcon width={17} height={17} />,
+  'electrical-outlet-services': <OutletIcon width={17} height={17} />,
+  'electrical-switch-services': <SwitchIcon width={17} height={17} />,
+  'electrical-wiring-repairs-services': <WrenchIcon width={17} height={17} />,
+  'home-electrical-safety-inspections': <ShieldIcon width={17} height={17} />,
+  'smoke-detectors': <SmokeAlarmIcon width={17} height={17} />,
+  'electrical-panel-services': <PanelIcon width={17} height={17} />,
+  'whole-home-surge-protection': <SurgeIcon width={17} height={17} />,
+  'generator-installation': <GeneratorIcon width={17} height={17} />,
+  'residential-ev-charging': <EvChargerIcon width={17} height={17} />,
+  'hot-tub-electrical-hookup': <HotTubIcon width={17} height={17} />,
+  'lighting-services': <LightbulbIcon width={17} height={17} />,
+  'outdoor-lighting': <LightbulbIcon width={17} height={17} />,
+  'ceiling-fan-installation': <FanIcon width={17} height={17} />,
+  'home-automation': <SmartHomeIcon width={17} height={17} />,
+};
+
+const tickerItems = services.map((s) => ({
+  label: s.navLabel,
+  href: `/${s.slug}/`,
+  icon: SERVICE_ICON[s.slug] ?? <BoltIcon width={17} height={17} />,
+}));
+
 export default function HomePage() {
   return (
     <>
@@ -168,19 +213,43 @@ export default function HomePage() {
         between the photo and the text so the white hero copy stays fully
         readable at the contrast the audit checks for.
       */}
-      <section className="surface-dark relative overflow-hidden bg-navy-gradient">
-        <SiteImage
-          name="family-and-golden-retriever-living-room.jpg"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
+      <section className="surface-dark relative overflow-hidden bg-navy-deep">
+        {/*
+          Rotating Ken Burns background, client request 2026-09-14. Mixes the
+          warm residential shots the client asked for with real job imagery, so
+          the hero shows both who we serve and what we actually do.
+        */}
+        <HeroSlideshow
+          slides={[
+            { name: 'family-and-golden-retriever-living-room.jpg', alt: '' },
+            { name: 'bright-living-room-interior.jpg', alt: '' },
+            { name: 'suburban-home-exterior-daylight.JPG', alt: '' },
+            { name: 'illuminated-ornate-crystal-chandelier.JPG', alt: '' },
+          ]}
         />
-        <div className="pointer-events-none absolute inset-0 bg-navy-gradient opacity-[0.82]" />
+        {/*
+          Overlay, reworked 2026-09-14 ("the overlay, I think, could be a little
+          bit nicer"). Was one flat 82% navy wash that killed the photograph.
+          Now three layers: a directional scrim that is heaviest bottom-left
+          where the copy sits and lightest top-right where the image can show
+          through, a soft color grade to keep everything on-brand, and a bottom
+          fade into the section below.
+        */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-gradient-to-br from-navy-deep/95 via-navy/80 to-navy-light/55"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy-deep via-transparent to-navy-deep/40"
+        />
         <span
           aria-hidden
-          className="pointer-events-none absolute -right-40 -top-40 h-[36rem] w-[36rem] rounded-full bg-blue-500/20 blur-3xl"
+          className="pointer-events-none absolute -right-40 -top-40 h-[36rem] w-[36rem] rounded-full bg-blue-500/25 blur-3xl"
+        />
+        <span
+          aria-hidden
+          className="pointer-events-none absolute -left-32 bottom-[-10rem] h-[30rem] w-[30rem] rounded-full bg-green-600/20 blur-3xl"
         />
         <div className="container-page relative pb-28 pt-14 text-center md:pb-36 md:pt-20">
           <p className="eyebrow eyebrow-center rise">Top Rated Electrician in Parker</p>
@@ -220,9 +289,27 @@ export default function HomePage() {
         </svg>
       </section>
 
-      {/* ── Estimate form (overlapping) ──────────────────────────────────── */}
+      {/*
+        ── Estimate form (overlapping) ────────────────────────────────────
+        Given its own background image and overlay 2026-09-14, at the client's
+        request. The band behind the card was flat white, which made the card
+        look like it was floating on nothing once the hero above it gained
+        depth. The image is dimmed hard and blurred slightly so it reads as
+        texture behind the form rather than competing with it.
+      */}
       <section className="relative -mt-16 md:-mt-20">
-        <div className="container-page">
+        <div aria-hidden className="absolute inset-x-0 bottom-0 top-24 overflow-hidden">
+          <SiteImage
+            name="bright-living-room-interior.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="scale-105 object-cover blur-[2px]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-white via-white/92 to-paper" />
+          <div className="absolute inset-0 bg-paper/55" />
+        </div>
+        <div className="container-page relative">
           <div className="rounded-card border border-rule bg-white p-6 shadow-form md:p-8">
             <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
               <h2 className="text-h2">Request a Free Estimate</h2>
@@ -239,20 +326,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/*
-        ── Services ticker ───────────────────────────────────────────────
-        Client request, made twice (2026-09-13 and again 2026-09-14: "I asked
-        you to put this kind of text lines which just goes on on a loop, uh,
-        with some icons, but you didn't add those"). Every item links to its
-        real service page, so this is a genuine internal-linking surface as
-        well as a design element. Pauses on hover and on keyboard focus, and
-        stops entirely under prefers-reduced-motion.
-      */}
-      <Marquee
-        durationSec={46}
-        items={services.map((s) => ({ label: s.navLabel, href: `/${s.slug}/` }))}
-      />
 
       {/* ── Stats ────────────────────────────────────────────────────────── */}
       <section className="py-14">
@@ -368,6 +441,26 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/*
+        ── Services ticker ───────────────────────────────────────────────
+        Client request, made twice (2026-09-13, then again 2026-09-14: "I asked
+        you to put this kind of text lines which just goes on on a loop, with
+        some icons, but you didn't add those").
+
+        Moved here from directly under the estimate form on 2026-09-14 ("it will
+        look nicer further down the page"). Each service carries an icon that
+        depicts it rather than one repeated generic mark, and every item links to
+        its own service page, so this is a real internal-linking surface as well
+        as a design element.
+
+        Deliberately ONE row. A second ticker appears much further down, just
+        above the footer, carrying service areas instead: the client's note was
+        that the effect should recur in different sections of the page, not stack
+        two rows in the same place. Pauses on hover and keyboard focus; stops
+        entirely under reduced motion.
+      */}
+      <Marquee durationSec={54} items={tickerItems} />
 
       {/* ── Common problems in Parker homes ─────────────────────────────── */}
       <section className="section bg-paper" aria-labelledby="problems-heading">
@@ -529,14 +622,35 @@ export default function HomePage() {
               </a>{' '}
               and we will let you know right away.
             </p>
-            <ul className="mt-8 grid grid-cols-2 gap-x-6 gap-y-3">
-              {['Parker', ...tier3Neighborhoods].map((n) => (
-                <li key={n} className="flex items-center gap-2.5 text-body">
-                  <MapPinIcon width={18} height={18} className="shrink-0 text-green-600" />
-                  {n}
+            {/*
+              Client request 2026-09-14: "on the home page on this section, the
+              locations can be linked". This was a plain-text list of one city
+              plus five Parker neighborhoods, none of them clickable, on a site
+              that now has a real page for all 16 towns. Every entry is a link
+              to its city page, which also makes the homepage the top of the
+              location network for crawlers rather than a dead end.
+            */}
+            <ul className="mt-8 grid grid-cols-2 gap-x-5 gap-y-2 sm:grid-cols-3">
+              {cities.map((c) => (
+                <li key={c.slug}>
+                  <Link
+                    href={`/electrician-${c.slug}/`}
+                    className="group flex items-center gap-2 rounded-btn px-2 py-1.5 text-body transition-colors hover:bg-blue-50"
+                  >
+                    <MapPinIcon
+                      width={17}
+                      height={17}
+                      className="shrink-0 text-green-600 transition-transform group-hover:-translate-y-0.5"
+                    />
+                    <span className="group-hover:text-blue-700">{c.name}</span>
+                  </Link>
                 </li>
               ))}
             </ul>
+            <p className="mt-4 text-small text-grey">
+              Plus the Parker neighborhoods of {tier3Neighborhoods.slice(0, -1).join(', ')} and{' '}
+              {tier3Neighborhoods[tier3Neighborhoods.length - 1]}.
+            </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href="/service-area/" className="btn btn-outline">
                 All Service Areas
@@ -585,6 +699,26 @@ export default function HomePage() {
           </Reveal>
         </div>
       </section>
+
+      {/*
+        ── Service-area ticker ───────────────────────────────────────────
+        The second instance of the ticker motif, in a different section and
+        carrying different content, per the client's clarification 2026-09-14.
+        Runs the opposite direction to the services ticker above so the two read
+        as a deliberate pair rather than a repeat, and sits directly above the
+        closing CTA where "do you cover me?" is the last open question. Every
+        town links to its own page.
+      */}
+      <Marquee
+        durationSec={60}
+        reverse
+        tone="navy"
+        items={cities.map((c) => ({
+          label: c.name,
+          href: `/electrician-${c.slug}/`,
+          icon: <MapPinIcon width={17} height={17} />,
+        }))}
+      />
 
       {/*
         ── CTA band ─────────────────────────────────────────────────────────

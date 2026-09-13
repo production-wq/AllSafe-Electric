@@ -4,6 +4,9 @@ import Link from 'next/link';
 export interface MarqueeItem {
   label: string;
   href?: string;
+  /** Per-item icon, shown before the label. Client asked for "relevant icons"
+   * rather than one repeated generic separator (2026-09-14). */
+  icon?: ReactNode;
 }
 
 /**
@@ -49,20 +52,31 @@ export function Marquee({
 
   const renderRun = (hidden: boolean) => (
     <div className="flex shrink-0 items-center" aria-hidden={hidden || undefined}>
-      {items.map((it, i) => (
-        <span key={`${it.label}-${i}`} className="flex shrink-0 items-center">
-          <span className="px-6 py-3.5 font-display text-[0.95rem] font-extrabold uppercase tracking-[0.14em] sm:text-[1.05rem]">
-            {it.href && !hidden ? (
-              <Link href={it.href} className="text-inherit no-underline transition-opacity hover:opacity-75">
-                {it.label}
-              </Link>
-            ) : (
-              it.label
-            )}
+      {items.map((it, i) => {
+        const inner = (
+          <>
+            {it.icon && <span className="shrink-0 opacity-80">{it.icon}</span>}
+            <span>{it.label}</span>
+          </>
+        );
+        return (
+          <span key={`${it.label}-${i}`} className="flex shrink-0 items-center">
+            <span className="px-5 py-3 font-display text-[0.9rem] font-extrabold uppercase tracking-[0.13em] sm:text-[1rem]">
+              {it.href && !hidden ? (
+                <Link
+                  href={it.href}
+                  className="flex items-center gap-2.5 text-inherit no-underline transition-opacity hover:opacity-70"
+                >
+                  {inner}
+                </Link>
+              ) : (
+                <span className="flex items-center gap-2.5">{inner}</span>
+              )}
+            </span>
+            <span className="shrink-0 opacity-50">{sep}</span>
           </span>
-          <span className="shrink-0 opacity-60">{sep}</span>
-        </span>
-      ))}
+        );
+      })}
     </div>
   );
 
