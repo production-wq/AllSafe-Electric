@@ -7,12 +7,16 @@ import { PUBLISH } from '@/lib/publish';
 import { pageMetadata } from '@/lib/seo';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { SiteImage } from '@/components/SiteImage';
-import { CtaRow, PriceRange, CtaBlock, IncludedList } from '@/components/sections';
+import { CtaRow, PriceRange, CtaBlock, IncludedList, StatBand } from '@/components/sections';
 import { FaqList } from '@/components/Faq';
 import { Schema } from '@/components/Schema';
 import { Reveal } from '@/components/Reveal';
 import { StepList } from '@/components/StepList';
 import { PhotoGallery } from '@/components/PhotoGallery';
+import { StickyTOC } from '@/components/StickyTOC';
+import { Parallax } from '@/components/Parallax';
+import { FeaturedTestimonial } from '@/components/Testimonials';
+import { ShieldIcon as ShieldMark, ClockIcon, PriceTagIcon, BoltIcon } from '@/components/Icons';
 import { GoogleG, CheckIcon, ShieldIcon } from '@/components/Icons';
 import { business } from '@/lib/business';
 import { serviceNode, webPageNode, breadcrumbNode, faqPageNode } from '@/lib/schema';
@@ -59,6 +63,37 @@ export default async function ServicePage({
   // process is string[] on services not yet migrated to the richer step shape
   // (planning/plans/crispy-forging-clock.md Part B) — normalize to StepItem[].
   const processSteps = s.process.map((step) => (typeof step === 'string' ? { body: step } : step));
+
+  /*
+   * Gallery for EVERY service, 2026-09-14. Only 1 of 16 services had
+   * `galleryImages`, so 15 service pages showed a single flat photo and nothing
+   * else. Where a service has no curated set we fall back to its own hero and
+   * body photos plus a small pool of genuine, service-agnostic job shots, so the
+   * page still gets a real gallery without inventing anything. Trimmed to 3 so
+   * PhotoGallery tiles it into complete rows (see its own tiling rule).
+   */
+  const fallbackGallery = [
+    { name: s.heroImage, alt: s.heroAlt },
+    ...(s.bodyImage ? [{ name: s.bodyImage, alt: s.bodyAlt ?? s.heroAlt }] : []),
+    { name: 'electrician-tool-belt-and-ladder-low-angle.JPG', alt: 'Allsafe Electric tools on site in a Parker home' },
+    { name: 'allsafe-electrician-putting-on-protective-shoe-covers.JPG', alt: 'Shoe covers going on before work starts' },
+  ];
+  const gallery = s.galleryImages?.length ? s.galleryImages : fallbackGallery.slice(0, 3);
+
+  /* In-page navigation. StickyTOC drops any id that is not in the DOM, so
+   * sections that only render for some services never leave a dead anchor. */
+  const tocItems = [
+    { id: 'signs-heading', label: 'Signs you need this' },
+    { id: 'price-heading', label: 'What it costs' },
+    { id: 'included-heading', label: "What's included" },
+    { id: 'not-included-heading', label: "What isn't covered" },
+    { id: 'gallery-heading', label: 'Our work' },
+    { id: 'process-heading', label: 'How the job goes' },
+    { id: 'permits-heading', label: 'Permits and inspection' },
+    { id: 'faq-heading', label: 'Common questions' },
+    { id: 'areas-heading', label: 'Areas we cover' },
+    { id: 'related-heading', label: 'Related work' },
+  ];
   const cityVariants = s.cityServiceSlug
     ? cities.map((c) => ({
         city: c,
@@ -128,24 +163,65 @@ export default async function ServicePage({
             </dl>
           </div>
 
-          <div className="overflow-hidden rounded-card border border-rule shadow-lift">
-            {/*
-              Kevin's review, 2026-09-08: this internal "photo queued" note was
-              rendering to real visitors on the s.heroImageGap === true pages. It
-              is production-tracking metadata, not something a homeowner should
-              see, so it no longer renders. s.heroImageGap stays in lib/services.ts
-              as the internal checklist of which hero photos are still stock and
-              need a real job photo (planning/docs, photography direction).
-            */}
+          {/*
+            Kevin's review, 2026-09-08: this internal "photo queued" note was
+            rendering to real visitors on the s.heroImageGap === true pages. It
+            is production-tracking metadata, not something a homeowner should
+            see, so it no longer renders. s.heroImageGap stays in lib/services.ts
+            as the internal checklist of which hero photos are still stock and
+            need a real job photo (planning/docs, photography direction).
+
+            Parallax added 2026-09-14 for the premium pass. It scales the image
+            slightly and drifts it, so the frame is never left with an empty edge.
+          */}
+          <Parallax distance={36} className="rounded-card border border-rule shadow-photo">
             <SiteImage
               name={s.heroImage}
               alt={s.heroAlt}
               priority
               sizes="(min-width: 1024px) 560px, 100vw"
-              className="h-[300px] w-full object-cover sm:h-[420px]"
+              className="h-[300px] w-full object-cover sm:h-[440px]"
               aspable={false}
             />
-          </div>
+          </Parallax>
+        </div>
+      </section>
+
+      {/*
+        ── Proof band ────────────────────────────────────────────────────
+        Added 2026-09-14. StatBand already existed but was used on the homepage
+        only; every service page went straight from hero into a wall of text
+        with no trust signal at all.
+      */}
+      <section className="border-b border-rule bg-paper py-10">
+        <div className="container-page">
+          <Reveal>
+            <StatBand
+              tone="light"
+              items={[
+                {
+                  value: `${business.google.reviewCount}`,
+                  label: '5-star Google reviews',
+                  icon: <GoogleG className="h-5 w-5" />,
+                },
+                {
+                  value: '8+',
+                  label: 'Years serving Parker',
+                  icon: <ClockIcon width={20} height={20} />,
+                },
+                {
+                  value: 'Licensed',
+                  label: `Master ${business.licenses.master.id}`,
+                  icon: <ShieldMark width={20} height={20} />,
+                },
+                {
+                  value: 'Fixed',
+                  label: 'Price agreed before work starts',
+                  icon: <PriceTagIcon width={20} height={20} />,
+                },
+              ]}
+            />
+          </Reveal>
         </div>
       </section>
 
@@ -202,25 +278,16 @@ export default async function ServicePage({
             </section>
           )}
 
-          {/* Mid-page photo(s): a gallery when this service has curated photos,
-              otherwise the single body photo it always had. */}
-          {s.galleryImages && s.galleryImages.length > 0 ? (
-            <Reveal>
-              <PhotoGallery photos={s.galleryImages} />
-            </Reveal>
-          ) : (
-            s.bodyImage && (
-              <figure className="overflow-hidden rounded-card border border-rule">
-                <SiteImage
-                  name={s.bodyImage}
-                  alt={s.bodyAlt ?? s.heroAlt}
-                  sizes="(min-width: 1024px) 760px, 100vw"
-                  className="h-[260px] w-full object-cover sm:h-[340px]"
-                  aspable={false}
-                />
-              </figure>
-            )
-          )}
+          {/* Gallery, now on every service rather than 1 of 16. */}
+          <Reveal>
+            <section aria-labelledby="gallery-heading">
+              <p className="eyebrow">Our work</p>
+              <h2 id="gallery-heading" className="mt-3 text-h1">
+                {s.navLabel} in real Parker homes
+              </h2>
+              <PhotoGallery photos={gallery} className="mt-8" />
+            </section>
+          </Reveal>
 
           {/* Process */}
           <Reveal>
@@ -272,8 +339,15 @@ export default async function ServicePage({
             </section>
           </Reveal>
 
+          {/* A real review, placed where doubt peaks: after the price and
+              process, before the FAQ. FeaturedTestimonial existed but was used
+              nowhere until 2026-09-14. */}
           <Reveal>
-            <FaqList faqs={s.faqs} />
+            <FeaturedTestimonial authorIndex={s.emergency ? 0 : 2} />
+          </Reveal>
+
+          <Reveal>
+            <FaqList faqs={s.faqs} id="faq" />
           </Reveal>
 
           {/* Keep reading, planning/plans/crispy-forging-clock.md Part B */}
@@ -337,7 +411,8 @@ export default async function ServicePage({
         </div>
 
         {/* Sidebar */}
-        <aside className="lg:sticky lg:top-[calc(var(--header-h)+1.5rem)] lg:h-fit lg:self-start">
+        <aside className="space-y-6 lg:sticky lg:top-[calc(var(--header-h)+1.5rem)] lg:h-fit lg:self-start">
+          <StickyTOC items={tocItems} className="hidden lg:block" />
           <div className="card overflow-hidden">
             <div
               className={`px-5 py-4 ${s.emergency ? 'bg-green-600' : 'bg-navy'} surface-dark`}

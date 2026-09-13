@@ -199,6 +199,14 @@
     "lqip": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAADwAwCdASoPABQAPu1iqU2ppaOiMAgBMB2JQAAKmDTHE8GwgWfqvXY8AP5g/wMf2AVJ5w1W1bEtPjg35Aa7G1CFOSlvW616McX9rMdp5HBxI7uxhLuOoUZRWaC9Vfa8Q08YwHlSjYraA72Gn7PdRflG0Tiw/uTB3J1EkOkQCnGBRFXSAop0AAAA",
     "bytes": 178902
   },
+  "bright-living-room-interior": {
+    "src": "/img/photos/bright-living-room-interior",
+    "width": 520,
+    "height": 265,
+    "aspectRatio": 1.9623,
+    "lqip": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAAAQBACdASoUAAoAPu1iqU2ppaOiMAgBMB2JQBOgBDkMyOfSh7K2uM23AAD+3vgKidbCrqbT8b+vp1UJ7NGWjGs6ljcJK9DgACLtTniji0sxOW6ArO3qlo5uwUcFIVDhwGxCCqafzAiQnoAA",
+    "bytes": 20341
+  },
   "dual-usb-residential-wall-outlet": {
     "src": "/img/photos/dual-usb-residential-wall-outlet",
     "width": 1067,
@@ -270,6 +278,14 @@
     "aspectRatio": 0.6665,
     "lqip": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAAAQBACdASoNABQAPu1iqU2ppaOiMAgBMB2JaACdDiAAFEYyfPX/vN37AADwIBSi1O30axMlC0QQcbC7nH7i0CStbfxWVaId8N4goxVTekBxfdhnTAo/ivYNix8dYiWpdDEbNeUu10tsK5fAgimtUzW2bpkIz93bi3Z+1iLhnvh22/m2Fw9QnJZgAAA=",
     "bytes": 261021
+  },
+  "electrician-parker-wide": {
+    "src": "/img/photos/electrician-parker-wide",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": 1.7778,
+    "lqip": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAADwAwCdASoUAAsAPu1iqU2ppaOiMAgBMB2JZACdABVCiTm2MSm7FUQ0AP38X6FbAgYW4SG6k2lEMYbdkAbXqJYPIaK8w/qeXxImQbCiQjzSLMiATjhAfw/7AJ/Dlv3OB/LoIcExU9pwpT3a8FXFzv2pxQX6ZcokT8QPLYWy7hh3gAAA",
+    "bytes": 375499
   },
   "electrician-pointing-to-circuit-breaker": {
     "src": "/img/photos/electrician-pointing-to-circuit-breaker",
@@ -430,6 +446,14 @@
     "aspectRatio": 1.1087,
     "lqip": "data:image/webp;base64,UklGRrQAAABXRUJQVlA4IKgAAAAwBQCdASoUABIAPu1ur1IppiQiqAgBMB2JYwC7AdwLgnOEF7NrVYIgJPugHrgx9Bb1AAD+8dwy6GY8u1XQm+muorf6YuIa8vJp0h3tjgfWzTAgy1vdcJBB9Du1bYcdeVPt+2IJ3droEbJOZzXxY/M9AcFB7G/Fsm7eyCv5diklSMXm3MhbsitWMom29G3EdjHzXSa2CrZEMmxPhc2PslLUGQDmVrWgAAA=",
     "bytes": 20907
+  },
+  "family-outside-suburban-home": {
+    "src": "/img/photos/family-outside-suburban-home",
+    "width": 252,
+    "height": 252,
+    "aspectRatio": 1,
+    "lqip": "data:image/webp;base64,UklGRtwAAABXRUJQVlA4INAAAACQBQCdASoUABQAPu1ur1IppiQiqAgBMB2JQBTisYYO+H3W07yrH7XnTM6UKq0e9lB86F2QAAD+jy1MsN+m50cIzVUzH0w8/mdS7HMVFNSaa0A7YiC9pnoEZQn3EPruRafF8arrc9z9H1FwDUIs2aw/PEEtgn/B714BDbuJIRXMFKhnQwHbC4y/QNiSMvezKJ+OieC1+dp/ZNOzlF5fvEMvuau8qpP+f2Cw6nW1Nbl+WepXWkjz8NjhzUX+yI/obN/lE7iIld7BZdr+tDTxbMAA",
+    "bytes": 14083
   },
   "illuminated-decorative-bowl-chandelier": {
     "src": "/img/photos/illuminated-decorative-bowl-chandelier",

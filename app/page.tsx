@@ -12,6 +12,14 @@ import { FaqList } from '@/components/Faq';
 import { Schema } from '@/components/Schema';
 import { Reveal } from '@/components/Reveal';
 import { PhotoGallery } from '@/components/PhotoGallery';
+import { StepList } from '@/components/StepList';
+import { Marquee } from '@/components/Marquee';
+import { AnimatedHeading } from '@/components/AnimatedHeading';
+import { Parallax } from '@/components/Parallax';
+import { SectionHeading } from '@/components/SectionHeading';
+import { TrustBadges } from '@/components/TrustBadges';
+import { FeaturedTestimonial } from '@/components/Testimonials';
+import { services } from '@/lib/services';
 import { EstimateButton, CallButton } from '@/components/cta';
 import {
   PhoneIcon,
@@ -40,7 +48,7 @@ export const metadata: Metadata = pageMetadata({
 });
 
 const stats = [
-  { value: '8', label: 'Years in Business', icon: <ClockIcon width={20} height={20} /> },
+  { value: '8+', label: 'Years in Business', icon: <ClockIcon width={20} height={20} /> },
   {
     value: String(business.google.reviewCount),
     label: '5-Star Google Reviews',
@@ -87,6 +95,52 @@ const featuredServices = [
   'electrical-switch-services',
 ];
 
+/*
+ * Client request 2026-09-13: "throughout the website, I need more content,
+ * especially on the home page. I want more copy."
+ *
+ * Every claim below is grounded in facts already established in lib/cities.ts
+ * (Parker housing stock, panel brands, CORE vs Xcel territory) or lib/business.ts.
+ * Nothing here is invented: no made-up stats, job counts, or certifications.
+ */
+const commonProblems = [
+  {
+    title: 'Breakers trip when the AC and microwave run together',
+    body: 'Parker grew fast between 1995 and 2015, so a lot of homes here are running 100A or 150A service that was sized before anyone owned an EV. The panel is not broken, it is full. A load calculation tells you whether you need a heavy-up to 200A or just some circuits rebalanced, and the answer is genuinely cheaper more often than people expect.',
+  },
+  {
+    title: 'You have a Federal Pacific or Zinsco panel',
+    body: 'These turn up in the older Pinery and Ponderosa areas, mostly 1970s and 80s homes. Both brands have a documented history of breakers that fail to trip under fault, which is the one job a breaker has. If you have one, replacement is not an upsell, it is the fix. We will tell you plainly which brand you have and show you the label.',
+  },
+  {
+    title: 'Aluminum branch wiring in an older home',
+    body: 'Some Parker-area homes from that same era have aluminum branch circuits. Aluminum is not automatically dangerous, but it expands and contracts differently than copper, so connections loosen over time and loose connections are what start fires. The fix is proper connectors at every device, not rewiring the whole house.',
+  },
+  {
+    title: 'You are adding an EV charger, hot tub, or generator',
+    body: 'All three are big continuous loads and all three need a permit. Start with a load calculation rather than a guess, because the answer determines whether you need a service upgrade first. Worth knowing: most of Parker is on CORE Electric Cooperative, not Xcel, so most Colorado rebate articles you will read online do not apply to your address.',
+  },
+];
+
+const howItWorks = [
+  {
+    title: 'Call or book online',
+    body: 'A real person answers weekdays 8am to 6pm, and you can book online any time. Tell us what the house is doing and we will tell you honestly whether it is urgent today or fine to schedule.',
+  },
+  {
+    title: 'You get a two-hour window',
+    body: 'Not a vague all-day window. We confirm a two-hour arrival window that works for your schedule, and we call if anything changes on our end.',
+  },
+  {
+    title: 'We diagnose and price it before starting',
+    body: 'One of our two licensed electricians looks at the actual job and gives you a fixed price in writing. You approve it before any work begins, so the number on the invoice is the number you agreed to.',
+  },
+  {
+    title: 'We do the work and clean up',
+    body: 'Shoe covers on, workspace left clean, and a straight answer about anything else we noticed. If something should be scheduled properly later rather than rushed today, we say so instead of upselling it on the spot.',
+  },
+];
+
 export default function HomePage() {
   return (
     <>
@@ -130,9 +184,14 @@ export default function HomePage() {
         />
         <div className="container-page relative pb-28 pt-14 text-center md:pb-36 md:pt-20">
           <p className="eyebrow eyebrow-center rise">Top Rated Electrician in Parker</p>
-          <h1 className="rise mx-auto mt-5 max-w-4xl text-hero uppercase">
-            Parker&rsquo;s Trusted Residential Electrician
-          </h1>
+          {/* Client request 2026-09-14: "modern headings, the main word can be a
+              colorful word". "Trusted" carries the brand gradient. */}
+          <AnimatedHeading
+            as="h1"
+            text="Parker's Trusted Residential Electrician"
+            highlight="Trusted"
+            className="rise mx-auto mt-5 max-w-4xl text-hero uppercase"
+          />
           <p className="rise-1 mx-auto mt-6 max-w-2xl text-lead text-white/80">
             Your friendly, professional local electricians. Fast response, licensed and insured, and
             BBB A+ accredited.
@@ -181,11 +240,28 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/*
+        ── Services ticker ───────────────────────────────────────────────
+        Client request, made twice (2026-09-13 and again 2026-09-14: "I asked
+        you to put this kind of text lines which just goes on on a loop, uh,
+        with some icons, but you didn't add those"). Every item links to its
+        real service page, so this is a genuine internal-linking surface as
+        well as a design element. Pauses on hover and on keyboard focus, and
+        stops entirely under prefers-reduced-motion.
+      */}
+      <Marquee
+        durationSec={46}
+        items={services.map((s) => ({ label: s.navLabel, href: `/${s.slug}/` }))}
+      />
+
       {/* ── Stats ────────────────────────────────────────────────────────── */}
       <section className="py-14">
         <div className="container-page">
           <Reveal>
             <StatBand items={stats} tone="textured" />
+          </Reveal>
+          <Reveal delay={120} className="mt-10">
+            <TrustBadges />
           </Reveal>
         </div>
       </section>
@@ -293,15 +369,85 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── Common problems in Parker homes ─────────────────────────────── */}
+      <section className="section bg-paper" aria-labelledby="problems-heading">
+        <div className="container-page">
+          <Reveal className="max-w-2xl">
+            <p className="eyebrow">What We Get Called For</p>
+            <h2 id="problems-heading" className="mt-3 text-h1">
+              Common Electrical Problems in Parker Homes
+            </h2>
+            <p className="mt-4 text-lead text-slate">
+              Parker&rsquo;s housing stock has patterns, and after eight years working in these
+              neighborhoods we see the same four issues over and over. Here is what is usually
+              going on, and what actually fixes it.
+            </p>
+          </Reveal>
+          <div className="mt-10 grid gap-6 lg:grid-cols-2">
+            {commonProblems.map((p, i) => (
+              <Reveal key={p.title} delay={i * 70} className="flex h-full">
+                <div className="card h-full p-6 md:p-7">
+                  <span className="text-tiny font-bold text-blue-300">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <h3 className="mt-1.5 text-h3">{p.title}</h3>
+                  <p className="mt-2.5 text-body text-slate">{p.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal delay={120} className="mt-8">
+            <p className="text-body text-slate">
+              Not sure which one you have?{' '}
+              <a href={business.phone.href} className="font-semibold text-blue-600">
+                Call {business.phone.display}
+              </a>{' '}
+              and describe what the house is doing. We will tell you what it probably is before we
+              ever come out.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ── How it works ────────────────────────────────────────────────── */}
+      <section className="section" aria-labelledby="how-heading">
+        <div className="container-page grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+          <Reveal>
+            <p className="eyebrow">How It Works</p>
+            <h2 id="how-heading" className="mt-3 text-h1">
+              What Happens When You Call
+            </h2>
+            <p className="mt-4 text-lead text-slate">
+              No call center, no rotating crew, no sales rep. Here is the whole process, start to
+              finish.
+            </p>
+            <div className="mt-8 overflow-hidden rounded-card border border-rule shadow-photo">
+              <SiteImage
+                name="electrician-tool-bag-on-kitchen-counter.JPG"
+                alt="An Allsafe Electric tool bag set down on a kitchen counter at the start of a job"
+                sizes="(min-width: 1024px) 420px, 100vw"
+                className="h-56 w-full object-cover"
+                aspable={false}
+              />
+            </div>
+          </Reveal>
+          <Reveal delay={120}>
+            <StepList steps={howItWorks} />
+          </Reveal>
+        </div>
+      </section>
+
       {/* ── Why choose us ───────────────────────────────────────────────── */}
       <section className="section bg-paper" aria-labelledby="why-heading">
         <div className="container-page grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          {/* Client feedback 2026-09-13: fewer repeated portraits. This slot now
+              shows the work rather than the person. */}
           <Reveal className="overflow-hidden rounded-card border border-rule shadow-photo">
             <SiteImage
-              name="allsafe-electrician-in-home-service-portrait.JPG"
-              alt="An Allsafe Electric electrician in a Parker home"
+              name="electrician-tightening-connections-in-breaker-panel.JPG"
+              alt="Tightening connections inside a residential breaker panel during a Parker service call"
               sizes="(min-width: 1024px) 480px, 100vw"
-              className="h-[420px] w-full object-cover object-[50%_25%]"
+              className="h-[420px] w-full object-cover"
               aspable={false}
             />
           </Reveal>
@@ -343,17 +489,25 @@ export default function HomePage() {
               in Parker homes like yours.
             </p>
           </Reveal>
+          {/*
+            Photo mix, client feedback 2026-09-13: "I don't like all of these
+            pictures are just the same guy's picture everywhere. I would like
+            more generic images." Rebalanced to finished work and close-up
+            detail shots (fixtures, outlets, panels), which also sell the work
+            better than another portrait does.
+          */}
           <Reveal delay={100} className="mt-10">
             <PhotoGallery
               photos={[
-                { name: 'allsafe-electrician-adjusting-stairwell-chandelier.JPG', alt: 'Allsafe electrician adjusting a stairwell chandelier' },
-                { name: 'electrician-testing-gfci-kitchen-outlet.JPG', alt: 'Allsafe electrician testing a GFCI kitchen outlet' },
-                { name: 'allsafe-electrician-checking-ceiling-fan-light.JPG', alt: 'Allsafe electrician checking a ceiling fan light kit' },
-                { name: 'electrician-installing-weatherproof-duplex-outlets.JPG', alt: 'Allsafe electrician installing weatherproof outdoor outlets' },
-                { name: 'allsafe-electrician-voltage-testing-breaker-panel.JPG', alt: 'Allsafe electrician voltage testing a breaker panel' },
-                { name: 'illuminated-ornate-crystal-chandelier.JPG', alt: 'A crystal chandelier installed by Allsafe Electric' },
-                { name: 'allsafe-electrician-holding-lineman-pliers.JPG', alt: 'Allsafe electrician with lineman pliers on a job' },
-                { name: 'electrician-tool-belt-and-ladder-low-angle.JPG', alt: 'Allsafe electrician tool belt and ladder on site' },
+                { name: 'illuminated-ornate-crystal-chandelier.JPG', alt: 'An ornate crystal chandelier wired and hung by Allsafe Electric' },
+                { name: 'dual-usb-residential-wall-outlet.JPG', alt: 'A dual USB residential wall outlet installed by Allsafe Electric' },
+                { name: 'modern-three-blade-ceiling-fan-with-light.JPG', alt: 'A modern three blade ceiling fan with light kit, installed and balanced' },
+                { name: 'open-residential-electrical-breaker-panel.JPG', alt: 'A residential breaker panel with the cover off during service work' },
+                { name: 'electrician-testing-gfci-kitchen-outlet.JPG', alt: 'Testing a GFCI kitchen outlet after installation' },
+                { name: 'large-windmill-ceiling-fan-in-living-room.JPG', alt: 'A large windmill-style ceiling fan installed in a living room' },
+                { name: 'electrician-installing-weatherproof-duplex-outlets.JPG', alt: 'Weatherproof duplex outlets being installed outdoors' },
+                { name: 'illuminated-decorative-bowl-chandelier.JPG', alt: 'A decorative bowl chandelier lit after installation' },
+                { name: 'electrician-working-on-outdoor-stone-wall-outlet.JPG', alt: 'Outdoor outlet work on a stone wall' },
               ]}
             />
           </Reveal>

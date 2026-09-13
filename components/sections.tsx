@@ -7,6 +7,7 @@ import { business } from '@/lib/business';
 import type { Service } from '@/lib/services';
 import { getService } from '@/lib/services';
 import { CheckIcon } from './Icons';
+import { CountUp } from './CountUp';
 
 const ACCENT = {
   blue: { bar: 'bg-blue-500', tile: 'bg-blue-50 text-blue-600' },
@@ -74,29 +75,47 @@ export function StatBand({
   return (
     <dl
       className={`grid gap-px overflow-hidden rounded-card sm:grid-cols-2 lg:grid-cols-4 ${
-        dark ? 'bg-white/15' : 'bg-rule'
+        dark ? 'bg-white/10 shadow-float' : 'bg-rule shadow-card'
       }`}
     >
       {items.map((it) => (
         <div
           key={it.label}
-          className={`px-5 py-7 text-center ${
-            tone === 'textured' ? 'bg-graphite-texture' : dark ? 'bg-navy' : 'bg-white'
+          className={`group relative overflow-hidden px-5 py-9 text-center transition-colors duration-300 ${
+            tone === 'textured'
+              ? 'bg-graphite-texture hover:bg-graphite-light'
+              : dark
+                ? 'bg-navy hover:bg-navy-light'
+                : 'bg-white hover:bg-paper'
           }`}
         >
+          {/* accent wash that warms up on hover, keeps the band from feeling flat */}
+          <span
+            aria-hidden
+            className="pointer-events-none absolute inset-x-0 -top-16 mx-auto h-32 w-32 rounded-full bg-green-500/0 blur-2xl transition-all duration-500 group-hover:bg-green-500/20"
+          />
           <dt className="sr-only">{it.label}</dt>
-          <dd>
+          <dd className="relative">
             {it.icon && (
               <span
-                className={`mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-pill ${
-                  dark ? 'bg-white/10 text-green-500' : 'bg-green-50 text-green-600'
+                className={`mx-auto mb-3 flex h-11 w-11 items-center justify-center rounded-pill transition-transform duration-300 group-hover:-translate-y-0.5 ${
+                  dark ? 'bg-white/10 text-green-500 ring-1 ring-white/10' : 'bg-green-50 text-green-600'
                 }`}
               >
                 {it.icon}
               </span>
             )}
-            <span className={`block text-h2 font-bold ${dark ? 'text-white' : 'text-blue-600'}`}>{it.value}</span>
-            <span className={`mt-1.5 block text-small ${dark ? 'text-white/75' : 'text-grey'}`}>{it.label}</span>
+            <CountUp
+              value={it.value}
+              className={`block font-display text-4xl font-extrabold tracking-tight lg:text-5xl ${
+                dark ? 'text-white' : 'text-blue-600'
+              }`}
+            />
+            <span
+              aria-hidden
+              className="mx-auto mt-3 block h-0.5 w-8 rounded-full bg-green-600/70 transition-all duration-300 group-hover:w-14"
+            />
+            <span className={`mt-3 block text-small ${dark ? 'text-white/70' : 'text-grey'}`}>{it.label}</span>
           </dd>
         </div>
       ))}
@@ -143,7 +162,7 @@ export function PriceRange({ service }: { service: Service }) {
   return (
     <div className="overflow-hidden rounded-card border border-green-100 bg-green-50">
       <div className="border-b border-green-100 bg-white/60 px-6 py-4">
-        <h2 className="text-h2">
+        <h2 id="price-heading" className="text-h2">
           What it costs {service.slug.includes('parker') ? 'in Parker' : 'in Douglas County'}
         </h2>
       </div>
@@ -184,16 +203,24 @@ export function IncludedList({
   items: string[];
   title?: string;
 }) {
+  /* Given a real container 2026-09-14. This was a bare heading over a bullet
+   * list sitting directly on the page background, which was a large part of why
+   * the middle of every service page read as undesigned text. */
   return (
-    <section aria-labelledby="included-heading">
-      <h2 id="included-heading" className="text-h2">
-        {title}
-      </h2>
-      <ul className="mt-6 grid gap-x-8 gap-y-3.5 sm:grid-cols-2">
+    <section
+      aria-labelledby="included-heading"
+      className="overflow-hidden rounded-card border border-rule bg-white shadow-ambient"
+    >
+      <div className="border-b border-rule bg-paper px-6 py-4 md:px-8">
+        <h2 id="included-heading" className="text-h2">
+          {title}
+        </h2>
+      </div>
+      <ul className="grid gap-x-8 gap-y-4 p-6 sm:grid-cols-2 md:p-8">
         {items.map((item) => (
           <li key={item} className="flex gap-3 text-body">
-            <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-green-100">
-              <CheckIcon className="text-green-700" width={13} height={13} />
+            <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-100">
+              <CheckIcon className="text-green-700" width={14} height={14} />
             </span>
             <span className="text-slate">{item}</span>
           </li>

@@ -33,6 +33,15 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
       },
     ],
-    sitemap: [`${SITE_URL}/sitemap.xml`],
+    // The index at /sitemap.xml points to the per-section sitemaps, but listing
+    // the children explicitly means a crawler that does not follow index files
+    // still finds every section (lib/sitemaps.ts).
+    sitemap: [
+      `${SITE_URL}/sitemap.xml`,
+      `${SITE_URL}/sitemap-pages.xml`,
+      `${SITE_URL}/sitemap-services.xml`,
+      `${SITE_URL}/sitemap-locations.xml`,
+      `${SITE_URL}/sitemap-posts.xml`,
+    ],
   };
 }

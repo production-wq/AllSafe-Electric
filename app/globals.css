@@ -39,6 +39,33 @@
 
   --strip-h: 40px;
   --header-h: 74px;
+
+  /* ── Motion tokens (2026-09-14 premium pass) ───────────────────────────
+   * There were no motion tokens at all before this: every duration and
+   * easing was hand-typed at the call site, which is why timings drifted
+   * between components. Everything animated should now pull from here. */
+  --dur-fast: 180ms;
+  --dur-base: 320ms;
+  --dur-slow: 640ms;
+  --dur-slower: 900ms;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
+  /* .card-hover used to reference var(--tw-ease), which was never defined
+   * anywhere in the project, so it silently fell back every single time. */
+  --tw-ease: var(--ease-out-expo);
+
+  /* ── Z-index scale ─────────────────────────────────────────────────────
+   * Previously ad-hoc (z-50 header, z-40 sticky bar, z-[60] skip link),
+   * which made stacking bugs a guessing game. */
+  --z-base: 1;
+  --z-sticky-bar: 40;
+  --z-header: 50;
+  --z-dropdown: 55;
+  --z-drawer: 60;
+  --z-overlay: 70;
+  --z-skip: 80;
+
   color-scheme: light;
 }
 
@@ -350,6 +377,41 @@
     background: linear-gradient(160deg, var(--navy-light) 0%, var(--navy) 45%, var(--navy-deep) 100%);
   }
 
+  /* ── Premium surface + type treatments (2026-09-14) ─────────────────────
+   * The client asked for "modern headings, the main word can be a colorful
+   * word", and for dark sections that feel premium rather than flat. */
+
+  /* Gradient keyword inside a heading. Used by components/AnimatedHeading.tsx.
+   * Falls back to a solid brand green anywhere background-clip:text is
+   * unsupported, so the word is never invisible. */
+  .text-gradient {
+    color: var(--green);
+    background-image: linear-gradient(95deg, var(--green) 0%, var(--green-bright) 45%, var(--blue) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  @supports (-webkit-background-clip: text) or (background-clip: text) {
+    .text-gradient {
+      color: transparent;
+    }
+  }
+
+  /* Soft aurora wash for dark grounds. Layered radial gradients rather than a
+   * flat fill, so large dark sections have depth instead of reading as a slab. */
+  .bg-aurora {
+    background-color: var(--navy-deep);
+    background-image:
+      radial-gradient(60% 80% at 15% 10%, rgba(0, 154, 107, 0.22), transparent 60%),
+      radial-gradient(50% 70% at 85% 20%, rgba(0, 104, 168, 0.28), transparent 62%),
+      radial-gradient(70% 90% at 60% 100%, rgba(10, 46, 76, 0.7), transparent 70%);
+  }
+
+  /* Hairline rule that fades out at both ends, for section separators. */
+  .rule-fade {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--rule) 18%, var(--rule) 82%, transparent);
+  }
+
   /* Textured graphite surface, an alternative dark ground to --navy so repeated
    * dark sections (stat bands, CTA variants) don't all look identical. */
   .bg-graphite-texture {
@@ -516,6 +578,27 @@
   transform: translateY(0);
 }
 
+/* ── Generic marquee ticker, components/Marquee.tsx ──────────────────────
+ * The reviews marquee hardcodes a 42s duration in its own keyframe. This one
+ * is driven by --marquee-duration and --marquee-direction so one stylesheet
+ * rule serves any speed or direction. Same proven technique: the track is
+ * rendered twice and translated -50%, so the loop is seamless. */
+.marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll var(--marquee-duration, 38s) linear infinite;
+  animation-direction: var(--marquee-direction, normal);
+}
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -530,6 +613,21 @@
   .reveal {
     opacity: 1;
     transform: none;
+  }
+  /* The blanket rule above only zeroes durations, which still lets transforms
+   * SNAP to their hover position. Null the movement itself too. */
+  .card-hover:hover {
+    transform: none;
+  }
+  .marquee-track,
+  .reviews-marquee-track {
+    animation: none !important;
+    transform: none !important;
+  }
+  /* Image zoom-on-hover across cards and galleries. */
+  .group:hover img,
+  .group:focus-within img {
+    transform: none !important;
   }
 }
 

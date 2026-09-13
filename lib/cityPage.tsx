@@ -13,6 +13,12 @@ import { Schema } from '@/components/Schema';
 import { Reveal } from '@/components/Reveal';
 import { StepList } from '@/components/StepList';
 import { PhotoGallery } from '@/components/PhotoGallery';
+import { Parallax } from '@/components/Parallax';
+import { SiteImage } from '@/components/SiteImage';
+import { StatBand } from '@/components/sections';
+import { FeaturedTestimonial } from '@/components/Testimonials';
+import { StickyTOC } from '@/components/StickyTOC';
+import { HomeIcon, ShieldIcon, BoltIcon, ClockIcon, MapPinIcon } from '@/components/Icons';
 import { webPageNode, breadcrumbNode, faqPageNode, cityMainEntityNode } from '@/lib/schema';
 import { business } from '@/lib/business';
 
@@ -61,7 +67,38 @@ export function CityPageContent({ citySlug }: { citySlug: string }) {
   const priorityServices = c.priorityServices
     .map((slug) => services.find((s) => s.cityServiceSlug === slug))
     .filter(Boolean);
-  const otherCities = citySlugs.filter((s) => s !== c.slug).slice(0, 2).map(getCity).filter(Boolean);
+  /* Every sibling city, not two. The old `.slice(0, 2)` meant a 16-city network
+   * had almost no lateral internal linking, which the client flagged as a
+   * priority ("naturally occurring internal linking... on all the service and
+   * location pages"). 2026-09-14. */
+  const otherCities = citySlugs.filter((s) => s !== c.slug).map(getCity).filter(Boolean);
+
+  /* Hero and gallery imagery. 15 of the 16 city pages had no photograph at all
+   * before 2026-09-14. Until per-city photography exists these are honest,
+   * general job and neighbourhood shots, captioned so they never imply they
+   * were taken in this specific city. */
+  const heroPhoto = c.galleryImages?.[0]?.name ?? 'suburban-home-exterior-daylight.JPG';
+  const heroPhotoAlt =
+    c.galleryImages?.[0]?.alt ?? `A residential street of the kind Allsafe Electric works in daily`;
+  const gallery =
+    c.galleryImages?.length && c.galleryImages.length >= 3
+      ? c.galleryImages
+      : [
+          { name: 'electrician-tightening-connections-in-breaker-panel.JPG', alt: 'Tightening connections inside a residential breaker panel' },
+          { name: 'electrician-testing-gfci-kitchen-outlet.JPG', alt: 'Testing a GFCI kitchen outlet after installation' },
+          { name: 'modern-three-blade-ceiling-fan-with-light.JPG', alt: 'A ceiling fan installed and balanced' },
+        ];
+
+  const tocItems = [
+    { id: 'svc-heading', label: `Services in ${c.name}` },
+    { id: 'stock-heading', label: 'Local homes' },
+    { id: 'permit-heading', label: 'Permits' },
+    { id: 'utility-heading', label: 'Your utility' },
+    { id: 'hoods-heading', label: 'Neighborhoods' },
+    { id: 'gallery-heading', label: 'Our work' },
+    { id: `faq-${c.slug}-heading`, label: 'Questions' },
+    { id: 'near-heading', label: 'Nearby areas' },
+  ];
 
   return (
     <>
@@ -134,6 +171,39 @@ export function CityPageContent({ citySlug }: { citySlug: string }) {
         </div>
       </section>
 
+      {/* Proof band. Cities had no trust signal between the hero and the prose. */}
+      <section className="border-b border-rule bg-paper py-10">
+        <div className="container-page">
+          <Reveal>
+            <StatBand
+              tone="light"
+              items={[
+                {
+                  value: c.driveTimeMin === 0 ? 'Local' : `${c.driveTimeMin} min`,
+                  label: c.driveTimeMin === 0 ? 'This is our home base' : 'From our Parker shop',
+                  icon: <ClockIcon width={20} height={20} />,
+                },
+                {
+                  value: `${business.google.reviewCount}`,
+                  label: '5-star Google reviews',
+                  icon: <ShieldIcon width={20} height={20} />,
+                },
+                {
+                  value: 'Licensed',
+                  label: `Master ${business.licenses.master.id}`,
+                  icon: <ShieldIcon width={20} height={20} />,
+                },
+                {
+                  value: 'Same-Day',
+                  label: 'For urgent calls, 2-hr window',
+                  icon: <BoltIcon width={20} height={20} />,
+                },
+              ]}
+            />
+          </Reveal>
+        </div>
+      </section>
+
       <div className="container-page grid gap-12 py-12 lg:grid-cols-[1fr_340px] lg:py-16">
         <div className="min-w-0 space-y-12">
           <section aria-labelledby="svc-heading">
@@ -157,12 +227,36 @@ export function CityPageContent({ citySlug }: { citySlug: string }) {
             </Link>
           </section>
 
-          <section aria-labelledby="stock-heading">
-            <h2 id="stock-heading" className="text-h2">
-              What {c.name} homes are like electrically
-            </h2>
-            <p className="prose-body mt-4 text-[1.05rem] text-grey">{c.housingStock}</p>
-          </section>
+          {/* Housing stock. Was a bare heading over one grey paragraph, the first
+              of four identical prose blocks in a row. Now a proper panel with a
+              photo, so the page has a visual anchor at this point. 2026-09-14. */}
+          <Reveal>
+            <section
+              aria-labelledby="stock-heading"
+              className="overflow-hidden rounded-card border border-rule bg-white shadow-ambient"
+            >
+              <div className="grid md:grid-cols-[1.15fr_0.85fr]">
+                <div className="p-6 md:p-8">
+                  <span className="icon-badge">
+                    <HomeIcon width={22} height={22} />
+                  </span>
+                  <h2 id="stock-heading" className="mt-4 text-h2">
+                    What {c.name} homes are like electrically
+                  </h2>
+                  <p className="prose-body mt-4 text-body-lg text-slate">{c.housingStock}</p>
+                </div>
+                <Parallax distance={28} className="min-h-[220px] md:min-h-full">
+                  <SiteImage
+                    name={heroPhoto}
+                    alt={heroPhotoAlt}
+                    fill
+                    sizes="(min-width: 768px) 40vw, 100vw"
+                    className="object-cover"
+                  />
+                </Parallax>
+              </div>
+            </section>
+          </Reveal>
 
           <section aria-labelledby="permit-heading">
             <h2 id="permit-heading" className="text-h2">
@@ -187,20 +281,33 @@ export function CityPageContent({ citySlug }: { citySlug: string }) {
             </p>
           </section>
 
-          <section aria-labelledby="utility-heading">
-            <h2 id="utility-heading" className="text-h2">
-              Who powers your home in {c.name}
-            </h2>
-            <p className="mt-2 font-semibold">
-              {c.utility.name}
-              {c.utility.verify && (
-                <span className="ml-2 rounded bg-paper px-2 py-0.5 text-[0.75rem] font-normal text-grey">
-                  verify your address
+          {/* Utility. Third of the four old prose blocks, now a highlighted
+              panel because the CORE vs Xcel distinction is genuinely the most
+              commonly misunderstood local fact and deserves to stand out. */}
+          <Reveal>
+            <section
+              aria-labelledby="utility-heading"
+              className="rounded-card border border-blue-100 bg-blue-50/60 p-6 md:p-8"
+            >
+              <div className="flex flex-wrap items-start gap-4">
+                <span className="icon-badge icon-badge-blue">
+                  <BoltIcon width={22} height={22} />
                 </span>
-              )}
-            </p>
-            <p className="prose-body mt-2 text-[1.05rem] text-grey">{c.utility.note}</p>
-          </section>
+                <div className="min-w-0 flex-1">
+                  <h2 id="utility-heading" className="text-h2">
+                    Who powers your home in {c.name}
+                  </h2>
+                  <p className="mt-2 flex flex-wrap items-center gap-2 text-body-lg font-semibold text-ink">
+                    {c.utility.name}
+                    {c.utility.verify && (
+                      <span className="chip chip-grey">Verify your address</span>
+                    )}
+                  </p>
+                  <p className="prose-body mt-3 text-body-lg text-slate">{c.utility.note}</p>
+                </div>
+              </div>
+            </section>
+          </Reveal>
 
           <section aria-labelledby="hoods-heading">
             <h2 id="hoods-heading" className="text-h2">
@@ -227,50 +334,63 @@ export function CityPageContent({ citySlug }: { citySlug: string }) {
             </ul>
           </section>
 
-          {c.galleryImages && c.galleryImages.length > 0 && (
+          {/* Gallery, now on every city rather than 1 of 16. */}
+          <Reveal>
             <section aria-labelledby="gallery-heading">
               <h2 id="gallery-heading" className="text-h2">
                 Our work around {c.name}
               </h2>
               <p className="mt-2 text-small text-grey">
-                General job photos from Allsafe Electric, not necessarily taken in {c.name} itself.
+                Real Allsafe Electric job photos. General work shots, not necessarily taken in{' '}
+                {c.name} itself.
               </p>
-              <Reveal className="mt-5">
-                <PhotoGallery photos={c.galleryImages} />
-              </Reveal>
+              <PhotoGallery photos={gallery} className="mt-6" />
             </section>
-          )}
+          </Reveal>
 
-          <FaqList faqs={c.faqs} heading={`Questions from ${c.name} homeowners`} id={`faq-${c.slug}`} />
+          <Reveal>
+            <FeaturedTestimonial authorIndex={1} />
+          </Reveal>
 
+          <Reveal>
+            <FaqList
+              faqs={c.faqs}
+              heading={`Questions from ${c.name} homeowners`}
+              id={`faq-${c.slug}`}
+            />
+          </Reveal>
+
+          {/* Every sibling city, not two. This is the main lateral link surface
+              in the location network. 2026-09-14. */}
           <section aria-labelledby="near-heading">
             <h2 id="near-heading" className="text-h2">
-              Nearby areas
+              We also cover these nearby areas
             </h2>
-            <ul className="mt-3 flex flex-wrap gap-2">
+            <p className="mt-2 text-body text-slate">
+              Allsafe Electric works across Parker, Douglas County and the south metro. If your town
+              is on this list, the same licensed electricians and the same pricing apply.
+            </p>
+            <ul className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-3">
               {otherCities.map((oc) => (
                 <li key={oc!.slug}>
                   <Link
                     href={`/electrician-${oc!.slug}/`}
-                    className="inline-block rounded border border-rule bg-white px-3 py-1.5 text-[0.95rem] hover:border-blue-600"
+                    className="flex items-center gap-2 rounded-btn border border-rule bg-white px-3 py-2 text-small transition-colors hover:border-blue-300 hover:bg-blue-50"
                   >
-                    Electrician in {oc!.name}
+                    <MapPinIcon width={14} height={14} className="shrink-0 text-green-600" />
+                    {oc!.name}
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link
-                  href="/service-area/"
-                  className="inline-block rounded border border-rule bg-white px-3 py-1.5 text-[0.95rem] hover:border-blue-600"
-                >
-                  Full service area
-                </Link>
-              </li>
             </ul>
+            <Link href="/service-area/" className="link-cta mt-5 inline-block">
+              See the full service area
+            </Link>
           </section>
         </div>
 
         <aside className="space-y-5 lg:sticky lg:top-[calc(var(--header-h)+1rem)] lg:h-fit">
+          <StickyTOC items={tocItems} className="hidden lg:block" />
           <div className="card p-5">
             <h2 className="text-h3">Book in {c.name}</h2>
             <p className="mt-1 text-[0.95rem] text-grey">{c.responseExpectation}</p>
