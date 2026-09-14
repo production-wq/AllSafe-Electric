@@ -128,7 +128,7 @@ export const cities: City[] = [
     heroImageBrief:
       'A quiet residential street of two-story stone-and-siding homes in Parker, Colorado, mature trees, mountains faint on the horizon, late afternoon light. 16:9.',
     overview:
-      'Allsafe Electric is based in Parker, and has been since 2018. This is not a satellite territory for us, it is where the shop is, and where Jud and Justin live the same streets and the same seasons as the people who call us. We know which subdivisions were built to what panel size, which older neighborhoods still have a Federal Pacific panel or two waiting to be found, and which HOAs want outdoor lighting work done a certain way. Being based here also means no drive-time markup on your appointment window, and it means the person quoting your job has probably already been three streets over that same week.',
+      'Allsafe Electric is based in Parker, and has been since 2018. This is not a satellite territory for us, it is where the shop is, and where our team lives the same streets and the same seasons as the people who call us. We know which subdivisions were built to what panel size, which older neighborhoods still have a Federal Pacific panel or two waiting to be found, and which HOAs want outdoor lighting work done a certain way. Being based here also means no drive-time markup on your appointment window, and it means the person quoting your job has probably already been three streets over that same week.',
     neighborhoodNotes: [
       {
         name: 'Stonegate',

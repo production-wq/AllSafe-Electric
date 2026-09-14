@@ -104,7 +104,7 @@ const whyChoose = [
 ];
 
 const featuredServices = [
-  'emergency-electrical-repairs-parker-co',
+  'emergency-electrical-repairs',
   'electrical-wiring-repairs-services',
   'electrical-outlet-services',
   'electrical-switch-services',
@@ -148,7 +148,7 @@ const howItWorks = [
   },
   {
     title: 'We diagnose and price it before starting',
-    body: 'One of our two licensed electricians looks at the actual job and gives you a fixed price in writing. You approve it before any work begins, so the number on the invoice is the number you agreed to.',
+    body: 'A licensed electrician looks at the actual job and gives you a fixed price in writing. You approve it before any work begins, so the number on the invoice is the number you agreed to.',
   },
   {
     title: 'We do the work and clean up',
@@ -162,7 +162,7 @@ const howItWorks = [
  * generic mark. The same icon set feeds both ticker instances on the page.
  */
 const SERVICE_ICON: Record<string, ReactNode> = {
-  'emergency-electrical-repairs-parker-co': <BoltIcon width={17} height={17} />,
+  'emergency-electrical-repairs': <BoltIcon width={17} height={17} />,
   'electrical-troubleshooting': <SearchIcon width={17} height={17} />,
   'electrical-outlet-services': <OutletIcon width={17} height={17} />,
   'electrical-switch-services': <SwitchIcon width={17} height={17} />,
@@ -267,7 +267,7 @@ export default function HomePage() {
           </p>
           <div className="rise-1 mt-9 flex flex-wrap justify-center gap-4">
             <EstimateButton location="hero" className="!px-8">
-              Get My Free Estimate
+              Get a Quote
             </EstimateButton>
             {/* Chris' review, 2026-09-08: "Add a schedule here or schedule now CTA button." */}
             <Link href="/book/" className="btn btn-ghost">
@@ -312,7 +312,7 @@ export default function HomePage() {
         <div className="container-page relative">
           <div className="rounded-card border border-rule bg-white p-6 shadow-form md:p-8">
             <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
-              <h2 className="text-h2">Request a Free Estimate</h2>
+              <h2 className="text-h2">Get a Quote</h2>
               <p className="text-small text-grey">
                 No obligation. We usually reply the same day.{' '}
                 <a href={business.phone.href} className="font-semibold text-blue-600">
@@ -655,7 +655,7 @@ export default function HomePage() {
               <Link href="/service-area/" className="btn btn-outline">
                 All Service Areas
               </Link>
-              <EstimateButton location="mid_page">Contact Us for a Free Estimate</EstimateButton>
+              <EstimateButton location="mid_page">Get a Quote</EstimateButton>
             </div>
           </Reveal>
           <Reveal delay={120} className="h-[400px] overflow-hidden rounded-card border border-rule shadow-photo">
@@ -733,8 +733,8 @@ export default function HomePage() {
         />
         <div className="container-page relative grid gap-12 py-16 lg:grid-cols-2 lg:py-24">
           <div>
-            <p className="eyebrow">Free Estimate</p>
-            <h2 className="mt-3 text-h1 text-white">Ready to Get Your Free Estimate?</h2>
+            <p className="eyebrow">Get a Quote</p>
+            <h2 className="mt-3 text-h1 text-white">Ready to Schedule Your Visit?</h2>
             <p className="mt-4 max-w-md text-body-lg text-white/80">
               Schedule service online or call and talk to a licensed Parker electrician today.
             </p>

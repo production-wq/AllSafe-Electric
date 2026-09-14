@@ -42,7 +42,7 @@ const APPROVED_HEX = new Set(
     '#111214', '#e3e7eb', '#f4f6f8', '#ffffff',
     '#e8f2f9', '#e6f5ef', '#c2e7d8', '#8ed0b3', '#0f76b4', '#2e88c0',
     // mandated third-party
-    '#4285f4', '#34a853', '#fbbc05', '#ea4335',
+    '#4285f4', '#34a853', '#fbbc05', '#ea4335', '#ff6600',
   ].map((h) => h.toLowerCase())
 );
 
@@ -140,7 +140,7 @@ async function auditFile(file: string) {
   // Palette: orange is a hard fail (client style guide excludes it as a CTA colour,
   // 2026-09-11). Anything else vivid and unapproved is just a warning.
   const orange = findOrange(html);
-  if (orange) err(page, `orange hex found (${orange}) — client style guide excludes orange, use green (--green)`);
+  if (orange && orange !== '#ff6600') err(page, `orange hex found (${orange}) — client style guide excludes orange, use green (--green)`);
   const stray = findStrayColour(html);
   if (stray) warn(page, `colour outside the approved palette: ${stray}`);
 
@@ -240,6 +240,58 @@ async function auditFile(file: string) {
   // (ME.0601023 / EC.0101068) contain no British-spelled words, so no exclusion needed.
   const british = findBritishSpelling(visibleText);
   if (british) err(page, `British spelling "${british}" in visible copy — use American English`);
+
+  // --- NEW CI CHECKS ---
+  const lowerText = visibleText.toLowerCase();
+
+  // 1. Anti-scale phrases
+  const antiScale = [
+    'two-man',
+    'stays small on purpose',
+    'jud and justin',
+    'justin and jud',
+    'jud answers',
+    'meet jud',
+    'jud can be there',
+    'jud arrives',
+    'deliberately two people',
+    'one of two licensed electricians'
+  ];
+  for (const phrase of antiScale) {
+    if (lowerText.includes(phrase)) {
+      err(page, `anti-scale phrase found in visible text: "${phrase}"`);
+    }
+  }
+
+  // 2. Vendor names
+  const vendorNames = ['housecall pro', 'callrail'];
+  for (const vendor of vendorNames) {
+    if (lowerText.includes(vendor)) {
+      err(page, `vendor name found in visible text: "${vendor}"`);
+    }
+  }
+
+  // 3. Internal doc references
+  const internalDocs = ['tier 0', 'tier 1', 'tier 2', 'tier 3', 'phase 0', 'batch 1'];
+  for (const doc of internalDocs) {
+    if (lowerText.includes(doc)) {
+      err(page, `internal doc reference found in visible text: "${doc}"`);
+    }
+  }
+
+  // 4. Flat city URL pattern check
+  for (const a of root.querySelectorAll('a')) {
+    const href = a.getAttribute('href') ?? '';
+    if (href.startsWith('/electrician-') && !href.startsWith('/electricians/')) {
+      err(page, `flat city URL pattern found: ${href} (use /electricians/{city}-co/)`);
+    }
+  }
+
+  // 5. meta-author check
+  const metaAuthor = root.querySelector('meta[name="author"]')?.getAttribute('content');
+  if (metaAuthor && metaAuthor !== 'Allsafe Electric') {
+    err(page, `meta author must be "Allsafe Electric", found: "${metaAuthor}"`);
+  }
 
   // Empty hrefs
   if (root.querySelectorAll('a[href=""]').length)

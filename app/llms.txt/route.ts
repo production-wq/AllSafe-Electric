@@ -32,7 +32,7 @@ export function GET() {
   lines.push('## Key pages');
   lines.push(`- ${abs('/')}: Home. Parker residential electrician who answers the phone`);
   lines.push(`- ${abs('/electrical-services-parker-co/')}: All residential electrical services`);
-  lines.push(`- ${abs('/about/')}: About Jud and Justin, licenses and credentials`);
+  lines.push(`- ${abs('/about/')}: About Allsafe Electric, licenses and credentials`);
   lines.push(`- ${abs('/reviews/')}: Google reviews`);
   lines.push(`- ${abs('/contact/')}: Contact and free estimate request`);
   lines.push(`- ${abs('/service-area/')}: Cities and neighborhoods served`);

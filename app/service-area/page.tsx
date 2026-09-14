@@ -7,14 +7,13 @@ import { CtaBlock } from '@/components/sections';
 import { Schema } from '@/components/Schema';
 import { webPageNode, breadcrumbNode } from '@/lib/schema';
 import { cities, tier2Areas, tier3Neighborhoods } from '@/lib/cities';
-import { PUBLISH } from '@/lib/publish';
 import { business } from '@/lib/business';
 
 export const metadata: Metadata = pageMetadata({
   path: '/service-area/',
-  title: 'Service Area | Parker, Castle Rock, Highlands Ranch',
+  title: 'Service Area | 21 Communities, South Denver Metro',
   description:
-    'Allsafe Electric serves Parker, Castle Rock, Highlands Ranch, Lone Tree, Centennial and the south Denver metro. Drive times, response windows, neighborhoods.',
+    'Allsafe Electric serves 21 communities across Douglas, Arapahoe, Elbert and Jefferson counties in the south Denver metro. Parker, Castle Rock, Highlands Ranch, Lone Tree, Centennial and more.',
   ogEyebrow: 'Service area',
 });
 
@@ -32,7 +31,7 @@ export default function ServiceAreaPage() {
             path: '/service-area/',
             name: 'Allsafe Electric service area',
             description:
-              'The cities and neighborhoods Allsafe Electric covers across Douglas County and the south Denver metro.',
+              'The 21 communities Allsafe Electric serves across Douglas, Arapahoe, Elbert and Jefferson counties in the south Denver metro.',
             about: true,
           }),
           breadcrumbNode(crumbs),
@@ -40,8 +39,8 @@ export default function ServiceAreaPage() {
       />
       <PageIntro
         eyebrow="Service area"
-        title="Where Allsafe Electric works"
-        lead="Based in Parker, covering the south Denver metro. The closer you are, the faster we can be there. Parker neighborhoods are usually a same-day call during business hours."
+        title="21 communities across the south Denver metro"
+        lead="Based in Parker, covering the south Denver metro. Most of our service area is within 25 minutes of the shop. Parker neighborhoods are usually a same-day call during business hours."
         crumbs={crumbs}
       />
 
@@ -49,16 +48,18 @@ export default function ServiceAreaPage() {
         <div className="container-page grid gap-10 lg:grid-cols-[1fr_400px]">
           <div className="space-y-10">
             <section>
-              <h2 className="text-h2">Primary cities</h2>
+              <h2 className="text-h2">Priority cities</h2>
               <p className="mt-2 text-grey">
-                These five get their own pages with local permit and utility detail.
+                These get their own dedicated pages with local permit authority, utility provider,
+                housing-stock notes and drive-time detail.
               </p>
               <ul className="mt-5 divide-y divide-rule border-y border-rule">
                 {cities.map((c) => (
                   <li key={c.slug} className="py-4">
                     <div className="flex flex-wrap items-baseline justify-between gap-2">
+                      {/* Canonical pattern: /electricians/{city-slug}-co/ */}
                       <Link
-                        href={`/electrician-${c.slug}/`}
+                        href={`/electricians/${c.slug}-co/`}
                         className="text-h3 font-semibold text-blue-700 hover:underline"
                       >
                         {c.name}, CO
@@ -72,27 +73,30 @@ export default function ServiceAreaPage() {
                   </li>
                 ))}
               </ul>
-              {!PUBLISH.TIER_1_CITIES && (
-                <p className="mt-3 text-[0.85rem] text-grey">
-                  City pages are being rolled out in stages as each is indexed, see the launch plan.
-                </p>
-              )}
             </section>
 
             <section>
               <h2 className="text-h2">Also serving</h2>
               <p className="mt-2 text-grey">
-                We cover these regularly. Call for the drive time to your address.
+                We cover these communities regularly. Call for the drive time to your specific address.
               </p>
+              {/* All communities are linked — plain-text city names are a build failure (docs/03 §9) */}
               <ul className="mt-4 flex flex-wrap gap-2">
-                {tier2Areas.map((a) => (
-                  <li
-                    key={a}
-                    className="rounded border border-rule bg-white px-3 py-1.5 text-[0.95rem]"
-                  >
-                    {a}
-                  </li>
-                ))}
+                {tier2Areas.map((a) => {
+                  // Convert display name to a city-page slug for linking.
+                  // e.g. "Castle Pines" → /electricians/castle-pines-co/
+                  const slug = a.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+                  return (
+                    <li key={a}>
+                      <Link
+                        href={`/electricians/${slug}-co/`}
+                        className="rounded border border-rule bg-white px-3 py-1.5 text-[0.95rem] transition-colors hover:border-blue-300 hover:bg-blue-50"
+                      >
+                        {a}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </section>
 
@@ -100,7 +104,7 @@ export default function ServiceAreaPage() {
               <h2 className="text-h2">Parker neighborhoods</h2>
               <p className="mt-2 text-grey">
                 Genuine local knowledge. Housing eras, panel brands, HOA design review. These five
-                are named on our homepage and are the areas we know best.
+                Parker neighborhoods are named on our homepage and are the areas we know best.
               </p>
               <ul className="mt-4 flex flex-wrap gap-2">
                 {tier3Neighborhoods.map((n) => (

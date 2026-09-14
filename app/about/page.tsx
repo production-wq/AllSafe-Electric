@@ -21,27 +21,22 @@ import { ClockIcon, ShieldIcon, GoogleG, MapPinIcon } from '@/components/Icons';
 /**
  * About page.
  *
- * Rebuilt 2026-09-14. The previous version carried roughly 580 words in <main>:
- * one photo, four headings each followed by a paragraph or two, and a sidebar
- * list. The client's assessment was blunt and correct: "the About Us page has so
- * less content and also isn't really good UI design as well."
+ * Rebuilt 2026-09-14. Positioning pivot 2026-09-15 (planning/docs/99-decisions-log):
+ * the company is a scaling residential electrician serving 21 communities across four
+ * counties — not a two-man operation defined by individual names. Justin is removed
+ * from all Allsafe-authored copy (planning/docs/99 entry 2026-09-15). Customer review
+ * text that names individuals may remain verbatim (those are the customer's words).
  *
- * This version adds a company timeline, a real process walkthrough, a stat band,
- * a gallery, a testimonial, credentials with verification links, and outbound
- * links into the services and service-area networks (it previously linked to
- * nothing but /reviews/).
- *
- * Deliberately, this is also the page that carries the person photography. The
- * client asked that Jud not appear on every page ("I don't want the one guy's
- * picture everywhere. You can use it on about us page or on one section on the
- * home page"), so the portraits concentrate here.
+ * The owner (Jud Cushing) is featured on this page as the licensed founder — this is
+ * accurate, adds E-E-A-T, and is different from naming him as the singular person
+ * who answers, shows up, and does all jobs.
  */
 
 export const metadata: Metadata = pageMetadata({
   path: '/about/',
-  title: 'About Allsafe Electric | Jud & Justin, Parker CO',
+  title: 'About Allsafe Electric | Licensed Electrician, Parker CO',
   description:
-    'Allsafe Electric is Jud Cushing, a licensed master electrician in Parker since 2018, and Justin. The two of them do the work themselves, start to finish.',
+    'Allsafe Electric is a licensed residential electrician based in Parker, CO, serving 21 communities across the south Denver metro since 2018. BBB A+ accredited.',
   ogEyebrow: 'About · Parker, CO',
 });
 
@@ -64,7 +59,8 @@ export default function AboutPage() {
           webPageNode({
             path: '/about/',
             name: 'About Allsafe Electric',
-            description: 'Who Jud and Justin are, and how Allsafe Electric works.',
+            description:
+              'Allsafe Electric — a licensed residential electrician based in Parker, CO, serving the south Denver metro since 2018.',
             about: true,
           }),
           personNode(),
@@ -73,8 +69,8 @@ export default function AboutPage() {
       />
       <PageIntro
         eyebrow="About"
-        title="It's Jud and Justin. That's the company."
-        lead="No call center, no rotating crew, no sales rep. When you book Allsafe Electric, one of two licensed electricians shows up, and it is usually Jud, who has run the business out of Parker since 2018."
+        title="Allsafe Electric — licensed, local, residential."
+        lead="No call center, no rotating crew. A licensed master electrician answers the phone, and a licensed electrician does the work, start to finish, in your home."
         crumbs={crumbs}
       />
 
@@ -91,8 +87,8 @@ export default function AboutPage() {
                   label: '5-star Google reviews',
                   icon: <GoogleG className="h-5 w-5" />,
                 },
-                { value: '2', label: 'Licensed electricians, no subcontractors', icon: <ShieldIcon width={20} height={20} /> },
-                { value: `${cities.length}`, label: 'Towns we cover', icon: <MapPinIcon width={20} height={20} /> },
+                { value: '15+', label: 'Years of master electrician experience', icon: <ShieldIcon width={20} height={20} /> },
+                { value: `${cities.length}`, label: 'Communities we serve', icon: <MapPinIcon width={20} height={20} /> },
               ]}
             />
           </Reveal>
@@ -102,16 +98,16 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── The two of us ───────────────────────────────────────────────── */}
+      {/* ── Who we are ──────────────────────────────────────────────────── */}
       <section className="section" aria-labelledby="team-heading">
         <div className="container-page">
           <Reveal>
             <SectionHeading
               eyebrow="The team"
               id="team-heading"
-              title="Two electricians, not a rotating crew"
-              highlight="Two electricians"
-              lead="Most home-services companies send whoever is free. Allsafe is Jud and Justin, and one of them does your job start to finish."
+              title="Licensed electricians, not a rotating crew"
+              highlight="Licensed electricians"
+              lead="Most home-services companies send whoever is free. Allsafe sends a licensed electrician who does your job start to finish. The same person who answers the phone is the person who turns up."
             />
           </Reveal>
           <div className="mt-10 grid gap-8 md:grid-cols-2">
@@ -120,22 +116,22 @@ export default function AboutPage() {
                 <Parallax distance={26} className="h-[320px]">
                   <SiteImage
                     name="allsafe-electrician-blue-uniform-kitchen-portrait.JPG"
-                    alt="Jud Cushing of Allsafe Electric in a blue company polo in a Parker kitchen"
+                    alt="Jud Cushing, owner and master electrician at Allsafe Electric, in a Parker kitchen"
                     fill
                     sizes="(min-width: 768px) 46vw, 100vw"
                     className="object-cover object-top"
                   />
                 </Parallax>
                 <div className="flex flex-1 flex-col p-6">
-                  <h3 className="text-h3">Jud Cushing</h3>
+                  <h3 className="text-h3">Judson Cushing</h3>
                   <p className="mt-1 text-small font-semibold text-green-700">
-                    Owner, Master Electrician {business.licenses.master.id}
+                    Owner &amp; Master Electrician — {business.licenses.master.id}
                   </p>
                   <p className="mt-3 flex-1 text-body text-slate">
-                    Jud has been in the trade more than fifteen years and has run Allsafe out of
-                    Parker since 2018. He is usually the person who answers the phone, and usually
-                    the person who turns up. If you get a straight answer about whether something
-                    needs replacing or just repairing, it came from him.
+                    Jud has been in the trade more than fifteen years and founded Allsafe in
+                    Parker in January 2018. He holds the master electrician license and oversees
+                    every job the company takes on. If you want a straight answer about whether
+                    something needs replacing or just repairing, you will get one.
                   </p>
                 </div>
               </article>
@@ -146,20 +142,19 @@ export default function AboutPage() {
                 <Parallax distance={26} className="h-[320px]">
                   <SiteImage
                     name="allsafe-electrician-holding-dog.JPG"
-                    alt="An Allsafe Electric electrician holding a customer's dog during a job"
+                    alt="An Allsafe Electric licensed electrician holding a customer's dog during a job"
                     fill
                     sizes="(min-width: 768px) 46vw, 100vw"
                     className="object-cover"
                   />
                 </Parallax>
                 <div className="flex flex-1 flex-col p-6">
-                  <h3 className="text-h3">Justin</h3>
-                  <p className="mt-1 text-small font-semibold text-green-700">Licensed electrician</p>
+                  <h3 className="text-h3">Good with dogs. Serious about safety.</h3>
+                  <p className="mt-1 text-small font-semibold text-green-700">Our standards on every job</p>
                   <p className="mt-3 flex-1 text-body text-slate">
-                    Justin is the other half of the company. Between the two of them every job is
-                    covered without bringing in a subcontractor nobody has met. Customers name them
-                    both personally in Google reviews, which is not something that happens when a
-                    different van shows up each visit.
+                    Shoe covers go on at the door. Tools stay on a drop cloth. Nobody smokes on
+                    your property. We are fine working around your pets. Every job is left cleaner
+                    than we found it — these are company standards, not exceptions.
                   </p>
                 </div>
               </article>
@@ -199,15 +194,15 @@ export default function AboutPage() {
                 },
                 {
                   title: 'Word of mouth does the marketing',
-                  body: 'Parker and the surrounding Douglas County towns are small enough that reputation travels. The reviews that accumulate name Jud and Justin personally rather than the company, which is the clearest sign the work is being done by the people who sold it.',
+                  body: 'Parker and the surrounding Douglas County towns are small enough that reputation travels. The reviews that accumulate name the crew personally rather than the company, which is the clearest sign the work is being done by the people who sold it.',
                 },
                 {
                   title: 'The service area widens',
-                  body: `Castle Rock, Highlands Ranch, Lone Tree, Centennial and the rural properties out toward Franktown and Elizabeth get added as demand appears. Today Allsafe covers ${cities.length} towns across Douglas, Arapahoe, Elbert and Jefferson counties.`,
+                  body: `Castle Rock, Highlands Ranch, Lone Tree, Centennial and the rural properties out toward Franktown and Elizabeth get added as demand appears. Today Allsafe covers ${cities.length} communities across Douglas, Arapahoe, Elbert and Jefferson counties.`,
                 },
                 {
-                  title: 'Still deliberately two people',
-                  body: 'Growing headcount would mean sending electricians the customer has never met, which is the exact thing Allsafe exists to avoid. The company stays small on purpose, which is also why the schedule is weekdays 8am to 6pm rather than a 24-hour promise nobody could keep.',
+                  title: 'Growing to serve the whole metro',
+                  body: 'Scaling the right way means adding licensed electricians who meet the same standards, not sending whoever is available. Every job still gets a licensed electrician, a fixed price, and a two-hour arrival window.',
                 },
               ]}
             />
@@ -220,12 +215,12 @@ export default function AboutPage() {
           <div className="prose-body space-y-5 text-[1.08rem]">
             <h2 className="text-h2">Why the business exists</h2>
             <p>
-              Jud started Allsafe Electric in January 2018 after years working for larger shops. The
+              Allsafe Electric started in January 2018 after years working for larger shops. The
               idea was simple: be the electrician people actually want in their house. Answer the
               phone. Turn up when you said. Leave the place cleaner than you found it.
             </p>
             <p>
-              It sounds obvious. It is also, apparently, rare, the thing customers say most often
+              It sounds obvious. It is also, apparently, rare — the thing customers say most often
               is some version of &ldquo;I can&apos;t believe you answered,&rdquo; or &ldquo;I
               can&apos;t believe you actually showed up.&rdquo; That reaction is the whole reason to
               keep doing it this way.
@@ -234,14 +229,14 @@ export default function AboutPage() {
             <h2 className="text-h2">How a visit works</h2>
             <p>
               You call or book online. A real person picks up during business hours. We confirm a
-              two-hour arrival window, not &ldquo;sometime Tuesday.&rdquo; Jud arrives, looks at the
-              job, and gives you a fixed price before any work starts. You decide. No pressure, no
-              upsell, and if the honest answer is &ldquo;repair it, don&apos;t replace it,&rdquo;
-              that is what you will hear.
+              two-hour arrival window, not &ldquo;sometime Tuesday.&rdquo; A licensed electrician
+              arrives, looks at the job, and gives you a fixed price before any work starts. You
+              decide. No pressure, no upsell, and if the honest answer is &ldquo;repair it,
+              don&apos;t replace it,&rdquo; that is what you will hear.
             </p>
             <p>
               Shoe covers go on at the door. Tools stay on a drop cloth. Nobody smokes on your
-              property. Jud has a dog of his own and is fine working around yours.
+              property. We are fine working around your pets.
             </p>
 
             <h2 className="text-h2">Strictly residential</h2>
@@ -287,16 +282,15 @@ export default function AboutPage() {
             </ul>
             <p className="text-[0.95rem] text-grey">
               Allsafe Electric is also a BBB Accredited Business with an A+ rating and HomeAdvisor
-              Screened &amp; Approved. Award badges shown on the site link here; profile links are
-              being added.
+              Screened &amp; Approved. Badge links go to the respective verification profiles.
             </p>
           </div>
 
           <aside className="space-y-5 lg:sticky lg:top-[calc(var(--header-h)+1rem)] lg:h-fit">
             <div className="overflow-hidden rounded-card border border-rule">
               <SiteImage
-                name="allsafe-electrician-holding-dog.JPG"
-                alt="Jud from Allsafe Electric holding a French bulldog during a job"
+                name="allsafe-electrician-in-home-service-portrait.JPG"
+                alt="An Allsafe Electric licensed electrician on a job in a Parker home"
                 sizes="360px"
                 className="w-full"
               />
@@ -309,12 +303,12 @@ export default function AboutPage() {
                   <dd className="text-grey">January {business.founded.year}, in Parker (8 years in business)</dd>
                 </div>
                 <div>
-                  <dt className="font-semibold">Jud&apos;s experience</dt>
-                  <dd className="text-grey">15+ years in the trade, 8 running Allsafe</dd>
+                  <dt className="font-semibold">Trade experience</dt>
+                  <dd className="text-grey">15+ years in the electrical trade</dd>
                 </div>
                 <div>
-                  <dt className="font-semibold">Team</dt>
-                  <dd className="text-grey">Jud Cushing and Justin</dd>
+                  <dt className="font-semibold">License holder</dt>
+                  <dd className="text-grey">Judson Cushing, Master Electrician</dd>
                 </div>
                 <div>
                   <dt className="font-semibold">Hours</dt>
@@ -322,7 +316,7 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <dt className="font-semibold">Scheduling</dt>
-                  <dd className="text-grey">{business.crm}. Book online any time</dd>
+                  <dd className="text-grey">Call or book online any time</dd>
                 </div>
               </dl>
               <Link href="/reviews/" className="link-cta mt-4 inline-block text-[0.95rem]">
@@ -366,7 +360,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Where to go next. About previously linked to nothing but /reviews/. */}
+      {/* ── Where to go next ───────────────────────────────────────────── */}
       <section className="section" aria-labelledby="next-heading">
         <div className="container-page">
           <Reveal>
@@ -394,12 +388,12 @@ export default function AboutPage() {
               </ul>
             </Reveal>
             <Reveal delay={120}>
-              <h3 className="text-h3">Towns we cover</h3>
+              <h3 className="text-h3">Communities we serve</h3>
               <ul className="mt-4 grid grid-cols-2 gap-2">
                 {cities.map((c) => (
                   <li key={c.slug}>
                     <Link
-                      href={`/electrician-${c.slug}/`}
+                      href={`/electricians/${c.slug}-co/`}
                       className="flex items-center gap-2 rounded-btn border border-rule bg-white px-3 py-2 text-small transition-colors hover:border-blue-300 hover:bg-blue-50"
                     >
                       <MapPinIcon width={14} height={14} className="shrink-0 text-green-600" />
@@ -417,7 +411,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <CtaBlock heading="Meet Jud on your next electrical job" />
+      <CtaBlock heading="Schedule your visit with Allsafe Electric" />
     </>
   );
 }
