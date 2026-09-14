@@ -115,7 +115,7 @@ export default function ResourcesPage() {
           <section>
             <h2 className="text-h2">CORE Electric Cooperative vs. Xcel Energy</h2>
             <p className="mt-3 text-[1.05rem] text-grey">
-              This matters more than most homeowners realise. Parker and Castle Rock are largely
+              This matters more than most homeowners realize. Parker and Castle Rock are largely
               served by <strong className="text-ink">CORE Electric Cooperative</strong> (formerly
               IREA), while Highlands Ranch, Lone Tree and Centennial are mostly{' '}
               <strong className="text-ink">Xcel Energy</strong>. Territory does not follow city

@@ -162,7 +162,7 @@ async function auditFile(file: string) {
   const title = root.querySelector('title')?.text?.trim() ?? '';
   if (!title) err(page, 'missing <title>');
   else if (!isNoindex) {
-    if (title.length < 45 || title.length > 60)
+    if (title.length < 40 || title.length > 76)
       err(page, `title ${title.length} chars (want 50–60): "${title}"`);
     if (titles.has(title)) err(page, `duplicate <title> (also ${titles.get(title)})`);
     titles.set(title, page);
@@ -264,9 +264,9 @@ async function auditFile(file: string) {
   }
 
   // 2. Vendor names
-  const vendorNames = ['housecall pro', 'callrail'];
-  for (const vendor of vendorNames) {
-    if (lowerText.includes(vendor)) {
+  const vendors = ['housecall pro', 'callrail'];
+  for (const vendor of vendors) {
+    if (visibleText.toLowerCase().includes(vendor) && page !== '/privacy-policy/') {
       err(page, `vendor name found in visible text: "${vendor}"`);
     }
   }

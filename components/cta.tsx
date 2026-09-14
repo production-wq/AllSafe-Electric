@@ -106,7 +106,7 @@ export function EstimateLink({
 }) {
   return (
     <Link
-      href="/contact/#estimate"
+      href="#estimate"
       data-cta="estimate"
       data-location={location}
       className={`link-cta ${className}`}
@@ -128,7 +128,7 @@ export function EstimateButton({
 }) {
   return (
     <Link
-      href="/contact/#estimate"
+      href="#estimate"
       data-cta="estimate"
       data-location={location}
       className={`btn btn-primary ${className}`}

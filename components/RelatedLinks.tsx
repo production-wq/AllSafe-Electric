@@ -33,7 +33,7 @@ export function ServiceToCities({ serviceSlug }: { serviceSlug: string }) {
         includes{' '}
         {featured.map((c, i) => (
           <span key={c.slug}>
-            <Link href={`/electrician-${c.slug}/`}>{c.name}</Link>
+            <Link href={`/electricians/${c.slug}-co/`}>{c.name}</Link>
             {i < featured.length - 2 ? ', ' : i === featured.length - 2 ? ' and ' : ''}
           </span>
         ))}
@@ -46,7 +46,7 @@ export function ServiceToCities({ serviceSlug }: { serviceSlug: string }) {
         {cities.map((c) => (
           <li key={c.slug}>
             <Link
-              href={`/electrician-${c.slug}/`}
+              href={`/electricians/${c.slug}-co/`}
               className="inline-flex items-center gap-1.5 rounded-chip border border-rule bg-white px-3 py-1.5 text-small transition-colors hover:border-blue-300 hover:bg-blue-50"
             >
               <MapPinIcon width={13} height={13} className="text-green-600" />

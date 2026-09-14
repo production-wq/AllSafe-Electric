@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   description:
     'Licensed residential electrician in Parker, Colorado. Fast response, licensed and insured, BBB A+ accredited. Panels, EV chargers, wiring, lighting and emergency repairs.',
   applicationName: business.name,
-  authors: [{ name: business.owner.name }],
+  authors: [{ name: business.name }],
   creator: business.name,
   publisher: business.name,
   formatDetection: { telephone: true, address: false, email: false },

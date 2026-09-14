@@ -241,7 +241,7 @@ export function CtaBlock({
   heading?: string;
 }) {
   return (
-    <section className="surface-dark relative overflow-hidden bg-navy">
+    <section id="estimate" className="surface-dark relative overflow-hidden bg-navy">
       <span
         aria-hidden
         className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-blue-600/40 blur-3xl"

@@ -13,7 +13,7 @@ export const metadata: Metadata = pageMetadata({
   path: '/service-area/',
   title: 'Service Area | 21 Communities, South Denver Metro',
   description:
-    'Allsafe Electric serves 21 communities across Douglas, Arapahoe, Elbert and Jefferson counties in the south Denver metro. Parker, Castle Rock, Highlands Ranch, Lone Tree, Centennial and more.',
+    'Allsafe Electric serves 21 communities in the south Denver metro, including Parker, Castle Rock, Highlands Ranch, Lone Tree, and Centennial.',
   ogEyebrow: 'Service area',
 });
 

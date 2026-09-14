@@ -58,7 +58,7 @@ export function generateCityMetadata(citySlug: string) {
     const c = getCity(citySlug);
     if (!c) return {};
     return pageMetadata({
-      path: `/electrician-${c.slug}/`,
+      path: `/electricians/${c.slug}-co/`,
       // Length-aware rather than fixed-shape. The old fixed template broke the
       // moment a long city name arrived: "Greenwood Village" pushed the title to
       // 61 characters against the audit's 50-60 window (scripts/audit-seo.ts).
@@ -79,7 +79,7 @@ export function CityPageContent({ citySlug }: { citySlug: string }) {
   const crumbs = [
     { name: 'Home', path: '/' },
     { name: 'Areas we serve', path: '/service-area/' },
-    { name: c.name, path: `/electrician-${c.slug}/` },
+    { name: c.name, path: `/electricians/${c.slug}-co/` },
   ];
 
   const priorityServices = c.priorityServices
@@ -124,7 +124,7 @@ export function CityPageContent({ citySlug }: { citySlug: string }) {
         nodes={[
           {
             ...webPageNode({
-              path: `/electrician-${c.slug}/`,
+              path: `/electricians/${c.slug}-co/`,
               name: `Electrician in ${c.name}, CO`,
               description: `Allsafe Electric. Residential electrical services in ${c.name}, Colorado.`,
               about: true,
@@ -136,7 +136,7 @@ export function CityPageContent({ citySlug }: { citySlug: string }) {
             mainEntity: cityMainEntityNode(c),
           },
           breadcrumbNode(crumbs),
-          faqPageNode(c.faqs, `/electrician-${c.slug}/`),
+          faqPageNode(c.faqs, `/electricians/${c.slug}-co/`),
         ]}
       />
       <Breadcrumbs items={crumbs} />
@@ -342,7 +342,7 @@ export function CityPageContent({ citySlug }: { citySlug: string }) {
                   return (
                     <div key={nn.name} className="card p-4">
                       {slug ? (
-                        <Link href={`/electrician-${slug}/`} className="font-semibold">
+                        <Link href={`/electricians/${slug}-co/`} className="font-semibold">
                           {nn.name}
                         </Link>
                       ) : (
@@ -363,7 +363,7 @@ export function CityPageContent({ citySlug }: { citySlug: string }) {
                     <li key={n}>
                       {slug ? (
                         <Link
-                          href={`/electrician-${slug}/`}
+                          href={`/electricians/${slug}-co/`}
                           className="inline-flex items-center gap-1.5 rounded-btn border border-rule bg-white px-3 py-1.5 text-[0.95rem] no-underline transition-colors hover:border-blue-300 hover:bg-blue-50"
                         >
                           <MapPinIcon width={13} height={13} className="text-green-600" />
@@ -424,7 +424,7 @@ export function CityPageContent({ citySlug }: { citySlug: string }) {
               {otherCities.map((oc) => (
                 <li key={oc!.slug}>
                   <Link
-                    href={`/electrician-${oc!.slug}/`}
+                    href={`/electricians/${oc!.slug}-co/`}
                     className="flex items-center gap-2 rounded-btn border border-rule bg-white px-3 py-2 text-small transition-colors hover:border-blue-300 hover:bg-blue-50"
                   >
                     <MapPinIcon width={14} height={14} className="shrink-0 text-green-600" />

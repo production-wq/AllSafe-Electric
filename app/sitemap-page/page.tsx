@@ -79,7 +79,7 @@ export default async function SitemapPage() {
               </li>
               {cities.map((c) => (
                 <li key={c.slug}>
-                  <Link href={`/electrician-${c.slug}/`} className="text-blue-600 hover:text-blue-700">
+                  <Link href={`/electricians/${c.slug}-co/`} className="text-blue-600 hover:text-blue-700">
                     Electrician in {c.name}, CO
                   </Link>
                 </li>

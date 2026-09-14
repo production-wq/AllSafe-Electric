@@ -12,7 +12,7 @@ export const metadata: Metadata = pageMetadata({
   path: '/book/',
   title: 'Book an Electrician in Parker, CO | Allsafe Electric',
   description:
-    'Book Allsafe Electric online through Housecall Pro, the scheduler is live any time. Or call (303) 648-1934 during business hours and talk to a real person directly.',
+    'Book Allsafe Electric online, the scheduler is live any time. Or call (303) 648-1934 during business hours and talk to a real person directly.',
   ogEyebrow: 'Book · Parker, CO',
   // Thin 269-word Housecall Pro pass-through — not a page worth ranking on its own.
   // Excluded from sitemap.ts too. Kept crawlable (follow) so internal PageRank still
@@ -49,7 +49,7 @@ export default function BookPage() {
       <PageIntro
         eyebrow="Book a visit"
         title="Get on the calendar"
-        lead="Booking is live any time through Housecall Pro. If it’s urgent, call instead so we can triage it."
+        lead="Booking is live any time. If it’s urgent, call instead so we can triage it."
         crumbs={crumbs}
       />
 

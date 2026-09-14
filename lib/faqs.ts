@@ -28,7 +28,7 @@ export const homeFaqs: Faq[] = [
   },
   {
     q: 'Can I book online instead of calling?',
-    a: 'Yes. The Book a visit button goes to our Housecall Pro scheduler, which is live any time of day. Pick a service and a window and you are on the calendar. If it is urgent, call instead so we can triage it properly and get you into the first available slot.',
+    a: 'Yes. The Book a visit button goes to our online scheduler, which is live any time of day. Pick a service and a window and you are on the calendar. If it is urgent, call instead so we can triage it properly and get you into the first available slot.',
   },
   {
     q: 'How quickly can you get here in an emergency?',

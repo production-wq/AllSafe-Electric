@@ -7,6 +7,7 @@
  * data (planning/docs/06 §3). `telephone` is always the real number.
  */
 import { business, abs, SITE_URL } from './business';
+import { cities, tier2Areas, tier3Neighborhoods } from './cities';
 import type { Service } from './services';
 import type { City } from './cities';
 import type { Faq } from './services';
@@ -74,16 +75,14 @@ export function businessNode(): JsonLd {
       },
     ],
     areaServed: [
-      { name: 'Parker', admin: 'Douglas County, Colorado' },
-      { name: 'Castle Rock', admin: 'Douglas County, Colorado' },
-      { name: 'Highlands Ranch', admin: 'Douglas County, Colorado' },
-      { name: 'Lone Tree', admin: 'Douglas County, Colorado' },
-      { name: 'Centennial', admin: 'Arapahoe County, Colorado' },
-    ].map((c) => ({
-      '@type': 'City',
-      name: c.name,
-      containedInPlace: { '@type': 'AdministrativeArea', name: c.admin },
-    })),
+      ...cities.map((c) => ({
+        '@type': 'City' as const,
+        name: c.name,
+        containedInPlace: { '@type': 'AdministrativeArea' as const, name: `${c.county} County, Colorado` },
+      })),
+      ...tier2Areas.map((name) => ({ '@type': 'City' as const, name })),
+      ...tier3Neighborhoods.map((name) => ({ '@type': 'Neighborhood' as const, name })),
+    ],
     sameAs: [business.google.profileUrl, business.social.facebook],
     hasCredential: [business.licenses.master, business.licenses.contractor].map((l) => ({
       '@type': 'EducationalOccupationalCredential',
@@ -189,9 +188,11 @@ export function serviceNode(s: Service): JsonLd {
     description: s.metaDescription,
     url: abs('/' + s.slug + '/'),
     provider: { '@id': ID.business },
-    areaServed: ['Parker', 'Castle Rock', 'Highlands Ranch', 'Lone Tree', 'Centennial'].map(
-      (name) => ({ '@type': 'City', name })
-    ),
+    areaServed: [
+      ...cities.map((c) => ({ '@type': 'City' as const, name: c.name })),
+      ...tier2Areas.map((name) => ({ '@type': 'City' as const, name })),
+      ...tier3Neighborhoods.map((name) => ({ '@type': 'Neighborhood' as const, name })),
+    ],
   };
 }
 

@@ -143,7 +143,7 @@ export function Header() {
                       : 'pointer-events-none -translate-y-1 opacity-0'
                   }`}
                   style={{ zIndex: 'var(--z-dropdown)' }}
-                  hidden={!isOpen}
+                  
                 >
                   {item.mega && <ServicesPanel />}
                   {item.areas && <AreasPanel cities={publishedCities} />}
@@ -174,7 +174,7 @@ export function Header() {
             </span>
           </a>
           <Link
-            href="/contact/"
+            href="#estimate"
             className="btn btn-primary !min-h-[46px] !px-5 !py-2 !text-[0.92rem]"
           >
             Free Estimate
@@ -250,7 +250,7 @@ export function Header() {
                     {publishedCities.map((c) => (
                       <li key={c.slug}>
                         <Link
-                          href={`/electrician-${c.slug}/`}
+                          href={`/electricians/${c.slug}-co/`}
                           onClick={() => setOpen(false)}
                           className="block py-1 text-body text-slate"
                         >
@@ -280,7 +280,7 @@ export function Header() {
             ))}
 
             <div className="flex flex-col gap-3 border-t border-rule pt-5">
-              <Link href="/contact/" className="btn btn-primary" onClick={() => setOpen(false)}>
+              <Link href="#estimate" className="btn btn-primary" onClick={() => setOpen(false)}>
                 Get a Free Estimate
               </Link>
               <a
@@ -349,7 +349,7 @@ function AreasPanel({ cities: list }: { cities: typeof cities }) {
         {list.map((c) => (
           <li key={c.slug}>
             <Link
-              href={`/electrician-${c.slug}/`}
+              href={`/electricians/${c.slug}-co/`}
               className="block rounded px-2 py-1.5 text-small text-slate transition-colors hover:bg-paper"
             >
               {c.name}

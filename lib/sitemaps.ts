@@ -52,7 +52,7 @@ function pageEntries(): SitemapEntry[] {
 /** The services hub plus every individual service page. */
 function serviceEntries(): SitemapEntry[] {
   return [
-    { url: abs('/electrical-services-parker-co/'), lastmod: CONTENT_DATE },
+    { url: abs('/electrical-services/'), lastmod: CONTENT_DATE },
     ...services.map((s) => ({ url: abs(`/${s.slug}/`), lastmod: CONTENT_DATE })),
   ];
 }
@@ -62,7 +62,7 @@ function locationEntries(): SitemapEntry[] {
   const entries: SitemapEntry[] = [{ url: abs('/service-area/'), lastmod: CONTENT_DATE }];
   if (PUBLISH.TIER_1_CITIES) {
     for (const c of cities) {
-      entries.push({ url: abs(`/electrician-${c.slug}/`), lastmod: CONTENT_DATE });
+      entries.push({ url: abs(`/electricians/${c.slug}-co/`), lastmod: CONTENT_DATE });
     }
   }
   return entries;

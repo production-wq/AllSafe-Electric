@@ -99,9 +99,9 @@ export default async function ServicePage({
     ? cities.map((c) => ({
         city: c,
         href: PUBLISH.TIER_2_CITY_SERVICE
-          ? `/electrician-${c.slug}/${s.cityServiceSlug}/`
+          ? `/electricians/${c.slug}-co/${s.cityServiceSlug}/`
           : PUBLISH.TIER_1_CITIES
-            ? `/electrician-${c.slug}/`
+            ? `/electricians/${c.slug}-co/`
             : '/service-area/',
       }))
     : [];

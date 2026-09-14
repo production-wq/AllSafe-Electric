@@ -36,7 +36,7 @@ export const metadata: Metadata = pageMetadata({
   path: '/about/',
   title: 'About Allsafe Electric | Licensed Electrician, Parker CO',
   description:
-    'Allsafe Electric is a licensed residential electrician based in Parker, CO, serving 21 communities across the south Denver metro since 2018. BBB A+ accredited.',
+    'Allsafe Electric is a licensed residential electrician based in Parker, CO, serving 21 communities across the south Denver metro since 2018. BBB A+.',
   ogEyebrow: 'About · Parker, CO',
 });
 
@@ -60,7 +60,7 @@ export default function AboutPage() {
             path: '/about/',
             name: 'About Allsafe Electric',
             description:
-              'Allsafe Electric — a licensed residential electrician based in Parker, CO, serving the south Denver metro since 2018.',
+              'Allsafe Electric, a licensed residential electrician based in Parker, CO, serving the south Denver metro since 2018.',
             about: true,
           }),
           personNode(),
@@ -69,7 +69,7 @@ export default function AboutPage() {
       />
       <PageIntro
         eyebrow="About"
-        title="Allsafe Electric — licensed, local, residential."
+        title="Allsafe Electric - licensed, local, residential."
         lead="No call center, no rotating crew. A licensed master electrician answers the phone, and a licensed electrician does the work, start to finish, in your home."
         crumbs={crumbs}
       />
@@ -125,7 +125,7 @@ export default function AboutPage() {
                 <div className="flex flex-1 flex-col p-6">
                   <h3 className="text-h3">Judson Cushing</h3>
                   <p className="mt-1 text-small font-semibold text-green-700">
-                    Owner &amp; Master Electrician — {business.licenses.master.id}
+                    Owner &amp; Master Electrician - {business.licenses.master.id}
                   </p>
                   <p className="mt-3 flex-1 text-body text-slate">
                     Jud has been in the trade more than fifteen years and founded Allsafe in
@@ -154,7 +154,7 @@ export default function AboutPage() {
                   <p className="mt-3 flex-1 text-body text-slate">
                     Shoe covers go on at the door. Tools stay on a drop cloth. Nobody smokes on
                     your property. We are fine working around your pets. Every job is left cleaner
-                    than we found it — these are company standards, not exceptions.
+                    than we found it. These are company standards, not exceptions.
                   </p>
                 </div>
               </article>
@@ -220,7 +220,7 @@ export default function AboutPage() {
               phone. Turn up when you said. Leave the place cleaner than you found it.
             </p>
             <p>
-              It sounds obvious. It is also, apparently, rare — the thing customers say most often
+              It sounds obvious. It is also, apparently, rare. The thing customers say most often
               is some version of &ldquo;I can&apos;t believe you answered,&rdquo; or &ldquo;I
               can&apos;t believe you actually showed up.&rdquo; That reaction is the whole reason to
               keep doing it this way.

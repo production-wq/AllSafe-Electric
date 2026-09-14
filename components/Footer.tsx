@@ -30,7 +30,7 @@ export function Footer() {
           <Logo onDark className="h-9 w-auto" />
           <p className="mt-5 max-w-xs text-small text-white/70">
             Licensed residential electricians serving 21 communities across the south Denver
-            metro — Parker, Castle Rock, Highlands Ranch, Lone Tree, Centennial and beyond.
+            metro, including Parker, Castle Rock, Highlands Ranch, Lone Tree, Centennial and beyond.
           </p>
           <div className="mt-6 flex gap-3">
             <a

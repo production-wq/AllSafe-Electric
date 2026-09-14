@@ -309,22 +309,6 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-b from-white via-white/92 to-paper" />
           <div className="absolute inset-0 bg-paper/55" />
         </div>
-        <div className="container-page relative">
-          <div className="rounded-card border border-rule bg-white p-6 shadow-form md:p-8">
-            <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
-              <h2 className="text-h2">Get a Quote</h2>
-              <p className="text-small text-grey">
-                No obligation. We usually reply the same day.{' '}
-                <a href={business.phone.href} className="font-semibold text-blue-600">
-                  {business.phone.display}
-                </a>
-              </p>
-            </div>
-            <div className="mt-5">
-              <EstimateForm variant="row" formId="hero-estimate" />
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* ── Stats ────────────────────────────────────────────────────────── */}
@@ -634,7 +618,7 @@ export default function HomePage() {
               {cities.map((c) => (
                 <li key={c.slug}>
                   <Link
-                    href={`/electrician-${c.slug}/`}
+                    href={`/electricians/${c.slug}-co/`}
                     className="group flex items-center gap-2 rounded-btn px-2 py-1.5 text-body transition-colors hover:bg-blue-50"
                   >
                     <MapPinIcon
@@ -715,7 +699,7 @@ export default function HomePage() {
         tone="navy"
         items={cities.map((c) => ({
           label: c.name,
-          href: `/electrician-${c.slug}/`,
+          href: `/electricians/${c.slug}-co/`,
           icon: <MapPinIcon width={17} height={17} />,
         }))}
       />
@@ -726,7 +710,7 @@ export default function HomePage() {
         hero above) so the two dark sections on this page read as distinct,
         "Job-Site Editorial" refresh 2026-09-13.
       */}
-      <section className="surface-dark relative overflow-hidden bg-graphite-texture" id="estimate-cta">
+      <section className="surface-dark relative overflow-hidden bg-graphite-texture" id="estimate">
         <span
           aria-hidden
           className="pointer-events-none absolute -left-32 bottom-0 h-96 w-96 rounded-full bg-green-600/15 blur-3xl"
