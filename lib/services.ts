@@ -97,7 +97,7 @@ export const services: Service[] = [
     slug: 'emergency-electrical-repairs',
     h1: 'Emergency electrician',
     navLabel: 'Emergency repairs',
-    blurb: 'Sparks, a burning smell, or half the house dark. A real person answers and We come out.',
+    blurb: 'Sparks, a burning smell, or half the house dark. A real person answers and we come out.',
     title: 'Emergency Electrician | South Denver Metro | Allsafe Electric',
     metaDescription:
       'Sparks, a burning smell, or half the house dark? Call Allsafe Electric. In the daytime we usually answer on the first ring. Parker and Douglas County.',
@@ -583,7 +583,7 @@ export const services: Service[] = [
       'Drywall patching coordinated so you are not left chasing a second trade',
     ],
     process: [
-      'We inspect accessible wiring, the panel, and a sample of boxes, then tells you honestly whether this is a repair or a rewire.',
+      'We inspect accessible wiring, the panel, and a sample of boxes, then tell you honestly whether this is a repair or a rewire.',
       'You get a written scope with a room-by-room sequence and a price.',
       'We pull the permit, do the work in stages, and keep the essential circuits live.',
       'The jurisdiction inspects, and we coordinate the drywall patching.',

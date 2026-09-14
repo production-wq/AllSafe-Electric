@@ -81,19 +81,17 @@ export default async function ServicePage({
   ];
   const gallery = s.galleryImages?.length ? s.galleryImages : fallbackGallery.slice(0, 3);
 
-  /* In-page navigation. StickyTOC drops any id that is not in the DOM, so
-   * sections that only render for some services never leave a dead anchor. */
   const tocItems = [
-    { id: 'signs-heading', label: 'Signs you need this' },
+    ...(s.signs?.length ? [{ id: 'signs-heading', label: 'Signs you need this' }] : []),
     { id: 'price-heading', label: 'What it costs' },
-    { id: 'included-heading', label: "What's included" },
-    { id: 'not-included-heading', label: "What isn't covered" },
+    ...(s.included?.length ? [{ id: 'included-heading', label: "What's included" }] : []),
+    ...(s.notIncluded?.length ? [{ id: 'not-included-heading', label: "What isn't covered" }] : []),
     { id: 'gallery-heading', label: 'Our work' },
-    { id: 'process-heading', label: 'How the job goes' },
-    { id: 'permits-heading', label: 'Permits and inspection' },
-    { id: 'faq-heading', label: 'Common questions' },
+    ...(s.process?.length ? [{ id: 'process-heading', label: 'How the job goes' }] : []),
+    ...(s.permits ? [{ id: 'permits-heading', label: 'Permits and inspection' }] : []),
+    ...(s.faqs?.length ? [{ id: 'faq-heading', label: 'Common questions' }] : []),
     { id: 'areas-heading', label: 'Areas we cover' },
-    { id: 'related-heading', label: 'Related work' },
+    ...(s.related?.length ? [{ id: 'related-heading', label: 'Related work' }] : []),
   ];
   const cityVariants = s.cityServiceSlug
     ? cities.map((c) => ({
@@ -327,7 +325,7 @@ export default async function ServicePage({
               </h2>
               <p className="mt-4 max-w-2xl text-body-lg text-white/80">
                 {s.whyUs?.body ??
-                  'A real person answers the phone, you get a two-hour window rather than a vague day, and one of our licensed electricians does the work. Not a rotating crew, and not a subcontractor you have never met. Allsafe’s Google reviews name them both personally.'}
+                  'A real person answers the phone, you get a two-hour window rather than a vague day, and one of our licensed electricians does the work. Not a rotating crew, and not a subcontractor you have never met. Allsafe’s Google reviews name our electricians personally.'}
               </p>
               <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
                 <Link href="/reviews/" className="link-cta !text-white !decoration-white/40">

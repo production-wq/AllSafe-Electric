@@ -18,15 +18,7 @@ const SHOW_DATED = false;
 
 type Badge = { file: string; label: string; dated?: string; w: number; h: number };
 
-const undatedBadges: Badge[] = [
-  { file: 'bbb-accredited-a-plus.png', label: 'BBB Accredited Business, A+ Rating', w: 150, h: 66 },
-  {
-    file: 'homeadvisor-screened-approved.png',
-    label: 'HomeAdvisor Screened and Approved',
-    w: 125,
-    h: 115,
-  },
-];
+const undatedBadges: Badge[] = []; // Removed per audit until external links/decision provided
 
 const datedBadges: Badge[] = [
   { file: 'best-of-houzz-2023.png', label: 'Best of Houzz, Service 2023', dated: '2023', w: 121, h: 124 },
