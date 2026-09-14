@@ -1,9 +1,10 @@
 # CLAUDE.md — Allsafe Electric Website Build
 
 You are building the new website for **Allsafe Electric** (allsafehomeservice.com), a residential
-electrician in Parker, Colorado. This file is loaded every session. Read it fully before acting.
+electrician serving 21 communities across the south Denver metro area. This file is loaded every
+session. Read it fully before acting.
 
-Client of Built Right Digital. Owner/operator: **Judson "Jud" Cushing**. Second tech: **Justin**.
+Client of Built Right Digital. Owner/operator: **Judson "Jud" Cushing**.
 
 ---
 
@@ -32,22 +33,31 @@ These override anything else. If a request conflicts with one of these, stop and
    for visual sizing.
 3. **Every page ships with valid, page-appropriate JSON-LD.** No page goes live without it.
    See `docs/06-schema-spec.md`.
-4. **Three conversion actions on every page:** click-to-call, click-to-book (Housecall Pro),
+4. **Three conversion actions on every page:** click-to-call, click-to-book (online booking),
    and an on-page form. Never fewer. See `docs/07-conversion-spec.md`.
 5. **NAP is byte-identical everywhere.** See §3 below. A single inconsistency is suspected to be
    part of why their Local Services Ads have produced one lead in six months.
-6. **Follow the client's supplied palette.** ~~No orange.~~ **SUPERSEDED 2026-09-10** by direct
-   client instruction (see `docs/99`). The client provided their live brand palette and a
-   designer homepage artifact to build against. Palette: `#0068A8` blue (primary/structural),
+6. **Follow the client's supplied palette.** Palette: `#0068A8` blue (primary/structural),
    `#FF6600` orange (accent, CTAs, eyebrows), `#54595F` slate (body), `#7A7A7A` grey (muted),
-   `#000000` black (headings). Dark sections use a navy derived from the blue. The old
-   "no orange" line and much of `docs/02-design-system.md` no longer apply; the designer
-   artifact + this palette are the source of truth for visual design.
+   `#000000` black (headings). Dark sections use a navy derived from the blue. See
+   `docs/02-design-system.md` and `docs/99-decisions-log.md` for the full history.
 7. **Do not publish page tiers out of order.** Indexation gates are defined in
    `docs/09-content-plan.md`. Publishing 500 pages at once is what broke the current site
    (86 of 588 pages indexed). Do not repeat it.
 8. **Never invent a review, a rating, a license number, an award, or a year.** If a fact is not
    in `docs/01-client-brief.md` or a source file, ask.
+9. **The site sells the company, not an individual.** Allsafe Electric is scaling across a
+   21-community metro area. The site must support adding staff without contradiction. See §8.
+10. **One URL pattern per page type, enforced.** See §9. A second pattern for the same page type
+    is a structural bug, not a style choice.
+11. **Zero vendor names on customer-facing pages.** Do not write "Housecall Pro", "CallRail",
+    "GA4", "Vercel", or any third-party tool name in copy, headings, or metadata that visitors
+    see. Use plain descriptions: "book online", "call tracking", "analytics".
+12. **Zero internal doc references in customer-facing copy.** Do not write "Tier 0", "Tier 1",
+    "see planning/docs/09 §3", or any internal label in page copy, metadata, or visible HTML.
+    These are build-team vocabulary, invisible to visitors.
+13. **American English only.** The market is Colorado. Use "aluminum", "neighborhoods",
+    "minimize", "color", "license". Any British spelling in page copy is a build failure.
 
 ---
 
@@ -61,8 +71,8 @@ These override anything else. If a request conflicts with one of these, stop and
 | Images | `next/image`, AVIF + WebP, explicit width/height on every image |
 | Hosting | Vercel |
 | Forms | Next.js Server Action → email + webhook. No third-party form iframe. |
-| Booking | Housecall Pro online booking |
-| Analytics | GA4 + Google Search Console + CallRail |
+| Booking | Online booking (external link, embedded widget on `/book/`) |
+| Analytics | GA4 + Google Search Console + call tracking |
 | Schema | Hand-authored JSON-LD in a typed `<Schema />` component. No plugin. |
 
 No CMS. The owner accepted this on the call and understands changes route through the agency.
@@ -88,7 +98,11 @@ Google Business Profile CID: 2391241286444373261
 GBP hex ID:                  0x876c921d22f6e837:0x212f6547dac3d50d
 Facebook:          https://www.facebook.com/Allsafehomeservices/
 Booking URL:       https://book.housecallpro.com/book/ALLSAFE-%20%20ELECTRIC/90cac4ddcd384b32ac8f1b8fd91f6562?v2=true
-CRM:               Housecall Pro
+Review count:      149
+Star rating:       5.0
+Years in business: 8 (founded Jan 2018)
+Trade experience:  15+ years (Jud's time in the trade)
+Service area:      21 communities across Douglas, Arapahoe, Elbert, and Jefferson counties
 ```
 
 **Derived URLs you will need:**
@@ -97,9 +111,9 @@ CRM:               Housecall Pro
 - Read reviews: `https://www.google.com/maps?cid=2391241286444373261`
 - Directions: `https://www.google.com/maps/dir/?api=1&destination=Allsafe+Electric+Parker+CO`
 
-**Phone number rule:** the site displays a CallRail tracking number for attribution. The
+**Phone number rule:** the site displays a call-tracking number for attribution. The
 `LocalBusiness` schema `telephone` field and the footer NAP block must use the **real**
-number `(303) 648-1934`. CallRail's dynamic number insertion swaps the display number
+number `(303) 648-1934`. The dynamic number insertion swaps the display number
 client-side only. Never hard-code a tracking number into schema, structured data, `<address>`,
 or the footer NAP. This is currently broken on the live site.
 
@@ -135,6 +149,10 @@ or the footer NAP. This is currently broken on the live site.
 | SiteGround bot-challenge wall | Current host serves a captcha interstitial to non-Google crawlers. Moving to Vercel removes it. Confirm removal post-launch. |
 | Email hosting is on the current host | Migrating hosting will break email if DNS is moved carelessly. See `docs/12-migration-runbook.md` §3 before touching DNS. |
 | Address contains "M-51" | Possible mailbox/suite. Flagged as a GBP and Local Services Ads verification risk. Do not change it on the site; escalate to the account manager. |
+| Two city-page URL patterns | `/electrician-{city}/` (flat) and `/electricians/{city}-co/` (directory) both exist. **Keep `/electricians/{city}-co/` only.** 301 every flat pattern. See §9. |
+| British spellings | "aluminium", "neighbourhoods", "minimise" appear in legacy content. Replace with American spellings in every file you touch. The audit script fails on British spellings. |
+| Vendor names in copy | Vendor product names appear in some copy blocks (e.g., the About page "details" sidebar). Replace with plain English: say "book online" not the vendor name. |
+| Internal planning notes in rendered HTML | Three confirmed instances render on public pages. Grep for staging notes before every deploy. |
 
 ---
 
@@ -152,6 +170,10 @@ A page is not done until all of the following are true:
 - [ ] Listed in `sitemap.xml` and reachable from navigation or a hub page within 3 clicks
 - [ ] Lighthouse mobile: Performance ≥ 90, Accessibility ≥ 95, SEO 100
 - [ ] Passes `npm run audit:seo`
+- [ ] Zero vendor names in visitor-facing copy
+- [ ] Zero internal planning notes in rendered HTML
+- [ ] American English throughout (no British spellings)
+- [ ] Company voice throughout (no personal promises tied to a named individual)
 
 ---
 
@@ -159,12 +181,96 @@ A page is not done until all of the following are true:
 
 Write for a homeowner, most often a woman between 30 and 55, in a Douglas County suburb, who
 needs an electrician and has been let down before. Her real question is not "are you qualified,"
-it is **"will you actually show up, and are you safe to have in my house around my kids and my dog."**
+it is **"will someone actually show up, and are they safe to have in my house around my kids and my dog."**
 
 - Plain language. Say "breaker box," not "load center," unless you then explain it.
-- Lead with reassurance and specificity, not superlatives. "Jud answers his own phone" beats
+- Lead with reassurance and specificity, not superlatives. "A real person answers" beats
   "unmatched customer service."
 - Never use "state-of-the-art," "cutting-edge," "one-stop shop," "we pride ourselves."
 - Short sentences. Second person. Active voice.
 - Every service page answers, in the first 100 words: what it is, what it costs to find out,
   and how fast someone can be there.
+
+---
+
+## 8. Company positioning — the site sells the company, not an individual
+
+Allsafe Electric is a growing residential electrical contractor serving 21 communities across
+four counties. The site must support that story without contradiction.
+
+**What this means in practice:**
+
+- The trust promise is operational: "A real person answers the phone." "We confirm a two-hour
+  window." "Fixed price before any work starts." These survive staff changes.
+- Jud Cushing appears **in two contexts only:**
+  1. **Blog author byline.** Jud Cushing, Owner and Master Electrician, ME.0601023, with a
+     `Person` schema entity linked from every post. This is the E-E-A-T play.
+  2. **One founder section on the About page.** Why he started the business, the standards he
+     holds the company to, the fact that he is a master electrician. Framed as the origin of
+     the company's standards, not a description of who shows up at the door.
+- **Justin does not appear anywhere on the site.** Not in copy, not in headings, not in team
+  sections, not in metadata. Customer review text that names Justin may remain verbatim (it
+  is the customer's words). Allsafe-authored copy that names Justin must be removed.
+- Anti-scale language is banned. Every phrase that commits the company to staying small must
+  be removed or reframed. Examples:
+  - "Still deliberately two people" → delete
+  - "Growing headcount would mean sending electricians the customer has never met" → delete
+  - "The company stays small on purpose" → delete
+  - "one of two licensed electricians shows up, and it is usually Jud" → "a licensed
+    electrician arrives on time"
+  - "Jud answers his own phone" → "a real person answers"
+  - "The closer you are, the faster Jud can be there" → "we serve your area"
+  - "Meet Jud on your next electrical job" → "Schedule your visit"
+  - "He is usually the person who answers the phone, and usually the person who turns up"
+    → "A real person answers. A licensed electrician arrives on time."
+
+**What stays:**
+- The trust signals themselves (two-hour windows, fixed price, shoe covers, no smoking, good
+  with dogs). Reframe as company standards.
+- Jud's founder story on the About page.
+- Customer reviews that name Jud or Justin verbatim.
+- Jud's blog bylines.
+
+---
+
+## 9. Single URL pattern per page type
+
+One pattern. One. Any second pattern for the same page type is a structural bug.
+
+| Page type | **Canonical pattern** | Action on alternatives |
+|---|---|---|
+| Services hub | `/electrical-services/` | 301 `/electrical-services-parker-co/` → `/electrical-services/` **(pending GSC verification — see docs/99 open item #1; swap if wrong)** |
+| Emergency page | `/emergency-electrical-repairs/` | 301 `/emergency-electrical-repairs-parker-co/` → `/emergency-electrical-repairs/` |
+| Service pages | `/{service-slug}/` | Root-level flat. No `/services/` prefix. |
+| City pages | `/electricians/{city}-co/` | 301 `/electrician-{city}/` → `/electricians/{city}-co/` for every city |
+| City × service | `/electricians/{city}-co/{service-slug}/` | No alternative pattern |
+| Service-area hub | `/service-area/` | No alternative |
+| About | `/about/` | No alternative |
+
+**Rationale for `/electricians/{city}-co/`:** the directory scales cleanly, reads as a hub,
+and supports state disambiguation (`-co`) if national expansion ever matters. The flat
+`/electrician-{city}/` pattern creates 21 root-level slugs competing with service pages.
+
+Every internal link, footer link, sitemap entry, and schema `url` must point to the canonical
+pattern. A link to the non-canonical pattern is a bug caught by `npm run test:links`.
+
+---
+
+## 10. Service area framing
+
+The site covers **21 communities across four counties**: Douglas, Arapahoe, Elbert, and
+Jefferson.
+
+**Label rule:** do not call all 21 "towns." Use "21 communities across four counties" or
+"21 communities in the south Denver metro." Stonegate and The Pinery are Parker neighborhoods;
+Dove Valley and Acres Green are unincorporated communities, not incorporated towns.
+
+**Data source:** `data/service-areas.csv` is the single source of truth for the community list.
+All pages that display the service area (footer, service-area hub, service pages, city pages)
+pull from this file. A hard-coded list in a component is a build failure.
+
+**Service-area page structure:** metro-level coverage statement first, then cities grouped
+by county with every city linked, then the map. Parker neighborhoods belong on the Parker
+city page, not on the service-area hub.
+
+---

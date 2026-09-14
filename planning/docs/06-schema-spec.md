@@ -46,7 +46,7 @@ Google what the entity *is* rather than that it merely exists.
   "priceRange": "$$",
   "currenciesAccepted": "USD",
   "paymentAccepted": "Cash, Check, Credit Card",
-  "image": "https://allsafehomeservice.com/img/allsafe-electric-jud-parker.jpg",
+  "image": "https://allsafehomeservice.com/img/allsafe-electric-parker.jpg",
   "logo": {
     "@type": "ImageObject",
     "@id": "https://allsafehomeservice.com/#logo",
@@ -69,11 +69,27 @@ Google what the entity *is* rather than that it merely exists.
     "opens": "08:00", "closes": "18:00"
   }],
   "areaServed": [
-    { "@type": "City", "name": "Parker",           "containedInPlace": { "@type": "AdministrativeArea", "name": "Douglas County, Colorado" } },
-    { "@type": "City", "name": "Castle Rock",      "containedInPlace": { "@type": "AdministrativeArea", "name": "Douglas County, Colorado" } },
-    { "@type": "City", "name": "Highlands Ranch",  "containedInPlace": { "@type": "AdministrativeArea", "name": "Douglas County, Colorado" } },
-    { "@type": "City", "name": "Lone Tree",        "containedInPlace": { "@type": "AdministrativeArea", "name": "Douglas County, Colorado" } },
-    { "@type": "City", "name": "Centennial",       "containedInPlace": { "@type": "AdministrativeArea", "name": "Arapahoe County, Colorado" } }
+    { "@type": "City", "name": "Parker",            "containedInPlace": { "@type": "AdministrativeArea", "name": "Douglas County, Colorado" } },
+    { "@type": "City", "name": "Castle Rock",       "containedInPlace": { "@type": "AdministrativeArea", "name": "Douglas County, Colorado" } },
+    { "@type": "City", "name": "Highlands Ranch",   "containedInPlace": { "@type": "AdministrativeArea", "name": "Douglas County, Colorado" } },
+    { "@type": "City", "name": "Lone Tree",         "containedInPlace": { "@type": "AdministrativeArea", "name": "Douglas County, Colorado" } },
+    { "@type": "City", "name": "Castle Pines",      "containedInPlace": { "@type": "AdministrativeArea", "name": "Douglas County, Colorado" } },
+    { "@type": "City", "name": "Franktown",         "containedInPlace": { "@type": "AdministrativeArea", "name": "Douglas County, Colorado" } },
+    { "@type": "City", "name": "Elizabeth",         "containedInPlace": { "@type": "AdministrativeArea", "name": "Elbert County, Colorado" } },
+    { "@type": "City", "name": "Sedalia",           "containedInPlace": { "@type": "AdministrativeArea", "name": "Douglas County, Colorado" } },
+    { "@type": "City", "name": "Centennial",        "containedInPlace": { "@type": "AdministrativeArea", "name": "Arapahoe County, Colorado" } },
+    { "@type": "City", "name": "Aurora",            "containedInPlace": { "@type": "AdministrativeArea", "name": "Arapahoe County, Colorado" } },
+    { "@type": "City", "name": "Littleton",         "containedInPlace": { "@type": "AdministrativeArea", "name": "Arapahoe County, Colorado" } },
+    { "@type": "City", "name": "Greenwood Village", "containedInPlace": { "@type": "AdministrativeArea", "name": "Arapahoe County, Colorado" } },
+    { "@type": "City", "name": "Englewood",         "containedInPlace": { "@type": "AdministrativeArea", "name": "Arapahoe County, Colorado" } },
+    { "@type": "City", "name": "Denver",            "containedInPlace": { "@type": "AdministrativeArea", "name": "Denver County, Colorado" } },
+    { "@type": "City", "name": "Lakewood",          "containedInPlace": { "@type": "AdministrativeArea", "name": "Jefferson County, Colorado" } },
+    { "@type": "City", "name": "Edgewater",         "containedInPlace": { "@type": "AdministrativeArea", "name": "Jefferson County, Colorado" } },
+    { "@type": "City", "name": "Foxfield",          "containedInPlace": { "@type": "AdministrativeArea", "name": "Arapahoe County, Colorado" } },
+    { "@type": "City", "name": "Elbert",            "containedInPlace": { "@type": "AdministrativeArea", "name": "Elbert County, Colorado" } },
+    { "@type": "Place", "name": "Stonegate",        "containedInPlace": { "@type": "City", "name": "Parker" } },
+    { "@type": "Place", "name": "Dove Valley",      "containedInPlace": { "@type": "AdministrativeArea", "name": "Arapahoe County, Colorado" } },
+    { "@type": "Place", "name": "Acres Green",      "containedInPlace": { "@type": "AdministrativeArea", "name": "Douglas County, Colorado" } }
   ],
   "sameAs": [
     "https://www.google.com/maps?cid=2391241286444373261",
@@ -94,7 +110,7 @@ Google what the entity *is* rather than that it merely exists.
     "name": "Residential electrical services",
     "itemListElement": [
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Electrical panel upgrades", "url": "https://allsafehomeservice.com/electrical-panel-services/" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Emergency electrical repair", "url": "https://allsafehomeservice.com/emergency-electrical-repairs-parker-co/" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Emergency electrical repair", "url": "https://allsafehomeservice.com/emergency-electrical-repairs/" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "EV charger installation", "url": "https://allsafehomeservice.com/residential-ev-charging/" } }
     ]
   },
@@ -113,6 +129,11 @@ Google what the entity *is* rather than that it merely exists.
 }
 ```
 
+**Note on `areaServed`:** the list above covers all 21 communities (18 cities/towns + 3
+neighborhoods/unincorporated places). It must be kept in sync with `data/service-areas.csv`.
+The service pages' `areaServed` array should include all Tier-1 cities by default and expand
+as more tiers release.
+
 ### Add these to `sameAs` once the URLs are confirmed
 
 BBB profile · Angi profile · HomeAdvisor profile · Yelp · Nextdoor · Houzz.
@@ -121,7 +142,7 @@ omission because it weakens entity confidence.
 
 ### `telephone` rule
 
-Always the real number `+13036481934`. **Never the CallRail tracking number.** The tracking
+Always the real number `+13036481934`. **Never the call-tracking number.** The tracking
 number appears in the visible DOM via client-side swap only. A tracking number in schema
 creates a NAP conflict with the Google Business Profile, and NAP conflict is a live suspect in
 the LSA failure. See `docs/08-local-seo-and-lsa.md`.
@@ -181,8 +202,8 @@ No `SearchAction` unless the site actually has a working search endpoint.
   "@type": "Service",
   "@id": "https://allsafehomeservice.com/electrical-panel-services/#service",
   "serviceType": "Electrical panel upgrade and repair",
-  "name": "Electrical panel upgrades and repairs in Parker, CO",
-  "description": "Panel replacement, breaker box upgrades, fuse box conversion and service upgrades for homes in Parker and Douglas County.",
+  "name": "Electrical panel upgrades and repairs",
+  "description": "Panel replacement, breaker box upgrades, fuse box conversion and service upgrades for homes across the south Denver metro.",
   "url": "https://allsafehomeservice.com/electrical-panel-services/",
   "provider": { "@id": "https://allsafehomeservice.com/#business" },
   "areaServed": [
@@ -208,6 +229,10 @@ No `SearchAction` unless the site actually has a working search endpoint.
 **Every service page also gets `FAQPage`** with 4–8 questions. These must be real questions
 with real answers, matching visible on-page content exactly. Mismatched FAQ markup is a
 guideline violation.
+
+**Service page `name` and `description`** must reference the metro, not "Parker, CO" alone.
+A service page that is locked to one city in its schema as well as its copy cannot rank
+metro-wide.
 
 ### 4.3 City page
 
@@ -257,6 +282,7 @@ questions are genuinely city-specific (permit process, inspection timing, utilit
   "headline": "How to tell if your Parker home needs a panel upgrade",
   "author": { "@type": "Person", "name": "Judson Cushing",
               "jobTitle": "Master Electrician",
+              "identifier": "ME.0601023",
               "url": "https://allsafehomeservice.com/about/" },
   "publisher": { "@id": "https://allsafehomeservice.com/#business" },
   "datePublished": "2026-09-15",
@@ -266,9 +292,8 @@ questions are genuinely city-specific (permit process, inspection timing, utilit
 }
 ```
 
-Attributing content to Jud by name, with his license and job title, is a real E-E-A-T signal for
-a trade site. Use it consistently. Do not attribute to "Admin" — the current site leaks
-`twitter:data1: admin`.
+Attributing content to Jud by name, with his license and job title, is a real E-E-A-T signal
+for a trade site. Use it consistently on blog posts. Do not attribute to "Admin."
 
 ### 4.6 Tools and calculators
 
@@ -294,6 +319,10 @@ a trade site. Use it consistently. Do not attribute to "Admin" — the current s
 
 `AboutPage` + `Person` for Jud, with `worksFor` pointing at `#business`, `hasCredential`
 mirroring the license entries, and `knowsAbout` listing the service topics.
+
+The `Person` node represents Jud as the company founder and master electrician. It does not
+represent "one of the two people who show up." One person node, one founder, all blog posts
+attributed to that person.
 
 ### 4.9 Reviews page
 
@@ -336,8 +365,9 @@ On every page below the root. Must match the visible breadcrumb exactly.
 | `aggregateRating` from Google reviews | Guideline violation, manual action risk |
 | A separate `LocalBusiness` per city page | Fragments the entity, dilutes the map pack |
 | `FAQPage` markup for questions not visible on the page | Guideline violation |
-| CallRail number in `telephone` | NAP conflict, LSA risk |
+| Tracking number in `telephone` | NAP conflict, LSA risk |
 | `sameAs` pointing at a 404 or a guessed profile | Weakens entity confidence |
 | Multiple `@type: Organization` blocks with different names | Entity confusion |
 | Schema injected by client-side JavaScript | May not be seen |
 | `HowTo` on a page that is not a numbered procedure | Mismatch |
+| `areaServed` listing only Parker on a metro-wide service page | Caps ranking potential |

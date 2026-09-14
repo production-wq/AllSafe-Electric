@@ -7,19 +7,23 @@ Google Search Console export (09 Jun – 03 Sep 2026).
 
 ## 1. The business
 
-Allsafe Electric is a small residential electrical contractor in Parker, Colorado, founded
-January 2018. Owner **Judson "Jud" Cushing** runs it and works in the field. A second
-electrician, **Justin**, appears repeatedly in customer reviews. Hours are Mon–Fri 8am–6pm
-Mountain. They use **Housecall Pro** as their CRM and already have online booking live.
+Allsafe Electric is a residential electrical contractor in Parker, Colorado, founded
+January 2018. Owner **Judson "Jud" Cushing** runs it and works in the field. Hours are
+Mon–Fri 8am–6pm Mountain. They use online booking through a third-party scheduling tool
+that is already live; the tool name is internal only and must not appear on the site.
 
 They are strictly **residential**. No commercial, no industrial. This matters more than it
 sounds — see §3.
+
+**Company positioning:** Allsafe Electric is scaling to serve 21 communities across four
+counties. All copy and planning must support hiring without contradiction. The site sells the
+company and its standards, not any individual technician.
 
 ### Services (from intake + current site)
 
 | Service | Current URL | Notes |
 |---|---|---|
-| Emergency electrical repairs | `/emergency-electrical-repairs-parker-co/` | Highest-intent |
+| Emergency electrical repairs | `/emergency-electrical-repairs-parker-co/` | Highest-intent. URL moving to `/emergency-electrical-repairs/`. |
 | Electrical panel upgrades & repairs | `/electrical-panel-services/` | **Owner's #1 ranking complaint** |
 | Outlet repair & installation | `/electrical-outlet-services/` | Bread-and-butter job |
 | Switch services | `/electrical-switch-services/` | |
@@ -42,7 +46,7 @@ partly wrong.
 | Badge | Year shown | Note |
 |---|---|---|
 | BBB Accredited Business, A+ Rating | undated | Safe to use |
-| HomeAdvisor Screened & Approved | undated | Safe to use |
+| HomeAdvisor Screened & Approved | undated | Safe to use. See §5.3 on linking. |
 | Best of Houzz — Service | 2023 | Never mentioned on the call or intake |
 | Angi Super Service Award | 2022 | Stale |
 | Nextdoor Neighborhood Favorite | 2022 | **Nextdoor, not HomeAdvisor** |
@@ -51,7 +55,7 @@ Plus:
 
 - Master electrician license **ME.0601023**
 - Electrical contractor license **EC.0101068**
-- Strong Google review corpus (real reviews name Jud and Justin personally)
+- Strong Google review corpus (149 reviews, 5.0 rating)
 - Logo tagline already in use: **"Safety Security Satisfaction"**
 
 > The three dated badges are 2022–2023 and it is now September 2026. Ask the owner whether
@@ -61,7 +65,8 @@ Plus:
 
 ## 2. Geography
 
-**Primary:** Parker, CO. **Secondary:** south Denver metro.
+**Primary:** Parker, CO. **Secondary:** south Denver metro — 21 communities across Douglas,
+Arapahoe, Elbert, and Jefferson counties.
 
 Top three named targets from intake: **Parker, Castle Rock, Highlands Ranch.**
 
@@ -72,7 +77,9 @@ Stonegate · Stroh Ranch · Pradera · The Pinery · Canterberry Crossing
 Named competitors: **Harmony Electric** (owner says they rank #1 for everything),
 **Fix It 24/7**, **Mister Sparky**.
 
-Full service-area build-out is in `data/service-areas.csv`.
+Full service-area build-out is in `data/service-areas.csv`. The label for the full coverage
+area is "21 communities across four counties," not "21 towns" — some entries are neighborhoods
+or unincorporated communities.
 
 ---
 
@@ -106,9 +113,8 @@ that fear in the first five seconds.
 
 - **Do NOT** look industrial or commercial
 - **Do NOT** lead with photos of breakers, panels, and conduit
-- **DO** show homes, families, pets, and Jud as a person
-- The current site's photo of "the girls and the dog" is the *kind* of image he wants —
-  he flagged it as a stock image and wants real equivalents
+- **DO** show homes, families, pets, and real company photos
+- The current site's photo of "the girls and the dog" is the *kind* of image he wants
 
 ### 3.4 The actual differentiator
 
@@ -117,32 +123,35 @@ that fear in the first five seconds.
 > believe you answered your phone. And I can't believe you actually showed up."
 
 **This is the whole positioning.** Not "licensed and insured" — every competitor says that.
-The promise is: *a real person answers, and he shows up when he said he would.*
+The promise is: *a real person answers, and they show up when they said they would.*
 
-Build the hero around this. See `docs/02-design-system.md` §5.
+Build the hero around this. Frame it as a company standard, not a personal guarantee tied to
+one person. See `docs/02-design-system.md` §5.
 
-### 3.5 Brand colors — corrected
+### 3.5 Brand colors — final
 
-> "the existing website, I noticed, is, like, all orange, and I have, like, no orange. That's
-> another thing that bothered me about it... the little house with the little bushes, that green
-> color and that blue color is what's all over us."
+Brand palette (client-supplied, supersedes all earlier provisional values):
 
-- Brand = **blue + green**, taken from the logo (house icon with bushes)
-- Uniforms: white shirts, blue shirts, grey shirts
-- **Orange is not a brand color.** The prior developer used it purely as a click-bait accent.
-- Owner is fine with a brighter accent for CTAs, as long as it is not the orange scheme:
-  > "any other colors are fine because I know you guys, like, sometimes like to have, like,
-  > brighter colors highlighting certain things to get people to click on things"
+| Token | Hex | Role |
+|---|---|---|
+| Blue | `#0068A8` | Primary, structural, links, headers |
+| Orange | `#FF6600` | Accent, primary CTAs, eyebrows, icons |
+| Slate | `#54595F` | Body copy |
+| Grey | `#7A7A7A` | Secondary / muted text |
+| Black | `#000000` | Headings |
+| Navy | derived `#0A2E4C` family | Hero / CTA / footer grounds |
+
+Full history in `docs/99-decisions-log.md`.
 
 ### 3.6 Photography
 
 The owner is uploading a Google Drive folder of real job photos. His own description:
 
-> "it's mostly just me standing around smiling and working on outlets and working on panels...
+> "it's mostly just me standing around smiling and working on outlets and working on panels...\
 > I don't really have a lot of pictures with customers"
 
-Plan accordingly: real photos of Jud carry the trust load; everything else is generated or
-stock. Naming convention and pipeline in `docs/11-image-pipeline.md`.
+Plan accordingly: real photos of Jud carry the trust load on the About page and the homepage;
+everything else is generated or stock. Naming convention and pipeline in `docs/11-image-pipeline.md`.
 
 ### 3.7 Ranking complaint (intake form, his words)
 
@@ -211,7 +220,56 @@ tiers** rather than shipping a page explosion on day one. Full reasoning in
 
 ---
 
-## 5. Commercial context (background, not a site requirement)
+## 5. Factual conflicts to resolve (from the site audit)
+
+These facts contradict each other on the current site. Canonical values are in §3 of this doc
+and in `CLAUDE.md` §3. Do not use any other value.
+
+| Claim | Wrong value seen | Canonical value |
+|---|---|---|
+| Reviews | 400+ (homepage) | **149** |
+| Rating | "5-Star Reviews" | **5.0** |
+| Years in business | 15+ (homepage, conflating trade experience with company age) | **8 years in business, 15+ years of trade experience** |
+| Emergency response | "60 min average" | **Pending client decision — do not publish until confirmed** |
+
+Use 149 and 5.0 from a single config value (`lib/business.ts`) so the next update is one edit.
+
+### 5.1 NAP consistency
+
+The GBP is set to **11479 Pine Dr M-51, Parker, CO 80134**. Current citations do not match:
+
+| Source | Address | Phone |
+|---|---|---|
+| Site / GBP | 11479 Pine Dr **M-51** | (303) 648-1934 |
+| BBB, listing 1 | 11479 Pine Dr **Unit 21** | (303) 648-1934 |
+| BBB, listing 2 | 11479 Pine Dr **Ste 21** | (303) 648-1934 |
+| BBB, listing 3 | **10940 S Parker Rd PMB 128** | (303) 648-1934 |
+| Yellow Pages | **10940 S Parker Rd Ste 128** | **(720) 740-6900** |
+
+Citation cleanup is a launch-adjacent task. Pick GBP address as canonical, get BBB merged to
+one record, fix Yellow Pages, audit Angi, HomeAdvisor, Yelp, and Nextdoor.
+
+### 5.2 Experience claim
+
+Third-party profiles (Yelp, Nextdoor) say "over 20 years experience." The site says 15+.
+Canonical value: "15+ years of master electrician experience." Push to all profiles.
+
+### 5.3 HomeAdvisor badge
+
+Site currently displays a HomeAdvisor badge without linking to the profile. If linked,
+the 4.7 rating on HomeAdvisor will sit next to a 5.0 Google claim. Client decision required:
+keep the badge and link it, keep it unlinked, or remove it. See `docs/99-decisions-log.md`
+for where to record that decision.
+
+### 5.4 Published price ranges
+
+Published ranges ($350–$8,000 for wiring, $2,200–$4,500 for panels) need owner confirmation
+that they are current and apply across the full service area, not just Parker. Every range
+that has not been explicitly approved is flagged `needsApproval: true` in `lib/services.ts`.
+
+---
+
+## 6. Commercial context (background, not a site requirement)
 
 - Google Ads budget approved at **$2,500/mo**, launching alongside the site
 - LSA runs on a separate budget

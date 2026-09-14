@@ -37,8 +37,8 @@ A page ships only if it clears all six:
 1. **Answers a query someone actually types.** Verified in Search Console, Ahrefs, or the
    client's call log. Not a keyword-tool derivative.
 2. **Contains something only Allsafe could write.** A real price range, a real permit process, a
-   real photo of a real job, a real story from Jud. If any competitor could publish it verbatim,
-   it is not ready.
+   real photo of a real job, a real story from the owner. If any competitor could publish it
+   verbatim, it is not ready.
 3. **Under 30% similarity to every other page on the site.** Enforced by the audit script.
 4. **Has a job in the funnel** and links to the next step.
 5. **Passes the full technical gate** in `CLAUDE.md` §6.
@@ -53,28 +53,31 @@ current site is the proof.
 
 | Tier | Contents | Pages | Gate to release |
 |---|---|---|---|
-| **0** | Homepage, 16 service pages, About, Contact, Reviews, Coupons, Book, Service-area hub, Privacy | ~24 | Launch |
-| **1** | 5 Tier-1 city pages | 5 | Tier 0 ≥ 80% indexed **and** ≥ 14 days since launch |
-| **2** | 30 city × service pages (5 cities × 6 services) | 30 | Tier 1 ≥ 80% indexed |
-| **3** | 5 tools, 5 local resource guides | 10 | Tier 2 ≥ 80% indexed |
-| **4** | 7 Tier-2 city pages + their service variants | ~49 | Tier 3 ≥ 80% indexed |
-| **5** | 5 Parker neighborhood pages | 5 | Tier 4 ≥ 80% indexed |
+| **Launch** | Homepage, 16 service pages, About, Contact, Reviews, Coupons, Book, Service-area hub, Privacy | ~24 | Launch day |
+| **City pages — batch 1** | 5 priority city pages | 5 | Launch batch ≥ 80% indexed **and** ≥ 14 days since launch |
+| **City × service** | 30 city × service pages (5 cities × 6 services) | 30 | City batch 1 ≥ 80% indexed |
+| **Tools & guides** | 5 tools, 5 local resource guides | 10 | City × service ≥ 80% indexed |
+| **City pages — batch 2** | 7 additional city pages + their service variants | ~49 | Tools batch ≥ 80% indexed |
+| **Neighborhood pages** | 5 Parker neighborhood pages | 5 | City batch 2 ≥ 80% indexed |
 
-Blog posts run **continuously from week 2** at 2–4 per month, outside the tier gates, because
-they are not templated and do not carry the same duplication risk.
+Blog posts run **continuously from week 2** at 2–4 per month, outside the release gates,
+because they are not templated and do not carry the same duplication risk.
 
 **Ceiling: ~125 pages by month twelve.** Not 588. If every one of those is indexed and ranking,
 that is a dramatically better business than 588 pages with 86 indexed.
 
+**Internal copy rule:** never use the words "Tier 0," "Tier 1," "Tier 2," etc. in any
+customer-facing page, metadata, or visible HTML. These are internal build-team terms.
+
 ### How the gate is measured
 
 ```bash
-npm run report:indexation -- --tier=1
-# pulls GSC Index Coverage via API, filters to the tier's URL list,
-# prints indexed / total and blocks the next tier if under 80%
+npm run report:indexation -- --batch=cities-1
+# pulls GSC Index Coverage via API, filters to the batch's URL list,
+# prints indexed / total and blocks the next release if under 80%
 ```
 
-If a tier stalls below 80%, **do not publish the next tier.** Diagnose instead: thin content,
+If a batch stalls below 80%, **do not publish the next batch.** Diagnose instead: thin content,
 weak internal links, duplication, or a crawl issue. Publishing more is never the fix for pages
 not being indexed.
 
@@ -82,12 +85,13 @@ not being indexed.
 
 ## 4. Service page template
 
-Every service page, ~1,000–1,500 words:
+Every service page, ~1,000–1,500 words. Service pages target the **metro**, not a single city.
+Parker is mentioned naturally in the body where it is genuinely relevant, not in the title and H1.
 
 ```
-H1: {Service} in Parker, CO
+H1: {Service} | South Denver Metro | Allsafe Electric
     Lead paragraph: what it is, what the visit costs, how fast someone can be there
-    [ Book · Call · Estimate ]
+    [ Book · Call · Quote ]
 
 H2: Signs you need this
     H3 × 3–5, each a symptom a homeowner would actually recognize and search
@@ -101,17 +105,26 @@ H2: How the job goes, start to finish
 H2: Permits and inspection
     Jurisdiction-specific. Parker, Douglas County, Centennial differ.
 
-H2: Why homeowners here call Jud
-    2 real reviews mentioning this service + the "we answer the phone" promise
+H2: Why homeowners in the south Denver metro call us
+    2 real reviews mentioning this service (not all from Parker) + the
+    "we answer the phone" promise as a company standard
 
 H2: Common questions
     4–8 FAQs, marked up as FAQPage, matching visible text exactly
 
-H2: Areas we cover for {service}
+H2: Communities we serve for {service}
     Links to all city × service variants
 
-[ Full CTA block: Book · Call · Estimate form ]
+[ Full CTA block: Book · Call · Quote form ]
 ```
+
+**Key changes from the original template:**
+
+- H1 references the metro, not "Parker, CO" — a service page should rank metro-wide
+- Section heading "Why homeowners here call Jud" → "Why homeowners in the south Denver metro
+  call us" — company voice, not individual
+- Reviews are drawn from multiple communities, not only Parker
+- "Free Estimate" replaced by "Get a Quote" in all button labels (see docs/07 §1)
 
 ### Price transparency
 
@@ -120,9 +133,10 @@ force the call. That instinct loses to competitors who publish ranges, because t
 filters on price before she filters on anything else, and a page with no number reads as
 evasive to someone already primed to distrust contractors.
 
-Get ranges from the owner. Frame honestly: *"Most panel upgrades in Parker run $2,200–$4,500.
-What moves it: amperage, meter location, whether the mast needs replacing, and what the
-inspector finds."* Numbers must be approved by the owner and dated.
+Get ranges from the owner. Frame honestly: *"Most panel upgrades in the south Denver metro run
+$2,200–$4,500. What moves it: amperage, meter location, whether the mast needs replacing, and
+what the inspector finds."* Numbers must be approved by the owner and dated. Every unapproved
+range is flagged `needsApproval: true` in `lib/services.ts` and carries a visible caveat.
 
 ---
 
@@ -132,7 +146,7 @@ See `docs/03` §4 for the anti-thin-content requirements. Structure:
 
 ```
 H1: Electrician in {City}, CO
-    Lead: drive time, response window, years serving the city
+    Lead: drive time, response window, years serving the community
 H2: Electrical services we provide in {City}     → links all 6 service variants
 H2: What {City} homes are like electrically      → build era, panel brands, typical problems
 H2: Permits and inspections in {City}            → the actual jurisdiction and process
@@ -144,6 +158,14 @@ H2: Questions from {City} homeowners             → genuinely local FAQ
 
 The permits section and the utility section are what make these pages non-thin. They are also
 the sections a national franchise will never bother to write.
+
+**Content accuracy:** CORE Electric Cooperative vs. Xcel Energy is a real differentiator that
+splits across this footprint. Every city page shows the correct utility with a "verify your
+address" note until confirmed. This is a required section, not optional filler.
+
+**American English:** "aluminum wiring" not "aluminium wiring." "neighborhoods" not
+"neighbourhoods." Apply consistently — "aluminum wiring" is also a keyword mismatch when
+spelled the British way.
 
 ---
 
@@ -157,21 +179,19 @@ to duplicate with spun text.
 |---|---|---|---|
 | **Panel load calculator** | `/resources/tools/panel-load-calculator/` | Homeowner enters square footage, appliances, HVAC, EV. Returns estimated load and whether 100A is likely insufficient. | Directly qualifies the highest-margin service. Ends with "your load suggests a 200A upgrade — book an assessment." |
 | **EV charger cost estimator** | `/resources/tools/ev-charger-cost-estimator/` | Vehicle, panel location, distance to garage, panel capacity → install range | Highest-growth service, high ticket, and the query has real volume |
-| **Do I need a panel upgrade?** | `/resources/tools/do-i-need-a-panel-upgrade/` | 6-question diagnostic: panel brand, age, breaker trips, fuse box, amperage, planned additions | Targets his #1 ranking complaint directly |
+| **Do I need a panel upgrade?** | `/resources/tools/do-i-need-a-panel-upgrade/` | 6-question diagnostic: panel brand, age, breaker trips, fuse box, amperage, planned additions | Targets the #1 ranking complaint directly |
 | **Generator sizing calculator** | `/resources/tools/generator-sizing-calculator/` | What must stay on during an outage → recommended kW | Supports the new generator page; Front Range outage searches spike seasonally |
 | **Outlet & GFCI requirement checker** | `/resources/tools/outlet-and-gfci-requirements/` | Pick a room → where code requires GFCI/AFCI and how many outlets | Broad top-of-funnel, strong link magnet, useful to DIYers who become customers when the job gets real |
 
 **Build rules**
 
-- Client-side only, no account, no email gate to see the result. Gating the answer kills the
-  link value, which is the entire point.
+- Client-side only, no account, no email gate to see the result.
 - Offer to email or text the result **after** showing it, as the conversion step.
 - Every result ends with a specific, relevant CTA — not a generic "contact us."
 - `WebApplication` schema, per `docs/06` §4.6.
 - Show the assumptions. A calculator that shows its work gets cited; a black box does not.
 - Every tool carries a plain disclaimer that it is an estimate and a licensed electrician must
-  verify. This is genuinely important for a trade with real safety consequences, and it is also
-  the credibility signal that makes the tool trustworthy.
+  verify. This is genuinely important for a trade with real safety consequences.
 
 ---
 
@@ -244,10 +264,11 @@ These capture the searches that happen at the exact moment a homeowner needs an 
 
 - Attributed to **Judson Cushing, Master Electrician (ME.0601023)**, never "Admin"
 - 800–1,500 words. No filler to hit a word count.
-- At least two internal links to money pages in the first 500 words
+- At least two internal links to service pages in the first 500 words
 - One original photo or diagram minimum
 - Opens by answering the question in the first 60 words. Do not make someone scroll past
   three paragraphs of preamble to learn whether a burning smell is dangerous.
+- American English throughout. "Aluminum wiring" is a keyword. Spell it correctly.
 
 ---
 
@@ -294,16 +315,16 @@ shows a blue link. Optimizing for citation is cheap if built in from the start.
 - **`FAQPage` schema everywhere**, matching visible text exactly.
 - **Publish an `/llms.txt`** at the root: a plain-text index of the site's key pages with
   one-line descriptions, plus the NAP block and service list.
-- **Entity consistency.** "Allsafe Electric," "Parker, Colorado," "Judson Cushing,"
+- **Entity consistency.** "Allsafe Electric," "south Denver metro," "Judson Cushing,"
   "master electrician" appear in consistent form across the site, the GBP, and every citation.
   Answer engines resolve entities by consensus across sources.
 - **Real numbers and named sources.** Models cite pages with specific, attributable facts far
   more than pages with adjectives. "Panel upgrades in Douglas County run $2,200–$4,500" gets
   quoted. "Affordable panel upgrades" does not.
 - **Tables for comparable data.** Structured comparisons get extracted cleanly.
-- **Author credentials on the page**, with license numbers.
-- Monitor: search Allsafe's core queries in ChatGPT, Perplexity, Gemini and Google AI Overviews
-  monthly, and log whether the site is cited. Track it in `data/aeo-citation-log.csv`.
+- **Author credentials on blog pages**, with license numbers.
+- Monitor: search Allsafe's core queries in ChatGPT, Perplexity, Gemini, and Google AI
+  Overviews monthly, and log whether the site is cited. Track in `data/aeo-citation-log.csv`.
 
 ---
 
@@ -311,14 +332,14 @@ shows a blue link. Optimizing for citation is cheap if built in from the start.
 
 | Month | Publish | Gate check |
 |---|---|---|
-| 1 | Launch Tier 0. 2 blog posts. | Tier 0 indexation |
-| 2 | Tier 1 (5 city pages). 3 posts. | Tier 1 indexation |
-| 3 | Tier 2 (30 city × service). 3 posts. | Tier 2 indexation |
+| 1 | Launch — homepage, 16 services, 8 other pages. 2 blog posts. | Launch batch indexation |
+| 2 | City pages batch 1 (5 pages). 3 posts. | Batch 1 indexation |
+| 3 | City × service pages (30 pages). 3 posts. | City × service indexation |
 | 4 | 2 tools. 3 posts. First quarterly resource review. | |
-| 5 | 3 tools. 2 resource guides. 3 posts. | Tier 3 indexation |
+| 5 | 3 tools. 2 resource guides. 3 posts. | Tools indexation |
 | 6 | 3 resource guides. 3 posts. **Six-month review with the owner.** | Full audit |
-| 7–8 | Tier 4 (Tier-2 cities + variants). 3 posts/mo. | Tier 4 indexation |
-| 9 | Tier 5 (neighborhood pages). Listicles. 3 posts. | |
+| 7–8 | City pages batch 2 + variants (~49 pages). 3 posts/mo. | Batch 2 indexation |
+| 9 | Neighborhood pages (5). Listicles. 3 posts. | |
 | 10–12 | Comparisons, seasonal content, refresh underperformers. 3 posts/mo. | Annual audit |
 
 **Every quarter:** re-run the full technical audit, re-verify the resource guides, review which

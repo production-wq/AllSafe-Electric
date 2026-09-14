@@ -17,6 +17,11 @@ a URL without an entry in `docs/99-decisions-log.md` and a redirect in `docs/04-
 | Stop words | Drop them unless the phrase reads wrong without |
 | Dates | Never in a URL, including blog posts |
 
+**One pattern per page type — this is a hard rule.** Having two URL patterns for the same page
+type (e.g., `/electrician-parker/` and `/electricians/parker-co/`) creates duplicate content,
+split link equity, competing canonicals, and sitemap confusion. It is the structural failure on
+the current site. See §3 and §4 for the canonical patterns and the 301 obligations.
+
 **Legacy inconsistency, preserved deliberately:** existing service pages sit at the root
 (`/electrical-panel-services/`) rather than under `/services/`. They are indexed and ranking.
 **Keep them at the root.** New pages follow the same flat pattern. Consistency with what Google
@@ -28,15 +33,15 @@ already knows beats architectural tidiness.
 
 ```
 /                                   Home
-/electrical-services-parker-co/     Services hub          [VERIFY — see note]
+/electrical-services/               Services hub     [VERIFY: see §3 note and docs/99 #1]
 /[service]/                         Service pages (flat, root-level)
-/electricians/[city]-co/            City pages
+/electricians/[city]-co/            City pages       [sole pattern — see §4]
 /electricians/[city]-co/[service]/  City × service pages  (tiered, gated)
-/about/                             About Jud & Justin
+/about/                             About Allsafe Electric
 /reviews/                           Reviews hub
 /coupons/                           Offers
 /contact/                           Contact & estimate
-/book/                              Booking (Housecall Pro)
+/book/                              Booking
 /service-area/                      Service area hub
 /resources/                         Guides, tools, local resources hub
 /resources/tools/[tool]/            Interactive tools
@@ -46,33 +51,45 @@ already knows beats architectural tidiness.
 /sitemap.xml  /robots.txt  /llms.txt
 ```
 
-> **VERIFY BEFORE BUILD:** the live site links to both `/electrical-services/` (homepage hero
-> button) and `/electrical-services-parker-co/` (nav and footer). One of these is very likely
-> among the 3 reported 404s. Pull the Search Console Pages report, keep whichever has
-> impressions and inbound links, and 301 the other. Do not guess. Record the decision.
+> **On the services hub:** the live site references both `/electrical-services/` (homepage hero)
+> and `/electrical-services-parker-co/` (nav and footer). The canonical target is
+> `/electrical-services/` (clean, no city baked in). Verify against GSC which URL has
+> impressions; 301 the other. Record the decision in `docs/99-decisions-log.md`. The current
+> interim redirect is `/electrical-services/` → `/electrical-services-parker-co/` pending that
+> check. Swap if wrong — do not launch without verifying.
 
 ---
 
-## 3. Service pages — preserve exactly
+## 3. Service pages — preserve exactly, with two URL corrections
 
-These URLs exist today. **Recreate every one at the identical path.** Any change here risks the
-Parker rankings the owner explicitly asked to protect.
+These URLs exist today. **Recreate every one at the identical path** with the exception of the
+two Parker-locked slugs being corrected to metro-neutral versions (see table). Any other change
+risks the Parker rankings the owner explicitly asked to protect.
 
-| # | URL | H1 | Primary keyword |
-|---|---|---|---|
-| S1 | `/emergency-electrical-repairs-parker-co/` | Emergency electrician in Parker, CO | emergency electrician parker |
-| S2 | `/electrical-panel-services/` | Electrical panel upgrades and repairs in Parker | electrical panel upgrade parker |
-| S3 | `/electrical-outlet-services/` | Outlet repair and installation in Parker | outlet repair parker co |
-| S4 | `/electrical-switch-services/` | Light switch repair and installation in Parker | light switch replacement parker |
-| S5 | `/electrical-wiring-repairs-services/` | Home wiring repair and rewiring in Parker | house rewiring parker co |
-| S6 | `/lighting-services/` | Indoor lighting installation in Parker | lighting installation parker co |
-| S7 | `/outdoor-lighting/` | Outdoor and landscape lighting in Parker | outdoor lighting parker co |
-| S8 | `/residential-ev-charging/` | EV charger installation in Parker, CO | ev charger installation parker |
-| S9 | `/ceiling-fan-installation/` | Ceiling fan installation in Parker | ceiling fan installation parker |
-| S10 | `/home-automation/` | Smart home and automation wiring in Parker | smart home electrician parker |
-| S11 | `/whole-home-surge-protection/` | Whole-home surge protection in Parker | whole home surge protector parker |
-| S12 | `/smoke-detectors/` | Smoke and CO detector installation in Parker | smoke detector installation parker |
-| S13 | `/home-electrical-safety-inspections/` | Home electrical safety inspection in Parker | electrical inspection parker co |
+| # | URL | H1 | Primary keyword | Notes |
+|---|---|---|---|---|
+| S1 | `/emergency-electrical-repairs/` | Emergency electrician in the south Denver metro | emergency electrician parker | **MOVED from `-parker-co/`. 301 the old slug.** |
+| S2 | `/electrical-panel-services/` | Electrical panel upgrades and repairs | electrical panel upgrade parker | Preserve exactly |
+| S3 | `/electrical-outlet-services/` | Outlet repair and installation | outlet repair parker co | Preserve exactly |
+| S4 | `/electrical-switch-services/` | Light switch repair and installation | light switch replacement parker | Preserve exactly |
+| S5 | `/electrical-wiring-repairs-services/` | Home wiring repair and rewiring | house rewiring parker co | Preserve exactly |
+| S6 | `/lighting-services/` | Indoor lighting installation | lighting installation parker co | Preserve exactly |
+| S7 | `/outdoor-lighting/` | Outdoor and landscape lighting | outdoor lighting parker co | Preserve exactly |
+| S8 | `/residential-ev-charging/` | EV charger installation | ev charger installation parker | Preserve exactly |
+| S9 | `/ceiling-fan-installation/` | Ceiling fan installation | ceiling fan installation parker | Preserve exactly |
+| S10 | `/home-automation/` | Smart home and automation wiring | smart home electrician parker | Preserve exactly |
+| S11 | `/whole-home-surge-protection/` | Whole-home surge protection | whole home surge protector parker | Preserve exactly |
+| S12 | `/smoke-detectors/` | Smoke and CO detector installation | smoke detector installation parker | Preserve exactly |
+| S13 | `/home-electrical-safety-inspections/` | Home electrical safety inspection | electrical inspection parker co | Preserve exactly |
+
+**Why S1 moves:** `/emergency-electrical-repairs-parker-co/` bakes a single city into the URL
+of a page that must rank for emergency queries across the whole metro. The correction costs
+one 301 redirect. The H1 and body copy keep Parker prominent; the URL no longer locks the page
+out of metro-wide ranking.
+
+**Services hub:** the same logic applies. The hub URL is `/electrical-services/` not
+`/electrical-services-parker-co/`. Service pages that target the metro should not live under
+a Parker-locked hub slug.
 
 ### 3.1 Cannibalization fix: S6 vs S7
 
@@ -90,22 +107,41 @@ Neither page may use the unqualified phrase "lighting services" in its title or 
 
 | # | URL | H1 | Why |
 |---|---|---|---|
-| S14 | `/generator-installation/` | Standby generator installation in Parker, CO | Owner mentioned Generac on the call. No page exists. High ticket, real local demand from Front Range outages. |
-| S15 | `/electrical-troubleshooting/` | Electrical troubleshooting and diagnostics in Parker | Captures the huge "why does my outlet not work / breaker keeps tripping" symptom-search volume that currently has nowhere to land. |
-| S16 | `/hot-tub-electrical-hookup/` | Hot tub and spa electrical hookup in Parker | Strong, uncontested, high-ticket suburban Colorado query. |
+| S14 | `/generator-installation/` | Standby generator installation | Owner mentioned Generac on the call. No page exists. High ticket, real local demand from Front Range outages. |
+| S15 | `/electrical-troubleshooting/` | Electrical troubleshooting and diagnostics | Captures the huge "why does my outlet not work / breaker keeps tripping" symptom-search volume that currently has nowhere to land. |
+| S16 | `/hot-tub-electrical-hookup/` | Hot tub and spa electrical hookup | Strong, uncontested, high-ticket suburban Colorado query. |
 
 ---
 
-## 4. City pages
+## 4. City pages — single canonical pattern
 
-Pattern: `/electricians/[city]-co/`
+**Pattern: `/electricians/[city]-co/`**
 
-Chosen over `/[city]-electrician/` because the `/electricians/` folder gives a clean hub,
-groups the section for internal linking, and avoids 20 root-level slugs competing with the
-service pages for topical clarity. No existing city page is being moved, so there is no
-preservation cost.
+This is the **only** city-page URL pattern. The flat pattern `/electrician-[city]/` that also
+exists on the current site must be 301 redirected to the directory pattern for every city.
+Building to or linking to the flat pattern is a build failure.
 
-### Tier 1 — build at launch (5)
+**Rationale:** the `/electricians/` folder provides a clean hub, groups the section for
+internal linking, avoids 21 root-level slugs competing with service pages for topical clarity,
+and the `-co` suffix supports state disambiguation later. The flat pattern existed on the old
+site as dead weight (noindex, no inbound links from hub pages).
+
+### Redirect obligation — one per city
+
+For every city that has both patterns, add a row to `data/url-map.csv`:
+
+```
+/electrician-parker/,/electricians/parker-co/,301
+/electrician-castle-rock/,/electricians/castle-rock-co/,301
+/electrician-highlands-ranch/,/electricians/highlands-ranch-co/,301
+```
+
+...and so on for all 21 communities. `npm run test:links` fails if a flat city URL returns
+anything other than 301 → canonical.
+
+### Release tiers
+
+**Tier 1 — build at launch (5)**
 
 | URL | City | Rationale |
 |---|---|---|
@@ -115,11 +151,11 @@ preservation cost.
 | `/electricians/lone-tree-co/` | Lone Tree | Affluent, adjacent, EV-heavy |
 | `/electricians/centennial-co/` | Centennial | Volume, adjacent |
 
-### Tier 2 — after Tier 1 indexation gate (7)
+**Tier 2 — after Tier 1 indexation gate (7)**
 
 Aurora (south) · Castle Pines · Littleton · Greenwood Village · Franktown · Elizabeth · Sedalia
 
-### Tier 3 — Parker neighborhood pages (5), only if Tiers 1–2 index cleanly
+**Tier 3 — Parker neighborhood pages (5), only if Tiers 1–2 index cleanly**
 
 Stonegate · Stroh Ranch · Pradera · The Pinery · Canterberry Crossing
 at `/electricians/parker-co/[neighborhood]/`
@@ -237,10 +273,67 @@ Reviews · Resources · phone · **Book a visit** button
 
 **Header (mobile):** logo · phone icon · hamburger. Book button lives in the sticky bar.
 
-**Footer:** 4 columns — Services (all 16) · Areas we serve (all Tier 1+2) · Company
-(About, Reviews, Coupons, Contact, Resources, Privacy) · Get in touch (full NAP block,
-licenses, GBP link, Facebook, hours).
+**One header component. One footer component.** The current site renders two different headers
+and two different footers depending on which page template is active. That is a launch blocker.
+Every page uses the same header and the same footer.
+
+**Footer:** 4 columns — Services (all 16) · Areas we serve (all Tier-1 and Tier-2 communities,
+linked to `/electricians/{city}-co/`) · Company (About, Reviews, Coupons, Contact, Resources,
+Privacy) · Get in touch (full NAP block, licenses, GBP link, Facebook, hours).
 
 The footer is a crawl surface. It carries the full service and city lists deliberately.
 
 **Do not port from the old site:** the duplicated triple nav render, and any `href=""` links.
+
+---
+
+## 9. Service-area page structure
+
+The service-area hub at `/service-area/` is a hub page whose job is to pass link authority to
+every city page. Its structure must reflect that.
+
+**Required structure:**
+
+1. Metro-level coverage statement ("21 communities across four counties in the south Denver
+   metro area")
+2. Cities grouped by county, with every city linked to its `/electricians/{city}-co/` page
+3. Map
+4. Brief coverage note on response times
+
+**What does not belong on the service-area hub:**
+- A list of Parker neighborhoods (those belong on the Parker city page)
+- Unlinked plain-text city mentions
+- A section that is primarily about one city
+
+**The "Also serving" unlinked list must become linked city cards.** Every community in the
+service area is linked. Plain-text city names on the hub page are a build failure.
+
+---
+
+## 10. Redirects that must be in `data/url-map.csv` before launch
+
+| Old URL | New URL | Status |
+|---|---|---|
+| `/electrical-services-parker-co/` | `/electrical-services/` | 301 — pending GSC verification |
+| `/emergency-electrical-repairs-parker-co/` | `/emergency-electrical-repairs/` | 301 |
+| `/electrician-parker/` | `/electricians/parker-co/` | 301 |
+| `/electrician-castle-rock/` | `/electricians/castle-rock-co/` | 301 |
+| `/electrician-highlands-ranch/` | `/electricians/highlands-ranch-co/` | 301 |
+| `/electrician-lone-tree/` | `/electricians/lone-tree-co/` | 301 |
+| `/electrician-centennial/` | `/electricians/centennial-co/` | 301 |
+| `/electrician-aurora/` | `/electricians/aurora-co/` | 301 |
+| `/electrician-castle-pines/` | `/electricians/castle-pines-co/` | 301 |
+| `/electrician-littleton/` | `/electricians/littleton-co/` | 301 |
+| `/electrician-greenwood-village/` | `/electricians/greenwood-village-co/` | 301 |
+| `/electrician-franktown/` | `/electricians/franktown-co/` | 301 |
+| `/electrician-elizabeth/` | `/electricians/elizabeth-co/` | 301 |
+| `/electrician-denver/` | `/electricians/denver-co/` | 301 |
+| `/electrician-lakewood/` | `/electricians/lakewood-co/` | 301 |
+| `/electrician-edgewater/` | `/electricians/edgewater-co/` | 301 |
+| `/electrician-elbert/` | `/electricians/elbert-co/` | 301 |
+| `/electrician-englewood/` | `/electricians/englewood-co/` | 301 |
+| `/electrician-foxfield/` | `/electricians/foxfield-co/` | 301 |
+| `/electrician-stonegate/` | `/electricians/parker-co/stonegate/` | 301 |
+| `/electrician-the-pinery/` | `/electricians/parker-co/the-pinery/` | 301 |
+| `/electrician-dove-valley/` | `/electricians/dove-valley-co/` | 301 |
+| `/electrician-acres-green/` | `/electricians/acres-green-co/` | 301 |

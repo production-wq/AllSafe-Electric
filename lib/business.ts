@@ -16,7 +16,6 @@ export const business = {
   domain: 'allsafehomeservice.com',
 
   owner: { name: 'Judson Cushing', firstName: 'Jud', jobTitle: 'Master Electrician' },
-  secondTech: { firstName: 'Justin' },
 
   address: {
     streetAddress: '11479 Pine Dr M-51',
@@ -71,12 +70,12 @@ export const business = {
     cid: '2391241286444373261',
     hexId: '0x876c921d22f6e837:0x212f6547dac3d50d',
     /**
-     * Confirmed business fact (planning/docs/09, 2026-09-11): 148 reviews, 5.0
-     * rating on the Google Business Profile. Static, not pulled from the live
-     * Places feed (app/api/reviews only returns up to 5 individual reviews, not
-     * a review count) — update by hand when the client reports a new total.
+     * Canonical review count (planning/docs/99-decisions-log, 2026-09-15): 149 reviews,
+     * 5.0 rating on the Google Business Profile. Update by hand when the client
+     * reports a new total. The live reviews API (app/api/reviews) returns up to 5
+     * individual reviews, not a count — this is the display/schema source.
      */
-    reviewCount: 148,
+    reviewCount: 149,
     /** Read reviews / view the profile. */
     profileUrl: 'https://www.google.com/maps?cid=2391241286444373261',
     directionsUrl:
@@ -94,12 +93,10 @@ export const business = {
     facebook: 'https://www.facebook.com/Allsafehomeservices/',
   },
 
-  /** Housecall Pro online booking. Already live for this account.
+  /** Online booking URL — stored once, imported everywhere. Do not hard-type in components.
    *  Note the double-encoded space in the slug. Do not hand-retype. */
   bookingUrl:
     'https://book.housecallpro.com/book/ALLSAFE-%20%20ELECTRIC/90cac4ddcd384b32ac8f1b8fd91f6562?v2=true',
-
-  crm: 'Housecall Pro',
 
   /** planning/docs/06 §2. GeoCoordinates for the LocalBusiness entity. */
   geo: { latitude: 39.5078411, longitude: -104.7595946 },

@@ -324,3 +324,242 @@ emitted from them (docs/06 §3).
 **Affects:** `content/blog/*`, `data/url-map.csv`, `data/testimonials.json`,
 `components/Testimonials.tsx`, `data/image-manifest.json`
 **Decided by:** Client
+
+---
+
+## 2026-09-15 — Positioning pivot: company-wide, not individual-dependent
+
+**Decision:** All site copy, docs, and planning language is updated to sell Allsafe Electric as
+a scaling company serving 21 communities, not as a two-person operation defined by its owner.
+The trust promise is operational ("a real person answers", "we show up on time") not personal.
+
+**Why:** The current About page H1 reads "It's Jud and Justin. That's the company." The
+timeline section actively states "Still deliberately two people." This language is:
+(a) commercially limiting — it signals that booking is effectively booking one of two people,
+(b) factually risky — Justin's status is not confirmed and any copy naming him creates
+    liability if his role changes,
+(c) SEO-limiting — a company locked to two individuals cannot plausibly serve a 21-community
+    metro in the eyes of a reader or a search engine.
+The site must support adding staff without requiring a rewrite.
+
+**Alternatives considered:** Keep the two-person angle as a differentiator and add a team page
+later. Rejected — a team page addition would require removing or contradicting the existing
+"deliberately small" copy, which is harder than removing it now.
+
+**Affects:** CLAUDE.md, docs/01, docs/02, docs/03, docs/07, docs/09, app/about/page.tsx
+(Part B), components/Footer.tsx (Part B).
+
+**Decided by:** Built Right Digital / client brief pivot, 2026-09-15.
+
+---
+
+## 2026-09-15 — Justin removed from all Allsafe-authored copy
+
+**Decision:** Justin does not appear anywhere in Allsafe-authored copy (headings, body,
+metadata, team sections, CTAs, About page, schema). Customer review text that names Justin
+verbatim is exempt — it is the customer's words.
+
+**Why:** Justin is identified in the audit as not to appear anywhere ("no exceptions" noted
+in the audit). His role in the business going forward is not confirmed. The site cannot publish
+a team member section for someone whose continued role is uncertain.
+
+**Alternatives considered:** Replace "Justin" with a generic team-member card (e.g. "our
+licensed electricians"). Rejected as the page still implies exactly two. Simply removing the
+section (which is what will happen) is cleaner.
+
+**Affects:** app/about/page.tsx (Part B), any page referencing Justin.
+
+**Decided by:** Allsafe Electric site audit, implemented 2026-09-15.
+
+---
+
+## 2026-09-15 — Anti-scale language banned across all docs and site copy
+
+**Decision:** The following phrases are explicitly banned and must be removed from all docs and
+site copy. The audit script (Part C) will fail the build on these patterns.
+
+- "Still deliberately two people"
+- "Growing headcount would mean sending electricians the customer has never met"
+- "The company stays small on purpose"
+- "one of two licensed electricians shows up, and it is usually Jud"
+- "Jud answers his own phone" (personal promise, person-dependent)
+- "The closer you are, the faster Jud can be there"
+- "Meet Jud on your next electrical job"
+- "He is usually the person who answers the phone"
+- "two-man" in a context that limits company size
+
+**Replacement pattern:** Reframe as company standards. "A real person answers." "A licensed
+electrician arrives on time." "Fixed price before any work starts." "Schedule your visit."
+
+**Why:** These phrases actively undermine the 21-community metro positioning and create
+conversion friction for any user asking "but what if he's busy?"
+
+**Affects:** app/about/page.tsx, CLAUDE.md §8, scripts/audit-seo.ts (Part C).
+
+**Decided by:** Built Right Digital, 2026-09-15.
+
+---
+
+## 2026-09-15 — Vendor names banned from customer-facing copy
+
+**Decision:** No third-party vendor or tool name appears in any customer-facing HTML.
+Not in copy, not in metadata, not in headings. Internal docs may reference tool names for
+build-team clarity.
+
+**Violations to fix (confirmed from site audit):**
+- About page "details" sidebar: `<dd>Housecall Pro</dd>` under "Scheduling" → replace with
+  "book online any time"
+- Any other `Housecall Pro` string in a rendered page
+- `CallRail`, `GA4`, `Vercel` do not appear in body copy but the pattern is prohibited
+
+**Why:** Vendor names mean nothing to the homeowner visitor. They also create vendor-lock
+perception and expose the company's toolchain unnecessarily.
+
+**Affects:** app/about/page.tsx (Part B), audit script (Part C).
+
+**Decided by:** Built Right Digital, 2026-09-15.
+
+---
+
+## 2026-09-15 — Internal doc labels banned from customer-facing copy
+
+**Decision:** Internal planning terms ("Tier 0", "Tier 1", "Tier 2", "Phase 0", "Batch 1",
+"see planning/docs/09") do not appear in any customer-facing page copy, metadata, headings,
+or visible HTML. They may appear in code comments, build scripts, and planning docs.
+
+**Why:** The audit found a confirmed instance of staging notes rendering on public pages.
+Grepping for these terms should be part of every pre-deploy check.
+
+**Affects:** scripts/audit-seo.ts (Part C), all page files (Part B).
+
+**Decided by:** Built Right Digital, 2026-09-15.
+
+---
+
+## 2026-09-15 — British spellings banned; audit script enforced
+
+**Decision:** American English is the mandatory standard. The audit script will fail the build
+on: "aluminium", "neighbourhoods", "minimise", "colour", "favour", "analyse", "recognised",
+"centre", "licence" (as a verb), "labour", "behaviour", "realise", "authorise".
+
+**Known instances to fix (Part B):**
+- "aluminium" → "aluminum" (confirmed in service copy)
+- "neighbourhoods" → "neighborhoods" (confirmed in footer copy)
+- "minimise" → "minimize" (confirmed in copy)
+
+**Why:** The market is Colorado. British spellings are keyword mismatches ("aluminum wiring"
+is a real search query; "aluminium wiring" is not common in the US). They also signal that
+copy was generated by a non-American model without adequate review.
+
+**Affects:** scripts/audit-seo.ts (Part C), components/Footer.tsx (Part B), service pages
+(Part B).
+
+**Decided by:** Built Right Digital, 2026-09-15.
+
+---
+
+## 2026-09-15 — Single URL pattern per page type; city-page canonical is /electricians/{city}-co/
+
+**Decision:** Only one URL pattern exists per page type. The directory pattern
+`/electricians/{city}-co/` is canonical for city pages. Every instance of `/electrician-{city}/`
+(flat pattern) must 301 redirect to the directory pattern. Internal links, footer links,
+sitemap entries, and schema `url` values must all point to the canonical pattern only.
+
+**Why:** The current site has both `/electrician-parker/` and `/electricians/parker-co/` active
+simultaneously (the flat set is indexed, the structured set has hub links but is noindex). This
+creates duplicate content, split link equity, and competing canonicals. The directory pattern
+is chosen because it scales cleanly, groups the section for internal linking, avoids 21
+root-level slugs at the top level, and the `-co` suffix supports state disambiguation.
+
+**Affects:** docs/03, CLAUDE.md §9, data/url-map.csv, app directory structure (Part B),
+middleware.ts (Part B), next.config.mjs (Part B), scripts/audit-seo.ts (Part C).
+
+**Decided by:** Built Right Digital, 2026-09-15.
+
+---
+
+## 2026-09-15 — Services hub and emergency page URLs corrected to metro-neutral slugs
+
+**Decision:**
+- Services hub: `/electrical-services/` is canonical. 301 `/electrical-services-parker-co/`
+  → `/electrical-services/`. **PENDING GSC VERIFICATION** — confirm which URL has impressions
+  before assuming the bare one is not indexed. Update open question #1 when verified.
+- Emergency page: `/emergency-electrical-repairs/` is canonical. 301
+  `/emergency-electrical-repairs-parker-co/` → `/emergency-electrical-repairs/`.
+
+**Why:** Parker-city-locked slugs on service hub and emergency pages prevent metro-wide
+ranking. These are the most commercial pages on the site. Baking a single city into their
+URL and their H1 is equivalent to opting out of all other cities.
+
+**Alternatives considered:** Keep the `-parker-co/` versions and add city variants. Rejected —
+the hub and emergency page are not city-specific pages; they are metro-wide pages. Adding city
+variants compounds the problem.
+
+**Affects:** docs/03 §2 and §3, CLAUDE.md §9, data/url-map.csv, next.config.mjs (Part B),
+docs/06 schema `url` for the emergency service entry.
+
+**Decided by:** Built Right Digital, 2026-09-15.
+
+---
+
+## 2026-09-15 — Factual data locked for site copy
+
+**Decision:** The following values are locked and must be used everywhere consistently.
+Contradicting values on the live site are incorrect. Change `lib/business.ts` so every
+component derives from a single source.
+
+| Field | Locked value | Old incorrect value seen |
+|---|---|---|
+| Review count | 149 | "400+" on homepage |
+| Star rating | 5.0 | "5-Star Reviews" (ambiguous) |
+| Years in business | 8 (founded Jan 2018) | "15+" on homepage |
+| Trade experience | "15+ years" | "20+ years" on Yelp/Nextdoor |
+| Company founded | January 2018 | N/A |
+
+Correct copy: "8 years in business. 15+ years of master electrician experience."
+Not: "15+ years in business." Not: "20+ years experience."
+
+**Why:** Inflated claims create credibility damage when a reader notices the math doesn't
+work. "Founded 2018" is on the site; "15+ years in business" implies founded 2011. The
+conflict is visible and undermines trust.
+
+**Affects:** lib/business.ts, app/about/page.tsx, app/page.tsx, components/Footer.tsx,
+all schema `foundingDate` values.
+
+**Decided by:** Allsafe Electric site audit, 2026-09-15.
+
+---
+
+## 2026-09-15 — Service area framing: "21 communities across four counties"
+
+**Decision:** The service area is described as "21 communities across four counties" (Douglas,
+Arapahoe, Elbert, and Jefferson). Do not use "21 towns" — Stonegate and The Pinery are Parker
+neighborhoods, and Dove Valley / Acres Green are unincorporated communities. "Communities" is
+accurate and inclusive.
+
+The label "towns" from the About page stat band ("Towns we cover") is incorrect and must be
+updated. The footer tagline "serving Parker, Colorado and its surrounding neighborhoods" must
+be updated to reflect metro-level coverage.
+
+**Affects:** components/Footer.tsx (Part B), app/about/page.tsx stat band (Part B),
+app/service-area/page.tsx (Part B), docs/03 §10.
+
+**Decided by:** Built Right Digital, 2026-09-15.
+
+---
+
+## 2026-09-15 — "Free Estimate" label replaced with "Get a Quote"
+
+**Decision:** The primary CTA label changes from "Free Estimate" to "Get a Quote" (or
+"Book a Visit" where the action is booking). The form submit button says "Get my quote."
+
+**Why:** The FAQ discloses a diagnostic/service call fee. A button labeled "Free Estimate"
+directly contradicts this and creates friction when a customer reads both. "Get a Quote"
+accurately describes the action (requesting a price quote) without implying no fee.
+
+**Alternatives considered:** Remove the FAQ disclosure. Rejected — the diagnostic fee is real
+and hiding it would generate angry customers and bad reviews.
+
+**Affects:** docs/07 §1, CTA components (Part B), form submit button (Part B).
+
+**Decided by:** Built Right Digital, 2026-09-15.
