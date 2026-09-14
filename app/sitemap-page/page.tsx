@@ -55,7 +55,7 @@ export default async function SitemapPage() {
             <h2 className="text-h3">Services</h2>
             <ul className="mt-4 space-y-2 text-small">
               <li>
-                <Link href="/electrical-services-parker-co/" className="link-cta">
+                <Link href="/electrical-services/" className="link-cta">
                   All services
                 </Link>
               </li>

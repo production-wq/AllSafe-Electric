@@ -19,7 +19,7 @@ import { abs } from '../lib/business';
 const TIERS: Record<string, () => string[]> = {
   '0': () => [
     abs('/'),
-    abs('/electrical-services-parker-co/'), ...services.map((s) => abs(`/${s.slug}/`)),
+    abs('/electrical-services/'), ...services.map((s) => abs(`/${s.slug}/`)),
     abs('/about/'),
     abs('/reviews/'),
     abs('/contact/'),

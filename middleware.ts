@@ -22,7 +22,7 @@ export function middleware(req: NextRequest) {
         `a{color:#024D80}</style></head><body>` +
         `<h1>That page has been removed</h1>` +
         `<p>It is no longer part of the site. Try the <a href="/">homepage</a>, ` +
-        `<a href="/electrical-services-parker-co/">our services</a>, or call ` +
+        `<a href="/electrical-services/">our services</a>, or call ` +
         `<a href="tel:+13036481934">(303) 648-1934</a>.</p></body></html>`,
       { status: 410, headers: { 'Content-Type': 'text/html; charset=utf-8' } }
     );

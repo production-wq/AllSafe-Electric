@@ -8,7 +8,7 @@ import { webPageNode, breadcrumbNode } from '@/lib/schema';
 import { services, serviceGroups } from '@/lib/services';
 
 export const metadata: Metadata = pageMetadata({
-  path: '/electrical-services-parker-co/',
+  path: '/electrical-services/',
   title: 'Residential Electrical Services in Parker, CO | Allsafe',
   description:
     'All 16 residential electrical services from Allsafe Electric in Parker. Panels, EV chargers, wiring, lighting, generators, inspections and emergency repairs.',
@@ -17,7 +17,7 @@ export const metadata: Metadata = pageMetadata({
 
 const crumbs = [
   { name: 'Home', path: '/' },
-  { name: 'Services', path: '/electrical-services-parker-co/' },
+  { name: 'Services', path: '/electrical-services/' },
 ];
 
 export default function ServicesHubPage() {
@@ -26,7 +26,7 @@ export default function ServicesHubPage() {
       <Schema
         nodes={[
           webPageNode({
-            path: '/electrical-services-parker-co/',
+            path: '/electrical-services/',
             name: 'Residential electrical services in Parker, CO',
             description:
               'The full list of residential electrical services offered by Allsafe Electric across Parker and Douglas County.',

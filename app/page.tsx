@@ -411,7 +411,7 @@ export default function HomePage() {
                 job in your Parker home.
               </p>
             </div>
-            <Link href="/electrical-services-parker-co/" className="btn btn-blue shrink-0">
+            <Link href="/electrical-services/" className="btn btn-blue shrink-0">
               View All Services
             </Link>
           </div>

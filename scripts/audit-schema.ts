@@ -20,9 +20,9 @@ const REAL_TEL = '+13036481934';
 
 const REQUIRED: { test: RegExp; types: string[] }[] = [
   { test: /^\/index$/, types: ['Electrician', 'WebSite', 'WebPage', 'FAQPage'] },
-  { test: /^\/electrical-services-parker-co$/, types: ['WebPage', 'BreadcrumbList'] },
+  { test: /^\/electrical-services$/, types: ['WebPage', 'BreadcrumbList'] },
   {
-    test: /^\/(emergency-electrical-repairs-parker-co|electrical-panel-services|electrical-outlet-services|electrical-switch-services|electrical-wiring-repairs-services|lighting-services|outdoor-lighting|residential-ev-charging|ceiling-fan-installation|home-automation|whole-home-surge-protection|smoke-detectors|home-electrical-safety-inspections|generator-installation|electrical-troubleshooting|hot-tub-electrical-hookup)$/,
+    test: /^\/(emergency-electrical-repairs|electrical-panel-services|electrical-outlet-services|electrical-switch-services|electrical-wiring-repairs-services|lighting-services|outdoor-lighting|residential-ev-charging|ceiling-fan-installation|home-automation|whole-home-surge-protection|smoke-detectors|home-electrical-safety-inspections|generator-installation|electrical-troubleshooting|hot-tub-electrical-hookup)$/,
     types: ['Service', 'WebPage', 'BreadcrumbList', 'FAQPage'],
   },
   { test: /^\/electricians\//, types: ['WebPage', 'BreadcrumbList', 'FAQPage'] },

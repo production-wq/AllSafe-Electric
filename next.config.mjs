@@ -93,8 +93,13 @@ const nextConfig = {
       // /electrical-services/ (homepage hero button target) → the indexed hub.
       // Confirm against GSC before launch; documented in planning/docs/99.
       {
-        source: '/electrical-services/',
-        destination: '/electrical-services-parker-co/',
+        source: '/electrical-services-parker-co/',
+        destination: '/electrical-services/',
+        permanent: true,
+      },
+      {
+        source: '/emergency-electrical-repairs-parker-co/',
+        destination: '/emergency-electrical-repairs/',
         permanent: true,
       },
       ...redirectsFromCsv(),
@@ -151,7 +156,7 @@ const nextConfig = {
       },
       {
         source: '/emergency-electrical-repairs-:city-colorado/',
-        destination: '/emergency-electrical-repairs-parker-co/',
+        destination: '/emergency-electrical-repairs/',
         permanent: true,
       },
       {

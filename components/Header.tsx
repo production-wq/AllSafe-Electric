@@ -332,7 +332,7 @@ function ServicesPanel() {
         ))}
       </div>
       <div className="mt-5 border-t border-rule pt-4">
-        <Link href="/electrical-services-parker-co/" className="link-cta text-small">
+        <Link href="/electrical-services/" className="link-cta text-small">
           See all 16 services
         </Link>
       </div>

@@ -97,7 +97,7 @@ export function businessNode(): JsonLd {
         { name: 'Electrical panel upgrades', url: abs('/electrical-panel-services/') },
         {
           name: 'Emergency electrical repair',
-          url: abs('/emergency-electrical-repairs-parker-co/'),
+          url: abs('/emergency-electrical-repairs/'),
         },
         { name: 'EV charger installation', url: abs('/residential-ev-charging/') },
         { name: 'Standby generator installation', url: abs('/generator-installation/') },

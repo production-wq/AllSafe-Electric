@@ -46,7 +46,7 @@ export async function generateMetadata({
 
 const crumbs = (s: NonNullable<ReturnType<typeof getService>>) => [
   { name: 'Home', path: '/' },
-  { name: 'Services', path: '/electrical-services-parker-co/' },
+  { name: 'Services', path: '/electrical-services/' },
   { name: s.navLabel, path: `/${s.slug}/` },
 ];
 

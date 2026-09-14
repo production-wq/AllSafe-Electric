@@ -46,7 +46,7 @@ export const primaryNav: NavItem[] = [
       { label: 'Contact', href: '/contact/', note: 'Get a free estimate' },
     ],
   },
-  { label: 'Electrical Services', href: '/electrical-services-parker-co/', mega: true },
+  { label: 'Electrical Services', href: '/electrical-services/', mega: true },
   { label: 'Service Areas', href: '/service-area/', areas: true },
 ];
 

@@ -14,9 +14,9 @@ export default function NotFound() {
 
         <div className="mt-8 grid gap-3 sm:grid-cols-2">
           {[
-            ['Emergency electrician', '/emergency-electrical-repairs-parker-co/'],
+            ['Emergency electrician', '/emergency-electrical-repairs/'],
             ['Electrical panel upgrades', '/electrical-panel-services/'],
-            ['All services', '/electrical-services-parker-co/'],
+            ['All services', '/electrical-services/'],
             ['Areas we serve', '/service-area/'],
             ['Reviews', '/reviews/'],
             ['Contact & estimate', '/contact/'],

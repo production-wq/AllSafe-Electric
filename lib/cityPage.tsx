@@ -36,7 +36,7 @@ import { business } from '@/lib/business';
  * route.) So each city gets its own literal top-level folder
  * (app/electrician-parker/, app/electrician-castle-rock/, ...) whose page.tsx just
  * calls the functions below with a hardcoded slug — the same pattern already used
- * for the per-city-service literal routes (electrical-services-parker-co, etc).
+ * for the per-city-service literal routes (electrical-services, etc).
  */
 /**
  * Page title for a city, kept inside the audit's 50-60 character window for any
@@ -240,7 +240,7 @@ export function CityPageContent({ citySlug }: { citySlug: string }) {
                 </Link>
               ))}
             </div>
-            <Link href="/electrical-services-parker-co/" className="link-cta mt-4 inline-block">
+            <Link href="/electrical-services/" className="link-cta mt-4 inline-block">
               See all 16 services
             </Link>
           </section>

@@ -94,7 +94,7 @@ export const services: Service[] = [
   // ─── Repairs & safety ────────────────────────────────────────────────────
   {
     id: 'S1',
-    slug: 'emergency-electrical-repairs-parker-co',
+    slug: 'emergency-electrical-repairs',
     h1: 'Emergency electrician',
     navLabel: 'Emergency repairs',
     blurb: 'Sparks, a burning smell, or half the house dark. A real person answers and We come out.',
@@ -334,7 +334,7 @@ export const services: Service[] = [
     related: [
       'electrical-panel-services',
       'electrical-outlet-services',
-      'emergency-electrical-repairs-parker-co',
+      'emergency-electrical-repairs',
     ],
   },
   {
