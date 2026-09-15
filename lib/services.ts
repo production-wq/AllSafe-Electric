@@ -175,7 +175,7 @@ export const services: Service[] = [
       },
       {
         title: "We fix it, and flag what's next",
-        body: 'We repair what is dangerous now. If something else should be scheduled properly later, rewiring, a [panel upgrade](/electrical-panel-services/), we tell you honestly rather than upselling it on the spot.',
+        body: 'We repair what is dangerous now. If something else should be scheduled properly later, rewiring, a panel upgrade, we tell you honestly rather than upselling it on the spot.',
       },
     ],
     permits:
@@ -298,7 +298,7 @@ export const services: Service[] = [
       },
     ],
     included: [
-      'A flat fee agreed before the visit, with no hourly surprise',
+      'A fixed repair price provided before any work begins',
       'Isolating the circuit and testing it under real load',
       'Tracing the fault to a specific device, connection, or run',
       'A written explanation you can actually follow',
@@ -623,10 +623,10 @@ export const services: Service[] = [
     title: 'Electrical Safety Inspection | South Denver Metro | Allsafe Electric',
     metaDescription:
       'Buying a home or in one over 20 years old? A licensed master electrician opens the panel, tests grounding and GFCI protection, and gives you a written report.',
-    primaryKeyword: '[electrical inspection](/home-electrical-safety-inspections/) parker co',
+    primaryKeyword: 'electrical inspection parker co',
     secondaryKeywords: [
       'home electrical safety inspection colorado',
-      'pre purchase [electrical inspection](/home-electrical-safety-inspections/) parker',
+      'pre purchase electrical inspection parker',
     ],
     group: 'repairs-safety',
     indexed: true,
@@ -661,7 +661,7 @@ export const services: Service[] = [
         body: 'Panels, breakers, and connections age. Most Highlands Ranch and Stonegate homes are now well inside that window.',
       },
       {
-        h3: 'You are adding an [EV charger](/residential-ev-charging/), hot tub, or big appliance',
+        h3: 'You are adding an EV charger, hot tub, or big appliance',
         body: 'Find out whether the service can take it before you buy the equipment, not after it is delivered.',
       },
       {
@@ -809,13 +809,13 @@ export const services: Service[] = [
   {
     id: 'S2',
     slug: 'electrical-panel-services',
-    h1: 'Electrical [panel upgrade](/electrical-panel-services/)s and repairs',
+    h1: 'Electrical panel upgrades and repairs',
     navLabel: 'Panel upgrades & repairs',
     blurb: 'Fuse boxes, tripping breakers, and Federal Pacific panels replaced. Most run $2,200 to $4,500.',
     title: 'Electrical Panel Upgrades & Repairs | South Denver Metro | Allsafe Electric',
     metaDescription:
       'Breaker tripping or a fuse box still in service? We upgrade panels across Parker and Douglas County. Licensed master electrician, permits handled for you.',
-    primaryKeyword: 'electrical [panel upgrade](/electrical-panel-services/) parker',
+    primaryKeyword: 'electrical panel upgrade parker',
     secondaryKeywords: [
       'breaker box replacement parker',
       '200 amp service upgrade parker',
@@ -830,7 +830,7 @@ export const services: Service[] = [
     bodyImage: 'allsafe-electrician-installing-breaker-panel-cover.JPG',
     bodyAlt: 'Refitting the deadfront cover on a finished breaker panel',
     lead:
-      'If your breakers trip when the microwave and the toaster run together, you still have a fuse box, or your panel is a Federal Pacific or Zinsco, an upgrade is the fix. Most [panel upgrade](/electrical-panel-services/)s in Parker run $2,200 to $4,500. What moves the price is the amperage you need, where the meter sits, whether the mast has to be replaced, and what the inspector finds. We give you the range on a first call and a fixed number after seeing it.',
+      'If your breakers trip when the microwave and the toaster run together, you still have a fuse box, or your panel is a Federal Pacific or Zinsco, an upgrade is the fix. Most panel upgrades in Parker run $2,200 to $4,500. What moves the price is the amperage you need, where the meter sits, whether the mast has to be replaced, and what the inspector finds. We give you the range on a first call and a fixed number after seeing it.',
     highlights: [
       { label: 'Typical range', value: '$2,200 to $4,500' },
       { label: 'Time on site', value: 'Usually a single day' },
@@ -885,7 +885,7 @@ export const services: Service[] = [
       'A panel or service upgrade is always permitted and inspected. In Parker that is the Town of Parker Building Division, unincorporated areas go through Douglas County, and Centennial has its own process. We file the application, schedule the utility disconnect and reconnect, and meet the inspector. See our Parker and Douglas County permit guides, and verify current fees before scheduling.',
     faqs: [
       {
-        q: 'How long does a [panel upgrade](/electrical-panel-services/) take?',
+        q: 'How long does a panel upgrade take?',
         a: 'Most are a single day. The power is off for part of it while the old panel comes out and the new one goes in. A service change that also needs a new mast or meter can run into a second day.',
       },
       {
@@ -894,7 +894,7 @@ export const services: Service[] = [
       },
       {
         q: 'Do I need 200-amp service?',
-        a: 'Many Douglas County homes do once you add an [EV charger](/residential-ev-charging/), hot tub, or electric heat. Some are fine at 150. We size it to your real loads and your plans rather than a default.',
+        a: 'Many Douglas County homes do once you add an EV charger, hot tub, or electric heat. Some are fine at 150. We size it to your real loads and your plans rather than a default.',
       },
       {
         q: 'Is a Federal Pacific panel actually dangerous?',
@@ -914,14 +914,14 @@ export const services: Service[] = [
   {
     id: 'S11',
     slug: 'whole-home-surge-protection',
-    h1: 'Whole-home [surge protection](/whole-home-surge-protection/)',
+    h1: 'Whole-home surge protection',
     navLabel: 'Surge protection',
     blurb: 'One panel-mounted device shields the whole house from grid spikes and lightning.',
     title: 'Whole-Home Surge Protection | South Denver Metro | Allsafe Electric',
     metaDescription:
       'A panel-mounted device shields the whole house from grid spikes and lightning strikes. Installed in about an hour by a licensed Parker electrician.',
     primaryKeyword: 'whole home surge protector parker',
-    secondaryKeywords: ['[surge protection](/whole-home-surge-protection/) installation colorado'],
+    secondaryKeywords: ['surge protection installation colorado'],
     group: 'power-panels',
     indexed: true,
     heroImage: 'open-residential-electrical-breaker-panel.JPG',
@@ -1095,12 +1095,12 @@ export const services: Service[] = [
   {
     id: 'S8',
     slug: 'residential-ev-charging',
-    h1: '[EV charger](/residential-ev-charging/) installation',
-    navLabel: '[EV charger](/residential-ev-charging/)s',
+    h1: 'EV charger installation',
+    navLabel: 'EV chargers',
     blurb: 'Level 2 home charging, with a proper load calculation done first.',
     title: 'EV Charger Installation | South Denver Metro | Allsafe Electric',
     metaDescription:
-      'Level 2 home [EV charger](/residential-ev-charging/) installation with a proper NEC load calculation first. Tesla and universal chargers wired to code across Parker and Douglas County.',
+      'Level 2 home EV charger installation with a proper NEC load calculation first. Tesla and universal chargers wired to code across Parker and Douglas County.',
     primaryKeyword: 'ev charger installation parker co',
     secondaryKeywords: [
       'level 2 charger installation parker',
@@ -1111,14 +1111,14 @@ export const services: Service[] = [
     indexed: true,
     cityServiceSlug: 'ev-charger-installation',
     heroImage: 'electrical-panel-main-breaker-inspection.JPG',
-    heroAlt: 'Checking main breaker capacity before adding a 240-volt [EV charger](/residential-ev-charging/) circuit',
+    heroAlt: 'Checking main breaker capacity before adding a 240-volt EV charger circuit',
     heroImageGap: true,
     imageBrief:
-      'A wall-mounted Level 2 [EV charger](/residential-ev-charging/) on a clean garage wall with the cable coiled, an SUV parked beside it, natural daylight from an open garage door. 3:2. No visible brand marks.',
+      'A wall-mounted Level 2 EV charger on a clean garage wall with the cable coiled, an SUV parked beside it, natural daylight from an open garage door. 3:2. No visible brand marks.',
     bodyImage: 'electrician-tightening-connections-in-breaker-panel.JPG',
     bodyAlt: 'Landing a new 240-volt circuit on a double-pole breaker in the panel',
     lead:
-      'A Level 2 charger adds 20 to 40 miles of range per hour, against 3 to 5 on a standard outlet. The job is a 240-volt circuit from the panel to where you park, plus the charger itself. Most Douglas County homes can take one on the existing service, and some need a [panel upgrade](/electrical-panel-services/) or a load-management device first. We do the load calculation before you buy anything, so you know which situation you are in.',
+      'A Level 2 charger adds 20 to 40 miles of range per hour, against 3 to 5 on a standard outlet. The job is a 240-volt circuit from the panel to where you park, plus the charger itself. Most Douglas County homes can take one on the existing service, and some need a panel upgrade or a load-management device first. We do the load calculation before you buy anything, so you know which situation you are in.',
     highlights: [
       { label: 'Charging speed', value: '20 to 40 miles per hour' },
       { label: 'Load calc', value: 'Done before you buy' },
@@ -1136,7 +1136,7 @@ export const services: Service[] = [
     signs: [
       {
         h3: 'You just ordered an EV, or you are close',
-        body: 'Get the load calculation done now. If a [panel upgrade](/electrical-panel-services/) is needed, that is the long-lead item and it is better known early.',
+        body: 'Get the load calculation done now. If a panel upgrade is needed, that is the long-lead item and it is better known early.',
       },
       {
         h3: 'You are trickle-charging on a garage outlet',
@@ -1166,19 +1166,19 @@ export const services: Service[] = [
       'We test at full rated current and confirm the vehicle charges at the expected rate.',
     ],
     permits:
-      '[EV charger](/residential-ev-charging/) circuits are permitted and inspected in the Town of Parker, Douglas County, and surrounding cities. We pull the permit and meet the inspector. CORE Electric Cooperative and Xcel have both run EV rebate and time-of-use programs, so check current offers on the utility\'s own page before assuming an amount.',
+      'EV charger circuits are permitted and inspected in the Town of Parker, Douglas County, and surrounding cities. We pull the permit and meet the inspector. CORE Electric Cooperative and Xcel have both run EV rebate and time-of-use programs, so check current offers on the utility\'s own page before assuming an amount.',
     faqs: [
       {
-        q: 'How much does it cost to install an [EV charger](/residential-ev-charging/) at home?',
-        a: 'Most installs land in the range above. A charger on a wall near the panel sits at the low end, and a long run to a detached garage, or a [panel upgrade](/electrical-panel-services/) first, moves it up.',
+        q: 'How much does it cost to install an EV charger at home?',
+        a: 'Most installs land in the range above. A charger on a wall near the panel sits at the low end, and a long run to a detached garage, or a panel upgrade first, moves it up.',
       },
       {
-        q: 'Do I need a permit for an [EV charger](/residential-ev-charging/) in Parker?',
+        q: 'Do I need a permit for an EV charger in Parker?',
         a: 'Yes. A new 240-volt circuit is permitted and inspected, and we handle that as part of the job.',
       },
       {
         q: 'Can my panel handle a charger?',
-        a: 'Often yes. We do a proper load calculation rather than guessing, and if it is close, a load-management device can avoid a full [panel upgrade](/electrical-panel-services/).',
+        a: 'Often yes. We do a proper load calculation rather than guessing, and if it is close, a load-management device can avoid a full panel upgrade.',
       },
       {
         q: 'Hardwired or plug-in?',
