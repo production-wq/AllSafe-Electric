@@ -1,3 +1,4 @@
+import { RichText } from "@/components/RichText";
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -147,7 +148,7 @@ export default async function ServicePage({
             </div>
 
             <h1 className="mt-5 text-display">{s.h1}</h1>
-            <p className="mt-5 max-w-xl text-lead text-slate">{s.lead}</p>
+            <p className="mt-5 max-w-xl text-lead text-slate"><RichText text={s.lead || ""} /></p>
             <CtaRow location="hero" service={s.slug} emergency={s.emergency} className="mt-7" />
 
             <dl className="mt-9 grid gap-px overflow-hidden rounded-card border border-rule bg-rule sm:grid-cols-3">
@@ -342,7 +343,7 @@ export default async function ServicePage({
               process, before the FAQ. FeaturedTestimonial existed but was used
               nowhere until 2026-09-14. */}
           <Reveal>
-            <FeaturedTestimonial authorIndex={s.emergency ? 0 : 2} />
+            <FeaturedTestimonial authorIndex={s.slug.length % 4} />
           </Reveal>
 
           <Reveal>
@@ -424,7 +425,7 @@ export default async function ServicePage({
               <p className="mt-1 text-small text-white/80">
                 {s.emergency
                   ? 'Call now. In the daytime we usually pick up on the first ring.'
-                  : 'A real person answers, Mon to Fri, 8 to 6. Book online any time.'}
+                  : 'A real person answers, Mon to Fri, 8 to 6. Request a quote any time.'}
               </p>
             </div>
             <div className="p-5">

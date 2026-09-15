@@ -27,7 +27,7 @@ export const homeFaqs: Faq[] = [
     a: 'Straightforward quotes are free, whether that is a ceiling fan, a few outlets or a fixture swap. A diagnostic visit to find a fault, or a detailed assessment for a large project, carries the flat fee above, and that fee is credited toward the work if you decide to go ahead.',
   },
   {
-    q: 'Can I book online instead of calling?',
+    q: 'Can I request a quote online instead of calling??',
     a: 'Yes. The Book a visit button goes to our online scheduler, which is live any time of day. Pick a service and a window and you are on the calendar. If it is urgent, call instead so we can triage it properly and get you into the first available slot.',
   },
   {

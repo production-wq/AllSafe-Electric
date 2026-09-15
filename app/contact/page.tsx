@@ -13,7 +13,7 @@ export const metadata: Metadata = pageMetadata({
   path: '/contact/',
   title: 'Contact Allsafe Electric | Parker, CO Electrician',
   description:
-    'Call (303) 648-1934, book online, or send an estimate request. Allsafe Electric replies the same business day. Parker, CO and the south Denver metro.',
+    'Call (303) 648-1934, request a quote, or send an estimate request. Allsafe Electric replies the same business day. Parker, CO and the south Denver metro.',
   ogEyebrow: 'Contact · Parker, CO',
 });
 
@@ -85,7 +85,7 @@ export default function ContactPage() {
                   <span>
                     {business.hours.humanReadable}
                     <br />
-                    Mountain time · book online any time
+                    Mountain time · request a quote any time
                   </span>
                 </p>
               </address>

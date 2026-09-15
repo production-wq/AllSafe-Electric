@@ -107,7 +107,7 @@ export function StatBand({
             )}
             <CountUp
               value={it.value}
-              className={`block font-display text-4xl font-extrabold tracking-tight lg:text-5xl ${
+              className={`block font-display text-3xl font-bold tracking-tight lg:text-4xl ${
                 dark ? 'text-white' : 'text-blue-600'
               }`}
             />
@@ -129,11 +129,11 @@ export function WhatHappensNext({ emergency = false }: { emergency?: boolean }) 
     ? [
         'You call. We confirm the address and a two-hour arrival window, and tell you what to switch off.',
         'We arrive, makes it safe, and finds the actual cause.',
-        'You get a fixed repair price before any work starts. The diagnostic fee comes off it.',
+        'You get a fixed repair price before any work starts.',
         'We fix what is dangerous now and flag what to schedule properly later.',
       ]
     : [
-        'You call or book online. A real person picks up during business hours.',
+        'You request a quote online or give us a call. A real person picks up during business hours.',
         'We confirm a two-hour arrival window that works for you.',
         'We arrive, looks at the job, and gives you a fixed price.',
         'You decide. No pressure, and no upsell.',
@@ -163,7 +163,7 @@ export function PriceRange({ service }: { service: Service }) {
     <div className="overflow-hidden rounded-card border border-green-100 bg-green-50">
       <div className="border-b border-green-100 bg-white/60 px-6 py-4">
         <h2 id="price-heading" className="text-h2">
-          What it costs {service.slug.includes('parker') ? 'in Parker' : 'in Douglas County'}
+          What it costs
         </h2>
       </div>
       <div className="p-6">
@@ -257,7 +257,7 @@ export function CtaBlock({
           <p className="mt-4 max-w-md text-body-lg text-white/80">
             {emergency
               ? 'Call now. During the day we usually pick up on the first ring, and you get a two-hour arrival window rather than a vague promise.'
-              : 'Book a visit online any time, or call and talk it through with a real person. Free estimates on quoted work, and the diagnostic fee on a service call comes off the repair.'}
+              : 'Request a quote online any time, or call and talk it through with a real person. Free estimates on quoted work, and all repair pricing is provided in writing before work begins.'}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             {emergency ? (

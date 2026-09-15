@@ -158,7 +158,7 @@ export const cities: City[] = [
     tier: 1,
     driveTimeMin: 18,
     responseExpectation:
-      'About 18 minutes from the Parker shop. Same-day for urgent calls, next-day for scheduled work in most of Castle Rock.',
+      'Local service across the metro area. Same-day for urgent calls, next-day for scheduled work in most of Castle Rock.',
     utility: {
       name: 'CORE Electric Cooperative',
       verify: true,
@@ -185,7 +185,7 @@ export const cities: City[] = [
       'emergency-electrician',
     ],
     lead:
-      'Castle Rock is about 18 minutes from the Parker shop, so we cover it regularly. Downtown\'s older homes see a lot of inspection and rewiring work; the newer subdivisions off Founders and Meadows Parkway are more panel upgrades and EV chargers. Either way, you get the same licensed master electrician and the same phone that gets answered.',
+      'Castle Rock is about 18 minutes in your area, so we cover it regularly. Downtown\'s older homes see a lot of inspection and rewiring work; the newer subdivisions off Founders and Meadows Parkway are more panel upgrades and EV chargers. Either way, you get the same licensed master electrician and the same phone that gets answered.',
     faqs: [
       {
         q: 'Does Castle Rock use Douglas County for permits?',
@@ -241,7 +241,7 @@ export const cities: City[] = [
       'electrical-inspection',
     ],
     lead:
-      'Highlands Ranch is a straight 20-minute run from the Parker shop. The housing stock is consistent, mostly 1990s master-planned, so we know what to expect: original panels reaching the end of their service life, and homeowners adding EV chargers to a service that can usually take one with a proper load calculation.',
+      'Highlands Ranch is a straight 20-minute run in your area. The housing stock is consistent, mostly 1990s master-planned, so we know what to expect: original panels reaching the end of their service life, and homeowners adding EV chargers to a service that can usually take one with a proper load calculation.',
     faqs: [
       {
         q: 'Which building department covers Highlands Ranch?',
@@ -296,7 +296,7 @@ export const cities: City[] = [
       'electrical-inspection',
     ],
     lead:
-      'Lone Tree is only about 15 minutes from the Parker shop, so it is one of the areas we reach quickest. The work here tends toward the higher end. Dual EV chargers, whole-house generators, smart-home wiring, and landscape lighting on larger lots, on homes that usually have the 200A service to support it.',
+      'Lone Tree is only about 15 minutes in your area, so it is one of the areas we reach quickest. The work here tends toward the higher end. Dual EV chargers, whole-house generators, smart-home wiring, and landscape lighting on larger lots, on homes that usually have the 200A service to support it.',
     faqs: [
       {
         q: 'Does Lone Tree handle its own permits?',
@@ -325,7 +325,7 @@ export const cities: City[] = [
     tier: 1,
     driveTimeMin: 22,
     responseExpectation:
-      'About 22 minutes from the Parker shop. Same-day for urgent calls, next-day for scheduled work.',
+      'Local service across the metro area. Same-day for urgent calls, next-day for scheduled work.',
     utility: {
       name: 'Xcel Energy',
       verify: true,
@@ -407,7 +407,7 @@ export const cities: City[] = [
     tier: 2,
     driveTimeMin: 10,
     responseExpectation:
-      'About 10 minutes from the Parker shop. Same-day for urgent calls, and often within two hours during business hours.',
+      'Local service across the metro area. Same-day for urgent calls, and often within two hours during business hours.',
     utility: {
       name: 'CORE Electric Cooperative',
       verify: true,
@@ -439,7 +439,7 @@ export const cities: City[] = [
         note: 'Larger acreage properties where standby generators and buried feeds to outbuildings are common requests.',
       },
     ],
-    driveTimeContext: 'About 10 minutes from our Parker shop, so urgent calls here are usually same-day.',
+    driveTimeContext: 'Serving your local community daily.-day.',
     faqs: [
       {
         q: 'Do Pinery permits go through Parker or Douglas County?',
@@ -473,7 +473,7 @@ export const cities: City[] = [
     tier: 2,
     driveTimeMin: 6,
     responseExpectation:
-      'About 6 minutes from the Parker shop. Same-day for urgent calls, frequently within the hour during business hours.',
+      'Local service across the metro area. Same-day for urgent calls, frequently within the hour during business hours.',
     utility: {
       name: 'CORE Electric Cooperative',
       verify: true,
@@ -495,7 +495,7 @@ export const cities: City[] = [
       'Stonegate is minutes from the shop. The homes here are mostly 1990s and 2000s builds on 100A or 150A service, so the work is usually about capacity: making room for an EV charger, a hot tub, or a finished basement without tripping the whole house.',
     overview:
       'Stonegate is one of the closest neighborhoods to our shop, and electrically it is one of the most predictable areas we work in. Nearly everything here went up between the early 1990s and the mid 2000s, built to the codes of the day with copper wiring and grounded circuits, so genuine safety hazards are rare. What is common is running out of room. A panel sized for a 1990s household does not comfortably absorb an EV charger, a hot tub and a finished basement, and the symptom homeowners notice is breakers tripping when several big loads run at once. That is a capacity problem, not a broken panel, and the honest answer is often cheaper than people expect: a load calculation will tell you whether you genuinely need a 200A service upgrade or whether rebalancing circuits solves it.',
-    driveTimeContext: 'Roughly 6 minutes from our Parker shop, one of the fastest areas we cover.',
+    driveTimeContext: 'A core part of our local service area.',
     faqs: [
       {
         q: 'Is Stonegate permitted through Parker or Douglas County?',
@@ -511,7 +511,7 @@ export const cities: City[] = [
       },
       {
         q: 'How fast can you get here for an emergency?',
-        a: 'Stonegate is about six minutes out, so during business hours we are frequently on site within the hour. We are open weekdays 8am to 6pm; a call outside those hours gets a callback the next business day.',
+        a: 'Stonegate is a core part of our service area, so during business hours we can frequently be on site quickly. We are open weekdays 8am to 6pm; a call outside those hours gets a callback the next business day.',
       },
     ],
     heroImageBrief:
@@ -525,7 +525,7 @@ export const cities: City[] = [
     tier: 2,
     driveTimeMin: 16,
     responseExpectation:
-      'About 16 minutes from the Parker shop. Same-day for urgent calls, next-day for scheduled work.',
+      'Local service across the metro area. Same-day for urgent calls, next-day for scheduled work.',
     utility: {
       name: 'CORE Electric Cooperative',
       verify: true,
@@ -544,7 +544,7 @@ export const cities: City[] = [
       'electrical-inspection',
     ],
     lead:
-      'Castle Pines is about 16 minutes down I-25 from the shop. The homes here are larger than average and so are the electrical systems, with more exterior lighting, more sub-panels and more generator work than a typical subdivision.',
+      'Castle Pines is a core part of our service area. The homes here are larger than average and so are the electrical systems, with more exterior lighting, more sub-panels and more generator work than a typical subdivision.',
     overview:
       'Castle Pines is a custom-home market, and the electrical work reflects that. Services are usually already 200A, sub-panels are common, and there is typically far more going on outside the house than inside it: landscape and architectural lighting, exterior GFCI circuits, gate and driveway feeds, water features. That is also where most of our calls originate, because buried runs and outdoor equipment take a beating through fifteen or twenty Colorado winters in a way that interior wiring simply does not. The other thing worth knowing here is process: Castle Pines runs its own building department rather than using Douglas County, and most neighborhoods carry active HOA design review on top of that. Anything visible from outside can need both approvals, and we will tell you upfront when that is the case rather than after the fact.',
     neighborhoodNotes: [
@@ -557,7 +557,7 @@ export const cities: City[] = [
         note: 'Newer construction, mostly EV charger additions and finished-basement circuits rather than repairs.',
       },
     ],
-    driveTimeContext: 'About 16 minutes from our Parker shop, straight down I-25.',
+    driveTimeContext: 'Serving your local community daily.-25.',
     faqs: [
       {
         q: 'Does Castle Pines permit through Douglas County?',
@@ -587,7 +587,7 @@ export const cities: City[] = [
     tier: 2,
     driveTimeMin: 15,
     responseExpectation:
-      'About 15 minutes from the Parker shop. Same-day for urgent calls in most of the Franktown area.',
+      'Local service across the metro area. Same-day for urgent calls in most of the Franktown area.',
     utility: {
       name: 'CORE Electric Cooperative',
       verify: true,
@@ -606,10 +606,10 @@ export const cities: City[] = [
       'electrical-inspection',
     ],
     lead:
-      'Franktown is about 15 minutes out and it is acreage country. Well pumps, detached shops, buried feeds and standby generators make up most of the work here, and those are jobs that need someone who has actually done them rather than someone guessing.',
+      'Franktown is acreage country. Well pumps, detached shops, buried feeds and standby generators make up most of the work here, and those are jobs that need someone who has actually done them rather than someone guessing.',
     overview:
       'Franktown work is rural work, and it is genuinely different from a subdivision call. Properties sit on acreage, most are on well and septic, and the electrical system is usually spread across more than one building: a meter main outside, a panel in the house, a sub-panel in a shop or barn, and buried feeds between them that in many cases went in decades ago. Two things follow from that. First, when the power goes out here you also lose water, because the well pump is electric, which is why standby generators are far more common in Franktown than in town and why sizing them around the pump, furnace and septic controls matters. Second, fault-finding takes longer, because a problem can be anywhere along a few hundred feet of buried run rather than inside four walls. We price that honestly rather than quoting a subdivision rate and then adding to it.',
-    driveTimeContext: 'About 15 minutes from our Parker shop, straight out Parker Road.',
+    driveTimeContext: 'Serving your local community daily.',
     faqs: [
       {
         q: 'Do you cover acreage properties with outbuildings?',
@@ -639,7 +639,7 @@ export const cities: City[] = [
     tier: 2,
     driveTimeMin: 25,
     responseExpectation:
-      'About 25 minutes from the Parker shop. Same-day for urgent calls where the schedule allows, otherwise next business day.',
+      'Local service across the metro area. Same-day for urgent calls where the schedule allows, otherwise next business day.',
     utility: {
       name: 'CORE Electric Cooperative or Mountain View Electric',
       verify: true,
@@ -658,14 +658,14 @@ export const cities: City[] = [
       'emergency-electrician',
     ],
     lead:
-      'Elizabeth is about 25 minutes out in Elbert County. Work here is mostly rural: generators, well pump circuits, outbuilding feeds and panel upgrades on homes that have been added onto over the years.',
+      'Elizabeth is fully covered in Elbert County. Work here is mostly rural: generators, well pump circuits, outbuilding feeds and panel upgrades on homes that have been added onto over the years.',
     overview:
       'Elizabeth is far enough out that a lot of metro electricians will not make the drive, which is exactly why we get called. The work splits two ways. In the older town core, it is mid-century homes with original equipment, where the honest first step is often an inspection rather than a quote, because what needs doing is not obvious until the panel cover comes off. Outside town it is acreage: well and septic, detached shops, buried feeds, and houses that grew in stages over decades, which typically leaves a patchwork of panels and sub-panels that nobody has ever documented. Two practical notes for Elizabeth specifically. Permits may be Town of Elizabeth or Elbert County depending on which side of the town boundary you are on, and the utility may be CORE or Mountain View Electric, which changes your rebate eligibility. We confirm both before quoting rather than guessing.',
-    driveTimeContext: 'About 25 minutes from our Parker shop. We schedule Elizabeth work in blocks where we can.',
+    driveTimeContext: 'Serving your local community daily.',
     faqs: [
       {
         q: 'Do you actually come out to Elizabeth?',
-        a: 'Yes. It is about 25 minutes from the Parker shop and it is on our regular service-area list. For scheduled work we will often group Elizabeth jobs into the same run, which is also why booking a little further ahead gets you a better window here than in Parker.',
+        a: 'Yes. It is on our regular service-area list. For scheduled work we will often group Elizabeth jobs into the same run, which is also why booking a little further ahead gets you a better window here than in Parker.',
       },
       {
         q: 'Is Elizabeth on CORE or Mountain View Electric?',
@@ -691,7 +691,7 @@ export const cities: City[] = [
     tier: 2,
     driveTimeMin: 35,
     responseExpectation:
-      'About 35 minutes from the Parker shop. Scheduled work is easiest to arrange; urgent calls depend on the day.',
+      'Local service across the metro area. Scheduled work is easiest to arrange; urgent calls depend on the day.',
     utility: {
       name: 'Mountain View Electric Association',
       verify: true,
@@ -710,14 +710,14 @@ export const cities: City[] = [
       'electrical-inspection',
     ],
     lead:
-      'Elbert is about 35 minutes out and it is true acreage country. Generators, well pump circuits, transfer switches and outbuilding feeds are the bulk of the work, and outages here last long enough that backup power is a practical purchase rather than a luxury.',
+      'Elbert is true acreage country. Generators, well pump circuits, transfer switches and outbuilding feeds are the bulk of the work, and outages here last long enough that backup power is a practical purchase rather than a luxury.',
     overview:
       'Elbert is the furthest point we regularly serve, and we are upfront about what that means: scheduled work is straightforward to arrange, while same-day emergency coverage depends on where the day already has us. What brings us out here is rural infrastructure. Almost every property is on a well, which means no power equals no water, and rural lines are restored after town lines simply because fewer customers are affected. That combination is why backup power in Elbert is a practical purchase rather than a luxury, and why a transfer switch or interlock done properly matters: back-feeding a generator through an unprotected connection is genuinely dangerous to you and to the lineman working on the circuit. Beyond generators, the common work is service replacements, outbuilding feeds, and sorting out homes that were built or expanded in stages.',
-    driveTimeContext: 'About 35 minutes from our Parker shop, the outer edge of our regular service area.',
+    driveTimeContext: 'Serving your local community daily.',
     faqs: [
       {
         q: 'Is Elbert too far for you to service?',
-        a: 'No, but we are straight with you about it. It is roughly 35 minutes, so scheduled work is easy to arrange and we will usually group Elbert jobs into one run. Same-day emergency coverage depends on where the day already has us, and we will tell you honestly when we cannot make it rather than leaving you waiting.',
+        a: 'No, but we are straight with you about it. Scheduled work is easy to arrange and we will usually group Elbert jobs into one run. Same-day emergency coverage depends on where the day already has us, and we will tell you honestly when we cannot make it rather than leaving you waiting.',
       },
       {
         q: 'What size generator do I need out here?',
@@ -743,7 +743,7 @@ export const cities: City[] = [
     tier: 2,
     driveTimeMin: 15,
     responseExpectation:
-      'About 15 minutes from the Parker shop. Same-day for urgent calls during business hours.',
+      'Local service across the metro area. Same-day for urgent calls during business hours.',
     utility: {
       name: 'Xcel Energy',
       verify: true,
@@ -762,10 +762,10 @@ export const cities: City[] = [
       'emergency-electrician',
     ],
     lead:
-      'Foxfield is about 15 minutes from the shop and it is horse-property country: barns, arena lighting, gates and buried feeds between buildings alongside the usual work inside the house.',
+      'Foxfield is a core part of our service area and it is horse-property country: barns, arena lighting, gates and buried feeds between buildings alongside the usual work inside the house.',
     overview:
       'Foxfield is unusual for how rural it feels given how close it is to the metro. These are one to five acre horse properties, and the electrical system almost always extends well past the house: a barn or loafing shed with its own sub-panel, tack room circuits, arena or exterior lighting, automatic gates, and water or pump equipment. The houses themselves are mostly 1980s through 2000s and generally in decent shape, so the calls tend to come from everything else. Buried feeds between buildings are where problems eventually surface, whether from age, rodent damage, or a trench dug by someone who did not know the run was there. Worth knowing: unlike the Douglas County areas just south, Foxfield is generally Xcel rather than CORE, which changes your rebate eligibility.',
-    driveTimeContext: 'About 15 minutes from our Parker shop.',
+    driveTimeContext: 'Serving your local community daily.',
     faqs: [
       {
         q: 'Do you do barn and outbuilding electrical work?',
@@ -795,7 +795,7 @@ export const cities: City[] = [
     tier: 2,
     driveTimeMin: 14,
     responseExpectation:
-      'About 14 minutes from the Parker shop. Same-day for urgent residential calls during business hours.',
+      'Local service across the metro area. Same-day for urgent residential calls during business hours.',
     utility: {
       name: 'Xcel Energy',
       verify: true,
@@ -814,10 +814,10 @@ export const cities: City[] = [
       'emergency-electrician',
     ],
     lead:
-      'Dove Valley is about 14 minutes from the shop. Most of the residential work here is panel capacity: making room for an EV charger, a hot tub, or a finished basement in a home built before any of those were standard.',
+      'Dove Valley is fully covered by our team. Most of the residential work here is panel capacity: making room for an EV charger, a hot tub, or a finished basement in a home built before any of those were standard.',
     overview:
       'Dove Valley sits right next to Centennial Airport, mixing residential streets with business-park development, and the residential work follows a familiar Front Range pattern. Homes are largely 1980s through 2000s, structurally and electrically sound, running original 100A or 150A services that were sized for a very different household. Finished basements and home offices are especially common here, and both are reliable triggers for discovering that the panel has no room left. The fix is usually straightforward and the honest version of it starts with a load calculation, because the answer is sometimes a 200A heavy-up and sometimes just rebalancing what is already there. One local note: Dove Valley is Xcel territory while addresses a few minutes south in Douglas County are on CORE, which trips people up on rebates.',
-    driveTimeContext: 'About 14 minutes from our Parker shop.',
+    driveTimeContext: 'Serving your local community daily.',
     faqs: [
       {
         q: 'Is Dove Valley permitted through Arapahoe County?',
@@ -847,7 +847,7 @@ export const cities: City[] = [
     tier: 2,
     driveTimeMin: 22,
     responseExpectation:
-      'About 22 minutes to south Aurora from the Parker shop. Same-day for urgent calls where the schedule allows.',
+      'Local service across south Aurora. Same-day for urgent calls where the schedule allows.',
     utility: {
       name: 'Xcel Energy',
       verify: true,
@@ -866,9 +866,9 @@ export const cities: City[] = [
       'electrical-inspection',
     ],
     lead:
-      'We cover south Aurora, roughly 22 minutes from the Parker shop. Most of the work there is panel capacity and EV charger installs in 1990s to 2010s homes, plus inspections when people are buying into the older sections.',
+      'We cover south Aurora,  Most of the work there is panel capacity and EV charger installs in 1990s to 2010s homes, plus inspections when people are buying into the older sections.',
     overview:
-      'Aurora is a big city spanning three counties, so the useful thing to say is which part of it we serve and what the work actually looks like there. We cover south Aurora, the side nearest Parker, roughly 22 minutes from the shop. Neighborhoods like Southshore, Tallyn\'s Reach, Blackstone and Beacon Point are mostly 1990s through 2010s construction in sound condition, where calls are capacity driven: a Level 2 EV charger, a hot tub, or a finished basement asking more of a panel than it was sized to give. Older sections further north and west are a different job entirely, mid-century homes where original panels, ungrounded circuits and sometimes aluminum branch wiring mean an inspection is the honest first step rather than a quote. One practical note: Aurora permits through its own city building division, not the county, and it is a more process-driven jurisdiction than most, so we file early to keep timelines realistic.',
+      'Aurora is a big city spanning three counties, so the useful thing to say is which part of it we serve and what the work actually looks like there. We cover south Aurora, the side nearest Parker,  Neighborhoods like Southshore, Tallyn\'s Reach, Blackstone and Beacon Point are mostly 1990s through 2010s construction in sound condition, where calls are capacity driven: a Level 2 EV charger, a hot tub, or a finished basement asking more of a panel than it was sized to give. Older sections further north and west are a different job entirely, mid-century homes where original panels, ungrounded circuits and sometimes aluminum branch wiring mean an inspection is the honest first step rather than a quote. One practical note: Aurora permits through its own city building division, not the county, and it is a more process-driven jurisdiction than most, so we file early to keep timelines realistic.',
     neighborhoodNotes: [
       {
         name: 'Southshore',
@@ -879,7 +879,7 @@ export const cities: City[] = [
         note: 'Late 1990s and 2000s homes now hitting the point where panel capacity limits what can be added.',
       },
     ],
-    driveTimeContext: 'About 22 minutes from our Parker shop to south Aurora.',
+    driveTimeContext: 'Serving your local community daily.',
     faqs: [
       {
         q: 'Which parts of Aurora do you serve?',
@@ -909,7 +909,7 @@ export const cities: City[] = [
     tier: 2,
     driveTimeMin: 26,
     responseExpectation:
-      'About 26 minutes from the Parker shop. Scheduled work is easiest to arrange; same-day urgent calls depend on the day.',
+      'Local service across the metro area. Scheduled work is easiest to arrange; same-day urgent calls depend on the day.',
     utility: {
       name: 'Xcel Energy',
       verify: true,
@@ -928,10 +928,10 @@ export const cities: City[] = [
       'emergency-electrician',
     ],
     lead:
-      'Englewood is about 26 minutes from the shop, and the work there is older-home work: service upgrades from 60A or 100A, grounding, ungrounded outlet replacement, and inspections on homes that have been partly updated over the decades.',
+      'Englewood is a core part of our service area, and the work there is older-home work: service upgrades from 60A or 100A, grounding, ungrounded outlet replacement, and inspections on homes that have been partly updated over the decades.',
     overview:
       'Englewood is the oldest housing stock we regularly work in, and that changes the job completely. Much of the city dates from the 1940s through the 1960s, so instead of capacity problems you get condition problems: original fuse or early breaker panels, 60A and 100A services that are genuinely undersized rather than merely tight, ungrounded two-prong outlets throughout, cloth-insulated conductors, and in the oldest homes surviving knob-and-tube. Most of these houses have also been partially updated at some point, which leaves a patchwork where a modern kitchen circuit runs off a panel that has not been touched since the Eisenhower administration. The honest starting point in Englewood is usually an inspection rather than a quote, because a realistic upgrade price depends on what is actually behind the walls and in the panel, and that is not visible from the outside.',
-    driveTimeContext: 'About 26 minutes from our Parker shop. Scheduled Englewood work is easiest to book ahead.',
+    driveTimeContext: 'Serving your local community daily.',
     faqs: [
       {
         q: 'My Englewood home still has two-prong outlets. What are my options?',
@@ -947,7 +947,7 @@ export const cities: City[] = [
       },
       {
         q: 'Do you cover Englewood for emergencies?',
-        a: 'Yes, though we are straight about the drive: it is about 26 minutes, so same-day urgent coverage depends on where the day already has us. Scheduled work is easy to arrange. We are open weekdays 8am to 6pm.',
+        a: 'Yes, though we are straight about the drive: same-day urgent coverage depends on where the day already has us. Scheduled work is easy to arrange. We are open weekdays 8am to 6pm.',
       },
     ],
     heroImageBrief:
@@ -961,7 +961,7 @@ export const cities: City[] = [
     tier: 2,
     driveTimeMin: 30,
     responseExpectation:
-      'About 30 minutes from the Parker shop. Best booked as scheduled work; same-day urgent calls depend on the day.',
+      'Local service across the metro area. Best booked as scheduled work; same-day urgent calls depend on the day.',
     utility: {
       name: 'Xcel Energy',
       verify: true,
@@ -980,14 +980,14 @@ export const cities: City[] = [
       'emergency-electrician',
     ],
     lead:
-      'Littleton is about 30 minutes from the shop and it covers a lot of ground electrically, from pre-1960 homes downtown that need inspections and rewiring to 1970s and 80s neighborhoods where the original panel has finally run out of room.',
+      'Littleton is a core part of our service area and it covers a lot of ground electrically, from pre-1960 homes downtown that need inspections and rewiring to 1970s and 80s neighborhoods where the original panel has finally run out of room.',
     overview:
       'Littleton covers more electrical ground than almost anywhere else we serve, because the housing runs from pre-1960 to brand new. Historic downtown and the older established streets are condition work: original panels, ungrounded circuits, cloth-insulated conductors and occasionally knob-and-tube, where an inspection is the sensible first step before anyone quotes an upgrade. The big 1970s and 80s neighborhoods in between are where most of our Littleton panel work happens, because those original services are now decades past the load they were designed around. Newer development south and west is straightforward capacity work, mostly EV chargers and basement circuits. One thing genuinely worth checking before anything else: a Littleton mailing address does not guarantee you are inside city limits, and the area touches three counties, so the permitting office depends on your actual parcel rather than your mail.',
-    driveTimeContext: 'About 30 minutes from our Parker shop, so Littleton work is best booked as a scheduled visit.',
+    driveTimeContext: 'Serving your local community daily.',
     faqs: [
       {
         q: 'Do you serve Littleton, given the drive?',
-        a: 'Yes, it is on our service-area list. At about 30 minutes it is best booked as scheduled work, and we will usually group Littleton jobs into the same run. For a genuine emergency we will tell you honestly whether we can get there today or whether you are better served by someone closer.',
+        a: 'Yes, it is on our service-area list. It is best booked as scheduled work, and we will usually group Littleton jobs into the same run. For a genuine emergency we will tell you honestly whether we can get there today or whether you are better served by someone closer.',
       },
       {
         q: 'Is my Littleton address in the city or the county?',
@@ -1029,7 +1029,7 @@ export const cities: City[] = [
     tier: 2,
     driveTimeMin: 12,
     responseExpectation:
-      'About 12 minutes from the Parker shop. Same-day for urgent calls, often within two hours during business hours.',
+      'Local service across the metro area. Same-day for urgent calls, often within two hours during business hours.',
     utility: {
       name: 'CORE Electric Cooperative',
       verify: true,
@@ -1043,10 +1043,10 @@ export const cities: City[] = [
     neighborhoods: ['Acres Green', 'Lincoln Park', 'Bradbury Ranch'],
     priorityServices: ['panel-upgrade', 'ev-charger-installation', 'electrical-inspection', 'emergency-electrician'],
     lead:
-      'Acres Green is twelve minutes from the shop and it is one of the more predictable neighborhoods we work in: 1970s and 80s homes, mostly original panels, and a steady stream of EV charger and panel capacity work.',
+      'Acres Green is a core part of our service area and it is one of the more predictable neighborhoods we work in: 1970s and 80s homes, mostly original panels, and a steady stream of EV charger and panel capacity work.',
     overview:
       'Acres Green is a small, self-contained 1970s and 80s subdivision, which makes the electrical picture unusually consistent. Almost everything here was built within a narrow window, so homes tend to share the same original 100A service, the same grounding practices, and in a number of cases the same panel brands that era favored. None of that is automatically a problem, but it does mean a very high proportion of our calls here resolve into the same two jobs: a capacity upgrade, or replacing a panel that should not still be in service. The other driver is location. Acres Green sits right by the Lincoln Avenue corridor, so EV adoption is high, and a Level 2 charger is exactly the kind of continuous load a 1970s panel was never sized for. We do the load calculation before quoting, because sometimes the honest answer is that you have room already.',
-    driveTimeContext: 'About 12 minutes from our Parker shop.',
+    driveTimeContext: 'Serving your local community daily.',
     faqs: [
       {
         q: 'Is Acres Green permitted through Douglas County or Lone Tree?',
@@ -1076,7 +1076,7 @@ export const cities: City[] = [
     tier: 2,
     driveTimeMin: 18,
     responseExpectation:
-      'About 18 minutes from the Parker shop. Same-day for urgent calls, next-day for scheduled work.',
+      'Local service across the metro area. Same-day for urgent calls, next-day for scheduled work.',
     utility: {
       name: 'Xcel Energy',
       verify: true,
@@ -1090,10 +1090,10 @@ export const cities: City[] = [
     neighborhoods: ['Greenwood Village', 'Cherry Hills Village', 'Preston Hollow', 'Greenwood Hills', 'The Preserve'],
     priorityServices: ['panel-upgrade', 'generator-installation', 'electrical-inspection', 'ev-charger-installation'],
     lead:
-      'Greenwood Village is about 18 minutes from the shop. The homes are larger than average and so are the electrical systems, with more exterior lighting, more sub-panels and more generator work than a standard subdivision.',
+      'Greenwood Village is fully covered by our team. The homes are larger than average and so are the electrical systems, with more exterior lighting, more sub-panels and more generator work than a standard subdivision.',
     overview:
       'Greenwood Village is an estate market, and residential electrical work there reflects it. Services are usually already 200A, sub-panels are normal rather than exceptional, and the majority of what goes wrong is outside the house: landscape and architectural lighting, gate and driveway feeds, pool and spa circuits, and buried runs to outbuildings. Those are the components that take twenty Colorado winters of freeze and thaw, and they fail long before interior wiring does. Two practical local notes. Greenwood Village permits through its own city building division rather than Arapahoe County, and it is Xcel territory while the Douglas County towns a few minutes south are on CORE, which regularly trips people up on rebate eligibility. We confirm both before quoting. Note that we are a strictly residential contractor, so the Tech Center commercial corridor is outside what we do.',
-    driveTimeContext: 'About 18 minutes from our Parker shop.',
+    driveTimeContext: 'Serving your local community daily.',
     faqs: [
       {
         q: 'Do you work on the large estate properties here?',
@@ -1123,7 +1123,7 @@ export const cities: City[] = [
     tier: 2,
     driveTimeMin: 35,
     responseExpectation:
-      'About 35 minutes from the Parker shop. Best booked as scheduled work; same-day urgent coverage depends on the day.',
+      'Local service across the metro area. Best booked as scheduled work; same-day urgent coverage depends on the day.',
     utility: {
       name: 'Xcel Energy',
       verify: true,
@@ -1137,14 +1137,14 @@ export const cities: City[] = [
     neighborhoods: ['Belmar', 'Green Mountain', 'Applewood', 'Glennon Heights', 'Eiber', 'Union Square'],
     priorityServices: ['panel-upgrade', 'electrical-inspection', 'outlet-repair', 'emergency-electrician'],
     lead:
-      'Lakewood is about 35 minutes from the shop, and it is panel country. A large share of the housing is 1950s to 1970s, which means original services, ungrounded circuits, and panels that have reached the end of their working life.',
+      'Lakewood is a core part of our service area, and it is panel country. A large share of the housing is 1950s to 1970s, which means original services, ungrounded circuits, and panels that have reached the end of their working life.',
     overview:
-      'Lakewood generates more panel-replacement enquiries than anywhere else we cover, and the housing stock explains why. Large parts of the city went up between the 1950s and 1970s, so the typical call involves an original or first-replacement panel that is now decades past its design life, a 100A service that was generous in 1962 and is not now, and ungrounded two-prong circuits throughout. The oldest homes add cloth-insulated conductors to that list. None of it is cause for alarm on its own, but it does mean the honest first step here is often an inspection rather than a quote, because what a realistic upgrade costs depends entirely on what is behind the panel cover and inside the walls. Newer infill around Belmar is straightforward capacity work by comparison. We are upfront about the drive: at roughly 35 minutes, Lakewood is best booked as scheduled work, and we group jobs there into the same run where we can.',
-    driveTimeContext: 'About 35 minutes from our Parker shop, so Lakewood work is best booked ahead as a scheduled visit.',
+      'Lakewood generates more panel-replacement enquiries than anywhere else we cover, and the housing stock explains why. Large parts of the city went up between the 1950s and 1970s, so the typical call involves an original or first-replacement panel that is now decades past its design life, a 100A service that was generous in 1962 and is not now, and ungrounded two-prong circuits throughout. The oldest homes add cloth-insulated conductors to that list. None of it is cause for alarm on its own, but it does mean the honest first step here is often an inspection rather than a quote, because what a realistic upgrade costs depends entirely on what is behind the panel cover and inside the walls. Newer infill around Belmar is straightforward capacity work by comparison. We are upfront about the drive: Lakewood is best booked as scheduled work, and we group jobs there into the same run where we can.',
+    driveTimeContext: 'Serving your local community daily.',
     faqs: [
       {
         q: 'Is Lakewood too far for you?',
-        a: 'No, but we are straight about what the distance means. At about 35 minutes, scheduled work is easy to arrange and we group Lakewood jobs into one run where possible. For a genuine same-day emergency we will tell you honestly whether we can get there or whether someone closer serves you better.',
+        a: 'No, but we are straight about what the distance means. Scheduled work is easy to arrange and we group Lakewood jobs into one run where possible. For a genuine same-day emergency we will tell you honestly whether we can get there or whether someone closer serves you better.',
       },
       {
         q: 'My Lakewood home still has a fuse box. Does it have to be replaced?',
@@ -1174,7 +1174,7 @@ export const cities: City[] = [
     tier: 2,
     driveTimeMin: 38,
     responseExpectation:
-      'About 38 minutes from the Parker shop. Scheduled work only in most cases; we will say honestly if we cannot cover an urgent call.',
+      'Local service across the metro area. Scheduled work only in most cases; we will say honestly if we cannot cover an urgent call.',
     utility: {
       name: 'Xcel Energy',
       verify: true,
@@ -1188,14 +1188,14 @@ export const cities: City[] = [
     neighborhoods: ['Edgewater', 'Sloan Lake', 'West Colfax', 'Lakeside'],
     priorityServices: ['panel-upgrade', 'electrical-inspection', 'outlet-repair', 'emergency-electrician'],
     lead:
-      'Edgewater is about 38 minutes out and it is the oldest housing stock we cover. Service upgrades, grounding, and inspections on homes that have been renovated piecemeal over decades make up nearly all the work.',
+      'Edgewater features some of the oldest housing stock we cover. Service upgrades, grounding, and inspections on homes that have been renovated piecemeal over decades make up nearly all the work.',
     overview:
       'Edgewater is small, old and dense, and the electrical work reflects all three. Most of the housing predates 1960 and a good deal predates 1940, so instead of capacity problems you get condition problems: original panels, 60A and 100A services that are genuinely undersized rather than merely tight, ungrounded two-prong circuits throughout, cloth-insulated conductors, and knob-and-tube surviving in the oldest properties. Nearly everything here has also been renovated in stages, which leaves the common Edgewater pattern of a modern kitchen circuit feeding off a panel nobody has opened since the 1950s. The honest starting point is an inspection: a realistic upgrade price depends on what is actually in the walls, and in this housing stock that is not visible from outside. One practical note, lots are narrow, so where a new meter or panel can physically go sometimes shapes the job.',
-    driveTimeContext: 'About 38 minutes from our Parker shop, the far edge of our range. Scheduled work suits it best.',
+    driveTimeContext: 'Serving your local community daily.',
     faqs: [
       {
         q: 'Do you really cover Edgewater from Parker?',
-        a: 'Yes, but honestly: at about 38 minutes it is the outer edge of our range and it suits scheduled work rather than emergencies. If you need someone the same hour we will say so rather than leaving you waiting.',
+        a: 'Yes, but honestly: it suits scheduled work rather than emergencies. If you need someone the same hour we will say so rather than leaving you waiting.',
       },
       {
         q: 'Does my Edgewater home have knob-and-tube?',
@@ -1221,7 +1221,7 @@ export const cities: City[] = [
     tier: 2,
     driveTimeMin: 32,
     responseExpectation:
-      'About 32 minutes to south Denver from the Parker shop. Scheduled work is easiest to arrange.',
+      'Local service across south Denver. Scheduled work is easiest to arrange.',
     utility: {
       name: 'Xcel Energy',
       verify: true,
@@ -1235,10 +1235,10 @@ export const cities: City[] = [
     neighborhoods: ['University Hills', 'Hampden', 'Virginia Village', 'Washington Park', 'Platt Park', 'Southmoor Park'],
     priorityServices: ['panel-upgrade', 'electrical-inspection', 'ev-charger-installation', 'emergency-electrician'],
     lead:
-      'We cover south Denver, roughly 32 minutes from the Parker shop. Most of the work is panel replacement in post-war neighborhoods and inspections on the older pre-war bungalows closer to the center.',
+      'We cover south Denver,  Most of the work is panel replacement in post-war neighborhoods and inspections on the older pre-war bungalows closer to the center.',
     overview:
-      'Denver is a big enough market that the only useful thing to say is which part of it we serve and what the work involves. We cover south Denver, the side nearest Parker, roughly 32 minutes out. Neighborhoods like University Hills, Hampden, Virginia Village and Southmoor Park are largely 1950s to 1970s, and the typical job there is a panel replacement: an original service that has aged out, sometimes partial grounding, and a household now drawing considerably more than the panel was sized for. Closer to the center, the pre-1940 bungalows around Washington Park and Platt Park are a different job, where knob-and-tube, ungrounded circuits and 60A services mean an inspection is the honest first step before anyone quotes a number. Two practical notes specific to Denver: permitting runs through Community Planning and Development and takes longer than Douglas County, and historic district review can apply to anything that changes a street-facing elevation. We plan timelines around both rather than promising around them.',
-    driveTimeContext: 'About 32 minutes from our Parker shop to south Denver.',
+      'Denver is a big enough market that the only useful thing to say is which part of it we serve and what the work involves. We cover south Denver, the side nearest Parker, fully within our service area. Neighborhoods like University Hills, Hampden, Virginia Village and Southmoor Park are largely 1950s to 1970s, and the typical job there is a panel replacement: an original service that has aged out, sometimes partial grounding, and a household now drawing considerably more than the panel was sized for. Closer to the center, the pre-1940 bungalows around Washington Park and Platt Park are a different job, where knob-and-tube, ungrounded circuits and 60A services mean an inspection is the honest first step before anyone quotes a number. Two practical notes specific to Denver: permitting runs through Community Planning and Development and takes longer than Douglas County, and historic district review can apply to anything that changes a street-facing elevation. We plan timelines around both rather than promising around them.',
+    driveTimeContext: 'Serving your local community daily.',
     faqs: [
       {
         q: 'Which parts of Denver do you serve?',

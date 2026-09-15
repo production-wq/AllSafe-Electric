@@ -15,6 +15,8 @@ export interface StepItem {
  * positioning, so it always reaches the next icon exactly regardless of how
  * much the step body text wraps.
  */
+import { RichText } from "./RichText";
+
 export function StepList({
   steps,
   tone = 'blue',
@@ -33,7 +35,7 @@ export function StepList({
           </div>
           <div className={i < steps.length - 1 ? 'pb-8 pt-2.5' : 'pt-2.5'}>
             {step.title && <h3 className="text-h3">{step.title}</h3>}
-            <p className={`text-body-lg text-slate ${step.title ? 'mt-1.5' : ''}`}>{step.body}</p>
+            <p className={`text-body-lg text-slate ${step.title ? 'mt-1.5' : ''}`}><RichText text={step.body} /></p>
           </div>
         </li>
       ))}

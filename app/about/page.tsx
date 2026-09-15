@@ -69,8 +69,8 @@ export default function AboutPage() {
       />
       <PageIntro
         eyebrow="About"
-        title="Allsafe Electric - licensed, local, residential."
-        lead="No call center, no rotating crew. A licensed master electrician answers the phone, and a licensed electrician does the work, start to finish, in your home."
+        title="Your trusted residential electricians for the south Denver metro."
+        lead="We are a dedicated team of licensed professionals committed to delivering safe, reliable, and high-quality electrical work for every home we serve."
         crumbs={crumbs}
       />
 
@@ -105,9 +105,9 @@ export default function AboutPage() {
             <SectionHeading
               eyebrow="The team"
               id="team-heading"
-              title="Licensed electricians, not a rotating crew"
-              highlight="Licensed electricians"
-              lead="Most home-services companies send whoever is free. Allsafe sends a licensed electrician who does your job start to finish. The same person who answers the phone is the person who turns up."
+              title="Expertise you can rely on"
+              highlight="Expertise"
+              lead="We bring decades of combined experience to every job. When you hire Allsafe Electric, you get dedicated, licensed professionals who see your project through from the initial estimate to the final inspection."
             />
           </Reveal>
           <div className="mt-10 grid gap-8 md:grid-cols-2">
@@ -152,9 +152,7 @@ export default function AboutPage() {
                   <h3 className="text-h3">Good with dogs. Serious about safety.</h3>
                   <p className="mt-1 text-small font-semibold text-green-700">Our standards on every job</p>
                   <p className="mt-3 flex-1 text-body text-slate">
-                    Shoe covers go on at the door. Tools stay on a drop cloth. Nobody smokes on
-                    your property. We are fine working around your pets. Every job is left cleaner
-                    than we found it. These are company standards, not exceptions.
+                    Shoe covers go on at the door. Work areas are fully protected, and every job is left cleaner than we found it. We are polite, respectful of your home, and completely comfortable working around pets. These are company standards, not exceptions.
                   </p>
                 </div>
               </article>
@@ -228,7 +226,7 @@ export default function AboutPage() {
 
             <h2 className="text-h2">How a visit works</h2>
             <p>
-              You call or book online. A real person picks up during business hours. We confirm a
+              You call or request a quote. A real person picks up during business hours. We confirm a
               two-hour arrival window, not &ldquo;sometime Tuesday.&rdquo; A licensed electrician
               arrives, looks at the job, and gives you a fixed price before any work starts. You
               decide. No pressure, no upsell, and if the honest answer is &ldquo;repair it,
@@ -316,7 +314,7 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <dt className="font-semibold">Scheduling</dt>
-                  <dd className="text-grey">Call or book online any time</dd>
+                  <dd className="text-grey">Call or request a quote any time</dd>
                 </div>
               </dl>
               <Link href="/reviews/" className="link-cta mt-4 inline-block text-[0.95rem]">

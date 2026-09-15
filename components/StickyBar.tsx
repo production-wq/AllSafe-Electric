@@ -8,8 +8,8 @@ import { PhoneIcon, CalendarIcon } from './Icons';
 
 /**
  * Mobile sticky action bar. planning/docs/02 §6.5: three equal segments
- * (Call · Book · Estimate), appears after 400px of scroll, brand-blue ground with
- * the Book segment in brand green. Text and icons are WHITE on both grounds, set
+ * (Call · Quote · Estimate), appears after 400px of scroll, brand-blue ground with
+ * the Quote segment in brand green. Text and icons are WHITE on both grounds, set
  * explicitly so the base `a` color rule cannot win and produce blue-on-green.
  * Height is reserved by the spacer so the bar never covers content.
  *
@@ -25,14 +25,14 @@ export function StickyBar({ emergency = false }: { emergency?: boolean }) {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const bookUrl = (() => {
+  const quoteUrl = (() => {
     try {
-      const u = new URL(business.bookingUrl);
+      const u = new URL('/contact#estimate');
       u.searchParams.set('utm_source', 'allsafe-site');
       u.searchParams.set('utm_medium', 'sticky_bar');
       return u.toString();
     } catch {
-      return business.bookingUrl;
+      return '/contact#estimate';
     }
   })();
 
@@ -66,7 +66,7 @@ export function StickyBar({ emergency = false }: { emergency?: boolean }) {
             Call
           </a>
           <a
-            href={bookUrl}
+            href={quoteUrl}
             target="_blank"
             rel="noopener"
             data-cta="book"
@@ -75,7 +75,7 @@ export function StickyBar({ emergency = false }: { emergency?: boolean }) {
             className={`${seg} bg-green-600 hover:bg-green-700`}
           >
             <CalendarIcon width={21} height={21} />
-            Book
+            Quote
           </a>
           <Link
             href="/contact/#estimate"

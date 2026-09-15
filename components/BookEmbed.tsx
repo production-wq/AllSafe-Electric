@@ -58,7 +58,7 @@ export function BookEmbed() {
 
       <div className="card p-6 md:p-8">
         <p className="flex items-center gap-2 text-h3 font-bold">
-          <CalendarIcon className="text-green-600" /> Book online
+          <CalendarIcon className="text-green-600" /> Request a quote
         </p>
         <p className="mt-2 text-grey">
           Our scheduler is live any time. Pick a service and a window and you are on the calendar.

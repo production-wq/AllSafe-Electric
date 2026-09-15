@@ -139,8 +139,8 @@ const commonProblems = [
 
 const howItWorks = [
   {
-    title: 'Call or book online',
-    body: 'A real person answers weekdays 8am to 6pm, and you can book online any time. Tell us what the house is doing and we will tell you honestly whether it is urgent today or fine to schedule.',
+    title: 'Call or request a quote',
+    body: 'A real person answers weekdays 8am to 6pm, and you can request a quote any time. Tell us what the house is doing and we will tell you honestly whether it is urgent today or fine to schedule.',
   },
   {
     title: 'You get a two-hour window',
@@ -237,11 +237,11 @@ export default function HomePage() {
         */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-gradient-to-br from-navy-deep/95 via-navy/80 to-navy-light/55"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-br from-navy-deep/95 via-navy-deep/90 to-navy-deep/80"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy-deep via-transparent to-navy-deep/40"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/60 to-navy-deep/50"
         />
         <span
           aria-hidden
@@ -269,10 +269,7 @@ export default function HomePage() {
             <EstimateButton location="hero" className="!px-8">
               Get a Quote
             </EstimateButton>
-            {/* Chris' review, 2026-09-08: "Add a schedule here or schedule now CTA button." */}
-            <Link href="/book/" className="btn btn-ghost">
-              <CalendarIcon width={19} height={19} /> Schedule Now
-            </Link>
+            
             <CallButton location="hero" variant="ghost">
               <PhoneIcon width={19} height={19} /> {business.phone.display}
             </CallButton>

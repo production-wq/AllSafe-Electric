@@ -23,7 +23,7 @@ const crumbs = [
 const alwaysIncluded = [
   'A real two-hour arrival window, and a phone call if anything changes',
   'A fixed price in writing before any work starts',
-  'The diagnostic fee credited toward the repair if you go ahead',
+  'A transparent, flat-rate diagnostic fee',
   'Free estimates on straightforward quoted work',
   'Shoe covers, drop cloths, and a tidy work area. Every visit',
   'A licensed master electrician on the job, not a rotating crew',

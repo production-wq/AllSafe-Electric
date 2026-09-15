@@ -20,7 +20,7 @@ export function BookingCard() {
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     track.book('hero', { service });
-    const u = new URL(business.bookingUrl);
+    const u = new URL('/contact#estimate');
     u.searchParams.set('utm_source', 'allsafe-site');
     u.searchParams.set('utm_medium', 'hero_card');
     if (service) u.searchParams.set('utm_content', service);
@@ -38,10 +38,10 @@ export function BookingCard() {
       onSubmit={submit}
       onFocus={() => track.beginBooking()}
       className="w-full rounded-card bg-white p-6 shadow-lift"
-      aria-label="Book a visit"
+      aria-label="Get a Quote"
     >
       <p className="flex items-center gap-2 text-h3 font-bold">
-        <CalendarIcon className="text-green-600" /> Book a visit
+        <CalendarIcon className="text-green-600" /> Get a Quote
       </p>
 
       <fieldset className="mt-4">

@@ -67,7 +67,7 @@ export default function PrivacyPage() {
             so we can tell which ad or page a call came from. This does not identify you personally.
           </p>
           <p>
-            <strong>When you book online:</strong> booking is handled by Housecall Pro on their own
+            <strong>When you request a quote:</strong> booking is handled by Housecall Pro on their own
             platform under their privacy policy. We receive the appointment details.
           </p>
           <p>

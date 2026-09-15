@@ -74,7 +74,7 @@ export function getAvailability(date = new Date()): Availability {
   return {
     state: 'closed',
     dot: 'blue',
-    message: `Opens ${label} · book online any time`,
+    message: `Opens ${label} · request a quote any time`,
     shortLabel: 'Closed now',
     nextOpenLabel: nextDay,
   };
@@ -84,6 +84,6 @@ export function getAvailability(date = new Date()): Availability {
 export const AVAILABILITY_FALLBACK: Availability = {
   state: 'open',
   dot: 'green',
-  message: 'A real person answers this line · Mon–Fri 8am–6pm · book online any time',
+  message: 'A real person answers this line · Mon–Fri 8am–6pm · request a quote any time',
   shortLabel: 'Mon–Fri 8–6',
 };

@@ -75,23 +75,19 @@ export function BookButton({
   className?: string;
   children?: React.ReactNode;
 }) {
-  const url = withUtm(business.bookingUrl, location);
   return (
-    <a
-      href={url}
-      target="_blank"
-      rel="noopener"
-      data-cta="book"
+    <Link
+      href="/contact#estimate"
+      data-cta="quote"
       data-location={location}
       className={btnClass(variant, className)}
-      onClick={() => track.book(location, { service })}
     >
       {children ?? (
         <>
-          <CalendarIcon width={19} height={19} /> Book Online
+          <CalendarIcon width={19} height={19} /> Get a Quote
         </>
       )}
-    </a>
+    </Link>
   );
 }
 
@@ -111,12 +107,12 @@ export function EstimateLink({
       data-location={location}
       className={`link-cta ${className}`}
     >
-      {children ?? 'Get a free estimate'}
+      {children ?? 'Get a quote'}
     </Link>
   );
 }
 
-/** Primary CTA used across the design: a green "Get a Free Estimate" button. */
+/** Primary CTA used across the design: a green "Get a Quote" button. */
 export function EstimateButton({
   location,
   className = '',
@@ -133,7 +129,7 @@ export function EstimateButton({
       data-location={location}
       className={`btn btn-primary ${className}`}
     >
-      {children ?? 'Get a Free Estimate'}
+      {children ?? 'Get a Quote'}
     </Link>
   );
 }
@@ -177,7 +173,7 @@ export function CtaRow({
         <>
           <CallButton location={location} service={service} variant="primary" />
           <EstimateButton location={location} className="!bg-blue-600 hover:!bg-blue-700 !shadow-none">
-            Get a Free Estimate
+            Get a Quote
           </EstimateButton>
         </>
       ) : (
