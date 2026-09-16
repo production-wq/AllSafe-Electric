@@ -8,15 +8,15 @@ heroImage: allsafe-electrician-voltage-testing-breaker-panel.JPG
 heroAlt: Jud from Allsafe Electric checking voltage at an open breaker panel during a callout
 ---
 
-Most electrical problems can wait until morning. A few cannot. Knowing the difference, and knowing what to do in the first few minutes, keeps a bad situation from getting worse. Here is the short version for Highlands Ranch homeowners.
+Most electrical problems can wait until morning. A few cannot. Knowing the difference, and knowing what to do in the first few minutes, keeps a bad situation from getting worse. Here is the short version for [Highlands Ranch](/electricians/highlands-ranch-co/) homeowners.
 
 ## Call right away if you have any of these
 
-**A burning or fishy smell near an outlet or the panel.** That smell is hot plastic. If you can safely reach the breaker for that area, switch it off, and call. This is not a wait-until-morning problem.
+**A burning or fishy smell near an [outlet](/electrical-outlet-services/) or the panel.** That smell is hot plastic. If you can safely reach the breaker for that area, switch it off, and call. This is not a wait-until-morning problem.
 
 **Sparks, or a visible arc, from an outlet, switch, or the panel.** Kill the circuit if you can and stay away from it.
 
-**A warm, buzzing, or crackling breaker panel.** A panel should be silent and cool. Heat or noise means a connection is arcing behind the cover.
+**A warm, buzzing, or crackling [breaker panel](/electrical-panel-services/).** A panel should be silent and cool. Heat or noise means a connection is arcing behind the cover.
 
 **Half the house has power and half does not, with nothing tripped.** This is often a lost neutral on the incoming service, and it can push 240 volts into 120-volt circuits and damage electronics. If you know how to shut off the main, do it, and call the utility and an electrician.
 

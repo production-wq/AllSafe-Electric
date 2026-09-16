@@ -141,6 +141,19 @@ async function auditFile(file: string) {
   // 2026-09-11). Anything else vivid and unapproved is just a warning.
   const orange = findOrange(html);
   if (orange && orange !== '#ff6600') err(page, `orange hex found (${orange}) — client style guide excludes orange, use green (--green)`);
+
+  // Missing image fallback. lib/images.ts degrades to /img/photos/placeholder in
+  // production when a name is absent from the manifest, and that file does not
+  // exist, so the page ships a broken image with no build error. Its own comment
+  // says "should be caught by audit", so this is that check. An About page image
+  // shipped broken this way (2026-09-17): the name had been changed but the photo
+  // was never added.
+  if (html.includes('/img/photos/placeholder')) {
+    err(
+      page,
+      'renders the missing-image placeholder. An image name is not in data/image-manifest.json — add the photo and run `npm run images:process`, or fix the name.'
+    );
+  }
   const stray = findStrayColour(html);
   if (stray) warn(page, `colour outside the approved palette: ${stray}`);
 

@@ -39,7 +39,6 @@ export default function ReviewsPage() {
       <PageIntro
         eyebrow="Reviews"
         title="What Parker homeowners say about us"
-        lead="Allsafe Electric’s reviews live on Google, where they can’t be edited or cherry-picked. The best ones name our team personally, which is exactly the point."
         crumbs={crumbs}
       />
 

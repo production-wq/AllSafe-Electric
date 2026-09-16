@@ -183,7 +183,7 @@ export const services: Service[] = [
     faqs: [
       {
         q: 'Are you available on weekends or after hours?',
-        a: `We are open weekdays, 8am to 6pm, nothing on weekends. Call ${P} for a same-day urgent slot during those hours. A call outside them goes to voicemail and gets a callback first thing the next business day. If it is genuinely dangerous outside our hours, sparks, fire, smoke, call 911 first.`,
+        a: `We are open weekdays, 8am to 6pm. Call ${P} for a same-day urgent slot during those hours. If it is genuinely dangerous outside our hours, sparks, fire, smoke, call 911 first.`,
       },
       {
         q: 'What does an emergency visit cost?',
@@ -206,10 +206,6 @@ export const services: Service[] = [
         a: 'Not quite. A service call is for something that can wait for a normal appointment, a switch that does not work, a fixture to hang. An emergency call is for something actively unsafe right now. If you are not sure which one you have, call and describe it, we will tell you honestly which it is.',
       },
       {
-        q: 'Will the same electrician who diagnoses it also fix it?',
-        a: "Yes. We are a growing company, so the licensed electrician who arrives and finds the cause is the one who repairs it. ",
-      },
-      {
         q: 'What if the emergency turns out to be bigger than expected?',
         a: 'We stop and tell you before doing anything beyond the original scope. If your panel or wiring needs more than a repair, you get that news, and a separate written price, before we touch it.',
       },
@@ -220,10 +216,10 @@ export const services: Service[] = [
       'electrical-outlet-services',
     ],
     overview:
-      '"Emergency" gets used loosely in electrical advertising, so here is exactly what it means with Allsafe. We answer live, weekdays 8am to 6pm, and a genuinely dangerous situation, sparks, a burning smell, a hot panel, usually gets a same-day slot within about two hours. We do not run a 24-hour dispatch line, and we would rather say that plainly than imply round-the-clock coverage we cannot back up. If your problem happens outside those hours and is not immediately dangerous, a dead outlet, a breaker that trips once and resets fine, leave the affected area off, request a quote, and we will get to it the next business day. If it is dangerous, a hot panel, a burning smell, exposed wiring, call 911 first, then us. When you do call, a licensed electrician comes out, never a subcontractor so a trusted, licensed electrician handles your job. That has been true since we started in Parker in 2018.',
+      '"Emergency" gets used loosely in electrical advertising, so here is what it means with Allsafe. We are open weekdays, 8am to 6pm, and a genuinely dangerous situation, sparks, a burning smell, a hot panel, usually gets a same-day slot. If it is dangerous right now, a hot panel, a burning smell, exposed wiring, call 911 first, then us. If the problem is not immediately dangerous, a dead outlet or a breaker that trips once and resets fine, leave that area switched off, request a quote, and we will get you scheduled. When you call, one of our licensed electricians comes out, diagnoses the fault, and gives you the price in writing before any repair starts.',
     whyUs: {
-      heading: 'The same two electricians, every time',
-      body: 'Bigger companies dispatch whoever is free that day. With Allsafe, a real person answers the phone, a licensed electrician shows up, and one of us stands behind the fix. That means no re-explaining the problem to a new face, no guessing whether the last visit notes made it into a system, and a fixed price you approve in person before anything starts.',
+      heading: 'A trusted, licensed electrician every time',
+      body: 'With Allsafe, a real person answers the phone, a licensed electrician shows up, and one of us stands behind the fix. That means no re-explaining the problem to a new face, no guessing whether the last visit notes made it into a system, and a fixed price you approve in person before anything starts.',
     },
     notIncluded: [
       'Drywall, paint, or trim repair after we access wiring behind a wall',

@@ -26,7 +26,7 @@ const alwaysIncluded = [
   'A transparent, flat-rate diagnostic fee',
   'Free estimates on straightforward quoted work',
   'Shoe covers, drop cloths, and a tidy work area. Every visit',
-  'A licensed master electrician on the job, not a rotating crew',
+  'A licensed master electrician on the job',
 ];
 
 interface Offer {

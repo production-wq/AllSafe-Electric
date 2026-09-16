@@ -38,7 +38,7 @@ export default function ServicesHubPage() {
       <PageIntro
         eyebrow="Services"
         title="Residential electrical services in Parker, CO"
-        lead="Strictly residential, no commercial, no industrial. We do the work ourselves. Every page below tells you what it costs to find out and how fast someone can be there."
+        lead="Strictly residential, no commercial, no industrial. Every page below tells you what it costs to find out and how fast someone can be there."
         crumbs={crumbs}
       />
 

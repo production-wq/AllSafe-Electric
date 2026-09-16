@@ -218,7 +218,7 @@ export function EstimateForm({
           error={err.zip}
           defaultValue={v.zip}
           autoComplete="postal-code"
-          hint="So we can tell you the drive time"
+          hint="So we can confirm you are in our service area"
           required
         />
         {serviceSelect}

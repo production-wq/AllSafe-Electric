@@ -8,7 +8,7 @@ heroImage: allsafe-electrician-testing-residential-breaker-panel.JPG
 heroAlt: Jud from Allsafe Electric testing circuits at a residential breaker panel
 ---
 
-Your electrical panel is the one part of the system every circuit runs through. When it is undersized, overloaded, or just old, you get symptoms all over the house that look like separate problems. Aurora has a wide range of housing stock, from 1960s and 70s homes with original equipment to newer builds already 20-plus years old, and the panel is where age shows up first. Here is what to watch for.
+Your electrical panel is the one part of the system every circuit runs through. When it is undersized, overloaded, or just old, you get symptoms all over the house that look like separate problems. [Aurora](/electricians/aurora-co/) has a wide range of housing stock, from 1960s and 70s homes with original equipment to newer builds already 20-plus years old, and the panel is where age shows up first. Here is what to watch for.
 
 ## Breakers that trip repeatedly
 

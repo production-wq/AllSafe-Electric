@@ -1,4 +1,15 @@
 import type { Faq } from './services';
+import { cities } from './cities';
+
+/**
+ * Standard "what area do you cover?" answer, revision doc §1.8.
+ * Built from the same `cities` list that drives the Service Areas menu, so the
+ * answer can never drift out of sync with the pages that actually exist.
+ */
+export const SERVICE_AREA_ANSWER = `We cover the full South Denver metro area, including ${cities
+  .map((c) => c.name)
+  .slice(0, -1)
+  .join(', ')}, and ${cities[cities.length - 1].name}.`;
 
 /**
  * Homepage FAQ, marked up as FAQPage (planning/docs/06 §4.1).
@@ -12,7 +23,7 @@ export const homeFaqs: Faq[] = [
   },
   {
     q: 'What area do you cover?',
-    a: 'We cover the full South Denver metro area, including Parker, Castle Rock, Highlands Ranch, Lone Tree, Centennial, The Pinery, Stonegate, Castle Pines, Franktown, Elizabeth, Elbert, Foxfield, Dove Valley, Aurora, Englewood, Littleton, Acres Green, Greenwood Village, Lakewood, Edgewater, and Denver.',
+    a: SERVICE_AREA_ANSWER,
   },
   {
     q: 'Are you licensed and insured?',

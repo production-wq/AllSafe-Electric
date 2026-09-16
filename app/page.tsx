@@ -5,7 +5,6 @@ import { pageMetadata } from '@/lib/seo';
 import { SiteImage } from '@/components/SiteImage';
 import { EstimateForm } from '@/components/EstimateForm';
 import { ServiceCard, StatBand } from '@/components/sections';
-import { Testimonials } from '@/components/Testimonials';
 import { ReviewsMarquee } from '@/components/ReviewsMarquee';
 import { getFallbackReviewsSync } from '@/lib/reviews';
 import { MapFacade } from '@/components/MapFacade';
@@ -20,7 +19,7 @@ import { AnimatedHeading } from '@/components/AnimatedHeading';
 import { Parallax } from '@/components/Parallax';
 import { SectionHeading } from '@/components/SectionHeading';
 import { TrustBadges } from '@/components/TrustBadges';
-import { FeaturedTestimonial } from '@/components/Testimonials';
+import { ServiceReviews } from '@/components/ServiceReviews';
 import { services } from '@/lib/services';
 import { EstimateButton, CallButton } from '@/components/cta';
 import {
@@ -99,7 +98,7 @@ const whyChoose = [
   {
     icon: MapPinIcon,
     title: 'Local Parker Expertise',
-    body: 'We do the work ourselves, and we know the homes and wiring common across Parker.',
+    body: 'Our licensed electricians know the homes and wiring common across the South Denver metro.',
   },
 ];
 
@@ -281,14 +280,16 @@ export default function HomePage() {
             Your friendly, professional local electricians. Fast response, licensed and insured, and
             BBB A+ accredited.
           </p>
+          {/* Call is the primary CTA, Get a Quote is secondary (revision doc
+              §1.1): calls convert faster than form fills, so Call leads and
+              carries the green primary styling. */}
           <div className="rise-1 mt-9 flex flex-wrap justify-center gap-4">
-            <EstimateButton location="hero" className="!px-8">
+            <CallButton location="hero" variant="primary" className="!px-8">
+              <PhoneIcon width={19} height={19} /> Call {business.phone.display}
+            </CallButton>
+            <EstimateButton location="hero" variant="ghost">
               Get a Quote
             </EstimateButton>
-            
-            <CallButton location="hero" variant="ghost">
-              <PhoneIcon width={19} height={19} /> {business.phone.display}
-            </CallButton>
           </div>
         </div>
         {/* curved bottom edge */}
@@ -659,8 +660,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Testimonials ────────────────────────────────────────────────── */}
-      <Testimonials />
+      {/* ── Testimonials ──────────────────────────────────────────────────
+          Live Google reviews via Featurable. Was <Testimonials />, which read a
+          hardcoded four-review JSON file and put the same Todd review on the
+          homepage and most other pages (revision doc §1.10). */}
+      <section className="section bg-paper">
+        <div className="container-page">
+          <ServiceReviews heading="What our customers say" limit={3} />
+        </div>
+      </section>
 
       {/* ── FAQ ─────────────────────────────────────────────────────────── */}
       <section className="section" aria-labelledby="faq-heading">

@@ -143,7 +143,6 @@ export const cities: City[] = [
         note: 'Custom-built homes with active HOA design review, most often outdoor lighting and generator placement.',
       },
     ],
-    driveTimeContext: 'We are based in Parker itself, so there is no drive time built into your appointment window.',
     galleryImages: [
       { name: 'suburban-home-exterior-daylight.JPG', alt: 'A suburban Parker, Colorado home exterior in daylight' },
       { name: 'allsafe-electrician-standing-in-modern-home.JPG', alt: 'Allsafe electrician on a job inside a Parker home' },
@@ -214,7 +213,7 @@ export const cities: City[] = [
     tier: 1,
     driveTimeMin: 20,
     responseExpectation:
-      'About 20 minutes from Parker. Same-day for urgent work, next-day scheduling for most jobs.',
+      'Same-day for urgent work, next-day scheduling for most jobs.',
     utility: {
       name: 'Xcel Energy',
       verify: true,
@@ -439,7 +438,6 @@ export const cities: City[] = [
         note: 'Larger acreage properties where standby generators and buried feeds to outbuildings are common requests.',
       },
     ],
-    driveTimeContext: 'Serving your local community daily.-day.',
     faqs: [
       {
         q: 'Do Pinery permits go through Parker or Douglas County?',
@@ -495,7 +493,6 @@ export const cities: City[] = [
       'Stonegate. The homes here are mostly 1990s and 2000s builds on 100A or 150A service, so the work is usually about capacity: making room for an EV charger, a hot tub, or a finished basement without tripping the whole house.',
     overview:
       'Stonegate electrically is one of the most predictable areas we work in. Nearly everything here went up between the early 1990s and the mid 2000s, built to the codes of the day with copper wiring and grounded circuits, so genuine safety hazards are rare. What is common is running out of room. A panel sized for a 1990s household does not comfortably absorb an EV charger, a hot tub and a finished basement, and the symptom homeowners notice is breakers tripping when several big loads run at once. That is a capacity problem, not a broken panel, and the honest answer is often cheaper than people expect: a load calculation will tell you whether you genuinely need a 200A service upgrade or whether rebalancing circuits solves it.',
-    driveTimeContext: 'A core part of our local service area.',
     faqs: [
       {
         q: 'Is Stonegate permitted through Parker or Douglas County?',
@@ -557,7 +554,6 @@ export const cities: City[] = [
         note: 'Newer construction, mostly EV charger additions and finished-basement circuits rather than repairs.',
       },
     ],
-    driveTimeContext: 'Serving your local community daily.-25.',
     faqs: [
       {
         q: 'Does Castle Pines permit through Douglas County?',
@@ -609,7 +605,6 @@ export const cities: City[] = [
       'Franktown is acreage country. Well pumps, detached shops, buried feeds and standby generators make up most of the work here, and those are jobs that need someone who has actually done them rather than someone guessing.',
     overview:
       'Franktown work is rural work, and it is genuinely different from a subdivision call. Properties sit on acreage, most are on well and septic, and the electrical system is usually spread across more than one building: a meter main outside, a panel in the house, a sub-panel in a shop or barn, and buried feeds between them that in many cases went in decades ago. Two things follow from that. First, when the power goes out here you also lose water, because the well pump is electric, which is why standby generators are far more common in Franktown than in town and why sizing them around the pump, furnace and septic controls matters. Second, fault-finding takes longer, because a problem can be anywhere along a few hundred feet of buried run rather than inside four walls. We price that honestly rather than quoting a subdivision rate and then adding to it.',
-    driveTimeContext: 'Serving your local community daily.',
     faqs: [
       {
         q: 'Do you cover acreage properties with outbuildings?',
@@ -661,7 +656,6 @@ export const cities: City[] = [
       'Elizabeth is fully covered in Elbert County. Work here is mostly rural: generators, well pump circuits, outbuilding feeds and panel upgrades on homes that have been added onto over the years.',
     overview:
       'Elizabeth is far enough out that a lot of metro electricians will not make the drive, which is exactly why we get called. The work splits two ways. In the older town core, it is mid-century homes with original equipment, where the honest first step is often an inspection rather than a quote, because what needs doing is not obvious until the panel cover comes off. Outside town it is acreage: well and septic, detached shops, buried feeds, and houses that grew in stages over decades, which typically leaves a patchwork of panels and sub-panels that nobody has ever documented. Two practical notes for Elizabeth specifically. Permits may be Town of Elizabeth or Elbert County depending on which side of the town boundary you are on, and the utility may be CORE or Mountain View Electric, which changes your rebate eligibility. We confirm both before quoting rather than guessing.',
-    driveTimeContext: 'Serving your local community daily.',
     faqs: [
       {
         q: 'Do you actually come out to Elizabeth?',
@@ -713,7 +707,6 @@ export const cities: City[] = [
       'Elbert is true acreage country. Generators, well pump circuits, transfer switches and outbuilding feeds are the bulk of the work, and outages here last long enough that backup power is a practical purchase rather than a luxury.',
     overview:
       'Elbert is the furthest point we regularly serve, and we are upfront about what that means: scheduled work is straightforward to arrange, while same-day emergency coverage depends on where the day already has us. What brings us out here is rural infrastructure. Almost every property is on a well, which means no power equals no water, and rural lines are restored after town lines simply because fewer customers are affected. That combination is why backup power in Elbert is a practical purchase rather than a luxury, and why a transfer switch or interlock done properly matters: back-feeding a generator through an unprotected connection is genuinely dangerous to you and to the lineman working on the circuit. Beyond generators, the common work is service replacements, outbuilding feeds, and sorting out homes that were built or expanded in stages.',
-    driveTimeContext: 'Serving your local community daily.',
     faqs: [
       {
         q: 'Is Elbert too far for you to service?',
@@ -765,7 +758,6 @@ export const cities: City[] = [
       'Foxfield is a core part of our service area and it is horse-property country: barns, arena lighting, gates and buried feeds between buildings alongside the usual work inside the house.',
     overview:
       'Foxfield is unusual for how rural it feels given how close it is to the metro. These are one to five acre horse properties, and the electrical system almost always extends well past the house: a barn or loafing shed with its own sub-panel, tack room circuits, arena or exterior lighting, automatic gates, and water or pump equipment. The houses themselves are mostly 1980s through 2000s and generally in decent shape, so the calls tend to come from everything else. Buried feeds between buildings are where problems eventually surface, whether from age, rodent damage, or a trench dug by someone who did not know the run was there. Worth knowing: unlike the Douglas County areas just south, Foxfield is generally Xcel rather than CORE, which changes your rebate eligibility.',
-    driveTimeContext: 'Serving your local community daily.',
     faqs: [
       {
         q: 'Do you do barn and outbuilding electrical work?',
@@ -817,7 +809,6 @@ export const cities: City[] = [
       'Dove Valley is fully covered by our team. Most of the residential work here is panel capacity: making room for an EV charger, a hot tub, or a finished basement in a home built before any of those were standard.',
     overview:
       'Dove Valley sits right next to Centennial Airport, mixing residential streets with business-park development, and the residential work follows a familiar Front Range pattern. Homes are largely 1980s through 2000s, structurally and electrically sound, running original 100A or 150A services that were sized for a very different household. Finished basements and home offices are especially common here, and both are reliable triggers for discovering that the panel has no room left. The fix is usually straightforward and the honest version of it starts with a load calculation, because the answer is sometimes a 200A heavy-up and sometimes just rebalancing what is already there. One local note: Dove Valley is Xcel territory while addresses a few minutes south in Douglas County are on CORE, which trips people up on rebates.',
-    driveTimeContext: 'Serving your local community daily.',
     faqs: [
       {
         q: 'Is Dove Valley permitted through Arapahoe County?',
@@ -879,7 +870,6 @@ export const cities: City[] = [
         note: 'Late 1990s and 2000s homes now hitting the point where panel capacity limits what can be added.',
       },
     ],
-    driveTimeContext: 'Serving your local community daily.',
     faqs: [
       {
         q: 'Which parts of Aurora do you serve?',
@@ -931,7 +921,6 @@ export const cities: City[] = [
       'Englewood is a core part of our service area, and the work there is older-home work: service upgrades from 60A or 100A, grounding, ungrounded outlet replacement, and inspections on homes that have been partly updated over the decades.',
     overview:
       'Englewood is the oldest housing stock we regularly work in, and that changes the job completely. Much of the city dates from the 1940s through the 1960s, so instead of capacity problems you get condition problems: original fuse or early breaker panels, 60A and 100A services that are genuinely undersized rather than merely tight, ungrounded two-prong outlets throughout, cloth-insulated conductors, and in the oldest homes surviving knob-and-tube. Most of these houses have also been partially updated at some point, which leaves a patchwork where a modern kitchen circuit runs off a panel that has not been touched since the Eisenhower administration. The honest starting point in Englewood is usually an inspection rather than a quote, because a realistic upgrade price depends on what is actually behind the walls and in the panel, and that is not visible from the outside.',
-    driveTimeContext: 'Serving your local community daily.',
     faqs: [
       {
         q: 'My Englewood home still has two-prong outlets. What are my options?',
@@ -983,7 +972,6 @@ export const cities: City[] = [
       'Littleton is a core part of our service area and it covers a lot of ground electrically, from pre-1960 homes downtown that need inspections and rewiring to 1970s and 80s neighborhoods where the original panel has finally run out of room.',
     overview:
       'Littleton covers more electrical ground than almost anywhere else we serve, because the housing runs from pre-1960 to brand new. Historic downtown and the older established streets are condition work: original panels, ungrounded circuits, cloth-insulated conductors and occasionally knob-and-tube, where an inspection is the sensible first step before anyone quotes an upgrade. The big 1970s and 80s neighborhoods in between are where most of our Littleton panel work happens, because those original services are now decades past the load they were designed around. Newer development south and west is straightforward capacity work, mostly EV chargers and basement circuits. One thing genuinely worth checking before anything else: a Littleton mailing address does not guarantee you are inside city limits, and the area touches three counties, so the permitting office depends on your actual parcel rather than your mail.',
-    driveTimeContext: 'Serving your local community daily.',
     faqs: [
       {
         q: 'Do you serve Littleton, given the drive?',
@@ -1046,7 +1034,6 @@ export const cities: City[] = [
       'Acres Green is a core part of our service area and it is one of the more predictable neighborhoods we work in: 1970s and 80s homes, mostly original panels, and a steady stream of EV charger and panel capacity work.',
     overview:
       'Acres Green is a small, self-contained 1970s and 80s subdivision, which makes the electrical picture unusually consistent. Almost everything here was built within a narrow window, so homes tend to share the same original 100A service, the same grounding practices, and in a number of cases the same panel brands that era favored. None of that is automatically a problem, but it does mean a very high proportion of our calls here resolve into the same two jobs: a capacity upgrade, or replacing a panel that should not still be in service. The other driver is location. Acres Green sits right by the Lincoln Avenue corridor, so EV adoption is high, and a Level 2 charger is exactly the kind of continuous load a 1970s panel was never sized for. We do the load calculation before quoting, because sometimes the honest answer is that you have room already.',
-    driveTimeContext: 'Serving your local community daily.',
     faqs: [
       {
         q: 'Is Acres Green permitted through Douglas County or Lone Tree?',
@@ -1093,7 +1080,6 @@ export const cities: City[] = [
       'Greenwood Village is fully covered by our team. The homes are larger than average and so are the electrical systems, with more exterior lighting, more sub-panels and more generator work than a standard subdivision.',
     overview:
       'Greenwood Village is an estate market, and residential electrical work there reflects it. Services are usually already 200A, sub-panels are normal rather than exceptional, and the majority of what goes wrong is outside the house: landscape and architectural lighting, gate and driveway feeds, pool and spa circuits, and buried runs to outbuildings. Those are the components that take twenty Colorado winters of freeze and thaw, and they fail long before interior wiring does. Two practical local notes. Greenwood Village permits through its own city building division rather than Arapahoe County, and it is Xcel territory while the Douglas County towns a few minutes south are on CORE, which regularly trips people up on rebate eligibility. We confirm both before quoting. Note that we are a strictly residential contractor, so the Tech Center commercial corridor is outside what we do.',
-    driveTimeContext: 'Serving your local community daily.',
     faqs: [
       {
         q: 'Do you work on the large estate properties here?',
@@ -1140,7 +1126,6 @@ export const cities: City[] = [
       'Lakewood is a core part of our service area, and it is panel country. A large share of the housing is 1950s to 1970s, which means original services, ungrounded circuits, and panels that have reached the end of their working life.',
     overview:
       'Lakewood generates more panel-replacement enquiries than anywhere else we cover, and the housing stock explains why. Large parts of the city went up between the 1950s and 1970s, so the typical call involves an original or first-replacement panel that is now decades past its design life, a 100A service that was generous in 1962 and is not now, and ungrounded two-prong circuits throughout. The oldest homes add cloth-insulated conductors to that list. None of it is cause for alarm on its own, but it does mean the honest first step here is often an inspection rather than a quote, because what a realistic upgrade costs depends entirely on what is behind the panel cover and inside the walls. Newer infill around Belmar is straightforward capacity work by comparison. We are upfront about the drive: Lakewood is best booked as scheduled work, and we group jobs there into the same run where we can.',
-    driveTimeContext: 'Serving your local community daily.',
     faqs: [
       {
         q: 'Is Lakewood too far for you?',
@@ -1191,7 +1176,6 @@ export const cities: City[] = [
       'Edgewater features some of the oldest housing stock we cover. Service upgrades, grounding, and inspections on homes that have been renovated piecemeal over decades make up nearly all the work.',
     overview:
       'Edgewater is small, old and dense, and the electrical work reflects all three. Most of the housing predates 1960 and a good deal predates 1940, so instead of capacity problems you get condition problems: original panels, 60A and 100A services that are genuinely undersized rather than merely tight, ungrounded two-prong circuits throughout, cloth-insulated conductors, and knob-and-tube surviving in the oldest properties. Nearly everything here has also been renovated in stages, which leaves the common Edgewater pattern of a modern kitchen circuit feeding off a panel nobody has opened since the 1950s. The honest starting point is an inspection: a realistic upgrade price depends on what is actually in the walls, and in this housing stock that is not visible from outside. One practical note, lots are narrow, so where a new meter or panel can physically go sometimes shapes the job.',
-    driveTimeContext: 'Serving your local community daily.',
     faqs: [
       {
         q: 'Do you really cover Edgewater from Parker?',
@@ -1238,7 +1222,6 @@ export const cities: City[] = [
       'We cover south Denver,  Most of the work is panel replacement in post-war neighborhoods and inspections on the older pre-war bungalows closer to the center.',
     overview:
       'We cover South Denver regularly. We cover south Denver, the side nearest Parker, fully within our service area. Neighborhoods like University Hills, Hampden, Virginia Village and Southmoor Park are largely 1950s to 1970s, and the typical job there is a panel replacement: an original service that has aged out, sometimes partial grounding, and a household now drawing considerably more than the panel was sized for. Closer to the center, the pre-1940 bungalows around Washington Park and Platt Park are a different job, where knob-and-tube, ungrounded circuits and 60A services mean an inspection is the honest first step before anyone quotes a number. Two practical notes specific to Denver: permitting runs through Community Planning and Development and takes longer than Douglas County, and historic district review can apply to anything that changes a street-facing elevation. We plan timelines around both rather than promising around them.',
-    driveTimeContext: 'Serving your local community daily.',
     faqs: [
       {
         q: 'Which parts of Denver do you serve?',

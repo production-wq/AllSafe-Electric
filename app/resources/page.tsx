@@ -81,7 +81,7 @@ export default function ResourcesPage() {
       <PageIntro
         eyebrow="Resources"
         title="Permits, utilities & code, the local basics"
-        lead="The rules that actually apply to a home in Parker and Douglas County, in plain English, with links to the authority for every claim. We re-check these quarterly."
+        lead="Here are the rules that apply to homes in Parker and Douglas County, with helpful links to the authority for every claim. We re-check these quarterly."
         crumbs={crumbs}
       />
 

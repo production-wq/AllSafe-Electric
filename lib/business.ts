@@ -76,6 +76,9 @@ export const business = {
      * individual reviews, not a count — this is the display/schema source.
      */
     reviewCount: 149,
+    /** Fallback only. Live figures come from the Featurable API via
+     * lib/reviews.ts; these are the floor if that fetch fails. */
+    averageRating: 5,
     /** Read reviews / view the profile. */
     profileUrl: 'https://www.google.com/maps?cid=2391241286444373261',
     directionsUrl:

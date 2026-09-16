@@ -16,7 +16,7 @@ import { PhotoGallery } from '@/components/PhotoGallery';
 import { Parallax } from '@/components/Parallax';
 import { SiteImage } from '@/components/SiteImage';
 import { StatBand } from '@/components/sections';
-import { FeaturedTestimonial } from '@/components/Testimonials';
+import { ServiceReviews } from '@/components/ServiceReviews';
 import { StickyTOC } from '@/components/StickyTOC';
 import { CityToServices } from '@/components/RelatedLinks';
 import { HomeIcon, ShieldIcon, BoltIcon, ClockIcon, MapPinIcon } from '@/components/Icons';
@@ -149,13 +149,10 @@ export function CityPageContent({ citySlug }: { citySlug: string }) {
           <div>
             <div className="flex flex-wrap items-center gap-2">
               <span className="chip chip-blue">{c.county} County, Colorado</span>
-              <span className="chip chip-blue">
-                {c.driveTimeMin === 0 ? 'Home base' : `${c.driveTimeMin} min from the shop`}
-              </span>
+              <span className="chip chip-blue">Licensed &amp; insured</span>
             </div>
             <h1 className="mt-5 text-display">Electrician in {c.name}, CO</h1>
             <p className="mt-5 max-w-2xl text-lead text-slate">{c.overview ?? c.lead}</p>
-            {c.driveTimeContext && <p className="mt-3 max-w-2xl text-body text-grey">{c.driveTimeContext}</p>}
             <CtaRow location="hero" className="mt-7" />
           </div>
 
@@ -166,10 +163,7 @@ export function CityPageContent({ citySlug }: { citySlug: string }) {
             <dl className="divide-y divide-rule">
               {[
                 { k: 'County', v: `${c.county} County` },
-                {
-                  k: 'From the Parker shop',
-                  v: c.driveTimeMin === 0 ? 'This is home base' : `About ${c.driveTimeMin} min`,
-                },
+                { k: 'Coverage', v: 'Full service area' },
                 { k: 'Permit authority', v: c.permitAuthority },
                 { k: 'Electric utility', v: `${c.utility.name}${c.utility.verify ? '*' : ''}` },
               ].map((row) => (
@@ -196,8 +190,8 @@ export function CityPageContent({ citySlug }: { citySlug: string }) {
               tone="light"
               items={[
                 {
-                  value: c.driveTimeMin === 0 ? 'Local' : `${c.driveTimeMin} min`,
-                  label: c.driveTimeMin === 0 ? 'This is our home base' : 'From our Parker shop',
+                  value: 'Same-Day',
+                  label: 'For urgent calls, 2-hr window',
                   icon: <ClockIcon width={20} height={20} />,
                 },
                 {
@@ -398,7 +392,9 @@ export function CityPageContent({ citySlug }: { citySlug: string }) {
           </Reveal>
 
           <Reveal>
-            <FeaturedTestimonial authorIndex={1} />
+            {/* Recent live Google reviews. Was a hardcoded testimonial repeated
+                across pages (revision doc §1.10). */}
+            <ServiceReviews heading={`What customers say`} />
           </Reveal>
 
           <Reveal>

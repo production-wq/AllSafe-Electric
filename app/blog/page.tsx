@@ -37,7 +37,7 @@ export default async function BlogIndex() {
       />
       <PageIntro
         eyebrow="Blog"
-        title="Straight answers, no filler"
+        title="Answering the questions homeowners ask."
         lead="Written by a licensed master electrician, for homeowners, not other electricians. Every post answers the question in the first paragraph."
         crumbs={crumbs}
       />

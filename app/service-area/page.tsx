@@ -66,7 +66,7 @@ export default function ServiceAreaPage() {
                       </Link>
                       <span className="text-[0.9rem] text-grey">
                         {c.county} County ·{' '}
-                        {c.driveTimeMin === 0 ? 'home base' : `~${c.driveTimeMin} min from the shop`}
+                        {c.county} County
                       </span>
                     </div>
                     <p className="mt-1 text-[1rem] text-grey">{c.responseExpectation}</p>
@@ -78,22 +78,33 @@ export default function ServiceAreaPage() {
             <section>
               <h2 className="text-h2">Also serving</h2>
               <p className="mt-2 text-grey">
-                We cover these communities regularly. Call for the drive time to your specific address.
+                We cover these communities regularly. Call if you are not sure whether we reach your address.
               </p>
               {/* All communities are linked — plain-text city names are a build failure (docs/03 §9) */}
               <ul className="mt-4 flex flex-wrap gap-2">
                 {tier2Areas.map((a) => {
-                  // Convert display name to a city-page slug for linking.
-                  // e.g. "Castle Pines" → /electricians/castle-pines-co/
+                  // Link ONLY when a city page actually exists for this area.
+                  // The previous version derived a slug from the display name
+                  // and linked it unconditionally, which produced hard 404s for
+                  // Sedalia and Larkspur (covered areas with no page of their
+                  // own). Areas without a page render as plain text: still
+                  // listed as covered, but never a dead link.
                   const slug = a.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+                  const hasPage = cities.some((c) => c.slug === slug);
                   return (
                     <li key={a}>
-                      <Link
-                        href={`/electricians/${slug}-co/`}
-                        className="rounded border border-rule bg-white px-3 py-1.5 text-[0.95rem] transition-colors hover:border-blue-300 hover:bg-blue-50"
-                      >
-                        {a}
-                      </Link>
+                      {hasPage ? (
+                        <Link
+                          href={`/electricians/${slug}-co/`}
+                          className="rounded border border-rule bg-white px-3 py-1.5 text-[0.95rem] transition-colors hover:border-blue-300 hover:bg-blue-50"
+                        >
+                          {a}
+                        </Link>
+                      ) : (
+                        <span className="inline-block rounded border border-rule bg-white px-3 py-1.5 text-[0.95rem] text-slate">
+                          {a}
+                        </span>
+                      )}
                     </li>
                   );
                 })}

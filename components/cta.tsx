@@ -113,21 +113,28 @@ export function EstimateLink({
 }
 
 /** Secondary CTA used across the design: a secondary "Get a Quote" button. */
+/**
+ * Secondary CTA. Call is the primary action site-wide (revision doc §1.1), so
+ * this defaults to outline styling and never to the green primary. `variant`
+ * exists so dark grounds can use `ghost` instead of a white-filled button.
+ */
 export function EstimateButton({
   location,
   className = '',
   children,
+  variant = 'outline',
 }: {
   location: Loc;
   className?: string;
   children?: React.ReactNode;
+  variant?: Extract<Variant, 'outline' | 'ghost' | 'blue'>;
 }) {
   return (
     <Link
       href="#estimate"
       data-cta="estimate"
       data-location={location}
-      className={`btn btn-outline ${className}`}
+      className={btnClass(variant, className)}
     >
       {children ?? 'Get a Quote'}
     </Link>

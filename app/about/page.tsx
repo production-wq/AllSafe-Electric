@@ -12,7 +12,7 @@ import { Parallax } from '@/components/Parallax';
 import { StepList } from '@/components/StepList';
 import { PhotoGallery } from '@/components/PhotoGallery';
 import { SectionHeading } from '@/components/SectionHeading';
-import { FeaturedTestimonial } from '@/components/Testimonials';
+import { ServiceReviews } from '@/components/ServiceReviews';
 import { TrustBadges } from '@/components/TrustBadges';
 import { services } from '@/lib/services';
 import { cities } from '@/lib/cities';
@@ -111,7 +111,7 @@ export default function AboutPage() {
               <article className="card flex h-full flex-col overflow-hidden">
                 <Parallax distance={26} className="h-[320px]">
                   <SiteImage
-                    name="owner-at-kitchen-table-with-customers.jpg"
+                    name="allsafe-electrician-blue-uniform-kitchen-portrait.JPG"
                     alt="Jud Cushing, owner and master electrician at Allsafe Electric, in a Parker kitchen"
                     fill
                     sizes="(min-width: 768px) 46vw, 100vw"
@@ -125,9 +125,14 @@ export default function AboutPage() {
                   </p>
                   <p className="mt-3 flex-1 text-body text-slate">
                     Jud has been in the trade more than fifteen years and founded Allsafe in
-                    Parker in January 2018. He holds the master electrician license and oversees
-                    every job the company takes on. If you want a straight answer about whether
-                    something needs replacing or just repairing, you will get one.
+                    Parker in January 2018. He holds the master electrician license.
+                  </p>
+                  <p className="mt-3 flex-1 text-body text-slate">
+                    He started Allsafe after seeing how hard it was for homeowners to find an
+                    electrician they could trust: one who showed up when promised, worked
+                    professionally, and treated every customer with the courtesy and respect he
+                    would want for anyone working in his own home. Trust, responsibility and
+                    courtesy are the foundation the business is built on.
                   </p>
                 </div>
               </article>
@@ -166,7 +171,7 @@ export default function AboutPage() {
               id="story-heading"
               title="How Allsafe got here"
               highlight="Allsafe"
-              lead="No acquisition, no franchise, no private-equity roll-up. One electrician who wanted to do it properly, and a business that grew because people kept calling back."
+              lead="No acquisition, no franchise, no private equity rollup. Allsafe started as one electrician who wanted to do the work properly, and a business that grew because people kept calling back."
             />
             <div className="mt-8 overflow-hidden rounded-card border border-rule shadow-photo">
               <SiteImage
@@ -187,7 +192,7 @@ export default function AboutPage() {
                   body: 'Jud leaves the larger shops and starts Allsafe Electric in Parker in January. The premise is unglamorous: answer the phone, arrive when you said you would, and leave the house cleaner than you found it.',
                 },
                 {
-                  title: 'Word of mouth does the marketing',
+                  title: 'Reputation travels',
                   body: 'Parker and the surrounding Douglas County towns are small enough that reputation travels. The reviews that accumulate name the crew personally rather than the company, which is the clearest sign the work is being done by the people who sold it.',
                 },
                 {
@@ -230,14 +235,14 @@ export default function AboutPage() {
             </p>
             <p>
               Shoe covers go on at the door. Tools stay on a drop cloth. Nobody smokes on your
-              property. We are fine working around your pets.
+              property. We love working around your pets.
             </p>
 
             <h2 className="text-h2">Strictly residential</h2>
             <p>
-              Allsafe is a residential contractor. That focus is
-              deliberate. The panels, the code questions, the Douglas County permit process, the way
-              a 1990s Parker home is wired: that is the work we do every day and know cold.
+              Allsafe is a residential contractor. The panels, the code questions, the Douglas
+              County permit process, the way a 1990s Parker home is wired: that is the work we do
+              every day.
             </p>
 
             <h2 id="credentials" className="scroll-mt-28 text-h2">
@@ -274,10 +279,6 @@ export default function AboutPage() {
                 </a>
               </li>
             </ul>
-            <p className="text-[0.95rem] text-grey">
-              Allsafe Electric is also a BBB Accredited Business with an A+ rating and HomeAdvisor
-              Screened &amp; Approved. Badge links go to the respective verification profiles.
-            </p>
           </div>
 
           <aside className="space-y-5 lg:sticky lg:top-[calc(var(--header-h)+1rem)] lg:h-fit">
@@ -321,38 +322,6 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* ── Gallery ─────────────────────────────────────────────────────── */}
-      <section className="section bg-paper" aria-labelledby="about-gallery-heading">
-        <div className="container-page">
-          <Reveal>
-            <SectionHeading
-              eyebrow="On the job"
-              id="about-gallery-heading"
-              title="This is what our work actually looks like"
-              highlight="our work"
-              lead="Every photograph on this site is a real Allsafe job. No stock photography, and no borrowed portfolios."
-            />
-          </Reveal>
-          <Reveal delay={100} className="mt-10">
-            <PhotoGallery
-              photos={[
-                { name: 'electrician-tightening-connections-in-breaker-panel.JPG', alt: 'Tightening connections inside a residential breaker panel' },
-                { name: 'illuminated-ornate-crystal-chandelier.JPG', alt: 'A crystal chandelier wired and hung by Allsafe Electric' },
-                { name: 'electrician-testing-gfci-kitchen-outlet.JPG', alt: 'Testing a GFCI kitchen outlet' },
-                { name: 'allsafe-electrician-putting-on-protective-shoe-covers.JPG', alt: 'Shoe covers going on before entering a customer home' },
-                { name: 'electrician-installing-weatherproof-duplex-outlets.JPG', alt: 'Installing weatherproof outdoor outlets' },
-                { name: 'modern-three-blade-ceiling-fan-with-light.JPG', alt: 'A ceiling fan installed and balanced' },
-                { name: 'open-residential-electrical-breaker-panel.JPG', alt: 'An open residential breaker panel during service work' },
-                { name: 'electrician-tool-bag-on-kitchen-counter.JPG', alt: 'An Allsafe Electric tool bag on a kitchen counter' },
-                { name: 'dual-usb-residential-wall-outlet.JPG', alt: 'A dual USB wall outlet installed by Allsafe Electric' },
-              ]}
-            />
-          </Reveal>
-          <Reveal delay={160} className="mt-10">
-            <FeaturedTestimonial authorIndex={0} />
-          </Reveal>
-        </div>
-      </section>
 
       {/* ── Where to go next ───────────────────────────────────────────── */}
       <section className="section" aria-labelledby="next-heading">

@@ -17,7 +17,8 @@ import { PhotoGallery } from '@/components/PhotoGallery';
 import { StickyTOC } from '@/components/StickyTOC';
 import { ServiceToCities } from '@/components/RelatedLinks';
 import { Parallax } from '@/components/Parallax';
-import { FeaturedTestimonial } from '@/components/Testimonials';
+import { ServiceReviews } from '@/components/ServiceReviews';
+import { reviewTagsForService } from '@/lib/reviewTags';
 import { ShieldIcon as ShieldMark, ClockIcon, PriceTagIcon, BoltIcon } from '@/components/Icons';
 import { GoogleG, CheckIcon, ShieldIcon } from '@/components/Icons';
 import { business } from '@/lib/business';
@@ -283,7 +284,7 @@ export default async function ServicePage({
             <section aria-labelledby="gallery-heading">
               <p className="eyebrow">Our work</p>
               <h2 id="gallery-heading" className="mt-3 text-h1">
-                {s.navLabel} in real Parker homes
+                Our {s.navLabel.toLowerCase()} work
               </h2>
               <PhotoGallery photos={gallery} className="mt-8" />
             </section>
@@ -326,11 +327,11 @@ export default async function ServicePage({
               </h2>
               <p className="mt-4 max-w-2xl text-body-lg text-white/80">
                 {s.whyUs?.body ??
-                  'A real person answers the phone, you get a two-hour window rather than a vague day, and one of our licensed electricians does the work. Not a rotating crew, and not a subcontractor you have never met. Allsafe’s Google reviews name our electricians personally.'}
+                  'A real person answers the phone, you get a two-hour window rather than a vague day, and one of our licensed electricians does the work. Allsafe’s Google reviews name our electricians personally.'}
               </p>
               <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
                 <Link href="/reviews/" className="link-cta !text-white !decoration-white/40">
-                  <GoogleG /> Read reviews from Parker customers
+                  <GoogleG /> Read customer reviews
                 </Link>
                 <span className="flex items-center gap-2 text-small text-white/70">
                   <ShieldIcon width={17} height={17} /> License {business.licenses.master.id}
@@ -339,11 +340,13 @@ export default async function ServicePage({
             </section>
           </Reveal>
 
-          {/* A real review, placed where doubt peaks: after the price and
-              process, before the FAQ. FeaturedTestimonial existed but was used
-              nowhere until 2026-09-14. */}
+          {/* Live, service-matched Google reviews, placed where doubt peaks:
+              after the price and process, before the FAQ. Was a hardcoded
+              testimonial that showed the same Todd review on nearly every page
+              (revision doc §1.10); now pulled from Featurable and keyword-
+              matched to this service. */}
           <Reveal>
-            <FeaturedTestimonial authorIndex={s.slug.length % 4} />
+            <ServiceReviews tags={reviewTagsForService(s.slug)} />
           </Reveal>
 
           <Reveal>

@@ -40,7 +40,7 @@ export default function ContactPage() {
       />
       <PageIntro
         eyebrow="Contact"
-        title="Three ways to reach us"
+        title="Contact"
         lead="Call and talk to a real person, book a visit online, or send the details and we'll reply the same business day. If it's an emergency, call. Don't wait for the email."
         crumbs={crumbs}
       />
