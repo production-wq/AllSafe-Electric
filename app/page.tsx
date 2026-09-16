@@ -146,7 +146,7 @@ const commonProblems = [
     title: 'You are adding an EV charger, hot tub, or generator',
     body: (
       <>
-        All three are big continuous loads and all three need a permit. Start with a load calculation rather than a guess, because the answer determines whether you need a service upgrade first. Worth knowing: most of Parker is on CORE Electric Cooperative, not Xcel, so most Colorado rebate articles you will read online do not apply to your address.
+        All three are big continuous loads and all three need a permit. Whether it is an <Link href="/residential-ev-charging/" className="text-blue-600 hover:underline">EV charger</Link>, a <Link href="/hot-tub-electrical-hookup/" className="text-blue-600 hover:underline">hot tub hookup</Link>, or a <Link href="/generator-installation/" className="text-blue-600 hover:underline">standby generator</Link>, start with a load calculation rather than a guess, because the answer determines whether you need a <Link href="/electrical-panel-services/" className="text-blue-600 hover:underline">service upgrade</Link> first. Worth knowing: most of Parker is on CORE Electric Cooperative, not Xcel, so most Colorado rebate articles you will read online do not apply to your address.
       </>
     ),
   },

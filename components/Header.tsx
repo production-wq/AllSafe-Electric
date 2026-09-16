@@ -159,23 +159,23 @@ export function Header() {
           <a
             href={business.phone.href}
             onClick={() => track.call('header')}
-            className="group flex items-center gap-2.5 rounded-btn border border-rule px-3.5 py-1.5 transition-colors hover:border-blue-300 hover:bg-blue-50"
+            className="btn btn-primary group !min-h-[46px] gap-2.5 !px-4 !py-2"
           >
-            <span className="flex h-8 w-8 items-center justify-center rounded-pill bg-blue-50 text-blue-600 transition-colors group-hover:bg-blue-600 group-hover:text-white">
+            <span className="flex h-8 w-8 items-center justify-center rounded-pill bg-white/15 text-white">
               <PhoneIcon width={15} height={15} />
             </span>
-            <span className="leading-tight">
-              <span className="block text-[0.7rem] font-medium uppercase tracking-wide text-grey">
+            <span className="text-left leading-tight">
+              <span className="block text-[0.7rem] font-medium uppercase tracking-wide text-white/75">
                 Call us
               </span>
-              <span className="block whitespace-nowrap text-[0.95rem] font-bold text-ink">
+              <span className="block whitespace-nowrap text-[0.95rem] font-bold text-white">
                 {business.phone.display}
               </span>
             </span>
           </a>
           <Link
             href="#estimate"
-            className="btn btn-primary !min-h-[46px] !px-5 !py-2 !text-[0.92rem]"
+            className="btn btn-outline !min-h-[46px] !px-5 !py-2 !text-[0.92rem]"
           >
             Free Estimate
           </Link>
@@ -280,16 +280,18 @@ export function Header() {
             ))}
 
             <div className="flex flex-col gap-3 border-t border-rule pt-5">
-              <Link href="#estimate" className="btn btn-primary" onClick={() => setOpen(false)}>
-                Get a Free Estimate
-              </Link>
+              {/* Call leads and carries the green primary styling, Estimate is
+                  secondary (revision doc §1.1). */}
               <a
                 href={business.phone.href}
                 onClick={() => track.call('header')}
-                className="btn btn-outline"
+                className="btn btn-primary"
               >
                 <PhoneIcon width={18} height={18} /> {business.phone.display}
               </a>
+              <Link href="#estimate" className="btn btn-outline" onClick={() => setOpen(false)}>
+                Get a Free Estimate
+              </Link>
             </div>
           </div>
         </div>
