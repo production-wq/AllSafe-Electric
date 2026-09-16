@@ -81,7 +81,7 @@ export function StatBand({
       {items.map((it) => (
         <div
           key={it.label}
-          className={`group relative overflow-hidden px-5 py-9 text-center transition-colors duration-300 ${
+          className={`group relative overflow-hidden px-5 py-9 lg:py-6 text-center transition-colors duration-300 ${
             tone === 'textured'
               ? 'bg-graphite-texture hover:bg-graphite-light'
               : dark
@@ -98,24 +98,26 @@ export function StatBand({
           <dd className="relative">
             {it.icon && (
               <span
-                className={`mx-auto mb-3 flex h-11 w-11 items-center justify-center rounded-pill transition-transform duration-300 group-hover:-translate-y-0.5 ${
+                className={`mx-auto mb-3 lg:mb-2 flex h-11 w-11 lg:h-8 lg:w-8 items-center justify-center rounded-pill transition-transform duration-300 group-hover:-translate-y-0.5 ${
                   dark ? 'bg-white/10 text-green-500 ring-1 ring-white/10' : 'bg-green-50 text-green-600'
                 }`}
               >
-                {it.icon}
+                <div className="lg:scale-75 flex items-center justify-center">
+                  {it.icon}
+                </div>
               </span>
             )}
             <CountUp
               value={it.value}
-              className={`block font-display text-3xl font-bold tracking-tight lg:text-4xl ${
+              className={`block font-display text-3xl font-bold tracking-tight lg:text-2xl ${
                 dark ? 'text-white' : 'text-blue-600'
               }`}
             />
             <span
               aria-hidden
-              className="mx-auto mt-3 block h-0.5 w-8 rounded-full bg-green-600/70 transition-all duration-300 group-hover:w-14"
+              className="mx-auto mt-3 lg:mt-2 block h-0.5 w-8 rounded-full bg-green-600/70 transition-all duration-300 group-hover:w-14"
             />
-            <span className={`mt-3 block text-small ${dark ? 'text-white/70' : 'text-grey'}`}>{it.label}</span>
+            <span className={`mt-3 lg:mt-2 block text-small lg:text-xs ${dark ? 'text-white/70' : 'text-grey'}`}>{it.label}</span>
           </dd>
         </div>
       ))}

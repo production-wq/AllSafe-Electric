@@ -25,17 +25,6 @@ export function StickyBar({ emergency = false }: { emergency?: boolean }) {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const quoteUrl = (() => {
-    try {
-      const u = new URL('/contact#estimate');
-      u.searchParams.set('utm_source', 'allsafe-site');
-      u.searchParams.set('utm_medium', 'sticky_bar');
-      return u.toString();
-    } catch {
-      return '/contact#estimate';
-    }
-  })();
-
   const seg =
     'flex flex-col items-center justify-center gap-1 text-tiny font-semibold !text-white hover:!text-white transition-colors duration-200';
 
@@ -52,30 +41,18 @@ export function StickyBar({ emergency = false }: { emergency?: boolean }) {
         } transition-transform duration-300 ease-smooth`}
         style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
       >
-        <div className="grid h-[66px] grid-cols-3 bg-navy text-white shadow-[0_-6px_24px_rgba(1,46,77,0.34)]">
+        <div className="grid h-[66px] grid-cols-2 bg-navy text-white shadow-[0_-6px_24px_rgba(1,46,77,0.34)]">
           <a
             href={business.phone.href}
             data-cta="call"
             data-location="sticky_bar"
             onClick={() => track.call('sticky_bar')}
             className={`${seg} ${
-              emergency ? 'bg-urgent-500 hover:bg-urgent-600' : 'hover:bg-blue-700'
+              emergency ? 'bg-urgent-500 hover:bg-urgent-600' : 'bg-green-600 hover:bg-green-700'
             }`}
           >
             <PhoneIcon width={21} height={21} />
             Call
-          </a>
-          <a
-            href={quoteUrl}
-            target="_blank"
-            rel="noopener"
-            data-cta="book"
-            data-location="sticky_bar"
-            onClick={() => track.book('sticky_bar')}
-            className={`${seg} bg-green-600 hover:bg-green-700`}
-          >
-            <CalendarIcon width={21} height={21} />
-            Quote
           </a>
           <Link
             href="/contact/#estimate"

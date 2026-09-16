@@ -110,11 +110,11 @@ export const cities: City[] = [
       },
       {
         q: 'Do you cover the Pinery and Pradera?',
-        a: 'Yes. Both are a short drive from the shop. The Pinery\'s older homes see more panel and generator work; Pradera\'s custom homes and HOA design review come up on outdoor lighting and generator placement.',
+        a: 'Yes. Both are a short drive. The Pinery\'s older homes see more panel and generator work; Pradera\'s custom homes and HOA design review come up on outdoor lighting and generator placement.',
       },
       {
         q: 'How is response time different in Parker versus your other service areas?',
-        a: 'We are based here, so there is no drive time added to a Parker appointment window, unlike Castle Rock or Highlands Ranch, which add 15 to 20 minutes. During business hours, urgent calls in Parker are usually on site within two hours.',
+        a: 'We are based here. During business hours, urgent calls in Parker are usually on site within two hours.',
       },
       {
         q: 'Do you handle both older and newer Parker homes?',
@@ -185,7 +185,7 @@ export const cities: City[] = [
       'emergency-electrician',
     ],
     lead:
-      'Castle Rock is about 18 minutes in your area, so we cover it regularly. Downtown\'s older homes see a lot of inspection and rewiring work; the newer subdivisions off Founders and Meadows Parkway are more panel upgrades and EV chargers. Either way, you get the same licensed master electrician and the same phone that gets answered.',
+      'Castle Rock is we cover it regularly. Downtown\'s older homes see a lot of inspection and rewiring work; the newer subdivisions off Founders and Meadows Parkway are more panel upgrades and EV chargers. Either way, you get the same licensed master electrician and the same phone that gets answered.',
     faqs: [
       {
         q: 'Does Castle Rock use Douglas County for permits?',
@@ -270,7 +270,7 @@ export const cities: City[] = [
     tier: 1,
     driveTimeMin: 15,
     responseExpectation:
-      'About 15 minutes from Parker, one of the closer service areas. Same-day for urgent calls.',
+      'About Same-day for urgent calls.',
     utility: {
       name: 'Xcel Energy',
       verify: true,
@@ -296,7 +296,7 @@ export const cities: City[] = [
       'electrical-inspection',
     ],
     lead:
-      'Lone Tree is only about 15 minutes in your area, so it is one of the areas we reach quickest. The work here tends toward the higher end. Dual EV chargers, whole-house generators, smart-home wiring, and landscape lighting on larger lots, on homes that usually have the 200A service to support it.',
+      'Lone Tree is only it is one of the areas we reach quickest. The work here tends toward the higher end. Dual EV chargers, whole-house generators, smart-home wiring, and landscape lighting on larger lots, on homes that usually have the 200A service to support it.',
     faqs: [
       {
         q: 'Does Lone Tree handle its own permits?',
@@ -352,7 +352,7 @@ export const cities: City[] = [
       'emergency-electrician',
     ],
     lead:
-      'Centennial is about 22 minutes from Parker and sits in Arapahoe County, so the permitting is different from our Douglas County work, we handle that. The 1960s–70s neighborhoods here keep us busy with panel replacements, aluminum-wiring corrections, and outlet work in homes getting updated for the first time in decades.',
+      'Centennial sits in Arapahoe County, so the permitting is different from our Douglas County work, we handle that. The 1960s–70s neighborhoods here keep us busy with panel replacements, aluminum-wiring corrections, and outlet work in homes getting updated for the first time in decades.',
     faqs: [
       {
         q: 'Centennial is in a different county, does that change anything?',
@@ -426,9 +426,9 @@ export const cities: City[] = [
       'emergency-electrician',
     ],
     lead:
-      'The Pinery is ten minutes from the shop and it is one of the areas we know best. The older housing stock here means more panel replacements and safety inspections than anywhere else we cover, and we will tell you honestly whether your panel is a genuine hazard or simply old.',
+      'The Pinery is one of the areas we know best. The older housing stock here means more panel replacements and safety inspections than anywhere else we cover, and we will tell you honestly whether your panel is a genuine hazard or simply old.',
     overview:
-      'The Pinery is close enough to the Parker shop that we are there most weeks, and the work has a distinct character. These are largely 1970s and 80s homes on big treed lots, which means two things. First, the panels: this is where we still find Federal Pacific and Zinsco equipment, both of which have a documented history of breakers failing to trip under fault, and replacement is the fix rather than an upsell. Second, the lots: mature trees, outbuildings, long driveways and gates mean buried feeds, exterior lighting and generator work come up far more often than they do in a newer subdivision. If you are buying here, an electrical inspection before closing is genuinely worth the money, because what is behind the panel cover in a fifty-year-old home is not something a general home inspection will tell you.',
+      'The Pinery The work has a distinct character. These are largely 1970s and 80s homes on big treed lots, which means two things. First, the panels: this is where we still find Federal Pacific and Zinsco equipment, both of which have a documented history of breakers failing to trip under fault, and replacement is the fix rather than an upsell. Second, the lots: mature trees, outbuildings, long driveways and gates mean buried feeds, exterior lighting and generator work come up far more often than they do in a newer subdivision. If you are buying here, an electrical inspection before closing is genuinely worth the money, because what is behind the panel cover in a fifty-year-old home is not something a general home inspection will tell you.',
     neighborhoodNotes: [
       {
         name: 'The Pinery',
@@ -492,9 +492,9 @@ export const cities: City[] = [
       'emergency-electrician',
     ],
     lead:
-      'Stonegate is minutes from the shop. The homes here are mostly 1990s and 2000s builds on 100A or 150A service, so the work is usually about capacity: making room for an EV charger, a hot tub, or a finished basement without tripping the whole house.',
+      'Stonegate. The homes here are mostly 1990s and 2000s builds on 100A or 150A service, so the work is usually about capacity: making room for an EV charger, a hot tub, or a finished basement without tripping the whole house.',
     overview:
-      'Stonegate is one of the closest neighborhoods to our shop, and electrically it is one of the most predictable areas we work in. Nearly everything here went up between the early 1990s and the mid 2000s, built to the codes of the day with copper wiring and grounded circuits, so genuine safety hazards are rare. What is common is running out of room. A panel sized for a 1990s household does not comfortably absorb an EV charger, a hot tub and a finished basement, and the symptom homeowners notice is breakers tripping when several big loads run at once. That is a capacity problem, not a broken panel, and the honest answer is often cheaper than people expect: a load calculation will tell you whether you genuinely need a 200A service upgrade or whether rebalancing circuits solves it.',
+      'Stonegate electrically is one of the most predictable areas we work in. Nearly everything here went up between the early 1990s and the mid 2000s, built to the codes of the day with copper wiring and grounded circuits, so genuine safety hazards are rare. What is common is running out of room. A panel sized for a 1990s household does not comfortably absorb an EV charger, a hot tub and a finished basement, and the symptom homeowners notice is breakers tripping when several big loads run at once. That is a capacity problem, not a broken panel, and the honest answer is often cheaper than people expect: a load calculation will tell you whether you genuinely need a 200A service upgrade or whether rebalancing circuits solves it.',
     driveTimeContext: 'A core part of our local service area.',
     faqs: [
       {
@@ -1237,7 +1237,7 @@ export const cities: City[] = [
     lead:
       'We cover south Denver,  Most of the work is panel replacement in post-war neighborhoods and inspections on the older pre-war bungalows closer to the center.',
     overview:
-      'Denver is a big enough market that the only useful thing to say is which part of it we serve and what the work involves. We cover south Denver, the side nearest Parker, fully within our service area. Neighborhoods like University Hills, Hampden, Virginia Village and Southmoor Park are largely 1950s to 1970s, and the typical job there is a panel replacement: an original service that has aged out, sometimes partial grounding, and a household now drawing considerably more than the panel was sized for. Closer to the center, the pre-1940 bungalows around Washington Park and Platt Park are a different job, where knob-and-tube, ungrounded circuits and 60A services mean an inspection is the honest first step before anyone quotes a number. Two practical notes specific to Denver: permitting runs through Community Planning and Development and takes longer than Douglas County, and historic district review can apply to anything that changes a street-facing elevation. We plan timelines around both rather than promising around them.',
+      'We cover South Denver regularly. We cover south Denver, the side nearest Parker, fully within our service area. Neighborhoods like University Hills, Hampden, Virginia Village and Southmoor Park are largely 1950s to 1970s, and the typical job there is a panel replacement: an original service that has aged out, sometimes partial grounding, and a household now drawing considerably more than the panel was sized for. Closer to the center, the pre-1940 bungalows around Washington Park and Platt Park are a different job, where knob-and-tube, ungrounded circuits and 60A services mean an inspection is the honest first step before anyone quotes a number. Two practical notes specific to Denver: permitting runs through Community Planning and Development and takes longer than Douglas County, and historic district review can apply to anything that changes a street-facing elevation. We plan timelines around both rather than promising around them.',
     driveTimeContext: 'Serving your local community daily.',
     faqs: [
       {

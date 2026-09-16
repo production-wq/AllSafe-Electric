@@ -8,7 +8,7 @@ heroImage: electrician-tightening-connections-in-breaker-panel.JPG
 heroAlt: Landing a new 240-volt circuit on a double-pole breaker for an EV charger
 ---
 
-If you drive an EV and commute from Castle Rock toward the Tech Center or Denver, charging off a regular garage outlet does not keep up. A standard 120-volt outlet adds three to five miles of range an hour, and in winter most of that goes into warming the battery instead of filling it. A Level 2 charger runs on a dedicated 240-volt circuit and adds 25 to 40 miles an hour, which means you plug in at night and leave with a full battery every morning. Here is why it is worth doing properly.
+If you drive an EV and commute from Castle Rock toward the Tech Center or [Denver](/service-area/), charging off a regular garage outlet does not keep up. A standard 120-volt outlet adds three to five miles of range an hour, and in winter most of that goes into warming the battery instead of filling it. A Level 2 charger runs on a dedicated 240-volt circuit and adds 25 to 40 miles an hour, which means you plug in at night and leave with a full battery every morning. Here is why it is worth doing properly.
 
 ## 1. It actually keeps up with how you drive
 
@@ -24,7 +24,7 @@ Repeated DC fast charging generates heat inside the pack and wears the cells fas
 
 ## 4. It adds real value to the house
 
-Buyers in Castle Rock, Castle Pines and the surrounding area look for a home that is already set up for an EV. A permitted, hardwired charging circuit tells a buyer the panel has spare capacity and the wiring is done to code. An appraiser treats a permitted install as a capital improvement, not a fixture that walks out the door.
+Buyers in Castle Rock, Castle Pines and the surrounding area look for a home that is already set up for an EV. A permitted, hardwired charging circuit tells a buyer the panel has spare capacity and the [wiring](/electrical-wiring-repairs-services/) is done to code. An appraiser treats a permitted install as a capital improvement, not a fixture that walks out the door.
 
 ## 5. Done right, it is safe and it lasts
 

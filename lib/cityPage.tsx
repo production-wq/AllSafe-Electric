@@ -53,8 +53,8 @@ function cityTitle(name: string): string {
   return candidates.find((t) => t.length >= 50 && t.length <= 60) ?? candidates[1];
 }
 
-export function generateCityMetadata(citySlug: string) {
-  return async function generateMetadata(): Promise<Metadata> {
+export async function generateCityMetadata(citySlug: string): Promise<Metadata> {
+  
     const c = getCity(citySlug);
     if (!c) return {};
     return pageMetadata({
@@ -69,7 +69,6 @@ export function generateCityMetadata(citySlug: string) {
       index: PUBLISH.TIER_1_CITIES, // gated. Planning/docs/09 §3
       ogEyebrow: `Electrician · ${c.name}, CO`,
     });
-  };
 }
 
 export function CityPageContent({ citySlug }: { citySlug: string }) {

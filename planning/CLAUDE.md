@@ -4,7 +4,8 @@ You are building the new website for **Allsafe Electric** (allsafehomeservice.co
 electrician serving 21 communities across the south Denver metro area. This file is loaded every
 session. Read it fully before acting.
 
-Client of Built Right Digital. Owner/operator: **Judson "Jud" Cushing**.
+Client of Built Right Digital. Owner: Judson "Jud" Cushing, master electrician.
+The site represents the COMPANY, not any individual. See §7.
 
 ---
 
@@ -98,11 +99,12 @@ Google Business Profile CID: 2391241286444373261
 GBP hex ID:                  0x876c921d22f6e837:0x212f6547dac3d50d
 Facebook:          https://www.facebook.com/Allsafehomeservices/
 Booking URL:       https://book.housecallpro.com/book/ALLSAFE-%20%20ELECTRIC/90cac4ddcd384b32ac8f1b8fd91f6562?v2=true
-Review count:      149
-Star rating:       5.0
-Years in business: 8 (founded Jan 2018)
-Trade experience:  15+ years (Jud's time in the trade)
-Service area:      21 communities across Douglas, Arapahoe, Elbert, and Jefferson counties
+Google reviews:    149
+Rating:            5.0
+Founded:           January 2018 (8 years in business)
+Jud's experience:  15+ years as a master electrician (NOT the company's age)
+GBP type:          Location-based at 11479 Pine Dr M-51 — citations must match exactly
+Service area:      21 communities across 4 counties, all confirmed serviceable
 ```
 
 **Derived URLs you will need:**
@@ -153,6 +155,10 @@ or the footer NAP. This is currently broken on the live site.
 | British spellings | "aluminium", "neighbourhoods", "minimise" appear in legacy content. Replace with American spellings in every file you touch. The audit script fails on British spellings. |
 | Vendor names in copy | Vendor product names appear in some copy blocks (e.g., the About page "details" sidebar). Replace with plain English: say "book online" not the vendor name. |
 | Internal planning notes in rendered HTML | Three confirmed instances render on public pages. Grep for staging notes before every deploy. |
+| Vendor names in customer-facing copy | Never say "Housecall Pro" to a visitor. Say "book online any time." Same for CallRail, Vercel, any tool. |
+| Doc references leaking into body copy | Never write "Tier 0," "docs/09 §3," "indexation gate," or "staging note" into rendered output. Three of these shipped. |
+| British spellings | American English only. aluminum, neighborhood, minimize. "Aluminium wiring" is also a keyword mismatch. |
+| Two URL patterns for one page type | One pattern per page type, enforced in CI. Two complete city-page sets shipped. |
 
 ---
 
@@ -174,6 +180,7 @@ A page is not done until all of the following are true:
 - [ ] Zero internal planning notes in rendered HTML
 - [ ] American English throughout (no British spellings)
 - [ ] Company voice throughout (no personal promises tied to a named individual)
+- [ ] Contains no individual employee name, no vendor name, no doc reference, no British spelling, and no number that isn't sourced from lib/business.ts.
 
 ---
 
@@ -190,6 +197,12 @@ it is **"will someone actually show up, and are they safe to have in my house ar
 - Short sentences. Second person. Active voice.
 - Every service page answers, in the first 100 words: what it is, what it costs to find out,
   and how fast someone can be there.
+
+Never name an individual employee in site copy. Trust promises are company standards, not personal ones. "A real person answers the phone" is correct. "Jud answers his own phone" is not — it breaks the day he hires a dispatcher.
+
+Justin does not appear anywhere on the site. Not in copy, metadata, alt text, schema, or image filenames. The only exception is verbatim customer review text, which is the customer's words and stays unedited.
+
+Jud's name appears in exactly two places: the blog author byline (with Person schema and an author page) and one founder section on About, framed as the origin of the company's standards. Nowhere else.
 
 ---
 

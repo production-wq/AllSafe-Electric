@@ -8,11 +8,11 @@ import type { Faq } from './services';
 export const homeFaqs: Faq[] = [
   {
     q: 'Will someone actually show up when they say they will?',
-    a: 'Yes, and it is the thing customers mention most. You get a two-hour arrival window rather than a vague day, a real person answers the phone, and if something changes you get a call instead of silence. We do the work ourselves, so the person you booked is the person who turns up at your door.',
+    a: 'Yes, and it is the thing customers mention most. You get a two-hour arrival window rather than a vague day, a real person answers the phone, and if something changes you get a call instead of silence.',
   },
   {
     q: 'What area do you cover?',
-    a: 'Parker first, then Castle Rock, Highlands Ranch, Lone Tree, Centennial and the rest of south Douglas County and the south metro. Parker neighborhoods such as Stonegate, Stroh Ranch, Pradera, The Pinery and Canterberry Crossing are usually a same-day call during business hours. Castle Rock and Highlands Ranch add about 20 minutes of drive time.',
+    a: 'We cover the full South Denver metro area, including Parker, Castle Rock, Highlands Ranch, Lone Tree, Centennial, The Pinery, Stonegate, Castle Pines, Franktown, Elizabeth, Elbert, Foxfield, Dove Valley, Aurora, Englewood, Littleton, Acres Green, Greenwood Village, Lakewood, Edgewater, and Denver.',
   },
   {
     q: 'Are you licensed and insured?',
@@ -20,19 +20,19 @@ export const homeFaqs: Faq[] = [
   },
   {
     q: 'What does it cost to have you come out?',
-    a: 'A flat diagnostic or estimate fee, told to you before you book, and it comes off the work if you go ahead. High-ticket jobs like panel upgrades, EV chargers and generators get a real price range up front. We do not do "call for pricing", because you deserve to know roughly what you are walking into.',
+    a: 'A flat diagnostic or estimate fee, told to you before you book. High-ticket jobs like panel upgrades, EV chargers and generators get a real price range up front. We do not do "call for pricing", because you deserve to know roughly what you are walking into.',
   },
   {
     q: 'Do you charge for estimates?',
-    a: 'Straightforward quotes are free, whether that is a ceiling fan, a few outlets or a fixture swap. A diagnostic visit to find a fault, or a detailed assessment for a large project, carries the flat fee above, and that fee is credited toward the work if you decide to go ahead.',
+    a: 'Straightforward quotes are free, whether that is a ceiling fan, a few outlets or a fixture swap. A diagnostic visit to find a fault, or a detailed assessment for a large project, is a flat fee.',
   },
   {
-    q: 'Can I request a quote online instead of calling??',
-    a: 'Yes. The Book a visit button goes to our online scheduler, which is live any time of day. Pick a service and a window and you are on the calendar. If it is urgent, call instead so we can triage it properly and get you into the first available slot.',
+    q: 'Can I request a quote online instead of calling?',
+    a: 'Yes. Fill out our form and one of our team members will call you with an estimate, or email you more information if you prefer. If it\'s urgent, call us so we can get you into the first available slot.',
   },
   {
     q: 'How quickly can you get here in an emergency?',
-    a: 'Same-day for urgent calls, usually within a two-hour arrival window, across most of Parker. We are open weekdays, 8am to 6pm. A call outside those hours goes to voicemail and gets a callback first thing the next business day.',
+    a: 'Same-day for urgent calls, usually within a two-hour arrival window. We are open weekdays, 8am to 6pm.',
   },
   {
     q: 'Are you good with dogs, and will you keep the house clean?',
@@ -44,6 +44,6 @@ export const homeFaqs: Faq[] = [
   },
   {
     q: 'Do you do commercial work?',
-    a: 'No, and that is deliberate. Allsafe is strictly residential. Houses, not warehouses. It means the panels, the code questions, the Douglas County permit process and the way a 1990s Parker home is wired are things we deal with every single day rather than occasionally.',
+    a: 'No, and that is deliberate. Allsafe is strictly residential. It means the panels, the code questions, the Douglas County permit process and the way a 1990s Parker home is wired are things we deal with every single day rather than occasionally.',
   },
 ];

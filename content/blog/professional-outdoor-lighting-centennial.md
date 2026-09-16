@@ -8,11 +8,11 @@ heroImage: allsafe-electrician-installing-outdoor-weatherproof-outlet.JPG
 heroAlt: Installing a weatherproof exterior outlet on a Centennial home
 ---
 
-Good [outdoor lighting](/outdoor-lighting/) does three things at once: it makes the yard usable after dark, it makes the house safer to walk up to, and it makes the whole property look finished. Most Centennial homes have almost none of it, usually just a builder-grade fixture by the front door and a flood on the garage. Here is how to think about doing it properly.
+Good [outdoor lighting](/outdoor-lighting/) does three things at once: it makes the yard usable after dark, it makes the [house](/about/) safer to walk up to, and it makes the whole property look finished. Most Centennial homes have almost none of it, usually just a builder-grade fixture by the front door and a flood on the garage. Here is how to think about doing it properly.
 
 ## Start with the path and the steps
 
-Path and step lighting is the highest-value lighting for safety, and it is the easiest to add. Low-voltage fixtures run on a 12-volt transformer, which means the wire does not need to be buried deep or run in conduit, so there is no trenching for power. A run of warm path lights along the front walk and down to the driveway changes how the house feels at night and it is a job we can usually do in a day.
+Path and step lighting is the highest-value lighting for [safety](/home-electrical-safety-inspections/), and it is the easiest to add. Low-voltage fixtures run on a 12-volt transformer, which means the wire does not need to be buried deep or run in conduit, so there is no trenching for power. A run of warm path lights along the front walk and down to the driveway changes how the house feels at night and it is a job we can usually do in a day.
 
 ## Uplighting and the facade
 
@@ -26,9 +26,9 @@ Motion floods are useful when they cover the right area and stop at the property
 
 If you run an extension cord from a bathroom outlet through a cracked window every December, a dedicated weatherproof soffit or eave outlet on an inside switch solves that for good. Add a timer and the lights come on at dusk and off at bedtime without anyone touching anything. Book this one in early fall.
 
-## Built for the Front Range
+## Built for the [Front Range](/service-area/)
 
-Colorado weather is hard on outdoor wiring. Everything we install outside uses wet-rated fixtures, gasketed connections, and GFCI protection on every exterior circuit. Line-voltage runs get buried at the correct depth. Done right, it survives the freeze-thaw cycles and the summer hail. Done cheaply, it fails in a season.
+Colorado weather is hard on outdoor [wiring](/electrical-wiring-repairs-services/). Everything we install outside uses wet-rated fixtures, gasketed connections, and GFCI protection on every exterior circuit. Line-voltage runs get buried at the correct depth. Done right, it survives the freeze-thaw cycles and the summer hail. Done cheaply, it fails in a season.
 
 ## Plan it before the concrete
 

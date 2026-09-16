@@ -105,9 +105,9 @@ const whyChoose = [
 
 const featuredServices = [
   'emergency-electrical-repairs',
+  'electrical-panel-services',
   'electrical-wiring-repairs-services',
-  'electrical-outlet-services',
-  'electrical-switch-services',
+  'residential-ev-charging',
 ];
 
 /*
@@ -121,19 +121,35 @@ const featuredServices = [
 const commonProblems = [
   {
     title: 'Breakers trip when the AC and microwave run together',
-    body: 'Parker grew fast between 1995 and 2015, so a lot of homes here are running 100A or 150A service that was sized before anyone owned an EV. The panel is not broken, it is full. A load calculation tells you whether you need a heavy-up to 200A or just some circuits rebalanced, and the answer is genuinely cheaper more often than people expect.',
+    body: (
+      <>
+        Parker grew fast between 1995 and 2015, so a lot of homes here are running 100A or 150A service that was sized before anyone owned an <Link href="/residential-ev-charging/" className="text-blue-600 hover:underline">EV</Link>. The panel is not broken, it is full. A load calculation tells you whether you need a <Link href="/electrical-panel-services/" className="text-blue-600 hover:underline">heavy-up to 200A</Link> or just some circuits rebalanced, and the answer is genuinely cheaper more often than people expect.
+      </>
+    ),
   },
   {
     title: 'You have a Federal Pacific or Zinsco panel',
-    body: 'These turn up in the older Pinery and Ponderosa areas, mostly 1970s and 80s homes. Both brands have a documented history of breakers that fail to trip under fault, which is the one job a breaker has. If you have one, replacement is not an upsell, it is the fix. We will tell you plainly which brand you have and show you the label.',
+    body: (
+      <>
+        These turn up in the older <Link href="/electricians/the-pinery-co/" className="text-blue-600 hover:underline">Pinery</Link> and Ponderosa areas, mostly 1970s and 80s homes. Both brands have a documented history of breakers that fail to trip under fault, which is the one job a breaker has. If you have a <Link href="/electrical-panel-services/" className="text-blue-600 hover:underline">Federal Pacific or Zinsco panel</Link>, <Link href="/electrical-panel-services/" className="text-blue-600 hover:underline">replacement</Link> is not an upsell, it is the fix. We will tell you plainly which brand you have and show you the label.
+      </>
+    ),
   },
   {
     title: 'Aluminum branch wiring in an older home',
-    body: 'Some Parker-area homes from that same era have aluminum branch circuits. Aluminum is not automatically dangerous, but it expands and contracts differently than copper, so connections loosen over time and loose connections are what start fires. The fix is proper connectors at every device, not rewiring the whole house.',
+    body: (
+      <>
+        Some Parker-area homes from that same era have <Link href="/electrical-wiring-repairs-services/" className="text-blue-600 hover:underline">aluminum branch circuits</Link>. Aluminum is not automatically dangerous, but it expands and contracts differently than copper, so connections loosen over time and loose connections are what start fires. The fix is proper connectors at every device, not rewiring the whole house.
+      </>
+    ),
   },
   {
     title: 'You are adding an EV charger, hot tub, or generator',
-    body: 'All three are big continuous loads and all three need a permit. Start with a load calculation rather than a guess, because the answer determines whether you need a service upgrade first. Worth knowing: most of Parker is on CORE Electric Cooperative, not Xcel, so most Colorado rebate articles you will read online do not apply to your address.',
+    body: (
+      <>
+        All three are big continuous loads and all three need a permit. Start with a load calculation rather than a guess, because the answer determines whether you need a service upgrade first. Worth knowing: most of Parker is on CORE Electric Cooperative, not Xcel, so most Colorado rebate articles you will read online do not apply to your address.
+      </>
+    ),
   },
 ];
 
@@ -492,8 +508,7 @@ export default function HomePage() {
               What Happens When You Call
             </h2>
             <p className="mt-4 text-lead text-slate">
-              No call center, no rotating crew, no sales rep. Here is the whole process, start to
-              finish.
+              We know speed matters, and so does talking to a real person who understands what you need. Here is the whole process, start to finish.
             </p>
             <div className="mt-8 overflow-hidden rounded-card border border-rule shadow-photo">
               <SiteImage
@@ -556,11 +571,10 @@ export default function HomePage() {
           <Reveal className="max-w-2xl">
             <p className="eyebrow">Real Jobs, Real Homes</p>
             <h2 id="gallery-heading" className="mt-3 text-h1">
-              Every Photo Here Is Our Own Work
+              Our Recent Work
             </h2>
             <p className="mt-4 text-lead text-slate">
-              No stock photography. This is what a service call with Allsafe actually looks like,
-              in Parker homes like yours.
+              A look at recent projects from our electricians across the South Denver metro, from panel work to lighting installs.
             </p>
           </Reveal>
           {/*
@@ -594,7 +608,7 @@ export default function HomePage() {
           <Reveal>
             <p className="eyebrow">Service Areas</p>
             <h2 id="areas-heading" className="mt-3 text-h1">
-              Proudly Serving Parker and Surrounding Neighborhoods
+              Proudly Serving the South Denver Metro Area
             </h2>
             <p className="mt-4 text-lead text-slate">
               Not sure if you are in our area? Call{' '}

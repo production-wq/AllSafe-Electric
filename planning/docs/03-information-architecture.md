@@ -52,10 +52,10 @@ already knows beats architectural tidiness.
 ```
 
 > **On the services hub:** the live site references both `/electrical-services/` (homepage hero)
-> and `/electrical-services-parker-co/` (nav and footer). The canonical target is
+> and `/electrical-services/` (nav and footer). The canonical target is
 > `/electrical-services/` (clean, no city baked in). Verify against GSC which URL has
 > impressions; 301 the other. Record the decision in `docs/99-decisions-log.md`. The current
-> interim redirect is `/electrical-services/` → `/electrical-services-parker-co/` pending that
+> interim redirect is `/electrical-services/` → `/electrical-services/` pending that
 > check. Swap if wrong — do not launch without verifying.
 
 ---
@@ -82,13 +82,13 @@ risks the Parker rankings the owner explicitly asked to protect.
 | S12 | `/smoke-detectors/` | Smoke and CO detector installation | smoke detector installation parker | Preserve exactly |
 | S13 | `/home-electrical-safety-inspections/` | Home electrical safety inspection | electrical inspection parker co | Preserve exactly |
 
-**Why S1 moves:** `/emergency-electrical-repairs-parker-co/` bakes a single city into the URL
+**Why S1 moves:** `/emergency-electrical-repairs/` bakes a single city into the URL
 of a page that must rank for emergency queries across the whole metro. The correction costs
 one 301 redirect. The H1 and body copy keep Parker prominent; the URL no longer locks the page
 out of metro-wide ranking.
 
 **Services hub:** the same logic applies. The hub URL is `/electrical-services/` not
-`/electrical-services-parker-co/`. Service pages that target the metro should not live under
+`/electrical-services/`. Service pages that target the metro should not live under
 a Parker-locked hub slug.
 
 ### 3.1 Cannibalization fix: S6 vs S7
@@ -113,11 +113,15 @@ Neither page may use the unqualified phrase "lighting services" in its title or 
 
 ---
 
+Be aware changing URLs contradicts the preservation rule in docs/04, deliberately. Both old URLs are indexed on the live site and carry equity, so this is not free. 301 both, keep them in preserved-urls.csv as redirect targets, and monitor them specifically in the first 30 days. Log this in docs/99.
+
+One canonical list of communities in data/service-areas.csv, rendered from that single source everywhere.
+
 ## 4. City pages — single canonical pattern
 
 **Pattern: `/electricians/[city]-co/`**
 
-This is the **only** city-page URL pattern. The flat pattern `/electrician-[city]/` that also
+This is the **only** city-page URL pattern. The flat pattern `` that also
 exists on the current site must be 301 redirected to the directory pattern for every city.
 Building to or linking to the flat pattern is a build failure.
 
@@ -314,8 +318,8 @@ service area is linked. Plain-text city names on the hub page are a build failur
 
 | Old URL | New URL | Status |
 |---|---|---|
-| `/electrical-services-parker-co/` | `/electrical-services/` | 301 — pending GSC verification |
-| `/emergency-electrical-repairs-parker-co/` | `/emergency-electrical-repairs/` | 301 |
+| `/electrical-services/` | `/electrical-services/` | 301 — pending GSC verification |
+| `/emergency-electrical-repairs/` | `/emergency-electrical-repairs/` | 301 |
 | `/electrician-parker/` | `/electricians/parker-co/` | 301 |
 | `/electrician-castle-rock/` | `/electricians/castle-rock-co/` | 301 |
 | `/electrician-highlands-ranch/` | `/electricians/highlands-ranch-co/` | 301 |

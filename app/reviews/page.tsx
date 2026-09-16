@@ -1,11 +1,10 @@
 import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/seo';
 import { PageIntro } from '@/components/PageIntro';
-import { Reviews } from '@/components/Reviews';
+import { ReviewsSection } from '@/components/ReviewsSection';
 import { CtaBlock } from '@/components/sections';
 import { Schema } from '@/components/Schema';
 import { webPageNode, breadcrumbNode } from '@/lib/schema';
-import { getFallbackReviewsSync } from '@/lib/reviews';
 import { business } from '@/lib/business';
 
 export const metadata: Metadata = pageMetadata({
@@ -22,7 +21,6 @@ const crumbs = [
 ];
 
 export default function ReviewsPage() {
-  const reviews = getFallbackReviewsSync();
   return (
     <>
       {/* WebPage only, no Review / aggregateRating schema until first-party
@@ -44,7 +42,7 @@ export default function ReviewsPage() {
         crumbs={crumbs}
       />
 
-      <Reviews initial={reviews} />
+      <ReviewsSection />
 
       <section className="section">
         <div className="container-page max-w-2xl">

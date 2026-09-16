@@ -81,14 +81,10 @@ export default function AboutPage() {
             <StatBand
               tone="light"
               items={[
-                { value: '8+', label: 'Years in business', icon: <ClockIcon width={20} height={20} /> },
-                {
-                  value: `${business.google.reviewCount}`,
-                  label: '5-star Google reviews',
-                  icon: <GoogleG className="h-5 w-5" />,
-                },
-                { value: '15+', label: 'Years of master electrician experience', icon: <ShieldIcon width={20} height={20} /> },
-                { value: `${cities.length}`, label: 'Communities we serve', icon: <MapPinIcon width={20} height={20} /> },
+                { value: 'Local', label: 'Parker Electricians', icon: <MapPinIcon width={20} height={20} /> },
+                { value: 'Decades', label: 'Of combined experience', icon: <ClockIcon width={20} height={20} /> },
+                { value: 'A+', label: 'BBB Rating', icon: <ShieldIcon width={20} height={20} /> },
+                { value: '100%', label: 'Guaranteed Work', icon: <ShieldIcon width={20} height={20} /> },
               ]}
             />
           </Reveal>
@@ -115,7 +111,7 @@ export default function AboutPage() {
               <article className="card flex h-full flex-col overflow-hidden">
                 <Parallax distance={26} className="h-[320px]">
                   <SiteImage
-                    name="allsafe-electrician-blue-uniform-kitchen-portrait.JPG"
+                    name="owner-at-kitchen-table-with-customers.jpg"
                     alt="Jud Cushing, owner and master electrician at Allsafe Electric, in a Parker kitchen"
                     fill
                     sizes="(min-width: 768px) 46vw, 100vw"
@@ -211,7 +207,7 @@ export default function AboutPage() {
       <div className="section">
         <div className="container-page grid gap-12 lg:grid-cols-[1fr_360px]">
           <div className="prose-body space-y-5 text-[1.08rem]">
-            <h2 className="text-h2">Why the business exists</h2>
+            <h2 className="text-h2">Who We Are and What We Believe</h2>
             <p>
               Allsafe Electric started in January 2018 after years working for larger shops. The
               idea was simple: be the electrician people actually want in their house. Answer the
@@ -239,7 +235,7 @@ export default function AboutPage() {
 
             <h2 className="text-h2">Strictly residential</h2>
             <p>
-              Allsafe is a residential contractor, houses, not warehouses. That focus is
+              Allsafe is a residential contractor. That focus is
               deliberate. The panels, the code questions, the Douglas County permit process, the way
               a 1990s Parker home is wired: that is the work we do every day and know cold.
             </p>

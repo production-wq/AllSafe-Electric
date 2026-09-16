@@ -34,7 +34,7 @@ function btnClass(variant: Variant, className: string) {
 export function CallButton({
   location,
   service,
-  variant = 'outline',
+  variant = 'primary',
   className = '',
   children,
 }: {
@@ -65,7 +65,7 @@ export function CallButton({
 export function BookButton({
   location,
   service,
-  variant = 'primary',
+  variant = 'outline',
   className = '',
   children,
 }: {
@@ -112,7 +112,7 @@ export function EstimateLink({
   );
 }
 
-/** Primary CTA used across the design: a green "Get a Quote" button. */
+/** Secondary CTA used across the design: a secondary "Get a Quote" button. */
 export function EstimateButton({
   location,
   className = '',
@@ -127,7 +127,7 @@ export function EstimateButton({
       href="#estimate"
       data-cta="estimate"
       data-location={location}
-      className={`btn btn-primary ${className}`}
+      className={`btn btn-outline ${className}`}
     >
       {children ?? 'Get a Quote'}
     </Link>
@@ -155,7 +155,7 @@ function withUtm(url: string, location: string) {
   }
 }
 
-/** Standard action row: Estimate (primary green), Call (outline). */
+/** Standard action row: Call (primary green), Estimate (outline). */
 export function CtaRow({
   location = 'mid_page',
   service,
@@ -169,19 +169,8 @@ export function CtaRow({
 }) {
   return (
     <div className={`flex flex-wrap items-center gap-3 ${className}`}>
-      {emergency ? (
-        <>
-          <CallButton location={location} service={service} variant="primary" />
-          <EstimateButton location={location} className="!bg-blue-600 hover:!bg-blue-700 !shadow-none">
-            Get a Quote
-          </EstimateButton>
-        </>
-      ) : (
-        <>
-          <EstimateButton location={location} />
-          <CallButton location={location} service={service} variant="outline" />
-        </>
-      )}
+      <CallButton location={location} service={service} variant="primary" />
+      <EstimateButton location={location} />
     </div>
   );
 }

@@ -8,7 +8,7 @@ heroImage: electrician-pointing-to-circuit-breaker.JPG
 heroAlt: Jud from Allsafe Electric pointing out a breaker during a home electrical safety inspection
 ---
 
-A lot of Parker homeowners assume the electrical system got a thorough check during their home inspection. It did not. A general home inspector does a visual, non-invasive pass: they look at fixtures, trip-test a few outlets, and note anything obvious. They do not open the panel, and they do not run the system under load. A dedicated [electrical safety inspection](/home-electrical-safety-inspections/) is a licensed electrician doing exactly those things, and it is worth doing before you buy a home, on any house over 20 years old, or after a storm or a surge.
+A lot of Parker homeowners assume the electrical system got a thorough check during their home inspection. It did not. A general home inspector does a visual, non-invasive pass: they look at fixtures, trip-test a few [outlet](/electrical-outlet-services/)s, and note anything obvious. They do not open the panel, and they do not run the system under load. A dedicated [electrical safety inspection](/home-electrical-safety-inspections/) is a licensed electrician doing exactly those things, and it is worth doing before you buy a home, on any [house](/about/) over 20 years old, or after a storm or a surge.
 
 ## The service entrance and meter
 
@@ -34,7 +34,7 @@ We test the grounding electrode system rather than just looking at it. Proper gr
 
 We test the ground-fault protection in the kitchen, bathrooms, garage, and outdoors, and the arc-fault protection where it exists. We note where code now requires it and it is missing.
 
-## A sample of outlets, switches, and wiring
+## A sample of outlets, switches, and [wiring](/electrical-wiring-repairs-services/)
 
 We check a representative set of devices for correct wiring, polarity, and grounding, and we look at visible wiring in the attic, basement, and crawl space for aluminum branch circuits, damaged runs, or old cloth-covered wire.
 

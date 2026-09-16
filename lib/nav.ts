@@ -34,11 +34,13 @@ export interface NavItem {
  * that intent; both live in the footer, and Contact is linked from About.
  */
 export const primaryNav: NavItem[] = [
+  { label: 'Electrical Services', href: '/electrical-services/', mega: true },
+  { label: 'Service Areas', href: '/service-area/', areas: true },
   {
     label: 'About',
     href: '/about/',
     children: [
-      { label: 'About Allsafe', href: '/about/', note: 'Who actually shows up' },
+      { label: 'About Allsafe', href: '/about/', note: 'Our story and standards' },
       { label: 'Reviews', href: '/reviews/', note: 'What customers say' },
       { label: 'Resources & Guides', href: '/resources/', note: 'Permits, code, utilities' },
       { label: 'Blog', href: '/blog/', note: 'Advice from our electricians' },
@@ -46,8 +48,6 @@ export const primaryNav: NavItem[] = [
       { label: 'Contact', href: '/contact/', note: 'Get a free estimate' },
     ],
   },
-  { label: 'Electrical Services', href: '/electrical-services/', mega: true },
-  { label: 'Service Areas', href: '/service-area/', areas: true },
 ];
 
 /** Mega-menu: 16 services grouped in 3 columns. */

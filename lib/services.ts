@@ -116,11 +116,11 @@ export const services: Service[] = [
     bodyImage: 'electrician-testing-voltage-in-electrical-panel.JPG',
     bodyAlt: 'Voltage testing inside a residential electrical panel during a callout',
     lead:
-      'If you smell burning, see sparks, or lost power to part of the house, stop and call. Same-day for urgent calls, usually within a two-hour window, weekdays 8am to 6pm. We usually answer on the first ring. A diagnostic visit is a flat fee that comes off the repair if you go ahead.',
+      'If you smell burning, see sparks, or lost power to part of the house, stop and call. Same-day for urgent calls, usually within a two-hour window, weekdays 8am to 6pm. We usually answer on the first ring. A diagnostic visit is a flat fee, and if any repairs or replacements are needed, we\'ll give you the price in writing before we start any work.',
     highlights: [
-      { label: 'Typical response', value: 'Within 2 hours in Parker' },
+      { label: 'Typical response', value: 'Within 2 hours in the South Denver metro' },
       { label: 'Diagnostic fee', value: 'Flat rate' },
-      { label: 'Who arrives', value: 'One of our licensed electricians, never a subcontractor' },
+      { label: 'Who arrives', value: 'One of our licensed electricians' },
     ],
     priceRange: {
       low: 189,
@@ -195,7 +195,7 @@ export const services: Service[] = [
       },
       {
         q: 'How fast can someone get here?',
-        a: 'During business hours, often within two hours for Parker, Stonegate, The Pinery, Stroh Ranch and Canterberry Crossing. Castle Rock and Highlands Ranch add 15 to 20 minutes of drive time.',
+        a: 'During business hours, we can typically be anywhere in the South Denver metro within 2 hours.',
       },
       {
         q: 'The power company says the outage is on my side. Now what?',
@@ -207,7 +207,7 @@ export const services: Service[] = [
       },
       {
         q: 'Will the same electrician who diagnoses it also fix it?',
-        a: "Yes. We are a growing company, so the licensed electrician who arrives and finds the cause is the one who repairs it. Nothing gets handed off to a subcontractor or a different crew.",
+        a: "Yes. We are a growing company, so the licensed electrician who arrives and finds the cause is the one who repairs it. ",
       },
       {
         q: 'What if the emergency turns out to be bigger than expected?',
@@ -220,7 +220,7 @@ export const services: Service[] = [
       'electrical-outlet-services',
     ],
     overview:
-      '"Emergency" gets used loosely in electrical advertising, so here is exactly what it means with Allsafe. We answer live, weekdays 8am to 6pm, and a genuinely dangerous situation, sparks, a burning smell, a hot panel, usually gets a same-day slot within about two hours. We do not run a 24-hour dispatch line, and we would rather say that plainly than imply round-the-clock coverage we cannot back up. If your problem happens outside those hours and is not immediately dangerous, a dead outlet, a breaker that trips once and resets fine, leave the affected area off, request a quote, and we will get to it the next business day. If it is dangerous, a hot panel, a burning smell, exposed wiring, call 911 first, then us. When you do call, a licensed electrician comes out, never a subcontractor and never a rotating crew, so the person who diagnoses the problem is the same person who fixes it. That has been true since we started in Parker in 2018.',
+      '"Emergency" gets used loosely in electrical advertising, so here is exactly what it means with Allsafe. We answer live, weekdays 8am to 6pm, and a genuinely dangerous situation, sparks, a burning smell, a hot panel, usually gets a same-day slot within about two hours. We do not run a 24-hour dispatch line, and we would rather say that plainly than imply round-the-clock coverage we cannot back up. If your problem happens outside those hours and is not immediately dangerous, a dead outlet, a breaker that trips once and resets fine, leave the affected area off, request a quote, and we will get to it the next business day. If it is dangerous, a hot panel, a burning smell, exposed wiring, call 911 first, then us. When you do call, a licensed electrician comes out, never a subcontractor so a trusted, licensed electrician handles your job. That has been true since we started in Parker in 2018.',
     whyUs: {
       heading: 'The same two electricians, every time',
       body: 'Bigger companies dispatch whoever is free that day. With Allsafe, a real person answers the phone, a licensed electrician shows up, and one of us stands behind the fix. That means no re-explaining the problem to a new face, no guessing whether the last visit notes made it into a system, and a fixed price you approve in person before anything starts.',
@@ -229,7 +229,7 @@ export const services: Service[] = [
       'Drywall, paint, or trim repair after we access wiring behind a wall',
       'Code corrections unrelated to the original emergency, those get a separate written quote',
       'Permit fees themselves, we file for the permit but the jurisdiction sets its own fee',
-      'Weekend or after-hours dispatch, we are weekdays 8am to 6pm only',
+      'We are weekdays 8am to 6pm only',
     ],
     codeNote:
       'Most true emergency repairs, replacing a failed breaker, reconnecting a loose neutral, are like-for-like fixes under the National Electrical Code and do not trigger a permit on their own. Douglas County and the Town of Parker do require one once a repair turns into a service or panel replacement, or new circuits get added. If your emergency uncovers a bigger problem, an undersized panel, aluminum branch wiring, we tell you before it becomes its own project, not after.',
@@ -252,7 +252,7 @@ export const services: Service[] = [
     blurb: 'Breaker trips, flickering lights, and dead circuits traced back to the real cause.',
     title: 'Electrical Troubleshooting | South Denver Metro | Allsafe Electric',
     metaDescription:
-      'Breaker keeps tripping? Lights flicker? Outlet dead but the breaker is fine? We trace the real cause and fix it, for a flat diagnostic fee.',
+      'Breaker keeps tripping? Lights flicker? Outlet dead but the breaker is fine? We trace the real cause and fix it quickly, for a flat diagnostic fee.',
     primaryKeyword: 'electrical troubleshooting parker',
     secondaryKeywords: [
       'breaker keeps tripping parker',
@@ -270,7 +270,7 @@ export const services: Service[] = [
     highlights: [
       { label: 'Flat diagnostic fee', value: 'Known before you book' },
       { label: 'Most faults found', value: 'On the first visit' },
-      { label: 'You get', value: 'The cause in plain English' },
+      { label: 'You get', value: 'The cause ' },
     ],
     priceRange: {
       low: 165,

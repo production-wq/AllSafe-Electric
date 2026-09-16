@@ -27,59 +27,74 @@ export interface Review {
   relativeTime: string;
   publishTime?: string;
   sourceUrl: string;
+  tags?: string[];
 }
 
 export interface ReviewsPayload {
   reviews: Review[];
-  /** Whether the data came from the live API (true) or the fallback snapshot (false). */
   live: boolean;
   profileUrl: string;
   writeReviewUrl: string;
   fetchedAt: string;
+  averageRating?: number;
+  totalReviewCount?: number;
 }
 
-const PLACES_ENDPOINT = 'https://places.googleapis.com/v1/places';
+const TAG_KEYWORDS: Record<string, string[]> = {
+  panel: ['panel', 'breaker', 'fuse', 'heavy up', 'service upgrade'],
+  'ev-charger': ['ev', 'charger', 'tesla', 'electric vehicle'],
+  emergency: ['emergency', 'urgent', 'fast', 'quick', 'immediate', 'same day', 'weekend'],
+  lighting: ['light', 'lighting', 'chandelier', 'fixture'],
+  wiring: ['wiring', 'aluminum', 'rewire', 'circuit'],
+};
 
-async function fetchFromPlaces(): Promise<Review[] | null> {
-  const key = process.env.GOOGLE_PLACES_API_KEY;
-  const placeId = process.env.GOOGLE_PLACE_ID;
-  if (!key || !placeId) return null;
+function autoTag(text: string): string[] {
+  const lower = text.toLowerCase();
+  const tags = new Set<string>();
+  for (const [tag, keywords] of Object.entries(TAG_KEYWORDS)) {
+    if (keywords.some((kw) => lower.includes(kw))) {
+      tags.add(tag);
+    }
+  }
+  return Array.from(tags);
+}
+
+async function fetchFromFeaturable(): Promise<{ reviews: Review[]; averageRating?: number; totalReviewCount?: number } | null> {
+  const widgetId = process.env.FEATURABLE_WIDGET_ID;
+  if (!widgetId) return null;
 
   try {
-    const res = await fetch(`${PLACES_ENDPOINT}/${encodeURIComponent(placeId)}`, {
-      headers: {
-        'X-Goog-Api-Key': key,
-        'X-Goog-FieldMask': 'reviews',
-      },
-      // The route handler is ISR (revalidate 6h); align the upstream fetch cache.
+    const res = await fetch(`https://featurable.com/api/v1/widgets/${encodeURIComponent(widgetId)}`, {
       next: { revalidate: 21600 },
     });
     if (!res.ok) {
-      console.warn('[reviews] Places API returned', res.status);
+      console.warn('[reviews] Featurable API returned', res.status);
       return null;
     }
-    const data = (await res.json()) as {
+    const data = await res.json() as {
       reviews?: Array<{
+        author?: string;
         rating?: number;
-        text?: { text?: string };
-        originalText?: { text?: string };
-        authorAttribution?: { displayName?: string; photoUri?: string; uri?: string };
-        relativePublishTimeDescription?: string;
+        text?: string;
         publishTime?: string;
       }>;
+      averageRating?: number;
+      totalReviewCount?: number;
     };
-    if (!data.reviews?.length) return [];
-    return data.reviews.slice(0, 5).map((r) => ({
-      authorName: r.authorAttribution?.displayName ?? 'Google user',
-      authorPhotoUrl: r.authorAttribution?.photoUri,
+    if (!data.reviews?.length) return { reviews: [], averageRating: data.averageRating, totalReviewCount: data.totalReviewCount };
+    
+    const mapped = data.reviews.map((r) => ({
+      authorName: r.author ?? 'Google user',
       rating: r.rating ?? 5,
-      text: (r.text?.text ?? r.originalText?.text ?? '').trim(),
-      relativeTime: r.relativePublishTimeDescription ?? '',
+      text: r.text?.trim() ?? '',
+      relativeTime: '',
       publishTime: r.publishTime,
-      sourceUrl: r.authorAttribution?.uri ?? business.google.profileUrl,
+      sourceUrl: business.google.profileUrl,
+      tags: autoTag(r.text ?? ''),
     }));
+    return { reviews: mapped, averageRating: data.averageRating, totalReviewCount: data.totalReviewCount };
   } catch (err) {
-    console.warn('[reviews] Places API fetch failed:', (err as Error).message);
+    console.warn('[reviews] Featurable API fetch failed:', (err as Error).message);
     return null;
   }
 }
@@ -88,22 +103,18 @@ async function fallbackSnapshot(): Promise<Review[]> {
   try {
     const raw = await readFile(join(process.cwd(), 'data', 'reviews.fallback.json'), 'utf8');
     const parsed = JSON.parse(raw) as { reviews?: Review[] };
-    return Array.isArray(parsed.reviews) ? parsed.reviews.slice(0, 5) : [];
+    return Array.isArray(parsed.reviews) ? parsed.reviews : [];
   } catch {
     return [];
   }
 }
 
-/**
- * Synchronous build-time snapshot. Used by SSG pages so they stay fully static.
- * The client <Reviews> component then refreshes from /api/reviews/ (the ISR route).
- */
 export function getFallbackReviewsSync(): ReviewsPayload {
   let reviews: Review[] = [];
   try {
     const raw = readFileSync(join(process.cwd(), 'data', 'reviews.fallback.json'), 'utf8');
     const parsed = JSON.parse(raw) as { reviews?: Review[] };
-    if (Array.isArray(parsed.reviews)) reviews = parsed.reviews.slice(0, 5);
+    if (Array.isArray(parsed.reviews)) reviews = parsed.reviews.map(r => ({ ...r, tags: autoTag(r.text) }));
   } catch {
     /* empty state renders */
   }
@@ -117,13 +128,15 @@ export function getFallbackReviewsSync(): ReviewsPayload {
 }
 
 export async function getReviews(): Promise<ReviewsPayload> {
-  const live = await fetchFromPlaces();
-  const reviews = live && live.length ? live : await fallbackSnapshot();
+  const liveData = await fetchFromFeaturable();
+  const reviews = liveData?.reviews?.length ? liveData.reviews : await fallbackSnapshot();
   return {
     reviews,
-    live: Boolean(live && live.length),
+    live: Boolean(liveData?.reviews?.length),
     profileUrl: business.google.profileUrl,
     writeReviewUrl: business.google.writeReviewUrl,
     fetchedAt: new Date().toISOString(),
+    averageRating: liveData?.averageRating,
+    totalReviewCount: liveData?.totalReviewCount,
   };
 }

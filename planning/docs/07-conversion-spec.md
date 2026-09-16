@@ -6,6 +6,9 @@ converts poorly in week one teaches the algorithm the wrong thing and costs mont
 
 ---
 
+## 1.1 CTA honesty
+"Free Estimate" contradicts the FAQ's diagnostic fee. Either rename the button ("Get a Quote" / "Book a Visit") or surface the free-vs-paid distinction at the CTA itself. It cannot stay buried in an FAQ while the button says free.
+
 ## 1. The three actions
 
 Every page carries all three. No exceptions, including blog posts and tools.

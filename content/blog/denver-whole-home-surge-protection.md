@@ -24,7 +24,7 @@ It will not stop a direct lightning strike to the house. Nothing at the panel wi
 
 ## What it costs and how long it takes
 
-Installed, a whole-home surge protector is a short job, usually about an hour, and it lands in a low hundreds price range depending on the device rating and whether the panel has an open slot. The best time to add one is when an electrician is already in the panel for other work, but it is worth doing on its own.
+Installed, a whole-home surge protector is a short job, usually about an hour, and it lands in a low hundreds price range depending on the device rating and whether the panel has an open slot. The best time to add one is when an [electrician](/about/) is already in the panel for other work, but it is worth doing on its own.
 
 Before we install one, we check two things: that the panel has room for a double-pole breaker, and that the home's grounding is sound, because the device relies on a low-impedance path to ground to do its job. If the grounding needs attention we tell you before we quote the device.
 

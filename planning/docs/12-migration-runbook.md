@@ -8,7 +8,10 @@ an hour of work. Both must be true.
 
 ---
 
-## 1. Pre-flight — complete before the build finishes
+## 1. Pre-flight
+
+Staging must be X-Robots-Tag: noindex at the Vercel domain level or password protected. The preview is currently fully indexable with canonicals pointing at the production domain. Make this a pre-flight checklist item, not a note.
+ — complete before the build finishes
 
 - [ ] Full WordPress backup: files + database, downloaded and verified restorable
 - [ ] Full DNS zone export from the current host: A, AAAA, CNAME, **MX**, TXT (SPF/DKIM/DMARC/
