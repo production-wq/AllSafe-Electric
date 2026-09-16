@@ -181,18 +181,11 @@
     text-transform: uppercase;
     color: var(--green);
   }
-  .eyebrow::before {
-    content: '';
-    width: 28px;
-    height: 3px;
-    background: var(--green);
-    border-radius: 2px;
-  }
+  /* No leading dash, client request 2026-09-18: the small rule before every
+     eyebrow label read as clutter. .eyebrow-plain used to opt out of it; now
+     that plain is the default everywhere, that modifier is redundant. */
   .eyebrow-center {
     justify-content: center;
-  }
-  .eyebrow-plain::before {
-    display: none;
   }
 
   /* ── Buttons ───────────────────────────────────────────────────────── */
@@ -342,14 +335,8 @@
   .eyebrow-blue {
     color: var(--blue);
   }
-  .eyebrow-blue::before {
-    background: var(--blue);
-  }
   .eyebrow-light {
     color: rgba(255, 255, 255, 0.85);
-  }
-  .eyebrow-light::before {
-    background: rgba(255, 255, 255, 0.85);
   }
 
   /* ── Dark grounds: navy hero / CTA / footer ────────────────────────── */

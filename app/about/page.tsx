@@ -115,7 +115,7 @@ export default function AboutPage() {
                     alt="Jud Cushing, owner and master electrician at Allsafe Electric, in a Parker kitchen"
                     fill
                     sizes="(min-width: 768px) 46vw, 100vw"
-                    className="object-cover object-top"
+                    className="object-cover object-[50%_25%]"
                   />
                 </Parallax>
                 <div className="flex flex-1 flex-col p-6">
@@ -146,7 +146,7 @@ export default function AboutPage() {
                     alt="An Allsafe Electric licensed electrician holding a customer's dog during a job"
                     fill
                     sizes="(min-width: 768px) 46vw, 100vw"
-                    className="object-cover"
+                    className="object-cover object-[50%_15%]"
                   />
                 </Parallax>
                 <div className="flex flex-1 flex-col p-6">

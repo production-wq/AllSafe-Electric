@@ -43,7 +43,7 @@ export function ReviewsMarquee({ initial }: { initial: ReviewsPayload }) {
     <section aria-labelledby="marquee-heading" className="border-y border-rule bg-paper py-10">
       <div className="container-page">
         <p id="marquee-heading" className="eyebrow eyebrow-center mb-6 flex items-center justify-center gap-2">
-          <GoogleG /> Live from Google, 148 five-star reviews
+          <GoogleG /> Live from Google, {data.totalReviewCount} five-star reviews
         </p>
       </div>
       <div className="reviews-marquee group">

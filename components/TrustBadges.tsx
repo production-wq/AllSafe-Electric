@@ -40,9 +40,14 @@ const assurances = [
 
 export function TrustBadges({ className = '' }: { className?: string }) {
   const badges = SHOW_DATED ? [...undatedBadges, ...datedBadges] : undatedBadges;
+  // `lg:justify-between` only makes sense once there are badges to sit opposite
+  // the assurances list. With none (current state, see SHOW_DATED above), that
+  // left the empty badges div swallowing the "start" position and pushed the
+  // assurances list off to one side instead of centering it.
+  const justify = badges.length > 0 ? 'lg:justify-between' : 'lg:justify-center';
   return (
     <div
-      className={`flex flex-col items-center justify-center gap-6 lg:flex-row lg:justify-between ${className}`}
+      className={`flex flex-col items-center justify-center gap-6 lg:flex-row ${justify} ${className}`}
     >
       <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
         {badges.map((b) => (
