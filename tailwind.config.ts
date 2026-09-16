@@ -37,6 +37,9 @@ const config: Config = {
       screens: { '2xl': '1200px' },
     },
     extend: {
+      // Tailwind ships line-clamp 1-6. Review cards clamp at 8 lines so a long
+      // review cannot stretch every card beside it (components/ReviewCard.tsx).
+      lineClamp: { 7: '7', 8: '8', 9: '9', 10: '10' },
       colors: {
         black: '#000000',
         ink: '#111214', // headings, a hair off pure black for large blocks

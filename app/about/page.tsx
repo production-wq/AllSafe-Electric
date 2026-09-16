@@ -323,6 +323,16 @@ export default function AboutPage() {
       </div>
 
 
+      {/* ── Reviews ─────────────────────────────────────────────────────
+          Live Google reviews. This was inside the gallery section that §3.6 of
+          the revision doc removed, so it was dropped with it; re-added here as
+          its own section 2026-09-17. */}
+      <section className="section bg-paper">
+        <div className="container-page">
+          <ServiceReviews heading="What our customers say" />
+        </div>
+      </section>
+
       {/* ── Where to go next ───────────────────────────────────────────── */}
       <section className="section" aria-labelledby="next-heading">
         <div className="container-page">

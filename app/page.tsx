@@ -666,7 +666,7 @@ export default function HomePage() {
           homepage and most other pages (revision doc §1.10). */}
       <section className="section bg-paper">
         <div className="container-page">
-          <ServiceReviews heading="What our customers say" limit={3} />
+          <ServiceReviews heading="What our customers say" />
         </div>
       </section>
 

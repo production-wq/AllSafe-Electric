@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/seo';
 import { PageIntro } from '@/components/PageIntro';
 import { ReviewsSection } from '@/components/ReviewsSection';
-import { FeaturableReviews } from '@/components/FeaturableReviews';
 import { CtaBlock } from '@/components/sections';
 import { Schema } from '@/components/Schema';
 import { webPageNode, breadcrumbNode } from '@/lib/schema';
@@ -42,20 +41,11 @@ export default function ReviewsPage() {
         crumbs={crumbs}
       />
 
-      {/* Live Google reviews pulled from the Google Business Profile via
-          Featurable. Added 2026-09-16 at the client's request. */}
-      <section className="section" aria-labelledby="google-reviews-heading">
-        <div className="container-page">
-          <h2 id="google-reviews-heading" className="text-h2">
-            Our latest Google reviews
-          </h2>
-          <p className="mt-3 max-w-2xl text-grey">
-            Straight from our Google Business Profile, updated automatically.
-          </p>
-          <FeaturableReviews className="mt-8" />
-        </div>
-      </section>
-
+      {/* One reviews section, not two. The Featurable JS embed was removed
+          2026-09-17: the client preferred the server-rendered version, and it
+          is the better choice anyway since the embed renders client-side into
+          a shadow DOM, so search engines never see the review text. Both read
+          the same Google Business Profile. */}
       <ReviewsSection />
 
       <section className="section">

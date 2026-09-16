@@ -1,24 +1,27 @@
 import Link from 'next/link';
 import { getReviewsForServices } from '@/lib/reviews';
 import { Stars, GoogleG } from '@/components/Icons';
+import { ReviewRail } from './ReviewRail';
 
 /**
- * Live, service-matched Google reviews. Server component.
+ * Live, service-matched Google reviews in a horizontal rail. Server component.
  *
- * Replaces <FeaturedTestimonial>, which read a hardcoded four-review JSON file
- * and therefore showed the same Todd review on nearly every page (revision doc
- * §1.10). Reviews here come from the Featurable API, are keyword-tagged in
- * lib/reviews.ts, and update on their own as new Google reviews land.
+ * Replaces the hardcoded testimonial that showed the same Todd review on nearly
+ * every page (revision doc §1.10). Reviews come from the Featurable API, are
+ * keyword-tagged in lib/reviews.ts, and update on their own as new Google
+ * reviews land.
  *
- * `tags` are the service tags this page cares about. When there are not enough
- * matches the helper tops up with recent 5-star reviews, so the section is
- * never thin.
+ * Card design and rail behaviour are shared with the reviews page via
+ * <ReviewCard> and <ReviewRail>, at the client's request 2026-09-17: same look
+ * everywhere, scrollable left-to-right on homepage, service and location pages.
  *
- * Renders nothing at all if there are no reviews, rather than an empty shell.
+ * `tags` are the service tags this page cares about. Where there are not enough
+ * matches the helper tops up with recent 5-star reviews, so a page never
+ * renders a thin section. Renders nothing at all when there are no reviews.
  */
 export async function ServiceReviews({
   tags = [],
-  limit = 3,
+  limit = 8,
   heading = 'What customers say about this work',
   className = '',
 }: {
@@ -47,40 +50,15 @@ export async function ServiceReviews({
         </p>
       </div>
 
-      <div className="mt-8 grid gap-5 md:grid-cols-3">
-        {reviews.map((r) => (
-          <figure key={r.id} className="card flex h-full flex-col p-5">
-            <Stars rating={r.rating} size={15} />
-            <blockquote className="mt-3 flex-1 text-body text-slate">
-              {truncate(r.text, 240)}
-            </blockquote>
-            <figcaption className="mt-4 flex items-center gap-2.5 border-t border-rule pt-4">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-pill bg-blue-600 text-small font-bold text-white">
-                {r.authorName.charAt(0)}
-              </span>
-              <span className="min-w-0">
-                <span className="block truncate text-small font-semibold text-ink">
-                  {r.authorName}
-                </span>
-                <span className="block text-tiny text-grey">Google review</span>
-              </span>
-            </figcaption>
-          </figure>
-        ))}
+      <div className="mt-8">
+        <ReviewRail reviews={reviews} />
       </div>
 
-      <p className="mt-6">
+      <p className="mt-2">
         <Link href="/reviews/" className="link-cta">
           Read more customer reviews
         </Link>
       </p>
     </section>
   );
-}
-
-/** Trim to a word boundary so cards stay even without cutting mid-word. */
-function truncate(text: string, max: number): string {
-  if (text.length <= max) return text;
-  const cut = text.slice(0, max);
-  return `${cut.slice(0, cut.lastIndexOf(' '))}...`;
 }

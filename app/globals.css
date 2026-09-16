@@ -617,6 +617,31 @@
   will-change: transform;
 }
 
+/* ── Review rail, components/ReviewRail.tsx ──────────────────────────────
+ * Horizontal scroller for review cards. A slim styled scrollbar rather than a
+ * hidden one: on a swipeable row the bar is the affordance that tells people
+ * there is more to the right. */
+.review-rail {
+  scrollbar-width: thin;
+  scrollbar-color: var(--rule) transparent;
+  scroll-padding-left: 0;
+  /* Cards carry their own shadow; give it room so it is not clipped. */
+  padding-block-end: 0.75rem;
+}
+.review-rail::-webkit-scrollbar {
+  height: 6px;
+}
+.review-rail::-webkit-scrollbar-track {
+  background: transparent;
+}
+.review-rail::-webkit-scrollbar-thumb {
+  background: var(--rule);
+  border-radius: 999px;
+}
+.review-rail::-webkit-scrollbar-thumb:hover {
+  background: #c9d2da;
+}
+
 /* ── Generic marquee ticker, components/Marquee.tsx ──────────────────────
  * The reviews marquee hardcodes a 42s duration in its own keyframe. This one
  * is driven by --marquee-duration and --marquee-direction so one stylesheet
