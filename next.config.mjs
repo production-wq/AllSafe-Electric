@@ -38,11 +38,16 @@ const ContentSecurityPolicy = [
   "form-action 'self'",
   // 'unsafe-inline' scoped to scripts is required for GA4/GTM + Next's hydration bootstrap.
   // Hardening path: nonce-based CSP via middleware (disables full static opt on affected routes).
-  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.callrail.com https://*.callrail.com",
+  // featurable.com added 2026-09-16 for the Google reviews widget. Without it
+  // the CSP blocked the embed script outright ("Loading the script
+  // https://featurable.com/assets/bundle.js violates ... script-src"), which is
+  // why the widget rendered nothing no matter how it was configured.
+  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.callrail.com https://*.callrail.com https://featurable.com https://*.featurable.com",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob: https://lh3.googleusercontent.com https://*.googleusercontent.com https://maps.gstatic.com https://maps.googleapis.com https://*.google-analytics.com https://www.googletagmanager.com",
+  "img-src 'self' data: blob: https://lh3.googleusercontent.com https://*.googleusercontent.com https://maps.gstatic.com https://maps.googleapis.com https://*.google-analytics.com https://www.googletagmanager.com https://featurable.com https://*.featurable.com",
   "font-src 'self' data:",
-  "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.callrail.com https://places.googleapis.com",
+  // Featurable fetches the review payload from its own API at runtime.
+  "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.callrail.com https://places.googleapis.com https://featurable.com https://*.featurable.com",
   'frame-src https://book.housecallpro.com https://www.google.com',
   "media-src 'self'",
   "manifest-src 'self'",

@@ -367,6 +367,29 @@
   .surface-dark a:hover {
     color: #fff;
   }
+
+  /* Buttons keep their own colors on dark grounds.
+   *
+   * `.surface-dark a` (specificity 0,1,1) out-specifies `.btn-outline`
+   * (0,1,0), so any button rendered as a link inside a dark section had its
+   * text forced to #fff. On `.btn-outline`, whose background is also #fff,
+   * that produced a blank white box with invisible text — the hero CTA in the
+   * client's screenshot, 2026-09-16. These rules restore each variant's
+   * intended color at a specificity that wins. */
+  .surface-dark a.btn-outline {
+    color: var(--blue);
+  }
+  .surface-dark a.btn-outline:hover {
+    color: #fff;
+  }
+  .surface-dark a.btn-primary,
+  .surface-dark a.btn-primary:hover,
+  .surface-dark a.btn-blue,
+  .surface-dark a.btn-blue:hover,
+  .surface-dark a.btn-ghost,
+  .surface-dark a.btn-ghost:hover {
+    color: #fff;
+  }
   .surface-dark .eyebrow {
     color: var(--green);
   }
