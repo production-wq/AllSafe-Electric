@@ -13,7 +13,10 @@ non-negotiable, not a style preference.
 
 - Hours: weekdays, 8am to 6pm. Always state it as "We are open weekdays, 8am to 6pm."
 - There is NO after-hours line, emergency line, on-call service, or 24/7 availability. Never write copy that says or implies calls are answered outside business hours. Never state the opposite either (no "closed weekends," no "calls after hours go to voicemail"). Only state the weekday hours.
-- Jud Cushing (owner, master electrician ME.0601023) has over 20 years in the trade. Allsafe was founded in Parker in January 2018. Do not confuse the two.
+- Jud Cushing (owner, master electrician ME.0601023) has over 20 years in the trade. Allsafe was founded in Parker in January 2018.
+- Experience stats display as "20+ Years of experience serving the South Denver metro." Never pair 20+ with "years in business"; the business dates to 2018.
+- Tone for company story and standards copy: professional and confident. Avoid framing that sounds like housekeeping ("leave the house cleaner than you found it") or snark ("apparently, rare").
+- Never repeat the same photo in adjacent sections, and never crop people or pets so key subjects are cut off.
 - Diagnostic visits are a flat fee. Never state the amount. Never say the fee is credited toward, or comes off, the repair. Approved phrasing: "A diagnostic visit is a flat fee, and if any repairs or replacements are needed, we'll give you the price in writing before we start any work."
 - Price ranges live in `lib/services.ts`, in each service object's `priceRange: { low, high }` field — that pair drives the "What it costs" card on every service page automatically (`components/sections.tsx`, `PriceRange`). Never hardcode a price anywhere else. The one exception that needs manual attention: `electrical-panel-services` also states its price in plain prose in its own `blurb` and `lead` fields (the hero sentence) and in its `highlights` "Typical range" entry — if that service's `priceRange` ever changes, update those three strings in the same edit or they will drift out of sync. No other service currently states a price in prose.
 - Service area: the full South Denver metro (21 communities). Never mention drive time, minutes, or distance from the Parker shop.

@@ -195,8 +195,8 @@ export function CityPageContent({ citySlug }: { citySlug: string }) {
                   icon: <GoogleG className="h-5 w-5" />,
                 },
                 {
-                  value: '8+',
-                  label: 'Years serving the South Denver metro',
+                  value: '20+',
+                  label: 'Years of experience serving the South Denver metro',
                   icon: <ClockIcon width={20} height={20} />,
                 },
                 {

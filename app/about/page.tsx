@@ -106,10 +106,18 @@ export default function AboutPage() {
               lead="We bring decades of combined experience to every job. When you hire Allsafe Electric, you get dedicated, licensed professionals who see your project through from the initial estimate to the final inspection."
             />
           </Reveal>
-          <div className="mt-10 grid gap-8 md:grid-cols-2">
-            <Reveal className="flex h-full">
-              <article className="card flex h-full flex-col overflow-hidden">
-                <Parallax distance={26} className="h-[320px]">
+          {/* items-start, and no h-full on either card below: the dog card's
+              photo went portrait (see below), so it is now much taller than
+              Judson's fixed-height photo. items-start alone was not enough —
+              each card had its own `h-full`, an explicit height that still
+              resolves to 100% of the row track regardless of align-items
+              (align-items:start only stops AUTO-height items from
+              stretching). With h-full removed from both cards too, each one
+              is finally just as tall as its own content. */}
+          <div className="mt-10 grid items-start gap-8 md:grid-cols-2">
+            <Reveal>
+              <article className="card flex flex-col overflow-hidden">
+                <Parallax distance={26} className="h-[400px]">
                   <SiteImage
                     name="allsafe-electrician-blue-uniform-kitchen-portrait.JPG"
                     alt="Jud Cushing, owner and master electrician at Allsafe Electric, in a Parker kitchen"
@@ -138,22 +146,28 @@ export default function AboutPage() {
               </article>
             </Reveal>
 
-            <Reveal delay={120} className="flex h-full">
-              <article className="card flex h-full flex-col overflow-hidden">
-                <Parallax distance={26} className="h-[320px]">
+            <Reveal delay={120}>
+              <article className="card flex flex-col overflow-hidden">
+                {/* Portrait 4:5, not the old fixed h-[320px] landscape box, client
+                    feedback 2026-09-18: at a landscape crop this 1284x1899 photo
+                    (Jud's head ~12% down, the dog filling the lower 55-95%) could
+                    only show one of the two, and it was cutting off the dog to
+                    chest height, "looks like Jud is holding something dead." A
+                    tested object-position on the untouched source file. */}
+                <Parallax distance={26} className="aspect-[4/5]">
                   <SiteImage
                     name="allsafe-electrician-holding-dog.JPG"
-                    alt="An Allsafe Electric licensed electrician holding a customer's dog during a job"
+                    alt="Jud Cushing of Allsafe Electric holding a customer's dog"
                     fill
                     sizes="(min-width: 768px) 46vw, 100vw"
-                    className="object-cover object-[50%_15%]"
+                    className="object-cover object-[50%_68%]"
                   />
                 </Parallax>
                 <div className="flex flex-1 flex-col p-6">
                   <h3 className="text-h3">Good with dogs. Serious about safety.</h3>
                   <p className="mt-1 text-small font-semibold text-green-700">Our standards on every job</p>
                   <p className="mt-3 flex-1 text-body text-slate">
-                    Shoe covers go on at the door. Work areas are fully protected, and every job is left cleaner than we found it. We are polite, respectful of your home, and completely comfortable working around pets. These are company standards, not exceptions.
+                    Shoe covers go on at the door. Work areas are fully protected, and every job is left cleaner than we found it. We are polite, respectful of your home, and we love working around your pets.
                   </p>
                 </div>
               </article>
@@ -173,12 +187,18 @@ export default function AboutPage() {
               highlight="Allsafe"
               lead="No acquisition, no franchise, no private equity rollup. Allsafe started as one electrician who wanted to do the work properly, and a business that grew because people kept calling back."
             />
+            {/* Taller crop, client feedback 2026-09-18: the old h-60 (fixed
+                240px) box cut Jud off at the chest. This image is a tall
+                portrait (1284x1885) with his tool belt right at the bottom
+                edge, so a 4:5 box anchored to the bottom keeps his head in
+                frame and runs down through the belt instead of stopping
+                short of it. */}
             <div className="mt-8 overflow-hidden rounded-card border border-rule shadow-photo">
               <SiteImage
                 name="allsafe-electrician-in-home-service-portrait.JPG"
-                alt="An Allsafe Electric electrician working in a Parker home"
+                alt="Jud Cushing of Allsafe Electric, tool belt on, in a customer's home"
                 sizes="(min-width: 1024px) 420px, 100vw"
-                className="h-60 w-full object-cover object-[50%_25%]"
+                className="aspect-[4/5] w-full object-cover object-bottom"
                 aspable={false}
               />
             </div>
@@ -189,11 +209,11 @@ export default function AboutPage() {
               steps={[
                 {
                   title: '2018, the business starts',
-                  body: 'Jud leaves the larger shops and starts Allsafe Electric in Parker in January. The premise is unglamorous: answer the phone, arrive when you said you would, and leave the house cleaner than you found it.',
+                  body: 'Jud leaves the larger shops and starts Allsafe Electric in Parker in January. We take pride in keeping things simple and efficient. From start to finish, our customers appreciate our quality of service.',
                 },
                 {
                   title: 'Reputation travels',
-                  body: 'Parker and the surrounding Douglas County towns are small enough that reputation travels. The reviews that accumulate name the crew personally rather than the company, which is the clearest sign the work is being done by the people who sold it.',
+                  body: 'Parker and the surrounding Douglas County towns are small enough that reputation travels. The reviews speak for themselves: our electricians, Jud included, are consistently called out by name because homeowners genuinely enjoy working with them.',
                 },
                 {
                   title: 'The service area widens',
@@ -214,15 +234,14 @@ export default function AboutPage() {
           <div className="prose-body space-y-5 text-[1.08rem]">
             <h2 className="text-h2">Who We Are and What We Believe</h2>
             <p>
-              Allsafe Electric started in January 2018 after years working for larger shops. The
-              idea was simple: be the electrician people actually want in their house. Answer the
-              phone. Turn up when you said. Leave the place cleaner than you found it.
+              Allsafe Electric started in January 2018 after Jud spent years working for larger
+              shops. The goal was to be the electrician homeowners trust in their home:
+              professional, dependable, and easy to work with.
             </p>
             <p>
-              It sounds obvious. It is also, apparently, rare. The thing customers say most often
-              is some version of &ldquo;I can&apos;t believe you answered,&rdquo; or &ldquo;I
-              can&apos;t believe you actually showed up.&rdquo; That reaction is the whole reason to
-              keep doing it this way.
+              The thing customers say most often is some version of &ldquo;I can&apos;t believe
+              you answered,&rdquo; or &ldquo;I can&apos;t believe you actually showed up.&rdquo;
+              That reaction is the whole reason to keep doing it this way.
             </p>
 
             <h2 className="text-h2">How a visit works</h2>
@@ -282,14 +301,13 @@ export default function AboutPage() {
           </div>
 
           <aside className="space-y-5 lg:sticky lg:top-[calc(var(--header-h)+1rem)] lg:h-fit">
-            <div className="overflow-hidden rounded-card border border-rule">
-              <SiteImage
-                name="allsafe-electrician-in-home-service-portrait.JPG"
-                alt="An Allsafe Electric licensed electrician on a job in a Parker home"
-                sizes="360px"
-                className="w-full"
-              />
-            </div>
+            {/* The portrait used here used to duplicate the one in the "How
+                Allsafe got here" timeline above, back to back with only the
+                credentials list between them on a long scroll (client
+                feedback 2026-09-18: "it makes it look like the site ran out
+                of photos"). Removed rather than swapped in a new photo, since
+                this sticky card reads fine on its own next to the
+                credentials list. */}
             <div className="card p-5">
               <h2 className="text-h3">The details</h2>
               <dl className="mt-3 space-y-2 text-[0.95rem]">

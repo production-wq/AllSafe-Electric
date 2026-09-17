@@ -62,7 +62,7 @@ export const metadata: Metadata = pageMetadata({
 });
 
 const stats = [
-  { value: '8+', label: 'Years in Business', icon: <ClockIcon width={20} height={20} /> },
+  { value: '20+', label: 'Years of experience serving the South Denver metro', icon: <ClockIcon width={20} height={20} /> },
   {
     value: String(business.google.reviewCount),
     label: '5-Star Google Reviews',
@@ -469,7 +469,7 @@ export default function HomePage() {
               Common Electrical Problems in Parker Homes
             </h2>
             <p className="mt-4 text-lead text-slate">
-              Parker&rsquo;s housing stock has patterns, and after eight years working in these
+              Parker&rsquo;s housing stock has patterns, and after more than 20 years working in these
               neighborhoods we see the same four issues over and over. Here is what is usually
               going on, and what actually fixes it.
             </p>
