@@ -270,7 +270,7 @@ export const services: Service[] = [
     ],
     priceRange: {
       low: 165,
-      high: 385,
+      high: 399,
       drivers: 'how far the fault is buried and how many circuits are involved',
       includes: 'the diagnostic visit, a written explanation of the cause, and a fixed repair price',
       needsApproval: true,
@@ -364,7 +364,7 @@ export const services: Service[] = [
     ],
     priceRange: {
       low: 145,
-      high: 340,
+      high: 395,
       unit: 'per outlet',
       drivers:
         'whether we are repairing, replacing, or running a new circuit, and how far it is from the panel',
@@ -454,8 +454,8 @@ export const services: Service[] = [
       { label: 'Finish', value: 'Consistent plates across a floor' },
     ],
     priceRange: {
-      low: 135,
-      high: 280,
+      low: 149,
+      high: 289,
       unit: 'per switch',
       drivers: 'single-pole versus three-way or smart, and the state of the wiring in the box',
       includes: 'the device, a new plate, and a function test',
@@ -544,8 +544,8 @@ export const services: Service[] = [
       { label: 'Permits', value: 'Filed and inspected by us' },
     ],
     priceRange: {
-      low: 350,
-      high: 8000,
+      low: 300,
+      high: 24000,
       drivers:
         'a single repair versus remediating aluminum throughout versus a full rewire, plus access above the ceilings',
       includes:
@@ -640,7 +640,7 @@ export const services: Service[] = [
     ],
     priceRange: {
       low: 189,
-      high: 375,
+      high: 499,
       drivers:
         'home size, panel accessibility, and whether the report needs formatting for a lender or insurer',
       includes:
@@ -734,8 +734,8 @@ export const services: Service[] = [
       { label: 'CO coverage', value: 'Placed to Colorado code' },
     ],
     priceRange: {
-      low: 65,
-      high: 145,
+      low: 149,
+      high: 299,
       unit: 'per device installed',
       drivers:
         'combination smoke and CO versus smoke only, sealed ten-year versus replaceable battery, and ceiling height',
@@ -807,7 +807,7 @@ export const services: Service[] = [
     slug: 'electrical-panel-services',
     h1: 'Electrical panel upgrades and repairs',
     navLabel: 'Panel upgrades & repairs',
-    blurb: 'Fuse boxes, tripping breakers, and Federal Pacific panels replaced. Most run $2,200 to $4,500.',
+    blurb: 'Fuse boxes, tripping breakers, and Federal Pacific panels replaced. Most run $2,200 to $8,800.',
     title: 'Electrical Panel Upgrades & Repairs | South Denver Metro | Allsafe Electric',
     metaDescription:
       'Breaker tripping or a fuse box still in service? We upgrade panels across Parker and Douglas County. Licensed master electrician, permits handled for you.',
@@ -826,15 +826,15 @@ export const services: Service[] = [
     bodyImage: 'allsafe-electrician-installing-breaker-panel-cover.JPG',
     bodyAlt: 'Refitting the deadfront cover on a finished breaker panel',
     lead:
-      'If your breakers trip when the microwave and the toaster run together, you still have a fuse box, or your panel is a Federal Pacific or Zinsco, an upgrade is the fix. Most panel upgrades in Parker run $2,200 to $4,500. What moves the price is the amperage you need, where the meter sits, whether the mast has to be replaced, and what the inspector finds. We give you the range on a first call and a fixed number after seeing it.',
+      'If your breakers trip when the microwave and the toaster run together, you still have a fuse box, or your panel is a Federal Pacific or Zinsco, an upgrade is the fix. Most panel upgrades run $2,200 to $8,800. What moves the price is the amperage you need, where the meter sits, whether the mast has to be replaced, and what the inspector finds. We give you the range on a first call and a fixed number after seeing it.',
     highlights: [
-      { label: 'Typical range', value: '$2,200 to $4,500' },
+      { label: 'Typical range', value: '$2,200 to $8,800' },
       { label: 'Time on site', value: 'Usually a single day' },
       { label: 'Power off for', value: 'A few hours, not all day' },
     ],
     priceRange: {
       low: 2200,
-      high: 4500,
+      high: 8800,
       drivers:
         'amperage, meter location, whether the service mast needs replacing, and inspection findings',
       includes:
@@ -933,7 +933,7 @@ export const services: Service[] = [
     ],
     priceRange: {
       low: 350,
-      high: 650,
+      high: 795,
       drivers: 'the device rating in kA, panel space, and whether a two-stage setup is worthwhile',
       includes: 'a UL-1449 listed device, the breaker, installation, and a status check',
       needsApproval: true,
@@ -1023,7 +1023,7 @@ export const services: Service[] = [
     ],
     priceRange: {
       low: 6500,
-      high: 18000,
+      high: 24000,
       drivers:
         'generator kW, whole-house versus essential-circuits transfer switch, gas line and pad work, and distance from the meter',
       includes:
@@ -1122,7 +1122,7 @@ export const services: Service[] = [
     ],
     priceRange: {
       low: 650,
-      high: 2200,
+      high: 2800,
       drivers:
         'distance from the panel, whether the service has spare capacity, and hardwired versus plug-in',
       includes:
@@ -1487,7 +1487,7 @@ export const services: Service[] = [
     ],
     priceRange: {
       low: 165,
-      high: 425,
+      high: 625,
       unit: 'per fan',
       drivers:
         'replacing versus a new location, ceiling height and slope, and whether a rated box or new wiring is needed',

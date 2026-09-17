@@ -34,6 +34,6 @@ A house built for a furnace, a water heater, and some lights is now running cent
 
 Not every panel problem is a replacement. A loose lug, a failed breaker, or a labeling job are repairs. A fuse box, a recalled panel brand, water damage, or genuinely maxed-out capacity are replacements. We will tell you honestly which one you are dealing with, and give you the price in writing before any work starts.
 
-Panel upgrades in the area typically run $2,200 to $4,500 depending on amperage, where the meter sits, and what the inspector finds. We pull the permit, coordinate the utility disconnect, and meet the inspector.
+Panel upgrades in the area typically run $2,200 to $8,800 depending on amperage, where the meter sits, and what the inspector finds. We pull the permit, coordinate the utility disconnect, and meet the inspector.
 
 Not sure what you have? Send us a photo of your panel through our [contact form](/contact/) or call (303) 648-1934.

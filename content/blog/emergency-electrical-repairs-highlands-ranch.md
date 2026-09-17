@@ -37,8 +37,8 @@ A single dead outlet, one room without power, a flickering light, or a breaker t
 
 ## How we handle emergency calls
 
-During business hours we can often be on site the same day across Highlands Ranch, which is a straight run from the Parker shop. Weekday evenings reach an after-hours line on the same number. When we arrive, we make the area safe first, find the actual cause rather than the symptom, and give you a fixed price to repair before any work starts. The diagnostic fee comes off the repair.
+During business hours, we can often be on site the same day across Highlands Ranch. When we arrive, we make the area safe first, find the actual cause, and give you the price in writing before any work starts.
 
 If you are not sure whether what you are seeing is urgent, call and describe it. We would rather talk you through it than have you guess.
 
-[See our emergency service](/emergency-electrical-repairs-parker-co/) or call (303) 648-1934.
+[See our emergency service](/emergency-electrical-repairs/) or call (303) 648-1934.

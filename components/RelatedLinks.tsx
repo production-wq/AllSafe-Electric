@@ -38,9 +38,9 @@ export function ServiceToCities({ serviceSlug }: { serviceSlug: string }) {
           </span>
         ))}
         , plus every other town on our{' '}
-        <Link href="/service-area/">service area page</Link>. Response times vary by drive distance,
-        and each town page lists its own permit authority and electric utility, which genuinely
-        differ across Douglas, Arapahoe and Elbert counties.
+        <Link href="/service-area/">service area page</Link>. Each town page lists its own permit
+        authority and electric utility, which genuinely differ across Douglas, Arapahoe and Elbert
+        counties.
       </p>
       <ul className="mt-6 flex flex-wrap gap-2">
         {cities.map((c) => (

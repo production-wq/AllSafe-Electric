@@ -124,7 +124,7 @@ export default function AboutPage() {
                     Owner &amp; Master Electrician - {business.licenses.master.id}
                   </p>
                   <p className="mt-3 flex-1 text-body text-slate">
-                    Jud has been in the trade more than fifteen years and founded Allsafe in
+                    Jud has been in the trade over 20 years and founded Allsafe in
                     Parker in January 2018. He holds the master electrician license.
                   </p>
                   <p className="mt-3 flex-1 text-body text-slate">
@@ -299,7 +299,7 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <dt className="font-semibold">Trade experience</dt>
-                  <dd className="text-grey">15+ years in the electrical trade</dd>
+                  <dd className="text-grey">Over 20 years in the electrical trade</dd>
                 </div>
                 <div>
                   <dt className="font-semibold">License holder</dt>

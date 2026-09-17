@@ -139,12 +139,12 @@ export default async function ServicePage({
           <div>
             <div className="flex flex-wrap items-center gap-2">
               {s.emergency ? (
-                <span className="chip chip-green">Emergency line open</span>
+                <span className="chip chip-green">Same-day emergency service</span>
               ) : (
                 group && <span className="chip chip-blue">{group.label}</span>
               )}
               <span className="chip chip-grey">
-                {s.indexed ? 'Serving Parker since 2018' : 'New service'}
+                {s.indexed ? 'Serving the South Denver metro since 2018' : 'New service'}
               </span>
             </div>
 
@@ -207,7 +207,7 @@ export default async function ServicePage({
                 },
                 {
                   value: '8+',
-                  label: 'Years serving Parker',
+                  label: 'Years serving the South Denver metro',
                   icon: <ClockIcon width={20} height={20} />,
                 },
                 {

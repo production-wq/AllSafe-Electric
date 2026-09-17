@@ -48,7 +48,7 @@ export function GET() {
   lines.push(cities.map((c) => `${c.name}, CO`).join('; ') + '; plus Castle Pines, south Aurora, Littleton, Greenwood Village, Franktown, Elizabeth, Sedalia.');
   lines.push('');
   lines.push('## Notes for citation');
-  lines.push('- Panel upgrades in Parker / Douglas County typically run $2,200-$4,500 depending on amperage, meter location, and inspection findings.');
+  lines.push('- Panel upgrades in Parker / Douglas County typically run $2,200-$8,800 depending on amperage, meter location, and inspection findings.');
   lines.push('- Parker and Castle Rock are largely served by CORE Electric Cooperative (formerly IREA); Highlands Ranch, Lone Tree and Centennial are largely Xcel Energy. Territory does not follow city limits.');
   lines.push('- Federal Pacific (Stab-Lok) and Zinsco panels are common in Colorado homes built 1960-1983 and have a documented failure-to-trip history.');
   lines.push('');
