@@ -19,7 +19,7 @@ import { StatBand } from '@/components/sections';
 import { ServiceReviews } from '@/components/ServiceReviews';
 import { StickyTOC } from '@/components/StickyTOC';
 import { CityToServices } from '@/components/RelatedLinks';
-import { HomeIcon, ShieldIcon, BoltIcon, ClockIcon, MapPinIcon } from '@/components/Icons';
+import { HomeIcon, ShieldIcon, BoltIcon, ClockIcon, MapPinIcon, GoogleG } from '@/components/Icons';
 import { webPageNode, breadcrumbNode, faqPageNode, cityMainEntityNode } from '@/lib/schema';
 import { business } from '@/lib/business';
 
@@ -190,14 +190,14 @@ export function CityPageContent({ citySlug }: { citySlug: string }) {
               tone="light"
               items={[
                 {
+                  value: `${business.google.reviewCount}`,
+                  label: '5-star Google reviews',
+                  icon: <GoogleG className="h-5 w-5" />,
+                },
+                {
                   value: '8+',
                   label: 'Years serving the South Denver metro',
                   icon: <ClockIcon width={20} height={20} />,
-                },
-                {
-                  value: `${business.google.reviewCount}`,
-                  label: '5-star Google reviews',
-                  icon: <ShieldIcon width={20} height={20} />,
                 },
                 {
                   value: 'Licensed',
