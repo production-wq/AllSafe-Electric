@@ -190,8 +190,8 @@ export function CityPageContent({ citySlug }: { citySlug: string }) {
               tone="light"
               items={[
                 {
-                  value: 'Same-Day',
-                  label: 'For urgent calls, 2-hr window',
+                  value: '8+',
+                  label: 'Years serving the South Denver metro',
                   icon: <ClockIcon width={20} height={20} />,
                 },
                 {
