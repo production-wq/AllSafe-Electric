@@ -24,6 +24,9 @@ non-negotiable, not a style preference.
 - Call is always the primary CTA; the estimate form is secondary.
 - Avoid AI-sounding filler: "in plain English," "no filler," "no stock photography," cute contrasts like "houses, not warehouses."
 - Blog posts need at least 3 natural in-copy internal links.
+- Never publish a blog post with a future datePublished or dateModified. Set both to the real publish date.
+- Sitewide positioning is "South Denver metro," not "Parker" alone. This applies to titles and meta descriptions too, not just body copy. Parker can still be named as home base.
+- llms.txt and the XML sitemaps must be generated from the same city list and page data as the rest of the site (nav, footer, schema areaServed). Don't hand-maintain a separate list in llms.txt.
 
 Blog posts are hand-authored markdown under `content/blog/`, not generated from
 a template or prompt file — there is nothing else to update if this list

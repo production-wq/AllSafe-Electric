@@ -11,10 +11,10 @@ import { PhoneIcon, MapPinIcon, ClockIcon } from '@/components/Icons';
 
 export const metadata: Metadata = pageMetadata({
   path: '/contact/',
-  title: 'Contact Allsafe Electric | Parker, CO Electrician',
+  title: 'Contact Allsafe Electric | South Denver Metro Electrician',
   description:
-    'Call (303) 648-1934, request a quote, or send an estimate request. Allsafe Electric replies the same business day. Parker, CO and the south Denver metro.',
-  ogEyebrow: 'Contact · Parker, CO',
+    'Call (303) 648-1934, request a quote, or send an estimate request. Allsafe Electric replies the same business day. Serving Parker, CO and the South Denver metro.',
+  ogEyebrow: 'Contact · South Denver Metro',
 });
 
 const crumbs = [
@@ -32,7 +32,7 @@ export default function ContactPage() {
           webPageNode({
             path: '/contact/',
             name: 'Contact Allsafe Electric',
-            description: 'Call, book, or request an estimate from Allsafe Electric in Parker, CO.',
+            description: 'Call, book, or request an estimate from Allsafe Electric, serving Parker, CO and the South Denver metro.',
             about: true,
           }),
           breadcrumbNode(crumbs),

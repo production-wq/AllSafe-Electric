@@ -10,10 +10,10 @@ import { business } from '@/lib/business';
 
 export const metadata: Metadata = pageMetadata({
   path: '/book/',
-  title: 'Book an Electrician in Parker, CO | Allsafe Electric',
+  title: 'Book an Electrician in South Denver Metro | Allsafe Electric',
   description:
     'Book Allsafe Electric online, the scheduler is live any time. Or call (303) 648-1934 during business hours and talk to a real person directly.',
-  ogEyebrow: 'Book · Parker, CO',
+  ogEyebrow: 'Book · South Denver Metro',
   // Thin 269-word Housecall Pro pass-through — not a page worth ranking on its own.
   // Excluded from sitemap.ts too. Kept crawlable (follow) so internal PageRank still
   // flows through it to /contact/ and the service pages it links out to.

@@ -106,6 +106,11 @@ export function businessNode(): JsonLd {
         itemOffered: { '@type': 'Service', name: s.name, url: s.url },
       })),
     },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: String(business.google.averageRating),
+      reviewCount: String(business.google.reviewCount),
+    },
     potentialAction: {
       '@type': 'ReserveAction',
       target: {
@@ -193,6 +198,12 @@ export function serviceNode(s: Service): JsonLd {
       ...tier2Areas.map((name) => ({ '@type': 'City' as const, name })),
       ...tier3Neighborhoods.map((name) => ({ '@type': 'Neighborhood' as const, name })),
     ],
+    offers: {
+      '@type': 'AggregateOffer',
+      priceCurrency: 'USD',
+      lowPrice: String(s.priceRange.low),
+      highPrice: String(s.priceRange.high),
+    },
   };
 }
 

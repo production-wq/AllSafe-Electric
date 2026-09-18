@@ -5,14 +5,15 @@ import { ReviewsSection } from '@/components/ReviewsSection';
 import { CtaBlock } from '@/components/sections';
 import { Schema } from '@/components/Schema';
 import { webPageNode, breadcrumbNode } from '@/lib/schema';
-import { business } from '@/lib/business';
+import { business, SITE_URL } from '@/lib/business';
+import { getReviews } from '@/lib/reviews';
 
 export const metadata: Metadata = pageMetadata({
   path: '/reviews/',
-  title: 'Allsafe Electric Reviews | Parker, CO Electrician',
+  title: "Allsafe Electric Reviews | South Denver Metro Electrician",
   description:
-    'Read Allsafe Electric’s Google reviews. Real customers in Parker and Douglas County who name our team. Then leave your own after your visit.',
-  ogEyebrow: 'Reviews · Parker, CO',
+    "Read Allsafe Electric’s Google reviews. Real customers across the South Denver metro who name our team. Then leave your own after your visit.",
+  ogEyebrow: 'Reviews · South Denver Metro',
 });
 
 const crumbs = [
@@ -20,24 +21,34 @@ const crumbs = [
   { name: 'Reviews', path: '/reviews/' },
 ];
 
-export default function ReviewsPage() {
+export default async function ReviewsPage() {
+  const payload = await getReviews();
+  const sampleReviews = payload.reviews.slice(0, 8);
+  const reviewSchema = sampleReviews.map((r) => ({
+    '@type': 'Review',
+    author: { '@type': 'Person', name: r.authorName },
+    reviewRating: { '@type': 'Rating', ratingValue: String(r.rating), bestRating: '5' },
+    reviewBody: r.text,
+    ...(r.publishTime ? { datePublished: r.publishTime.slice(0, 10) } : {}),
+    itemReviewed: { '@id': `${SITE_URL}/#business` },
+  }));
+
   return (
     <>
-      {/* WebPage only, no Review / aggregateRating schema until first-party
-          collection exists (planning/docs/06 §3, docs/99 2026-09-08). */}
       <Schema
         nodes={[
           webPageNode({
             path: '/reviews/',
             name: 'Allsafe Electric reviews',
-            description: 'Google reviews for Allsafe Electric, a residential electrician in Parker, CO.',
+            description: 'Google reviews for Allsafe Electric, a residential electrician serving the South Denver metro.',
           }),
           breadcrumbNode(crumbs),
+          ...reviewSchema,
         ]}
       />
       <PageIntro
         eyebrow="Reviews"
-        title="What Parker homeowners say about us"
+        title="What South Denver metro homeowners say about us"
         crumbs={crumbs}
       />
 

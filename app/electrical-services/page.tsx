@@ -9,10 +9,10 @@ import { services, serviceGroups } from '@/lib/services';
 
 export const metadata: Metadata = pageMetadata({
   path: '/electrical-services/',
-  title: 'Residential Electrical Services in Parker, CO | Allsafe',
+  title: 'Residential Electrical Services | South Denver Metro | Allsafe',
   description:
-    'All 16 residential electrical services from Allsafe Electric in Parker. Panels, EV chargers, wiring, lighting, generators, inspections and emergency repairs.',
-  ogEyebrow: 'Services · Parker, CO',
+    'All 16 residential electrical services from Allsafe Electric in the South Denver metro. Panels, EV chargers, wiring, lighting, generators, inspections and emergency repairs.',
+  ogEyebrow: 'Services · South Denver Metro',
 });
 
 const crumbs = [
@@ -27,9 +27,9 @@ export default function ServicesHubPage() {
         nodes={[
           webPageNode({
             path: '/electrical-services/',
-            name: 'Residential electrical services in Parker, CO',
+            name: 'Residential electrical services in the South Denver metro',
             description:
-              'The full list of residential electrical services offered by Allsafe Electric across Parker and Douglas County.',
+              'The full list of residential electrical services offered by Allsafe Electric across the South Denver metro.',
             significantLinks: services.map((s) => `/${s.slug}/`),
           }),
           breadcrumbNode(crumbs),
@@ -37,7 +37,7 @@ export default function ServicesHubPage() {
       />
       <PageIntro
         eyebrow="Services"
-        title="Residential electrical services in Parker, CO"
+        title="Residential electrical services in the South Denver metro"
         lead="Strictly residential, no commercial, no industrial. Every page below tells you what it costs to find out and how fast someone can be there."
         crumbs={crumbs}
       />

@@ -1,8 +1,8 @@
 ---
 title: A quick guide to electrical emergencies in Highlands Ranch
-description: What counts as an electrical emergency, what to do first, and when to stop resetting the breaker and call. From a licensed Parker electrician.
-datePublished: 2026-09-29
-dateModified: 2026-09-29
+description: What counts as an electrical emergency, what to do first, and when to stop resetting the breaker and call. From a licensed South Denver metro electrician.
+datePublished: 2026-09-18
+dateModified: 2026-09-18
 category: Problem & symptom
 heroImage: allsafe-electrician-voltage-testing-breaker-panel.JPG
 heroAlt: Jud from Allsafe Electric checking voltage at an open breaker panel during a callout

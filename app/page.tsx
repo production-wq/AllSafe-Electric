@@ -55,10 +55,10 @@ import { webPageNode, faqPageNode } from '@/lib/schema';
 
 export const metadata: Metadata = pageMetadata({
   path: '/',
-  title: "Parker's Trusted Residential Electrician | Allsafe Electric",
+  title: "South Denver Metro’s Trusted Residential Electrician | Allsafe Electric",
   description:
-    'Allsafe Electric is Parker, CO’s trusted residential electrician. Fast response, licensed and insured, BBB A+ accredited. Free estimates. Call (303) 648-1934.',
-  ogEyebrow: 'Top rated electrician in Parker',
+    "Allsafe Electric is the South Denver metro's trusted residential electrician. Fast response, licensed and insured, BBB A+ accredited. Free estimates. Call (303) 648-1934.",
+  ogEyebrow: 'Top rated electrician in the South Denver metro',
 });
 
 const stats = [
@@ -208,7 +208,7 @@ export default function HomePage() {
         nodes={[
           webPageNode({
             path: '/',
-            name: "Parker's Trusted Residential Electrician | Allsafe Electric",
+            name: "South Denver Metro's Trusted Residential Electrician | Allsafe Electric",
             description:
               'Licensed residential electrician in Parker, Colorado. Fast response, licensed and insured, BBB A+ accredited.',
             primaryImage: '/img/photos/allsafe-electrician-in-home-service-portrait.jpg',
@@ -267,12 +267,12 @@ export default function HomePage() {
           className="pointer-events-none absolute -left-32 bottom-[-10rem] h-[30rem] w-[30rem] rounded-full bg-green-600/20 blur-3xl"
         />
         <div className="container-page relative pb-28 pt-14 text-center md:pb-36 md:pt-20">
-          <p className="eyebrow eyebrow-center rise">Top Rated Electrician in Parker</p>
+          <p className="eyebrow eyebrow-center rise">Top Rated Electrician in the South Denver Metro</p>
           {/* Client request 2026-09-14: "modern headings, the main word can be a
               colorful word". "Trusted" carries the brand gradient. */}
           <AnimatedHeading
             as="h1"
-            text="Parker's Trusted Residential Electrician"
+            text="South Denver Metro's Trusted Residential Electrician"
             highlight="Trusted"
             className="rise mx-auto mt-5 max-w-4xl text-hero uppercase"
           />

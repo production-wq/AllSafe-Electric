@@ -1,14 +1,18 @@
 import { business, abs } from '@/lib/business';
 import { services } from '@/lib/services';
 import { cities } from '@/lib/cities';
+import { getAllPosts } from '@/lib/blog';
 
 /**
  * /llms.txt, planning/docs/09 §10. A plain-text index for answer engines:
  * key pages with one-line descriptions, the NAP block, and the service list.
+ * Generated from the same data sources as the sitemaps and schema — never
+ * hand-maintain a separate city or price list here.
  */
 export const dynamic = 'force-static';
 
-export function GET() {
+export async function GET() {
+  const posts = await getAllPosts();
   const lines: string[] = [];
   lines.push(`# ${business.name}`);
   lines.push('');
@@ -30,25 +34,35 @@ export function GET() {
   lines.push(`Google Business Profile: ${business.google.profileUrl}`);
   lines.push('');
   lines.push('## Key pages');
-  lines.push(`- ${abs('/')}: Home. Parker residential electrician who answers the phone`);
+  lines.push(`- ${abs('/')}: Home. South Denver metro residential electrician who answers the phone`);
   lines.push(`- ${abs('/electrical-services/')}: All residential electrical services`);
   lines.push(`- ${abs('/about/')}: About Allsafe Electric, licenses and credentials`);
   lines.push(`- ${abs('/reviews/')}: Google reviews`);
   lines.push(`- ${abs('/contact/')}: Contact and free estimate request`);
   lines.push(`- ${abs('/service-area/')}: Cities and neighborhoods served`);
   lines.push(`- ${abs('/resources/')}: Douglas County permit authorities, CORE vs Xcel, Colorado code`);
-  lines.push(`- ${abs('/blog/')}: Electrical advice for Parker homeowners`);
   lines.push('');
   lines.push('## Services');
   for (const s of services) {
     lines.push(`- ${abs(`/${s.slug}/`)}: ${s.h1}`);
   }
   lines.push('');
-  lines.push('## Service area');
-  lines.push(cities.map((c) => `${c.name}, CO`).join('; ') + '; plus Castle Pines, south Aurora, Littleton, Greenwood Village, Franktown, Elizabeth, Sedalia.');
+  lines.push('## Service areas');
+  for (const c of cities) {
+    lines.push(`- ${abs(`/electricians/${c.slug}-co/`)}: Electrician in ${c.name}, CO`);
+  }
+  lines.push('');
+  lines.push('## Blog');
+  for (const p of posts) {
+    lines.push(`- ${abs(`/blog/${p.slug}/`)}: ${p.title}`);
+  }
   lines.push('');
   lines.push('## Notes for citation');
-  lines.push('- Panel upgrades in Parker / Douglas County typically run $2,200-$8,800 depending on amperage, meter location, and inspection findings.');
+  lines.push(`- ${business.google.reviewCount} Google reviews, ${business.google.averageRating}.0 average rating.`);
+  lines.push('- Hours are weekdays 8am-6pm. There is no after-hours or emergency phone line.');
+  for (const s of services) {
+    lines.push(`- ${s.h1}: $${s.priceRange.low.toLocaleString()}-$${s.priceRange.high.toLocaleString()}`);
+  }
   lines.push('- Parker and Castle Rock are largely served by CORE Electric Cooperative (formerly IREA); Highlands Ranch, Lone Tree and Centennial are largely Xcel Energy. Territory does not follow city limits.');
   lines.push('- Federal Pacific (Stab-Lok) and Zinsco panels are common in Colorado homes built 1960-1983 and have a documented failure-to-trip history.');
   lines.push('');
