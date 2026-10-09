@@ -160,14 +160,21 @@ export function Footer() {
           </p>
         </div>
         <div className="container-page flex justify-center pb-6">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/img/brand/built-right-digital-white.png"
-            alt="Built by Built Right Digital"
-            width={300}
-            height={38}
-            className="h-auto w-[200px] opacity-80"
-          />
+          <a
+            href="https://builtrightdigital.com/"
+            target="_blank"
+            rel="noopener"
+            aria-label="Built by Built Right Digital"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/img/brand/built-right-digital-white.png"
+              alt="Built by Built Right Digital"
+              width={300}
+              height={38}
+              className="h-auto w-[200px] opacity-80 transition-opacity hover:opacity-100"
+            />
+          </a>
         </div>
       </div>
     </footer>

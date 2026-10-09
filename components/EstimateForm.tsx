@@ -287,7 +287,6 @@ function Field({
       <label htmlFor={id} className="block text-small font-semibold text-ink">
         {label}
       </label>
-      {hint && <p className="text-tiny text-grey">{hint}</p>}
       <input
         id={id}
         name={name}
@@ -297,6 +296,7 @@ function Field({
         className="mt-1.5 h-[50px] w-full rounded-btn border border-rule bg-white px-3 text-slate"
         {...rest}
       />
+      {hint && <p className="mt-1 text-tiny text-grey">{hint}</p>}
       {error && (
         <p id={`${id}-err`} className="mt-1 text-tiny text-green-800">
           {error}
