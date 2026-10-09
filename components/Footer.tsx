@@ -159,6 +159,16 @@ export function Footer() {
             </span>
           </p>
         </div>
+        <div className="container-page flex justify-center pb-6">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/img/brand/built-right-digital-white.png"
+            alt="Built by Built Right Digital"
+            width={300}
+            height={38}
+            className="h-auto w-[200px] opacity-80"
+          />
+        </div>
       </div>
     </footer>
   );

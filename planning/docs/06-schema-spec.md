@@ -40,7 +40,7 @@ Google what the entity *is* rather than that it merely exists.
   "alternateName": "Allsafe Home Service",
   "url": "https://allsafehomeservice.com/",
   "telephone": "+13036481934",
-  "email": "info@allsafehomeservice.com",
+  "email": "allsafehomeservices@gmail.com",
   "foundingDate": "2018-01",
   "founder": { "@type": "Person", "name": "Judson Cushing" },
   "priceRange": "$$",

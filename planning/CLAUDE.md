@@ -89,7 +89,7 @@ Domain:            allsafehomeservice.com   (singular "service" — do not typo)
 Owner:             Judson Cushing ("Jud")
 Address:           11479 Pine Dr M-51, Parker, CO 80134
 Primary phone:     (303) 648-1934      tel:+13036481934
-Email (public):    info@allsafehomeservice.com
+Email (public):    allsafehomeservices@gmail.com
 Email (leads to):  allsafehomeservices@gmail.com   (plural — this one IS plural)
 Hours:             Mon–Fri 08:00–18:00 America/Denver
 Founded:           January 2018

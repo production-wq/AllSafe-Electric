@@ -34,7 +34,7 @@ export const business = {
 
   email: {
     /** Shown publicly on the site. */
-    public: 'info@allsafehomeservice.com',
+    public: 'allsafehomeservices@gmail.com',
     /** Where estimate-form leads are delivered. Plural, unlike the domain. */
     leads: 'allsafehomeservices@gmail.com',
   },
