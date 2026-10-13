@@ -97,13 +97,12 @@ export const services: Service[] = [
     slug: 'emergency-electrical-repairs',
     h1: 'Emergency electrician',
     navLabel: 'Emergency repairs',
-    blurb: 'Sparks, a burning smell, or half the house dark. A real person answers and we come out.',
+    blurb: 'Sparks, a burning smell, or half the house dark. Call us and one of our licensed electricians comes out.',
     title: 'Emergency Electrician | South Denver Metro | Allsafe Electric',
     metaDescription:
       'Sparks, a burning smell, or half the house dark? Call Allsafe Electric. In the daytime we usually answer on the first ring. Parker and Douglas County.',
     primaryKeyword: 'emergency electrician parker',
     secondaryKeywords: [
-      '24 hour electrician parker co',
       'emergency electrical repair parker',
       'power outage electrician parker',
     ],
@@ -182,8 +181,8 @@ export const services: Service[] = [
       'Most emergency repairs are like-for-like and do not need a permit. If the fix turns into a panel or service replacement, we pull the permit with the Town of Parker or Douglas County and handle the inspection. Verify current requirements with your jurisdiction before scheduling non-urgent follow-up work.',
     faqs: [
       {
-        q: 'Are you available on weekends or after hours?',
-        a: `We are open weekdays, 8am to 6pm. Call ${P} for a same-day urgent slot during those hours. If it is genuinely dangerous outside our hours, sparks, fire, smoke, call 911 first.`,
+        q: 'What are your hours?',
+        a: `We are open weekdays, 8am to 6pm. Call ${P} for a same-day urgent slot. If there is fire, smoke, or sparks, call 911 first.`,
       },
       {
         q: 'What does an emergency visit cost?',

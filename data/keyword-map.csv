@@ -1,7 +1,7 @@
 page_url,page_type,primary_keyword,secondary_keywords,intent,priority
 /,home,parker electrician,"electrician parker co,electrician near me parker,residential electrician parker",commercial,1
 /electrical-panel-services/,service,electrical panel upgrade parker,"breaker box replacement parker,200 amp service upgrade parker,fuse box replacement parker,federal pacific panel replacement",commercial,1
-/emergency-electrical-repairs-parker-co/,service,emergency electrician parker,"24 hour electrician parker co,emergency electrical repair parker,power outage electrician parker",transactional,1
+/emergency-electrical-repairs-parker-co/,service,emergency electrician parker,"emergency electrical repair parker,power outage electrician parker",transactional,1
 /residential-ev-charging/,service,ev charger installation parker co,"level 2 charger installation parker,tesla wall connector installer parker,home ev charger cost colorado",commercial,1
 /electrical-outlet-services/,service,outlet repair parker co,"outlet not working parker,gfci outlet installation parker,add outlet parker co",transactional,2
 /electrical-switch-services/,service,light switch replacement parker,"dimmer switch installation parker,three way switch repair parker",transactional,3

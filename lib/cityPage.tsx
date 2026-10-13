@@ -65,7 +65,7 @@ export async function generateCityMetadata(citySlug: string): Promise<Metadata> 
       // Now it falls back to progressively shorter forms, so adding a city can
       // never fail the audit on title length again. 2026-09-14.
       title: cityTitle(c.name),
-      description: `Licensed electrician serving ${c.name}, CO: panels, EV chargers, wiring, and emergency repairs. A real person answers the phone. Call ${business.phone.display}.`,
+      description: `Licensed electrician serving ${c.name}, CO: panels, EV chargers, wiring, and urgent repairs. A real person answers the phone. Call ${business.phone.display}.`,
       index: PUBLISH.TIER_1_CITIES, // gated. Planning/docs/09 §3
       ogEyebrow: `Electrician · ${c.name}, CO`,
     });
