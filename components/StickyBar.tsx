@@ -35,7 +35,8 @@ export function StickyBar({ emergency = false }: { emergency?: boolean }) {
         className="lg:hidden"
         style={{ height: show ? 'calc(66px + env(safe-area-inset-bottom))' : 0 }}
       />
-      <div
+      <nav
+        aria-label="Quick actions"
         className={`fixed inset-x-0 bottom-0 z-40 lg:hidden ${
           show ? 'translate-y-0' : 'translate-y-full'
         } transition-transform duration-300 ease-smooth`}
@@ -75,7 +76,7 @@ export function StickyBar({ emergency = false }: { emergency?: boolean }) {
             Estimate
           </Link>
         </div>
-      </div>
+      </nav>
     </>
   );
 }

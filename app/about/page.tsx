@@ -394,8 +394,8 @@ export default function AboutPage() {
                 ))}
               </ul>
               <p className="mt-5 text-body text-slate">
-                Not sure if you are covered? <Link href="/service-area/">See the full service area</Link>{' '}
-                or <Link href="/contact/">get in touch</Link> and we will tell you straight away.
+                Not sure if you are covered? <Link href="/service-area/" className="underline underline-offset-2">See the full service area</Link>{' '}
+                or <Link href="/contact/" className="underline underline-offset-2">get in touch</Link> and we will tell you straight away.
               </p>
             </Reveal>
           </div>

@@ -76,7 +76,8 @@ export function CountUp({
 
   // The accessible name stays the final value regardless of animation frame.
   return (
-    <span ref={ref} className={className} aria-label={value}>
+    <span ref={ref} className={className}>
+      <span className="sr-only">{value}</span>
       <span aria-hidden>{display}</span>
     </span>
   );

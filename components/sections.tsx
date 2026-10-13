@@ -171,7 +171,7 @@ export function PriceRange({ service }: { service: Service }) {
       <div className="p-6">
         <p className="text-h1 font-bold tracking-tight text-green-700">
           {fmt(p.low)}
-          <span className="mx-2 text-h3 font-normal text-green-600/70">to</span>
+          <span className="mx-2 text-h3 font-normal text-green-700">to</span>
           {fmt(p.high)}
         </p>
         {p.unit && <p className="mt-1 text-small font-semibold text-green-700">{p.unit}</p>}

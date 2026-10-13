@@ -56,7 +56,7 @@ export function Footer() {
 
         {/* Get in touch */}
         <div>
-          <h2 className="font-display text-tiny font-bold uppercase tracking-[0.12em] text-green-600">
+          <h2 className="font-display text-tiny font-bold uppercase tracking-[0.12em] text-green-300">
             Get in Touch
           </h2>
           <address className="mt-4 space-y-3.5 text-small not-italic text-white/80">
@@ -85,7 +85,7 @@ export function Footer() {
 
         {/* Services */}
         <div>
-          <h2 className="font-display text-tiny font-bold uppercase tracking-[0.12em] text-green-600">
+          <h2 className="font-display text-tiny font-bold uppercase tracking-[0.12em] text-green-300">
             Services
           </h2>
           <ul className="mt-4 space-y-2 text-small">
@@ -101,7 +101,7 @@ export function Footer() {
 
         {/* Service areas */}
         <div>
-          <h2 className="font-display text-tiny font-bold uppercase tracking-[0.12em] text-green-600">
+          <h2 className="font-display text-tiny font-bold uppercase tracking-[0.12em] text-green-300">
             Service Areas
           </h2>
           <ul className="mt-4 space-y-2 text-small">
@@ -122,7 +122,7 @@ export function Footer() {
           column instead of forcing them into one of those two.
         */}
         <div>
-          <h2 className="font-display text-tiny font-bold uppercase tracking-[0.12em] text-green-600">
+          <h2 className="font-display text-tiny font-bold uppercase tracking-[0.12em] text-green-300">
             Company
           </h2>
           <ul className="mt-4 space-y-2 text-small">

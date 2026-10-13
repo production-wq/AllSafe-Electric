@@ -246,7 +246,7 @@ export default async function ServicePage({
               <div className="mt-8 grid gap-5 sm:grid-cols-2">
                 {s.signs.map((sign, i) => (
                   <div key={sign.h3} className="card p-5">
-                    <span className="text-tiny font-bold text-blue-300">
+                    <span className="text-tiny font-bold text-blue-700">
                       {String(i + 1).padStart(2, '0')}
                     </span>
                     <h3 className="mt-1.5 text-h3">{sign.h3}</h3>

@@ -122,7 +122,7 @@ const commonProblems = [
     title: 'Breakers trip when the AC and microwave run together',
     body: (
       <>
-        Parker grew fast between 1995 and 2015, so a lot of homes here are running 100A or 150A service that was sized before anyone owned an <Link href="/residential-ev-charging/" className="text-blue-600 hover:underline">EV</Link>. The panel is not broken, it is full. A load calculation tells you whether you need a <Link href="/electrical-panel-services/" className="text-blue-600 hover:underline">heavy-up to 200A</Link> or just some circuits rebalanced, and the answer is genuinely cheaper more often than people expect.
+        Parker grew fast between 1995 and 2015, so a lot of homes here are running 100A or 150A service that was sized before anyone owned an <Link href="/residential-ev-charging/" className="text-blue-600 underline underline-offset-2 hover:text-blue-700">EV</Link>. The panel is not broken, it is full. A load calculation tells you whether you need a <Link href="/electrical-panel-services/" className="text-blue-600 underline underline-offset-2 hover:text-blue-700">heavy-up to 200A</Link> or just some circuits rebalanced, and the answer is genuinely cheaper more often than people expect.
       </>
     ),
   },
@@ -130,7 +130,7 @@ const commonProblems = [
     title: 'You have a Federal Pacific or Zinsco panel',
     body: (
       <>
-        These turn up in the older <Link href="/electricians/the-pinery-co/" className="text-blue-600 hover:underline">Pinery</Link> and Ponderosa areas, mostly 1970s and 80s homes. Both brands have a documented history of breakers that fail to trip under fault, which is the one job a breaker has. If you have a <Link href="/electrical-panel-services/" className="text-blue-600 hover:underline">Federal Pacific or Zinsco panel</Link>, <Link href="/electrical-panel-services/" className="text-blue-600 hover:underline">replacement</Link> is not an upsell, it is the fix. We will tell you plainly which brand you have and show you the label.
+        These turn up in the older <Link href="/electricians/the-pinery-co/" className="text-blue-600 underline underline-offset-2 hover:text-blue-700">Pinery</Link> and Ponderosa areas, mostly 1970s and 80s homes. Both brands have a documented history of breakers that fail to trip under fault, which is the one job a breaker has. If you have a <Link href="/electrical-panel-services/" className="text-blue-600 underline underline-offset-2 hover:text-blue-700">Federal Pacific or Zinsco panel</Link>, <Link href="/electrical-panel-services/" className="text-blue-600 underline underline-offset-2 hover:text-blue-700">replacement</Link> is not an upsell, it is the fix. We will tell you plainly which brand you have and show you the label.
       </>
     ),
   },
@@ -138,7 +138,7 @@ const commonProblems = [
     title: 'Aluminum branch wiring in an older home',
     body: (
       <>
-        Some Parker-area homes from that same era have <Link href="/electrical-wiring-repairs-services/" className="text-blue-600 hover:underline">aluminum branch circuits</Link>. Aluminum is not automatically dangerous, but it expands and contracts differently than copper, so connections loosen over time and loose connections are what start fires. The fix is proper connectors at every device, not rewiring the whole house.
+        Some Parker-area homes from that same era have <Link href="/electrical-wiring-repairs-services/" className="text-blue-600 underline underline-offset-2 hover:text-blue-700">aluminum branch circuits</Link>. Aluminum is not automatically dangerous, but it expands and contracts differently than copper, so connections loosen over time and loose connections are what start fires. The fix is proper connectors at every device, not rewiring the whole house.
       </>
     ),
   },
@@ -146,7 +146,7 @@ const commonProblems = [
     title: 'You are adding an EV charger, hot tub, or generator',
     body: (
       <>
-        All three are big continuous loads and all three need a permit. Whether it is an <Link href="/residential-ev-charging/" className="text-blue-600 hover:underline">EV charger</Link>, a <Link href="/hot-tub-electrical-hookup/" className="text-blue-600 hover:underline">hot tub hookup</Link>, or a <Link href="/generator-installation/" className="text-blue-600 hover:underline">standby generator</Link>, start with a load calculation rather than a guess, because the answer determines whether you need a <Link href="/electrical-panel-services/" className="text-blue-600 hover:underline">service upgrade</Link> first. Worth knowing: most of Parker is on CORE Electric Cooperative, not Xcel, so most Colorado rebate articles you will read online do not apply to your address.
+        All three are big continuous loads and all three need a permit. Whether it is an <Link href="/residential-ev-charging/" className="text-blue-600 underline underline-offset-2 hover:text-blue-700">EV charger</Link>, a <Link href="/hot-tub-electrical-hookup/" className="text-blue-600 underline underline-offset-2 hover:text-blue-700">hot tub hookup</Link>, or a <Link href="/generator-installation/" className="text-blue-600 underline underline-offset-2 hover:text-blue-700">standby generator</Link>, start with a load calculation rather than a guess, because the answer determines whether you need a <Link href="/electrical-panel-services/" className="text-blue-600 underline underline-offset-2 hover:text-blue-700">service upgrade</Link> first. Worth knowing: most of Parker is on CORE Electric Cooperative, not Xcel, so most Colorado rebate articles you will read online do not apply to your address.
       </>
     ),
   },
@@ -478,7 +478,7 @@ export default function HomePage() {
             {commonProblems.map((p, i) => (
               <Reveal key={p.title} delay={i * 70} className="flex h-full">
                 <div className="card h-full p-6 md:p-7">
-                  <span className="text-tiny font-bold text-blue-300">
+                  <span className="text-tiny font-bold text-blue-700">
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <h3 className="mt-1.5 text-h3">{p.title}</h3>
@@ -689,7 +689,7 @@ export default function HomePage() {
               <div className="flex items-center gap-4 bg-blue-600 p-5 text-white">
                 <PhoneIcon width={26} height={26} className="shrink-0" />
                 <div>
-                  <p className="text-small text-white/80">Have a question?</p>
+                  <p className="text-small text-white/90">Have a question?</p>
                   <a href={business.phone.href} className="font-display text-h3 font-bold text-white">
                     {business.phone.display}
                   </a>

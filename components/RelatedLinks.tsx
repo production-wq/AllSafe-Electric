@@ -33,12 +33,12 @@ export function ServiceToCities({ serviceSlug }: { serviceSlug: string }) {
         includes{' '}
         {featured.map((c, i) => (
           <span key={c.slug}>
-            <Link href={`/electricians/${c.slug}-co/`}>{c.name}</Link>
+            <Link href={`/electricians/${c.slug}-co/`} className="underline underline-offset-2">{c.name}</Link>
             {i < featured.length - 2 ? ', ' : i === featured.length - 2 ? ' and ' : ''}
           </span>
         ))}
         , plus every other town on our{' '}
-        <Link href="/service-area/">service area page</Link>. Each town page lists its own permit
+        <Link href="/service-area/" className="underline underline-offset-2">service area page</Link>. Each town page lists its own permit
         authority and electric utility, which genuinely differ across Douglas, Arapahoe and Elbert
         counties.
       </p>

@@ -44,7 +44,7 @@ const config: Config = {
         black: '#000000',
         ink: '#111214', // headings, a hair off pure black for large blocks
         slate: '#54595F', // body copy (client palette)
-        grey: '#7A7A7A', // secondary / muted (client palette)
+        grey: '#6B6B6B', // secondary / muted; darkened from #7A7A7A (client palette) to pass WCAG AA 4.5:1
         rule: '#E3E7EB',
         paper: '#F4F6F8',
         blue: {

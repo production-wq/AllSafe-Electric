@@ -378,7 +378,7 @@
     color: #fff;
   }
   .surface-dark .eyebrow {
-    color: var(--green);
+    color: #5ab88e; /* green-300: --green is only 2.6:1 on navy */
   }
   .surface-dark :focus-visible {
     outline-color: #fff;
