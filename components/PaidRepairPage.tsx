@@ -38,10 +38,9 @@ export function PaidRepairPage({ page }: { page: PaidRepair }) {
             {['Licensed & insured', 'Flat-fee diagnosis', 'Written repair pricing'].map(t => <li key={t} className="flex items-center gap-2"><CheckIcon className="h-4 w-4 text-green-300" />{t}</li>)}
           </ul>
         </div>
-        <figure className="overflow-hidden rounded-card border border-white/20 bg-white/5">
-          <SiteImage name={page.photo} alt={page.photoAlt} priority sizes="(min-width: 1024px) 520px, 100vw" aspable={false} className="mx-auto h-[300px] w-full object-contain sm:h-[400px]" />
-          <figcaption className="px-5 py-3 text-small text-white/90">Residential electrical service from Allsafe Electric.</figcaption>
-        </figure>
+        <div className="flex justify-center">
+          <SiteImage name={page.photo} alt={page.photoAlt} priority sizes="(min-width: 1024px) 520px, 100vw" className="h-auto max-h-[400px] w-auto max-w-full rounded-card" />
+        </div>
       </div>
     </section>
     <section className="border-b border-rule bg-green-50 py-6">
