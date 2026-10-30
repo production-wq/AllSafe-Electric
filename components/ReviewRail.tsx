@@ -62,13 +62,13 @@ export function ReviewRail({ reviews }: { reviews: Review[] }) {
         tabIndex={0}
         role="region"
         aria-label="Customer reviews, scroll for more"
-        className="review-rail flex snap-x snap-mandatory gap-5 overflow-x-auto pb-2"
+        className="review-rail flex snap-x snap-mandatory gap-5 overflow-x-auto px-1 pb-3 pt-1"
       >
         {reviews.map((r) => (
           <div
             key={r.id}
             data-review-card
-            className="w-[86%] shrink-0 snap-start sm:w-[22rem] lg:w-[24rem]"
+            className="w-full min-w-0 shrink-0 snap-start sm:w-[calc((100%_-_1.25rem)/2)] lg:w-[calc((100%_-_2.5rem)/3)]"
           >
             <ReviewCard review={r} />
           </div>
@@ -76,7 +76,7 @@ export function ReviewRail({ reviews }: { reviews: Review[] }) {
       </div>
 
       {/* Arrows are supplementary; the rail itself is keyboard scrollable. */}
-      <div aria-hidden className="mt-4 hidden justify-end gap-2 sm:flex">
+      <div aria-hidden className={`mt-4 justify-end gap-2 ${canLeft || canRight ? 'hidden sm:flex' : 'hidden'}`}>
         <button
           type="button"
           onClick={() => nudge(-1)}
@@ -99,3 +99,4 @@ export function ReviewRail({ reviews }: { reviews: Review[] }) {
     </div>
   );
 }
+
