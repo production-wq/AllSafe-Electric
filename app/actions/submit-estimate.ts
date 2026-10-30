@@ -1,6 +1,8 @@
 'use server';
 
 import { headers } from 'next/headers';
+import { randomUUID } from 'node:crypto';
+import { attributionKeys } from '@/lib/attribution';
 import { business } from '@/lib/business';
 import { services } from '@/lib/services';
 import { citySlugs } from '@/lib/cities';
@@ -43,7 +45,7 @@ export async function submitEstimate(
   _prev: EstimateState,
   formData: FormData
 ): Promise<EstimateState> {
-  const get = (k: string) => String(formData.get(k) ?? '').trim();
+  const get = (k: string) => String(formData.get(k) ?? '').trim().slice(0, k === 'message' ? 5000 : 500);
   const values: Record<string, string> = {
     name: get('name'),
     phone: get('phone'),
@@ -80,9 +82,15 @@ export async function submitEstimate(
   const photo = formData.get('photo');
   const hasPhoto = photo instanceof File && photo.size > 0;
 
-  const leadId = `AS-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`;
+  const submittedId = get('submission_id');
+  const leadId = /^AS-[0-9a-f-]{36}$/i.test(submittedId) ? submittedId : `AS-${randomUUID()}`;
+  const measurementConsent = get('measurement_consent') === 'granted';
+  const attribution = Object.fromEntries(attributionKeys.map(key => [key, measurementConsent ? get(key) : '']));
   const hdrs = await headers();
   const lead = {
+    ...attribution,
+    measurement_consent: measurementConsent ? 'granted' : 'denied',
+    is_test: false,
     leadId,
     receivedAt: new Date().toISOString(),
     name: values.name,
@@ -95,8 +103,7 @@ export async function submitEstimate(
     serviceSlug: serviceMeta?.slug ?? null,
     urgency: values.when || 'unspecified',
     hasPhoto,
-    referer: hdrs.get('referer') ?? null,
-    userAgent: hdrs.get('user-agent') ?? null,
+    referer: safePagePath(hdrs.get('referer')),
     source: 'allsafe-website-estimate-form',
   };
 
@@ -125,6 +132,10 @@ export async function submitEstimate(
     leadId,
     values: {...values, city: guessCity(values.zip) ?? '' },
   };
+}
+
+function safePagePath(value: string | null) {
+  try { return value ? new URL(value).pathname.slice(0, 300) : null; } catch { return null; }
 }
 
 function formatPhone(v: string) {
@@ -187,6 +198,7 @@ async function postWebhook(url: string | undefined, lead: unknown, label: string
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(lead),
+    signal: AbortSignal.timeout(10000),
   });
   if (!res.ok) throw new Error(`${label} ${res.status}`);
   return true;
