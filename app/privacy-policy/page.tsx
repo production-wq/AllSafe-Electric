@@ -18,7 +18,7 @@ const crumbs = [
   { name: 'Privacy policy', path: '/privacy-policy/' },
 ];
 
-const LAST_UPDATED = 'September 10, 2026';
+const LAST_UPDATED = 'October 30, 2026';
 
 export default function PrivacyPage() {
   return (
@@ -55,9 +55,7 @@ export default function PrivacyPage() {
           <h2 className="text-h2">What we collect</h2>
           <p>
             <strong>When you send an estimate request:</strong> your name, phone number, email
-            address, ZIP code, a description of the work, and optionally a photo and a preferred
-            timeframe. We use this only to respond to your request, schedule a visit, and provide
-            the service.
+            address, ZIP code, a description of the work, and a preferred timeframe. We use this to respond to your request, schedule a visit, and provide the service. With measurement permission, we also connect the request and its outcome to the advertising source.
           </p>
           <p>
             <strong>When you call us:</strong> we use CallRail to route and track calls. Calls may
@@ -93,8 +91,7 @@ export default function PrivacyPage() {
           <h2 className="text-h2">Who we share it with</h2>
           <p>
             Only the service providers that make the business run: Housecall Pro (scheduling and
-            customer records), CallRail (call handling), Google (analytics and ads measurement), and
-            our email provider. Each processes data on our behalf. We may also disclose information
+            customer records), CallRail (call handling), Google (analytics and ads measurement), our email provider, and our automation and lead-record providers. Each processes data on our behalf. We may also disclose information
             if required by law.
           </p>
 
@@ -103,6 +100,10 @@ export default function PrivacyPage() {
             Essential cookies keep the site working. Analytics and advertising cookies load only
             after you consent (Google Consent Mode v2). You can clear cookies or block them in your
             browser at any time; the site still works.
+          </p>
+
+          <p>
+            If you allow measurement, we retain advertising click identifiers and campaign details in your browser for up to 90 days and attach them to your service request. We may report qualified leads, booked work, and completed-job value to our advertising provider using those identifiers. This helps us measure advertising results. We do not send your request message to our analytics service. You can change your choice using the Privacy choices button at the bottom of any page.
           </p>
 
           <h2 className="text-h2">Your choices</h2>
