@@ -563,3 +563,7 @@ and hiding it would generate angry customers and bad reviews.
 **Affects:** docs/07 §1, CTA components (Part B), form submit button (Part B).
 
 **Decided by:** Built Right Digital, 2026-09-15.
+
+
+## 2026-10-30 — Paid repair landing pages
+User authorized three paid-only pages: /outlet-gfci-repair/, /circuit-breaker-repair/, /partial-power-loss/. Reuse the live brand tokens, logo, photos, tracked call CTA, review feed and form delivery action. These pages deliberately carry noindex,follow and remain outside sitemaps and organic navigation; organic indexation/link-count requirements do not apply. Existing SEO URLs are preserved. Current root CLAUDE.md business facts and the live green palette supersede outdated planning copy. Call is primary; the on-page repair request replaces the old online-booking requirement consistent with the current site. No new dependency. No ad-performance guarantee or invented response-time/price claims.
