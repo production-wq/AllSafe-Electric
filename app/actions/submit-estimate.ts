@@ -9,14 +9,15 @@ import { citySlugs } from '@/lib/cities';
  * Estimate form Server Action, planning/docs/07 §4.
  * No third-party iframe. Honeypot + timing check, NO CAPTCHA.
  *
- * Leads fan out to (best-effort, never block the user):
+ * Leads fan out to configured delivery destinations:
  *   1. email  → allsafehomeservices@gmail.com   (plural, see planning/CLAUDE.md §3)
  *   2. webhook → Housecall Pro (create customer)
  *   3. webhook → Built Right Digital lead log
  *   4. GA4 `generate_lead`. Fired client-side on the returned {ok:true}
  *
- * If a destination fails the visitor still sees success and the lead is logged for
- * retry. Never show a homeowner an error because a webhook timed out.
+ * Confirm receipt only after at least one configured destination accepts the lead.
+ * If all destinations fail or are unconfigured, retain the form values and offer
+ * a phone fallback. There is no durable retry queue in this implementation.
  */
 
 export interface EstimateState {
@@ -99,19 +100,25 @@ export async function submitEstimate(
     source: 'allsafe-website-estimate-form',
   };
 
-  await Promise.allSettled([
+  const results = await Promise.allSettled([
     sendEmail(lead),
     postWebhook(process.env.HCP_LEAD_WEBHOOK_URL, lead, 'housecall-pro'),
     postWebhook(process.env.BRD_LEAD_LOG_WEBHOOK_URL, lead, 'brd-lead-log'),
-  ]).then((results) => {
-    const failed = results.filter((r) => r.status === 'rejected');
-    if (failed.length) {
-      // Queue for retry, in production this is a durable queue; here we log loudly.
-      console.error(`[lead ${leadId}] ${failed.length} destination(s) failed. Queued for retry`, {
-        lead,
-      });
-    }
-  });
+  ]);
+  const delivered = results.some((result) => result.status === 'fulfilled' && result.value === true);
+  const failed = results.filter((result) => result.status === 'rejected').length;
+
+  if (failed) {
+    console.error(`[lead ${leadId}] ${failed} destination(s) failed; delivered=${delivered}`);
+  }
+  if (!delivered) {
+    console.error(`[lead ${leadId}] No delivery destination accepted the request.`);
+    return {
+      ok: false,
+      values,
+      error: `We could not confirm delivery of your request. Please call ${business.phone.display} to arrange your visit. Your details are still below.`,
+    };
+  }
 
   return {
     ok: true,
@@ -151,7 +158,7 @@ async function sendEmail(lead: Record<string, unknown>) {
   const from = process.env.LEAD_EMAIL_FROM || business.email.public;
   if (!key) {
     console.info('[lead] RESEND_API_KEY not set, email not sent. Lead:', lead.leadId);
-    return;
+    return false;
   }
   const lines = Object.entries(lead)
     .map(([k, v]) => `${k}: ${v ?? ''}`)
@@ -168,12 +175,13 @@ async function sendEmail(lead: Record<string, unknown>) {
     }),
   });
   if (!res.ok) throw new Error(`email provider ${res.status}`);
+  return true;
 }
 
 async function postWebhook(url: string | undefined, lead: unknown, label: string) {
   if (!url) {
     console.info(`[lead] ${label} webhook not configured`);
-    return;
+    return false;
   }
   const res = await fetch(url, {
     method: 'POST',
@@ -181,4 +189,6 @@ async function postWebhook(url: string | undefined, lead: unknown, label: string
     body: JSON.stringify(lead),
   });
   if (!res.ok) throw new Error(`${label} ${res.status}`);
+  return true;
 }
+
