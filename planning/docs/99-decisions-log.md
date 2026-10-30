@@ -567,3 +567,12 @@ and hiding it would generate angry customers and bad reviews.
 
 ## 2026-10-30 — Paid repair landing pages
 User authorized three paid-only pages: /outlet-gfci-repair/, /circuit-breaker-repair/, /partial-power-loss/. Reuse the live brand tokens, logo, photos, tracked call CTA, review feed and form delivery action. These pages deliberately carry noindex,follow and remain outside sitemaps and organic navigation; organic indexation/link-count requirements do not apply. Existing SEO URLs are preserved. Current root CLAUDE.md business facts and the live green palette supersede outdated planning copy. Call is primary; the on-page repair request replaces the old online-booking requirement consistent with the current site. No new dependency. No ad-performance guarantee or invented response-time/price claims.
+
+
+## 2026-10-30 — Tracking within existing subscriptions
+
+- User declined Housecall Pro MAX. No CRM API/webhook plan upgrade. Existing Zapier plan used for lead intake, durable outcome log and email notification. Manual qualified/booked/job outcome entry remains necessary with Basic.
+- Added consent-gated first-party ad click/campaign attribution (90-day maximum), explicit measurement choices and stored consent evidence; no enhanced-conversion contact upload is enabled by this change. No remarketing permission inferred.
+- Stable per-form submission ID supports deduplication when the webhook acknowledgement is lost. Success still requires an accepted delivery; downstream Zap errors require monitoring/replay.
+- Corrected row form missing required ZIP input; removed nonfunctional photo selector (no attachment was ever delivered).
+- No new dependencies. Paid landing pages remain noindex. Offline outcome conversions must stay secondary until real lead-to-job attribution is verified. Do not send setup records as conversions.
