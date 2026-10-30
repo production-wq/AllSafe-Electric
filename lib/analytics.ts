@@ -1,3 +1,5 @@
+import { measurementChoice } from './attribution';
+
 /**
  * GA4 event helpers, planning/docs/07 §8, planning/docs/13 §2.
  * All events are no-ops until NEXT_PUBLIC_GA4_ID is set and the gtag snippet loads
@@ -23,7 +25,7 @@ declare global {
 }
 
 function send(event: string, params: Record<string, unknown> = {}) {
-  if (typeof window === 'undefined') return;
+  if (typeof window === 'undefined' || measurementChoice() !== true) return;
   window.dataLayer = window.dataLayer || [];
   if (typeof window.gtag === 'function') {
     window.gtag('event', event, params);
@@ -50,12 +52,14 @@ export const track = {
   beginBooking: () => send('begin_booking', { page_path: pagePath() }),
 
   generateLead: (opts: {
+    leadId?: string;
     service?: string;
     city?: string;
     hasPhoto?: boolean;
     urgency?: string;
   }) =>
     send('generate_lead', {
+      lead_id: opts.leadId,
       page_path: pagePath(),
       service: opts.service ?? null,
       city: opts.city ?? null,
