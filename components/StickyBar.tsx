@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { isPaidRepairPath } from '@/lib/paidRepairPaths';
 import { business } from '@/lib/business';
 import { track } from '@/lib/analytics';
 import { PhoneIcon, CalendarIcon } from './Icons';
@@ -16,6 +18,7 @@ import { PhoneIcon, CalendarIcon } from './Icons';
  * This is the highest-value component on the site. Most emergency traffic is on a phone.
  */
 export function StickyBar({ emergency = false }: { emergency?: boolean }) {
+  const paidRepair = isPaidRepairPath(usePathname());
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -56,7 +59,7 @@ export function StickyBar({ emergency = false }: { emergency?: boolean }) {
             Call
           </a>
           <Link
-            href="/contact/#estimate"
+            href={paidRepair ? "#estimate" : "/contact/#estimate"}
             data-cta="estimate"
             data-location="sticky_bar"
             className={`${seg} hover:bg-blue-700`}
@@ -73,7 +76,7 @@ export function StickyBar({ emergency = false }: { emergency?: boolean }) {
               <path d="M4 4h16v16H4z" strokeLinejoin="round" />
               <path d="M8 9h8M8 13h8M8 17h5" strokeLinecap="round" />
             </svg>
-            Estimate
+            {paidRepair ? 'Request repair' : 'Estimate'}
           </Link>
         </div>
       </nav>

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import { isPaidRepairPath } from '@/lib/paidRepairPaths';
 import { Logo } from './Logo';
 import { primaryNav, servicesMenu } from '@/lib/nav';
 import { cities } from '@/lib/cities';
@@ -40,6 +41,7 @@ export function Header() {
   const [openPanel, setOpenPanel] = useState<string | null>(null);
   const navRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
+  const paidRepair = isPaidRepairPath(pathname);
 
   useEffect(() => {
     setOpen(false);
@@ -177,7 +179,7 @@ export function Header() {
             href="#estimate"
             className="btn btn-outline !min-h-[46px] !px-5 !py-2 !text-[0.92rem]"
           >
-            Free Estimate
+            {paidRepair ? 'Request repair' : 'Free Estimate'}
           </Link>
         </div>
 
@@ -290,7 +292,7 @@ export function Header() {
                 <PhoneIcon width={18} height={18} /> {business.phone.display}
               </a>
               <Link href="#estimate" className="btn btn-outline" onClick={() => setOpen(false)}>
-                Get a Free Estimate
+                {paidRepair ? 'Request a repair visit' : 'Get a Free Estimate'}
               </Link>
             </div>
           </div>

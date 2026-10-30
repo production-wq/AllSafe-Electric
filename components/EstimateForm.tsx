@@ -15,11 +15,13 @@ type Variant = 'full' | 'compact' | 'row';
 
 export function EstimateForm({
   variant = 'full',
+  repairRequest = false,
   defaultService,
   formId = 'estimate',
   submitLabel = 'Get My Free Estimate',
 }: {
   variant?: Variant;
+  repairRequest?: boolean;
   defaultService?: string;
   formId?: string;
   submitLabel?: string;
@@ -57,7 +59,7 @@ export function EstimateForm({
         </p>
         <p className="mt-2 text-body text-slate">
           {state.values?.name ? `Thanks, ${state.values.name.split(' ')[0]}. ` : ''}We have your
-          request and will reply the same business day. If it is urgent, call{' '}
+          request{repairRequest ? ' and will contact you during business hours to discuss next steps.' : ' and will reply the same business day.'} If it is urgent, call{' '}
           <a href={business.phone.href} className="font-semibold underline">
             {business.phone.display}
           </a>
@@ -149,7 +151,7 @@ export function EstimateForm({
 
   const legal = (
     <p className="text-tiny text-grey">
-      No obligation. We reply the same business day, and your details are used only to contact you
+      No obligation. {repairRequest ? 'We will contact you during business hours. Your details are used only to contact you' : 'We reply the same business day, and your details are used only to contact you'}
       about this request. See our{' '}
       <Link href="/privacy-policy/" className="underline">
         privacy policy
