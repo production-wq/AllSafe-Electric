@@ -7,6 +7,7 @@ import { submitEstimate, type EstimateState } from '@/app/actions/submit-estimat
 import { services } from '@/lib/services';
 import { business } from '@/lib/business';
 import { track } from '@/lib/analytics';
+import { attributionKeys, captureAttribution, measurementChoice, type Attribution } from '@/lib/attribution';
 import { CheckIcon } from './Icons';
 
 const initial: EstimateState = { ok: false };
@@ -31,18 +32,34 @@ export function EstimateForm({
   const startedRef = useRef<number>(0);
   const [touched, setTouched] = useState(false);
   const compact = variant !== 'full';
+  const [submissionId, setSubmissionId] = useState('');
+  const [attribution, setAttribution] = useState<Attribution>({});
+  const [measurementAllowed, setMeasurementAllowed] = useState(false);
+  const reportedLead = useRef<string | undefined>(undefined);
 
   useEffect(() => {
     startedRef.current = Date.now();
+    setSubmissionId(`AS-${crypto.randomUUID()}`);
+    const update = () => {
+      setMeasurementAllowed(measurementChoice() === true);
+      setAttribution(captureAttribution());
+    };
+    update();
+    window.addEventListener('allsafe-consent-change', update);
+    return () => window.removeEventListener('allsafe-consent-change', update);
   }, []);
 
   useEffect(() => {
     if (state.ok && state.leadId && state.leadId !== 'ignored') {
+      if (reportedLead.current !== state.leadId) {
+      reportedLead.current = state.leadId;
       track.generateLead({
+        leadId: state.leadId,
         service: state.values?.service,
         city: state.values?.city,
         urgency: state.values?.when,
       });
+      }
       const t = setTimeout(() => router.push('/thank-you/'), 1400);
       return () => clearTimeout(t);
     }
@@ -82,6 +99,9 @@ export function EstimateForm({
         className="hidden"
         aria-hidden
       />
+      <input type="hidden" name="submission_id" value={submissionId} />
+      <input type="hidden" name="measurement_consent" value={measurementAllowed ? 'granted' : 'denied'} />
+      {attributionKeys.map(key => <input key={key} type="hidden" name={key} value={attribution[key] || ''} />)}
       <input type="hidden" name="form_started_at" value={startedRef.current || ''} readOnly />
       {state.error && (
         <p
@@ -151,8 +171,7 @@ export function EstimateForm({
 
   const legal = (
     <p className="text-tiny text-grey">
-      No obligation. {repairRequest ? 'We will contact you during business hours. Your details are used only to contact you' : 'We reply the same business day, and your details are used only to contact you'}
-      {' '}about this request. See our{' '}
+      No obligation. We use your details to respond to this request and provide service. With your permission, we also measure which ads lead to service requests and jobs. See our{' '}
       <Link href="/privacy-policy/" className="underline">
         privacy policy
       </Link>
@@ -174,11 +193,12 @@ export function EstimateForm({
           }
         }}
       >
-        <div className="grid gap-4 lg:grid-cols-5">
+        <div className="grid gap-4 lg:grid-cols-3">
           {HiddenBits}
           <Field label="Name" name="name" error={err.name} defaultValue={v.name} autoComplete="name" required />
           <Field label="Phone" name="phone" type="tel" inputMode="tel" error={err.phone} defaultValue={v.phone} autoComplete="tel" required />
           <Field label="Email" name="email" type="email" inputMode="email" error={err.email} defaultValue={v.email} autoComplete="email" required />
+          <Field label="ZIP code" name="zip" inputMode="numeric" maxLength={5} error={err.zip} defaultValue={v.zip} autoComplete="postal-code" required />
           {serviceSelect}
           {message}
         </div>
@@ -186,7 +206,7 @@ export function EstimateForm({
           {submit}
           {legal}
         </div>
-        <input type="hidden" name="zip" value={v.zip ?? ''} />
+
       </form>
     );
   }
@@ -244,22 +264,7 @@ export function EstimateForm({
               ))}
             </div>
           </fieldset>
-          <div>
-            <label htmlFor={`${formId}-photo`} className="block text-small font-semibold text-ink">
-              Photo{' '}
-              <span className="font-normal text-grey">
-                (optional, a photo of the panel or the problem really helps)
-              </span>
-            </label>
-            <input
-              id={`${formId}-photo`}
-              type="file"
-              name="photo"
-              accept="image/*"
-              capture="environment"
-              className="mt-1.5 block w-full text-small"
-            />
-          </div>
+
         </>
       )}
 
