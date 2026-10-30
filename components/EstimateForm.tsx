@@ -152,7 +152,7 @@ export function EstimateForm({
   const legal = (
     <p className="text-tiny text-grey">
       No obligation. {repairRequest ? 'We will contact you during business hours. Your details are used only to contact you' : 'We reply the same business day, and your details are used only to contact you'}
-      about this request. See our{' '}
+      {' '}about this request. See our{' '}
       <Link href="/privacy-policy/" className="underline">
         privacy policy
       </Link>
