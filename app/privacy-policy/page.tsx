@@ -18,7 +18,7 @@ const crumbs = [
   { name: 'Privacy policy', path: '/privacy-policy/' },
 ];
 
-const LAST_UPDATED = 'October 30, 2026';
+const LAST_UPDATED = 'November 12, 2026';
 
 export default function PrivacyPage() {
   return (
@@ -91,15 +91,19 @@ export default function PrivacyPage() {
           <h2 className="text-h2">Who we share it with</h2>
           <p>
             Only the service providers that make the business run: Housecall Pro (scheduling and
-            customer records), CallRail (call handling), Google (analytics and ads measurement), our email provider, and our automation and lead-record providers. Each processes data on our behalf. We may also disclose information
+            customer records), CallRail (call handling and form tracking), Google (analytics and ads measurement), our email provider, and our automation and lead-record providers. Each processes data on our behalf. We may also disclose information
             if required by law.
           </p>
 
           <h2 className="text-h2">Cookies and tracking</h2>
           <p>
-            Essential cookies keep the site working. Analytics and advertising cookies load only
-            after you consent (Google Consent Mode v2). You can clear cookies or block them in your
-            browser at any time; the site still works.
+            We use CallRail&apos;s first-party tracking to route calls, record service-request forms,
+            and measure their sources, including through our Google Ads integration. CallRail loads
+            unless you decline tracking or your browser sends Global Privacy Control. We honor
+            previously saved declines. Google Analytics and our separately saved advertising click
+            details stay off until you allow measurement. You can use Privacy choices to decline
+            tracking at any time; calling and submitting a request still work. Declining does not
+            erase records already collected. You can also block cookies in your browser.
           </p>
 
           <p>
