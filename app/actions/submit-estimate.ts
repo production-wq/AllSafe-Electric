@@ -42,7 +42,9 @@ const zips = new Set([
 ]);
 
 function digits(s: string) {
-  return (s || '').replace(/\D/g, '');
+  const number = (s || '').replace(/\D/g, '');
+  // US autofill commonly includes +1. Normalize it before validation and delivery.
+  return number.length === 11 && number.startsWith('1') ? number.slice(1) : number;
 }
 
 export async function submitEstimate(
@@ -70,7 +72,7 @@ export async function submitEstimate(
   const fieldErrors: Record<string, string> = {};
   if (values.name.length < 2) fieldErrors.name = 'Please enter your name.';
   if (digits(values.phone).length !== 10)
-    fieldErrors.phone = 'Enter a 10-digit US phone number so we can reach you.';
+    fieldErrors.phone = 'Enter a US phone number with area code (with or without +1).';
   if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(values.email))
     fieldErrors.email = 'Enter a valid email address.';
   if (!/^\d{5}$/.test(values.zip)) fieldErrors.zip = 'Enter your 5-digit ZIP code.';
