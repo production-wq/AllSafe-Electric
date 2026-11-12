@@ -5,22 +5,27 @@ import Script from 'next/script';
 import Link from 'next/link';
 import { captureAttribution, measurementChoice, setMeasurementChoice } from '@/lib/attribution';
 
-/** Basic consent mode: optional measurement scripts load only after acceptance. */
+/** CallRail is available by default; explicit opt-outs stop tracking. GA4 stays opt-in. */
 export function Analytics() {
   const ga = process.env.NEXT_PUBLIC_GA4_ID;
   const callrail = process.env.NEXT_PUBLIC_CALLRAIL_SWAP_SCRIPT;
   const [allowed, setAllowed] = useState(false);
+  const [callTracking, setCallTracking] = useState(false);
   const [showChoice, setShowChoice] = useState(false);
   useEffect(() => {
     const choice = measurementChoice();
-    setAllowed(choice === true);
+    const optedOut = (navigator as Navigator & { globalPrivacyControl?: boolean }).globalPrivacyControl === true;
+    setAllowed(choice === true && !optedOut);
+    setCallTracking(choice !== false && !optedOut);
     setShowChoice(choice === null);
-    if (choice === true) captureAttribution();
+    if (choice === true && !optedOut) captureAttribution();
   }, []);
 
   function choose(value: boolean) {
+    if ((navigator as Navigator & { globalPrivacyControl?: boolean }).globalPrivacyControl === true) value = false;
     setMeasurementChoice(value);
     setAllowed(value);
+    setCallTracking(value);
     setShowChoice(false);
     window.gtag?.('consent', 'update', {
       ad_storage: value ? 'granted' : 'denied',
@@ -30,7 +35,7 @@ export function Analytics() {
     });
     if (value) captureAttribution();
     // Reload when withdrawing so previously loaded third-party scripts cannot keep running.
-    if (!value && allowed) window.location.reload();
+    if (!value && (allowed || callTracking)) window.location.reload();
   }
 
   return <>
@@ -45,13 +50,13 @@ export function Analytics() {
       `}</Script>
       <Script src={`https://www.googletagmanager.com/gtag/js?id=${ga}`} strategy="afterInteractive" />
     </>}
-    {allowed && callrail && <Script src={callrail} strategy="afterInteractive" />}
+    {callTracking && callrail && <Script src={callrail} strategy="afterInteractive" />}
     <div className="border-t border-rule bg-white px-4 py-3 text-center text-tiny text-grey">
       <button type="button" className="underline" onClick={() => setShowChoice(true)}>Privacy choices</button>
     </div>
     {showChoice && <section aria-label="Privacy choices" className="fixed bottom-20 left-3 right-3 z-[70] mx-auto max-w-xl rounded-card border border-rule bg-white p-5 text-ink shadow-xl sm:bottom-4">
       <p className="font-semibold">Help us understand what works</p>
-      <p className="mt-2 text-small text-slate">With your permission, we use analytics and call tracking to understand which pages and ads bring service requests and booked jobs. You can still call or request service if you decline. <Link className="underline" href="/privacy-policy/">Privacy policy</Link></p>
+      <p className="mt-2 text-small text-slate">We use CallRail to track calls and service requests unless you decline tracking. Google Analytics and our saved advertising details stay off until you allow measurement. You can still call or request service if you decline. <Link className="underline" href="/privacy-policy/">Privacy policy</Link></p>
       <div className="mt-4 flex flex-wrap gap-3">
         <button type="button" className="btn btn-primary" onClick={() => choose(true)}>Allow measurement</button>
         <button type="button" className="btn border border-rule bg-white text-ink" onClick={() => choose(false)}>Decline</button>
