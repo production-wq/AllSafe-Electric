@@ -11,6 +11,7 @@ let attributionAt = 0;
 
 export function measurementChoice(): boolean | null {
   if (typeof window === 'undefined') return null;
+  if ((navigator as Navigator & { globalPrivacyControl?: boolean }).globalPrivacyControl === true) return false;
   try {
     const saved = JSON.parse(localStorage.getItem(consentKey) || 'null');
     if (saved && Date.now() - saved.at < lifetime) return saved.allowed === true;
